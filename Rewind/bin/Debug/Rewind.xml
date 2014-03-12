@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Rewind
+</name>
+</assembly>
+<members>
+<member name="T:Rewind.Form1">
+	<summary>
+ Rewind
+ - Core concept: Endless sidescroller with rewinding of time
+ - Holding Spacebar: Charging rewinder
+ - Releasing Spacebar: Activating rewinder based on amount of time charged - projectiles will move back 
+ to where they were X seconds ago
+ - Must dodge all the bullets
+
+ TODO
+ - Cooler VFX!
+ 
+ </summary>
+	<remarks></remarks>
+</member><member name="P:Rewind.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Rewind.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Rewind.My.Resources.Resources.projectile">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:Rewind.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>
