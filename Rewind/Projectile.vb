@@ -16,6 +16,6 @@
     End Sub
 
     Public Sub Rewind()
-        Me.Left += 3
+        Me.Left += 6
     End Sub
 End Class

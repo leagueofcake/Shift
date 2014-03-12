@@ -65,7 +65,7 @@ Public Class Form1
             For i = 0 To projectiles.Count - 1
                 projectiles(i).Rewind()
             Next
-            rewindLimit -= 10
+            rewindLimit -= 5
         Else
             chargeBar.Value = 0
             timerGenerate.Enabled = True
