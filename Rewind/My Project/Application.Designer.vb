@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Rewind.Form1
+            Me.MainForm = Global.Rewind.gameRewind
         End Sub
     End Class
 End Namespace

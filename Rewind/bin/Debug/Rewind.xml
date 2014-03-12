@@ -6,7 +6,7 @@ Rewind
 </name>
 </assembly>
 <members>
-<member name="T:Rewind.Form1">
+<member name="T:Rewind.gameRewind">
 	<summary>
  Rewind
  - Core concept: Endless sidescroller with rewinding of time
