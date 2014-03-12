@@ -41,4 +41,4 @@ Sound
 Quick Fixes/Code simplification/Other
 -----
 * Possibly combine timerWorld and timerRewind and set options to differentiate
-* Watch: https://www.youtube.com/watch?v=rG0-FBfs14U
+* Watch: [Adding/Remove Bullets at Runtime & Collision Detection (Youtube)](https://www.youtube.com/watch?v=rG0-FBfs14U)
