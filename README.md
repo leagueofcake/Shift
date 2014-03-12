@@ -26,7 +26,7 @@ TODO
 * Difficulty settings
 	* Harder = Faster + more projectiles, increased cooldown of ability
 * Other powerups/abilities
-* Sound * use royalty free clips? 
+* Sound - use royalty free clips? 
 * Possibly combine timerWorld and timerRewind and set options to differentiate
 * Make character flash/fade out and in when using ability
 	* Fade out when charging, flash back in when finished
