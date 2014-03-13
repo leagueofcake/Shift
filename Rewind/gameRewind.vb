@@ -24,6 +24,7 @@ Public Class gameRewind
                 timerCharge.Enabled = True
                 timerGenerate.Enabled = False
                 timerShoot.Enabled = False
+                timerShield.Enabled = False
         End Select
     End Sub
 
@@ -32,6 +33,7 @@ Public Class gameRewind
             Case Keys.Space
                 timerCharge.Enabled = False
                 timerRewind.Enabled = True
+                timerShield.Enabled = True
         End Select
     End Sub
 
