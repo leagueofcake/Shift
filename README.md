@@ -18,11 +18,14 @@ Graphics/VFX
 	* Replace background
 	* Replace projectile
 	* Make a logo! 
+* Black/White color scheme? 
+* Some visual effect when charging/using abilities e.g. screen flash/tint
 * Make character flash/fade out and in when using ability
 	* Fade out when charging, flash back in when finished
 
 Game System/Mechanics
 ---------------------
+* Shield system - colliding with projectiles with shield on increases available length of Rewind/some bonus
 * Collision detection
 * Cooldown implementation for ability
 	* Countdown/white overlay filling to indicate cooldown
