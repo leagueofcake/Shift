@@ -25,7 +25,7 @@ Graphics/VFX
 
 Game System/Mechanics
 ---------------------
-* Shield system - colliding with projectiles with shield on increases available length of Rewind/some bonus
+* Fluctuating shield system - colliding with projectiles with shield on increases available length of Rewind/some bonus
 * Collision detection
 * Cooldown implementation for ability
 	* Countdown/white overlay filling to indicate cooldown
