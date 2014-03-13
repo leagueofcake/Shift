@@ -57,9 +57,13 @@ Public Class gameRewind
                     Me.Controls.Remove(projectiles(i))
                 End If
 
-                If (projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds)) Then
-                    'MsgBox("COLLISION!")
-                    projectiles(i).Absorb = True
+                If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
+                    If picPlayer.BackColor = Color.Green Then ' Shield on
+                        'MsgBox("COLLISION!")
+                        projectiles(i).Absorb = True
+                    ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield
+
+                    End If
                 End If
             Next
         Catch ex As Exception
