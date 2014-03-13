@@ -89,8 +89,9 @@ Public Class gameRewind
     Private Sub timerRewind_Tick(sender As Object, e As EventArgs) Handles timerRewind.Tick
         If rewindLimit > 0 Then
             For i = 0 To projectiles.Count - 1
-                If projectiles(i).Absorb = True Then
+                If projectiles(i).Absorb = True And projectiles(i).Left > picPlayer.Right Then
                     projectiles(i).Visible = True
+                    projectiles(i).Absorb = False
                 End If
                 projectiles(i).Rewind()
                 projectiles(i).life -= 10
