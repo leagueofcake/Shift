@@ -30,6 +30,7 @@ Partial Class gameRewind
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
         Me.timerRewind = New System.Windows.Forms.Timer(Me.components)
+        Me.timerShield = New System.Windows.Forms.Timer(Me.components)
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -79,6 +80,11 @@ Partial Class gameRewind
         '
         Me.timerRewind.Interval = 10
         '
+        'timerShield
+        '
+        Me.timerShield.Enabled = True
+        Me.timerShield.Interval = 1000
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -101,5 +107,6 @@ Partial Class gameRewind
     Friend WithEvents timerGenerate As System.Windows.Forms.Timer
     Friend WithEvents timerCharge As System.Windows.Forms.Timer
     Friend WithEvents timerRewind As System.Windows.Forms.Timer
+    Friend WithEvents timerShield As System.Windows.Forms.Timer
 
 End Class

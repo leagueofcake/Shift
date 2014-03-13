@@ -73,4 +73,12 @@ Public Class gameRewind
             timerRewind.Enabled = False
         End If
     End Sub
+
+    Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
+        If picPlayer.BackColor = Color.Sienna Then
+            picPlayer.BackColor = Color.Green
+        Else
+            picPlayer.BackColor = Color.Sienna
+        End If
+    End Sub
 End Class
