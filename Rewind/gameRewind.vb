@@ -41,21 +41,24 @@ Public Class gameRewind
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         Try
             For i = 0 To projectiles.Count - 1
+                If projectiles(i).Absorb = True Then ' Hide projectiles if they've been absorbed
+                    projectiles(i).Visible = False
+                End If
                 projectiles(i).Shoot()
                 ' IF ABSORBED OR OFF SCREEN START ADDING LIFE
                 If projectiles(i).Left < 0 Then ' Off screen, add to lifecount
-                    projectiles(i).lifecount += 10
+                    projectiles(i).life += 10
                 End If
 
-                If projectiles(i).lifecount = 500 Then ' 5 seconds is up, remove from form and arraylist
-                    timerGenerate.Enabled = False
-                    MsgBox(projectiles(i).life)
+                If projectiles(i).life = 500 Then ' 5 seconds is up, remove from form and arraylist
+                    ' timerGenerate.Enabled = False DEBUG ONLY
+                    ' MsgBox(projectiles(i).lifecount)
                     projectiles.Remove(projectiles(i))
                     Me.Controls.Remove(projectiles(i))
                 End If
 
-                If projectiles(i).Bounds.Intersectwidth(picPlayer.Bounds) Then
-                    MsgBox("COLLISION!")
+                If (projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds)) Then
+                    'MsgBox("COLLISION!")
                     projectiles(i).Absorb = True
                 End If
             Next
@@ -86,7 +89,11 @@ Public Class gameRewind
     Private Sub timerRewind_Tick(sender As Object, e As EventArgs) Handles timerRewind.Tick
         If rewindLimit > 0 Then
             For i = 0 To projectiles.Count - 1
+                If projectiles(i).Absorb = True Then
+                    projectiles(i).Visible = True
+                End If
                 projectiles(i).Rewind()
+                projectiles(i).life -= 10
             Next
             rewindLimit -= 5
         Else
