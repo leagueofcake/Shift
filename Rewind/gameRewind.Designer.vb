@@ -37,7 +37,7 @@ Partial Class gameRewind
         '
         'chargeBar
         '
-        Me.chargeBar.Location = New System.Drawing.Point(504, 87)
+        Me.chargeBar.Location = New System.Drawing.Point(522, 388)
         Me.chargeBar.MarqueeAnimationSpeed = 10
         Me.chargeBar.Maximum = 500
         Me.chargeBar.Name = "chargeBar"
@@ -46,7 +46,7 @@ Partial Class gameRewind
         '
         'picPlayer
         '
-        Me.picPlayer.BackColor = System.Drawing.Color.Sienna
+        Me.picPlayer.BackColor = System.Drawing.Color.DodgerBlue
         Me.picPlayer.Location = New System.Drawing.Point(70, 300)
         Me.picPlayer.Name = "picPlayer"
         Me.picPlayer.Size = New System.Drawing.Size(50, 50)
@@ -55,7 +55,7 @@ Partial Class gameRewind
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Location = New System.Drawing.Point(0, 350)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(665, 100)
@@ -89,6 +89,7 @@ Partial Class gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(664, 442)
         Me.Controls.Add(Me.chargeBar)
         Me.Controls.Add(Me.picPlayer)
