@@ -30,7 +30,7 @@
         End Set
     End Property
 
-    Property absorbed() As Boolean
+    Property Absorb() As Boolean
         Get
             Return isAbsorbed
         End Get

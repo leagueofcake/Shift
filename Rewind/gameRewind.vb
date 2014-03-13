@@ -43,14 +43,20 @@ Public Class gameRewind
             For i = 0 To projectiles.Count - 1
                 projectiles(i).Shoot()
                 ' IF ABSORBED OR OFF SCREEN START ADDING LIFE
-                If projectiles(i).Left < 0 Then ' Off screen
-                    projectiles(i).life += 10
+                If projectiles(i).Left < 0 Then ' Off screen, add to lifecount
+                    projectiles(i).lifecount += 10
                 End If
-                If projectiles(i).life = 500 Then ' 5 seconds
+
+                If projectiles(i).lifecount = 500 Then ' 5 seconds is up, remove from form and arraylist
                     timerGenerate.Enabled = False
                     MsgBox(projectiles(i).life)
                     projectiles.Remove(projectiles(i))
                     Me.Controls.Remove(projectiles(i))
+                End If
+
+                If projectiles(i).Bounds.Intersectwidth(picPlayer.Bounds) Then
+                    MsgBox("COLLISION!")
+                    projectiles(i).Absorb = True
                 End If
             Next
         Catch ex As Exception
