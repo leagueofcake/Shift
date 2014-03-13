@@ -14,7 +14,7 @@
 
 Public Class gameRewind
     Dim shootTimer As Timer
-    Dim projectiles(-1) As Projectile
+    Dim projectiles As New ArrayList
     Dim count As Integer
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
 
@@ -37,21 +37,36 @@ Public Class gameRewind
         End Select
     End Sub
 
-    Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerShoot.Tick
-        For i = 0 To projectiles.Count - 1
-            projectiles(i).Shoot()
-        Next
+    Private Sub timerShoot_Tick(sender As Object, e As EventArgs) Handles timerShoot.Tick
+        lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
+        Try
+            For i = 0 To projectiles.Count - 1
+                projectiles(i).Shoot()
+                ' IF ABSORBED OR OFF SCREEN START ADDING LIFE
+                If projectiles(i).Left < 0 Then ' Off screen
+                    projectiles(i).life += 10
+                End If
+                If projectiles(i).life = 500 Then ' 5 seconds
+                    timerGenerate.Enabled = False
+                    MsgBox(projectiles(i).life)
+                    projectiles.Remove(projectiles(i))
+                    Me.Controls.Remove(projectiles(i))
+                End If
+            Next
+        Catch ex As Exception
+            '''' NOTHING ''''
+        End Try
+
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
         ' Generate new projectiles with a random interval
-        ReDim Preserve projectiles(count) ' Redefine then extend array length
+        'ReDim Preserve projectiles(count) ' Redefine then extend array length
         Dim newProjectile As New Projectile
         Controls.Add(newProjectile)
-        projectiles(count) = newProjectile
+        projectiles.Add(newProjectile)
         count += 1
         timerShoot.Enabled = True
-
         timerGenerate.Interval = (Rnd() * 5 + 1) * 100
     End Sub
 

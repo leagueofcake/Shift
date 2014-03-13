@@ -31,6 +31,7 @@ Partial Class gameRewind
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
         Me.timerRewind = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
+        Me.lblProjectiles = New System.Windows.Forms.Label()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -85,12 +86,24 @@ Partial Class gameRewind
         Me.timerShield.Enabled = True
         Me.timerShield.Interval = 1000
         '
+        'lblProjectiles
+        '
+        Me.lblProjectiles.AutoSize = True
+        Me.lblProjectiles.BackColor = System.Drawing.Color.White
+        Me.lblProjectiles.ForeColor = System.Drawing.Color.Black
+        Me.lblProjectiles.Location = New System.Drawing.Point(357, 397)
+        Me.lblProjectiles.Name = "lblProjectiles"
+        Me.lblProjectiles.Size = New System.Drawing.Size(61, 13)
+        Me.lblProjectiles.TabIndex = 7
+        Me.lblProjectiles.Text = "Projectiles: "
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(664, 442)
+        Me.Controls.Add(Me.lblProjectiles)
         Me.Controls.Add(Me.chargeBar)
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.PictureBox1)
@@ -99,6 +112,7 @@ Partial Class gameRewind
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents chargeBar As System.Windows.Forms.ProgressBar
@@ -109,5 +123,6 @@ Partial Class gameRewind
     Friend WithEvents timerCharge As System.Windows.Forms.Timer
     Friend WithEvents timerRewind As System.Windows.Forms.Timer
     Friend WithEvents timerShield As System.Windows.Forms.Timer
+    Friend WithEvents lblProjectiles As System.Windows.Forms.Label
 
 End Class
