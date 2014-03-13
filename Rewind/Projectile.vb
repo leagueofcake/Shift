@@ -1,5 +1,7 @@
 ﻿Public Class Projectile
     Inherits PictureBox
+    Private lifeCount As Integer
+    Private isAbsorbed As Boolean
 
     Public Sub New()
         With Me
@@ -18,4 +20,22 @@
     Public Sub Rewind()
         Me.Left += 6
     End Sub
+
+    Property life() As Integer
+        Get
+            Return lifeCount
+        End Get
+        Set(value As Integer)
+            lifeCount += 1
+        End Set
+    End Property
+
+    Property absorbed() As Boolean
+        Get
+            Return isAbsorbed
+        End Get
+        Set(value As Boolean)
+            isAbsorbed = value
+        End Set
+    End Property
 End Class
