@@ -62,7 +62,13 @@ Public Class gameRewind
                         'MsgBox("COLLISION!")
                         projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield
-
+                        timerShoot.Enabled = False
+                        timerCharge.Enabled = False
+                        timerGenerate.Enabled = False
+                        timerRewind.Enabled = False
+                        timerShield.Enabled = False
+                        MsgBox("You lose.")
+                        Exit For
                     End If
                 End If
             Next
@@ -80,7 +86,7 @@ Public Class gameRewind
         projectiles.Add(newProjectile)
         count += 1
         timerShoot.Enabled = True
-        timerGenerate.Interval = (Rnd() * 5 + 1) * 100
+        timerGenerate.Interval = (Rnd() * 5 + 3) * 100
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
