@@ -31,6 +31,15 @@ Game System/Mechanics
 	* Countdown/white overlay filling to indicate cooldown
 * Removal of projectiles once they are out of range i.e. have moved past 5 seconds' travel distance
 * Main menu
+*Achievements
+	* Survived for X time
+	* Played X times
+	* Charged X times
+	* Play at 12:34:56
+	* Absorbed X projectiles
+* Progress bar for achievements
+* Stats screen
+* Challenge mode
 * Difficulty settings
 	* Harder = Faster + more projectiles, increased cooldown of ability
 * Other powerups/abilities
