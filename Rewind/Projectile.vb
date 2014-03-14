@@ -14,11 +14,11 @@
     End Sub
 
     Public Sub Shoot()
-        Me.Left -= 3
+        Me.Left -= 2
     End Sub
 
     Public Sub Rewind()
-        Me.Left += 6
+        Me.Left += 4
     End Sub
 
     Property life() As Integer
