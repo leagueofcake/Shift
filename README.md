@@ -1,5 +1,5 @@
 # Rewind - by leagueofcake
-Hi. This is my SDD major project, Rewind. It's a side-scroller game built in VB.NET. 
+Hi. This is my SDD major project, Rewind. It's a platformer game built in VB.NET. 
 
 Links! (yay)
 ============
