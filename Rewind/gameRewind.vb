@@ -17,29 +17,36 @@ Public Class gameRewind
     Dim projectiles As New ArrayList
     Dim count As Integer
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
+    Dim playerY As Integer
 
     Private Sub gameRewind_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         Select Case e.KeyCode
             Case Keys.Space
                 timerCharge.Enabled = True
                 timerGenerate.Enabled = False
-                timerShoot.Enabled = False
+                timerWorld.Enabled = False
                 timerShield.Enabled = False
+            Case Keys.Up
+                timerJump.Enabled = True
         End Select
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         Select Case e.KeyCode
             Case Keys.Space
+                chargeBar.Value = 0 ' Reset chargeBar
+                timerGenerate.Enabled = True
+                timerWorld.Enabled = True
+
                 timerCharge.Enabled = False
                 timerRewind.Enabled = True
                 timerShield.Enabled = True
         End Select
     End Sub
 
-    Private Sub timerShoot_Tick(sender As Object, e As EventArgs) Handles timerShoot.Tick
+    Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
-        Try
+        Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If projectiles(i).Absorb = True Then ' Hide projectiles if they've been absorbed
                     projectiles(i).Visible = False
@@ -70,6 +77,9 @@ Public Class gameRewind
             '''' NOTHING ''''
         End Try
 
+        If picPlayer.Bottom = picWorld.Top Then
+            timerJump.Enabled = False
+        End If
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
@@ -79,7 +89,7 @@ Public Class gameRewind
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
         count += 1
-        timerShoot.Enabled = True
+        timerWorld.Enabled = True
         timerGenerate.Interval = (Rnd() * 5 + 1) * 100
     End Sub
 
@@ -102,9 +112,6 @@ Public Class gameRewind
             Next
             rewindLimit -= 5
         Else
-            chargeBar.Value = 0 ' Reset chargeBar
-            timerGenerate.Enabled = True
-            timerShoot.Enabled = True
             timerRewind.Enabled = False
         End If
     End Sub
@@ -115,6 +122,17 @@ Public Class gameRewind
             picPlayer.BackColor = Color.Green ' Off
         Else
             picPlayer.BackColor = Color.DodgerBlue ' On
+        End If
+    End Sub
+
+    Private Sub timerJump_Tick(sender As Object, e As EventArgs) Handles timerJump.Tick
+        If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Bottom Then
+            picPlayer.Top -= 0.1
+            MsgBox("NOO")
+        ElseIf picPlayer.Bottom <= picWorld.Top Then
+            picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
+            'lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUG
+            playerY += 1
         End If
     End Sub
 End Class

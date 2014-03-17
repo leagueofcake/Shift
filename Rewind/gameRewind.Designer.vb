@@ -25,15 +25,17 @@ Partial Class gameRewind
         Me.components = New System.ComponentModel.Container()
         Me.chargeBar = New System.Windows.Forms.ProgressBar()
         Me.picPlayer = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.timerShoot = New System.Windows.Forms.Timer(Me.components)
+        Me.picWorld = New System.Windows.Forms.PictureBox()
+        Me.timerWorld = New System.Windows.Forms.Timer(Me.components)
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
         Me.timerRewind = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
         Me.lblProjectiles = New System.Windows.Forms.Label()
+        Me.timerJump = New System.Windows.Forms.Timer(Me.components)
+        Me.lblDebug = New System.Windows.Forms.Label()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chargeBar
@@ -54,19 +56,19 @@ Partial Class gameRewind
         Me.picPlayer.TabIndex = 4
         Me.picPlayer.TabStop = False
         '
-        'PictureBox1
+        'picWorld
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.White
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 350)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(665, 100)
-        Me.PictureBox1.TabIndex = 5
-        Me.PictureBox1.TabStop = False
+        Me.picWorld.BackColor = System.Drawing.Color.White
+        Me.picWorld.Location = New System.Drawing.Point(0, 350)
+        Me.picWorld.Name = "picWorld"
+        Me.picWorld.Size = New System.Drawing.Size(665, 100)
+        Me.picWorld.TabIndex = 5
+        Me.picWorld.TabStop = False
         '
-        'timerShoot
+        'timerWorld
         '
-        Me.timerShoot.Enabled = True
-        Me.timerShoot.Interval = 10
+        Me.timerWorld.Enabled = True
+        Me.timerWorld.Interval = 10
         '
         'timerGenerate
         '
@@ -97,32 +99,50 @@ Partial Class gameRewind
         Me.lblProjectiles.TabIndex = 7
         Me.lblProjectiles.Text = "Projectiles: "
         '
+        'timerJump
+        '
+        Me.timerJump.Interval = 10
+        '
+        'lblDebug
+        '
+        Me.lblDebug.AutoSize = True
+        Me.lblDebug.BackColor = System.Drawing.Color.White
+        Me.lblDebug.ForeColor = System.Drawing.Color.Black
+        Me.lblDebug.Location = New System.Drawing.Point(142, 397)
+        Me.lblDebug.Name = "lblDebug"
+        Me.lblDebug.Size = New System.Drawing.Size(49, 13)
+        Me.lblDebug.TabIndex = 8
+        Me.lblDebug.Text = "lblDebug"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(664, 442)
+        Me.Controls.Add(Me.lblDebug)
         Me.Controls.Add(Me.lblProjectiles)
         Me.Controls.Add(Me.chargeBar)
         Me.Controls.Add(Me.picPlayer)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.picWorld)
         Me.Name = "gameRewind"
         Me.Text = "Rewind"
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picWorld, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents chargeBar As System.Windows.Forms.ProgressBar
     Friend WithEvents picPlayer As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents timerShoot As System.Windows.Forms.Timer
+    Friend WithEvents picWorld As System.Windows.Forms.PictureBox
+    Friend WithEvents timerWorld As System.Windows.Forms.Timer
     Friend WithEvents timerGenerate As System.Windows.Forms.Timer
     Friend WithEvents timerCharge As System.Windows.Forms.Timer
     Friend WithEvents timerRewind As System.Windows.Forms.Timer
     Friend WithEvents timerShield As System.Windows.Forms.Timer
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
+    Friend WithEvents timerJump As System.Windows.Forms.Timer
+    Friend WithEvents lblDebug As System.Windows.Forms.Label
 
 End Class
