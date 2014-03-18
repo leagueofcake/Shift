@@ -50,7 +50,7 @@ Partial Class gameRewind
         'picPlayer
         '
         Me.picPlayer.BackColor = System.Drawing.Color.DodgerBlue
-        Me.picPlayer.Location = New System.Drawing.Point(70, 300)
+        Me.picPlayer.Location = New System.Drawing.Point(80, 300)
         Me.picPlayer.Name = "picPlayer"
         Me.picPlayer.Size = New System.Drawing.Size(50, 50)
         Me.picPlayer.TabIndex = 4
@@ -86,7 +86,7 @@ Partial Class gameRewind
         'timerShield
         '
         Me.timerShield.Enabled = True
-        Me.timerShield.Interval = 1000
+        Me.timerShield.Interval = 2000
         '
         'lblProjectiles
         '
