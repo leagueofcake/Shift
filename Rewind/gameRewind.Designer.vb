@@ -101,7 +101,7 @@ Partial Class gameRewind
         '
         'timerJump
         '
-        Me.timerJump.Interval = 10
+        Me.timerJump.Interval = 20
         '
         'lblDebug
         '
