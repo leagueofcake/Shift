@@ -97,7 +97,7 @@ Public Class gameRewind
         count += 1
 
         timerWorld.Enabled = True
-        timerGenerate.Interval = (Rnd() * 5 + 5) * 100
+        timerGenerate.Interval = (Rnd() * 5 + 10) * 100
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
