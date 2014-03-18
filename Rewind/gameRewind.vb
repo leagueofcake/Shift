@@ -17,7 +17,7 @@ Public Class gameRewind
     Dim projectiles As New ArrayList
     Dim count As Integer
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
-    Dim playerY As Integer
+    Dim playerY As Single
 
     Private Sub gameRewind_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         Select Case e.KeyCode
@@ -66,26 +66,22 @@ Public Class gameRewind
 
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on
-                        'MsgBox("COLLISION!")
-                        projectiles(i).Absorb = True
-                    ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield
-                        timerWorld.Enabled = False
-                        timerCharge.Enabled = False
-                        timerGenerate.Enabled = False
-                        timerRewind.Enabled = False
-                        timerShield.Enabled = False
-                        MsgBox("You lose.")
-                        Exit For
+                        'MsgBox("ABSORBED")
+                        'projectiles(i).Absorb = True
+                    ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
+                        'timerWorld.Enabled = False
+                        'timerCharge.Enabled = False
+                        'timerGenerate.Enabled = False
+                        'timerRewind.Enabled = False
+                        'timerShield.Enabled = False
+                        'MsgBox("You lose.")
+                        'Exit For
                     End If
                 End If
             Next
         Catch ex As Exception
             '''' NOTHING ''''
         End Try
-
-        If picPlayer.Bottom = picWorld.Top Then
-            timerJump.Enabled = False
-        End If
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
@@ -133,9 +129,10 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerJump_Tick(sender As Object, e As EventArgs) Handles timerJump.Tick
-        If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Bottom Then
-            picPlayer.Top -= 0.1
-            MsgBox("NOO")
+        If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then
+            picPlayer.Top = picWorld.Top - picPlayer.Height
+            playerY = 0
+            timerJump.Enabled = False ' Comment for endless jump
         ElseIf picPlayer.Bottom <= picWorld.Top Then
             picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
             'lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUG
