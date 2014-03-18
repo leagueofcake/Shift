@@ -26,8 +26,8 @@ Public Class gameRewind
                 timerGenerate.Enabled = False
                 timerWorld.Enabled = False
                 timerShield.Enabled = False
-            Case Keys.Up
-                timerJump.Enabled = True
+                'Case Keys.Up ' ##### DEBUGGING ######
+                '    timerJump.Enabled = True
         End Select
     End Sub
 
@@ -48,6 +48,9 @@ Public Class gameRewind
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
+                If i = projectiles.Count - 1 Then
+                    timerGenerate.Enabled = True
+                End If
                 If projectiles(i).Absorb = True Then ' Hide projectiles if they've been absorbed
                     projectiles(i).Visible = False
                 End If
@@ -65,7 +68,8 @@ Public Class gameRewind
                 End If
 
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
-                    If picPlayer.BackColor = Color.Green Then ' Shield on
+                    If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
+                        timerJump.Enabled = True
                         'MsgBox("ABSORBED")
                         'projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
@@ -93,7 +97,7 @@ Public Class gameRewind
         count += 1
 
         timerWorld.Enabled = True
-        timerGenerate.Interval = (Rnd() * 5 + 1) * 100
+        timerGenerate.Interval = (Rnd() * 5 + 5) * 100
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
@@ -104,6 +108,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerRewind_Tick(sender As Object, e As EventArgs) Handles timerRewind.Tick
+        timerGenerate.Enabled = False
         If rewindLimit > 0 Then
             For i = 0 To projectiles.Count - 1
                 If projectiles(i).Absorb = True And projectiles(i).Left > picPlayer.Right Then
@@ -135,7 +140,7 @@ Public Class gameRewind
             timerJump.Enabled = False ' Comment for endless jump
         ElseIf picPlayer.Bottom <= picWorld.Top Then
             picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-            'lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUG
+            lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUGGING
             playerY += 1
         End If
     End Sub
