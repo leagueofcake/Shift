@@ -19,32 +19,41 @@ Public Class gameRewind
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
 
+    Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        timerMove.Tag = "idle"
+    End Sub
+
     Private Sub gameRewind_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-        Select Case e.KeyCode
-            Case Keys.Space
-                timerCharge.Enabled = True
-                timerGenerate.Enabled = False
-                timerWorld.Enabled = False
-                timerShield.Enabled = False
-                'Case Keys.Up ' ##### DEBUGGING ######
-                '    timerJump.Enabled = True
-        End Select
+        If e.KeyCode = Keys.Space Then
+            timerCharge.Enabled = True
+            timerGenerate.Enabled = False
+            timerWorld.Enabled = False
+            timerShield.Enabled = False
+        ElseIf e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
+            timerMove.Tag += "left"
+        ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
+            timerMove.Tag += "right"
+        ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
+            timerMove.Tag += "jump"
+        End If
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
-        Select Case e.KeyCode
-            Case Keys.Space
-                chargeBar.Value = 0 ' Reset chargeBar
-                timerGenerate.Enabled = True
-                timerWorld.Enabled = True
+        If e.KeyCode = Keys.Space Then
+            chargeBar.Value = 0 ' Reset chargeBar
+            timerGenerate.Enabled = True
+            timerWorld.Enabled = True
 
-                timerCharge.Enabled = False
-                timerRewind.Enabled = True
-                timerShield.Enabled = True
-        End Select
+            timerCharge.Enabled = False
+            timerRewind.Enabled = True
+            timerShield.Enabled = True
+        ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) And Not timerMove.Tag.Contains("jump") Then
+            timerMove.Tag = "idle"
+        End If
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
+        If healthBar.Value > 0 Then healthBar.Value -= 1
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
@@ -69,7 +78,8 @@ Public Class gameRewind
 
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
-                        timerJump.Enabled = True
+                        If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
+                        healthBar.Value += 10
                         'MsgBox("ABSORBED")
                         'projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
@@ -101,7 +111,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 500 Then
+        If rewindLimit < 300 Then
             rewindLimit += 10
             chargeBar.Increment(10)
         End If
@@ -118,7 +128,7 @@ Public Class gameRewind
                 projectiles(i).Rewind()
                 projectiles(i).life -= 10
             Next
-            rewindLimit -= 5
+            rewindLimit -= 20
         Else
             timerRewind.Enabled = False
         End If
@@ -133,15 +143,26 @@ Public Class gameRewind
         End If
     End Sub
 
-    Private Sub timerJump_Tick(sender As Object, e As EventArgs) Handles timerJump.Tick
-        If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then
-            picPlayer.Top = picWorld.Top - picPlayer.Height
-            playerY = 0
-            timerJump.Enabled = False ' Comment for endless jump
-        ElseIf picPlayer.Bottom <= picWorld.Top Then
-            picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-            lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUGGING
-            playerY += 1
+    Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
+        lblMove.Text = timerMove.Tag
+        If timerMove.Tag = "idle" Then
+            'None
+        ElseIf timerMove.Tag.Contains("left") Then
+            picPlayer.Left -= 3
+        ElseIf timerMove.Tag.Contains("right") Then
+            picPlayer.Left += 3
+        End If
+
+        If timerMove.Tag.Contains("jump") Then
+            If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then ' Finished jump
+                picPlayer.Top = picWorld.Top - picPlayer.Height
+                playerY = 0
+                timerMove.Tag = timerMove.Tag.Replace("jump", "")
+            ElseIf picPlayer.Bottom <= picWorld.Top Then
+                picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
+                lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUGGING
+                playerY += 1
+            End If
         End If
     End Sub
 End Class

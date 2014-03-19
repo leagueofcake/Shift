@@ -32,19 +32,22 @@ Partial Class gameRewind
         Me.timerRewind = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
         Me.lblProjectiles = New System.Windows.Forms.Label()
-        Me.timerJump = New System.Windows.Forms.Timer(Me.components)
+        Me.timerMove = New System.Windows.Forms.Timer(Me.components)
         Me.lblDebug = New System.Windows.Forms.Label()
+        Me.healthBar = New System.Windows.Forms.ProgressBar()
+        Me.lblMove = New System.Windows.Forms.Label()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chargeBar
         '
-        Me.chargeBar.Location = New System.Drawing.Point(522, 388)
+        Me.chargeBar.Location = New System.Drawing.Point(523, 388)
         Me.chargeBar.MarqueeAnimationSpeed = 10
-        Me.chargeBar.Maximum = 500
+        Me.chargeBar.Maximum = 300
         Me.chargeBar.Name = "chargeBar"
         Me.chargeBar.Size = New System.Drawing.Size(100, 23)
+        Me.chargeBar.Step = 1
         Me.chargeBar.TabIndex = 6
         '
         'picPlayer
@@ -99,9 +102,10 @@ Partial Class gameRewind
         Me.lblProjectiles.TabIndex = 7
         Me.lblProjectiles.Text = "Projectiles: "
         '
-        'timerJump
+        'timerMove
         '
-        Me.timerJump.Interval = 20
+        Me.timerMove.Enabled = True
+        Me.timerMove.Interval = 20
         '
         'lblDebug
         '
@@ -114,18 +118,42 @@ Partial Class gameRewind
         Me.lblDebug.TabIndex = 8
         Me.lblDebug.Text = "lblDebug"
         '
+        'healthBar
+        '
+        Me.healthBar.Location = New System.Drawing.Point(30, 29)
+        Me.healthBar.MarqueeAnimationSpeed = 10
+        Me.healthBar.Maximum = 500
+        Me.healthBar.Name = "healthBar"
+        Me.healthBar.Size = New System.Drawing.Size(100, 23)
+        Me.healthBar.TabIndex = 9
+        Me.healthBar.Value = 500
+        '
+        'lblMove
+        '
+        Me.lblMove.AutoSize = True
+        Me.lblMove.BackColor = System.Drawing.Color.White
+        Me.lblMove.ForeColor = System.Drawing.Color.Black
+        Me.lblMove.Location = New System.Drawing.Point(237, 398)
+        Me.lblMove.Name = "lblMove"
+        Me.lblMove.Size = New System.Drawing.Size(34, 13)
+        Me.lblMove.TabIndex = 10
+        Me.lblMove.Text = "Move"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(664, 442)
+        Me.Controls.Add(Me.lblMove)
+        Me.Controls.Add(Me.healthBar)
         Me.Controls.Add(Me.lblDebug)
         Me.Controls.Add(Me.lblProjectiles)
         Me.Controls.Add(Me.chargeBar)
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picWorld)
         Me.Name = "gameRewind"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Rewind"
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).EndInit()
@@ -142,7 +170,9 @@ Partial Class gameRewind
     Friend WithEvents timerRewind As System.Windows.Forms.Timer
     Friend WithEvents timerShield As System.Windows.Forms.Timer
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
-    Friend WithEvents timerJump As System.Windows.Forms.Timer
+    Friend WithEvents timerMove As System.Windows.Forms.Timer
     Friend WithEvents lblDebug As System.Windows.Forms.Label
+    Friend WithEvents healthBar As System.Windows.Forms.ProgressBar
+    Friend WithEvents lblMove As System.Windows.Forms.Label
 
 End Class
