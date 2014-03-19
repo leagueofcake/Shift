@@ -1,10 +1,18 @@
 # Rewind - by leagueofcake
-Hi. This is my SDD major project, Rewind. It's a platformer game built in VB.NET. 
+Hi. This is my SDD major project, Rewind. It's a sidescroller game built in VB.NET. 
 
 Links! (yay)
 ============
 * [Main Bitbucket Page](https://bitbucket.org/leagueofcake/rewind)
 * [Source](https://bitbucket.org/leagueofcake/rewind/src)
+
+Constant Values
+===============
+* Health Bar: 500
+* Charge Limit (and timerCharge/chargeBar): 300
+* picPlayer: 50 x 50 px
+* Projectile shooting: -2
+* Projectile rewind: +4
 
 TODO
 ====
