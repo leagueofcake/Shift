@@ -31,10 +31,13 @@ Public Class gameRewind
             timerWorld.Enabled = False
             timerShield.Enabled = False
         ElseIf e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
+            timerMove.Tag = timerMove.Tag.Replace("idle", "")
             timerMove.Tag += "left"
         ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
+            timerMove.Tag = timerMove.Tag.Replace("idle", "")
             timerMove.Tag += "right"
         ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
+            timerMove.Tag = timerMove.Tag.Replace("idle", "")
             timerMove.Tag += "jump"
         ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
             If debugBox.Visible = True Then
@@ -156,7 +159,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
-        lblMove.Text = timerMove.Tag
+        lblMovement.Text = timerMove.Tag
         If timerMove.Tag = "idle" Then
             'None
         ElseIf timerMove.Tag.Contains("left") And picPlayer.Left > 0 Then
@@ -177,7 +180,8 @@ Public Class gameRewind
                 End If
             ElseIf picPlayer.Bottom <= picWorld.Top Then
                 picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-                lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUGGING
+                lblPosX.Text = picPlayer.Left
+                lblPosY.Text = picPlayer.Top
                 playerY += 1
             End If
         End If
