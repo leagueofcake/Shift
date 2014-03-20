@@ -6,7 +6,6 @@
 Public Class gameRewind
     Dim shootTimer As Timer
     Dim projectiles As New ArrayList
-    Dim count As Integer
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
     Dim finishJump As Boolean = False
@@ -97,7 +96,6 @@ Public Class gameRewind
         Dim newProjectile As New Projectile
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
-        count += 1
 
         timerWorld.Enabled = True
         timerGenerate.Interval = (Rnd() * 5 + 10) * 100
