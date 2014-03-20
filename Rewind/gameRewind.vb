@@ -51,7 +51,6 @@ Public Class gameRewind
             timerWorld.Enabled = True
 
             timerCharge.Enabled = False
-            'timerRewind.Enabled = True
             timerShield.Start()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then
@@ -97,7 +96,6 @@ Public Class gameRewind
                         'timerWorld.Enabled = False
                         'timerCharge.Enabled = False
                         'timerGenerate.Enabled = False
-                        'timerRewind.Enabled = False
                         'timerShield.Enabled = False
                         'MsgBox("You lose.")
                         'Exit For
@@ -127,23 +125,6 @@ Public Class gameRewind
             chargeBar.Increment(1)
         End If
     End Sub
-
-    'Private Sub timerRewind_Tick(sender As Object, e As EventArgs) Handles timerRewind.Tick
-    '    timerGenerate.Enabled = False
-    '    If rewindLimit > 0 Then
-    '        For i = 0 To projectiles.Count - 1
-    '            If projectiles(i).Absorb = True And projectiles(i).Left > picPlayer.Right Then
-    '                projectiles(i).Visible = True
-    '                projectiles(i).Absorb = False
-    '            End If
-    '            projectiles(i).Rewind()
-    '            projectiles(i).life -= 1
-    '        Next
-    '        rewindLimit -= 2
-    '    Else
-    '        timerRewind.Enabled = False
-    '    End If
-    'End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
