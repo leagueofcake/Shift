@@ -18,6 +18,7 @@ Public Class gameRewind
     Dim count As Integer
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
+    Dim finishJump As Boolean = False
 
     Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         timerMove.Tag = "idle"
@@ -47,8 +48,12 @@ Public Class gameRewind
             timerCharge.Enabled = False
             timerRewind.Enabled = True
             timerShield.Enabled = True
-        ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) And Not timerMove.Tag.Contains("jump") Then
-            timerMove.Tag = "idle"
+        ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
+            If Not timerMove.Tag.Contains("jump") Then
+                timerMove.Tag = "idle"
+            Else
+                finishJump = True
+            End If
         End If
     End Sub
 
@@ -158,6 +163,11 @@ Public Class gameRewind
                 picPlayer.Top = picWorld.Top - picPlayer.Height
                 playerY = 0
                 timerMove.Tag = timerMove.Tag.Replace("jump", "")
+                If finishJump = True Then
+                    timerMove.Tag = timerMove.Tag.Replace("left", "")
+                    timerMove.Tag = timerMove.Tag.Replace("right", "")
+                    finishJump = False
+                End If
             ElseIf picPlayer.Bottom <= picWorld.Top Then
                 picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
                 lblDebug.Text = -5 + (playerY ^ (6 / 5)) ' DEBUGGING
