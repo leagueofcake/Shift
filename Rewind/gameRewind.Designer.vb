@@ -127,7 +127,7 @@ Partial Class gameRewind
         '
         'healthBar
         '
-        Me.healthBar.Location = New System.Drawing.Point(30, 29)
+        Me.healthBar.Location = New System.Drawing.Point(227, 12)
         Me.healthBar.MarqueeAnimationSpeed = 10
         Me.healthBar.Maximum = 5000
         Me.healthBar.Name = "healthBar"
@@ -161,7 +161,7 @@ Partial Class gameRewind
         Me.debugBox.Controls.Add(Me.lblMovement)
         Me.debugBox.Controls.Add(Me.lblProjectiles)
         Me.debugBox.ForeColor = System.Drawing.Color.Black
-        Me.debugBox.Location = New System.Drawing.Point(452, 12)
+        Me.debugBox.Location = New System.Drawing.Point(12, 12)
         Me.debugBox.Name = "debugBox"
         Me.debugBox.Size = New System.Drawing.Size(200, 150)
         Me.debugBox.TabIndex = 11
