@@ -29,7 +29,6 @@ Partial Class gameRewind
         Me.timerWorld = New System.Windows.Forms.Timer(Me.components)
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
-        Me.timerRewind = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
         Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.timerMove = New System.Windows.Forms.Timer(Me.components)
@@ -88,10 +87,6 @@ Partial Class gameRewind
         'timerCharge
         '
         Me.timerCharge.Interval = 10
-        '
-        'timerRewind
-        '
-        Me.timerRewind.Interval = 10
         '
         'timerShield
         '
@@ -248,7 +243,6 @@ Partial Class gameRewind
     Friend WithEvents timerWorld As System.Windows.Forms.Timer
     Friend WithEvents timerGenerate As System.Windows.Forms.Timer
     Friend WithEvents timerCharge As System.Windows.Forms.Timer
-    Friend WithEvents timerRewind As System.Windows.Forms.Timer
     Friend WithEvents timerShield As System.Windows.Forms.Timer
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
     Friend WithEvents timerMove As System.Windows.Forms.Timer
