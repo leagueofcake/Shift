@@ -10,10 +10,17 @@ Public Class gameRewind
     Dim playerY As Single
     Dim finishJump As Boolean = False
 
-    ' EXPERIMENTAL GETASYNCSTATE (keypress) CODE
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort
 
-    Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick
+    Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
+        ' Debugging
+        lblPosX.Text = picPlayer.Left
+        lblPosY.Text = picPlayer.Top
+        lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
+        lblHealth.Text = healthBar.Value
+        lblMovement.Text = timerMove.Tag
+        lblRewindLimit.Text = rewindLimit
+
         Dim arrowLeft = GetAsyncKeyState(Convert.ToInt32(Keys.Left))
         Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
         Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
@@ -66,17 +73,12 @@ Public Class gameRewind
             timerCharge.Enabled = False
             timerShield.Start()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
-            If Not timerMove.Tag.Contains("jump") Then
-                timerMove.Tag = "idle"
-            Else
-                finishJump = True
-            End If
+            If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
         If healthBar.Value > 0 Then healthBar.Value -= 5
-        lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
@@ -103,8 +105,6 @@ Public Class gameRewind
         Catch ex As Exception
             ' None
         End Try
-
-        lblHealth.Text = healthBar.Value
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
@@ -134,7 +134,6 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
-        lblMovement.Text = timerMove.Tag
         If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= 3
         If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 50 Then picPlayer.Left += 3
 
@@ -150,8 +149,6 @@ Public Class gameRewind
                 End If
             ElseIf picPlayer.Bottom <= picWorld.Top Then
                 picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-                lblPosX.Text = picPlayer.Left ' Debugging
-                lblPosY.Text = picPlayer.Top ' Debugging
                 playerY += 1
             End If
         End If
