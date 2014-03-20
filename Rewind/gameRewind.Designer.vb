@@ -37,11 +37,11 @@ Partial Class gameRewind
         Me.healthBar = New System.Windows.Forms.ProgressBar()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblTimerShield = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblPosX = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblTimerShield = New System.Windows.Forms.Label()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.debugBox.SuspendLayout()
@@ -51,7 +51,7 @@ Partial Class gameRewind
         '
         Me.chargeBar.Location = New System.Drawing.Point(523, 388)
         Me.chargeBar.MarqueeAnimationSpeed = 10
-        Me.chargeBar.Maximum = 500
+        Me.chargeBar.Maximum = 50
         Me.chargeBar.Name = "chargeBar"
         Me.chargeBar.Size = New System.Drawing.Size(100, 23)
         Me.chargeBar.Step = 1
@@ -130,11 +130,11 @@ Partial Class gameRewind
         '
         Me.healthBar.Location = New System.Drawing.Point(30, 29)
         Me.healthBar.MarqueeAnimationSpeed = 10
-        Me.healthBar.Maximum = 500
+        Me.healthBar.Maximum = 5000
         Me.healthBar.Name = "healthBar"
         Me.healthBar.Size = New System.Drawing.Size(100, 23)
         Me.healthBar.TabIndex = 9
-        Me.healthBar.Value = 500
+        Me.healthBar.Value = 5000
         '
         'lblMovement
         '
@@ -165,6 +165,17 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblTimerShield
+        '
+        Me.lblTimerShield.AutoSize = True
+        Me.lblTimerShield.BackColor = System.Drawing.Color.Transparent
+        Me.lblTimerShield.ForeColor = System.Drawing.Color.Black
+        Me.lblTimerShield.Location = New System.Drawing.Point(7, 113)
+        Me.lblTimerShield.Name = "lblTimerShield"
+        Me.lblTimerShield.Size = New System.Drawing.Size(72, 13)
+        Me.lblTimerShield.TabIndex = 15
+        Me.lblTimerShield.Text = "lblTimerShield"
         '
         'Label2
         '
@@ -209,17 +220,6 @@ Partial Class gameRewind
         Me.Label1.Size = New System.Drawing.Size(57, 13)
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "Movement"
-        '
-        'lblTimerShield
-        '
-        Me.lblTimerShield.AutoSize = True
-        Me.lblTimerShield.BackColor = System.Drawing.Color.Transparent
-        Me.lblTimerShield.ForeColor = System.Drawing.Color.Black
-        Me.lblTimerShield.Location = New System.Drawing.Point(7, 113)
-        Me.lblTimerShield.Name = "lblTimerShield"
-        Me.lblTimerShield.Size = New System.Drawing.Size(72, 13)
-        Me.lblTimerShield.TabIndex = 15
-        Me.lblTimerShield.Text = "lblTimerShield"
         '
         'gameRewind
         '

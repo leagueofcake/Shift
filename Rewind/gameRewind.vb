@@ -38,12 +38,20 @@ Public Class gameRewind
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space Then
+            ' ### EXPERIMENTAL REWIND CODE ###
+            For i = 0 To projectiles.Count - 1
+                For x = 0 To rewindLimit
+                    projectiles(i).Rewind()
+                Next
+            Next
+
+            rewindLimit = 0
             chargeBar.Value = 0 ' Reset chargeBar
             timerGenerate.Enabled = True
             timerWorld.Enabled = True
 
             timerCharge.Enabled = False
-            timerRewind.Enabled = True
+            'timerRewind.Enabled = True
             timerShield.Start()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then
@@ -114,28 +122,28 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 500 Then
-            rewindLimit += 10
-            chargeBar.Increment(10)
+        If rewindLimit < 50 Then
+            rewindLimit += 1
+            chargeBar.Increment(1)
         End If
     End Sub
 
-    Private Sub timerRewind_Tick(sender As Object, e As EventArgs) Handles timerRewind.Tick
-        timerGenerate.Enabled = False
-        If rewindLimit > 0 Then
-            For i = 0 To projectiles.Count - 1
-                If projectiles(i).Absorb = True And projectiles(i).Left > picPlayer.Right Then
-                    projectiles(i).Visible = True
-                    projectiles(i).Absorb = False
-                End If
-                projectiles(i).Rewind()
-                projectiles(i).life -= 10
-            Next
-            rewindLimit -= 20
-        Else
-            timerRewind.Enabled = False
-        End If
-    End Sub
+    'Private Sub timerRewind_Tick(sender As Object, e As EventArgs) Handles timerRewind.Tick
+    '    timerGenerate.Enabled = False
+    '    If rewindLimit > 0 Then
+    '        For i = 0 To projectiles.Count - 1
+    '            If projectiles(i).Absorb = True And projectiles(i).Left > picPlayer.Right Then
+    '                projectiles(i).Visible = True
+    '                projectiles(i).Absorb = False
+    '            End If
+    '            projectiles(i).Rewind()
+    '            projectiles(i).life -= 1
+    '        Next
+    '        rewindLimit -= 2
+    '    Else
+    '        timerRewind.Enabled = False
+    '    End If
+    'End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
