@@ -66,21 +66,13 @@ Public Class gameRewind
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
-                If i = projectiles.Count - 1 Then
-                    timerGenerate.Enabled = True
-                End If
-                If projectiles(i).Absorb = True Then ' Hide projectiles if they've been absorbed
-                    projectiles(i).Visible = False
-                End If
+                If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
+                If projectiles(i).Absorb = True Then projectiles(i).Visible = False ' Hide projectiles if they've been absorbed
                 projectiles(i).Shoot()
                 ' IF ABSORBED OR OFF SCREEN START ADDING LIFE
-                If projectiles(i).Left < 0 Then ' Off screen, add to lifecount
-                    projectiles(i).life += 10
-                End If
+                If projectiles(i).Left < 0 Then projectiles(i).life += 10 ' Off screen, add to lifecount
 
                 If projectiles(i).life = 500 Then ' 5 seconds is up, remove from form and arraylist
-                    ' timerGenerate.Enabled = False DEBUG ONLY
-                    ' MsgBox(projectiles(i).lifecount)
                     projectiles.Remove(projectiles(i))
                     Me.Controls.Remove(projectiles(i))
                 End If
@@ -89,27 +81,19 @@ Public Class gameRewind
                     If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
                         If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
                         healthBar.Value += 10
-                        'MsgBox("ABSORBED")
                         projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
                         healthBar.Value -= 5
-                        'timerWorld.Enabled = False
-                        'timerCharge.Enabled = False
-                        'timerGenerate.Enabled = False
-                        'timerShield.Enabled = False
-                        'MsgBox("You lose.")
-                        'Exit For
                     End If
                 End If
             Next
         Catch ex As Exception
-            '''' NOTHING ''''
+            ' None
         End Try
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
         ' Generate new projectiles with a random interval
-        'ReDim Preserve projectiles(count) ' Redefine then extend array length
         Dim newProjectile As New Projectile
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
@@ -137,13 +121,8 @@ Public Class gameRewind
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
         lblMovement.Text = timerMove.Tag
-        If timerMove.Tag = "idle" Then
-            'None
-        ElseIf timerMove.Tag.Contains("left") And picPlayer.Left > 0 Then
-            picPlayer.Left -= 3
-        ElseIf timerMove.Tag.Contains("right") And picPlayer.Left < Me.Width - 50 Then
-            picPlayer.Left += 3
-        End If
+        If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= 3
+        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 50 Then picPlayer.Left += 3
 
         If timerMove.Tag.Contains("jump") Then
             If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then ' Finished jump
@@ -157,8 +136,8 @@ Public Class gameRewind
                 End If
             ElseIf picPlayer.Bottom <= picWorld.Top Then
                 picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-                lblPosX.Text = picPlayer.Left
-                lblPosY.Text = picPlayer.Top
+                lblPosX.Text = picPlayer.Left ' Debugging
+                lblPosY.Text = picPlayer.Top ' Debugging
                 playerY += 1
             End If
         End If
