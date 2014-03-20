@@ -7,9 +7,9 @@
         With Me
             .BackColor = Color.Transparent
             .BackgroundImageLayout = ImageLayout.Stretch
-            .Image = My.Resources.projectile
-            .Size = New Size(10, 10)
-            .Location = New Point(680, 320)
+            .BackgroundImage = My.Resources.projectile
+            .Size = New Size(30, 30)
+            .Location = New Point(680, 300)
         End With
     End Sub
 
