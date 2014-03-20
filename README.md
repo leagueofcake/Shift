@@ -33,6 +33,7 @@ Graphics/VFX
 
 Game System/Mechanics
 ---------------------
+* Moving to the right makes time go faster, moving to the left makes time go slower
 * Fluctuating shield system - colliding with projectiles with shield on increases available length of Rewind/some bonus
 * Collision detection
 * Cooldown implementation for ability
