@@ -1,13 +1,4 @@
 ﻿''' <summary>
-''' Rewind
-''' - Core concept: Endless sidescroller with rewinding of time
-''' - Holding Spacebar: Charging rewinder
-''' - Releasing Spacebar: Activating rewinder based on amount of time charged - projectiles will move back 
-''' to where they were X seconds ago
-''' - Must dodge all the bullets
-'''
-''' TODO
-''' - Cooler VFX!
 ''' 
 ''' </summary>
 ''' <remarks></remarks>
@@ -20,25 +11,21 @@ Public Class gameRewind
     Dim playerY As Single
     Dim finishJump As Boolean = False
 
-    Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        timerMove.Tag = "idle"
-    End Sub
-
     Private Sub gameRewind_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Space Then
             timerCharge.Enabled = True
             timerGenerate.Enabled = False
             timerWorld.Enabled = False
-            timerShield.Enabled = False
-        ElseIf e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
+            timerShield.Stop()
+        ElseIf e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right Or e.KeyCode = Keys.Up Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
-            timerMove.Tag += "left"
-        ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
-            timerMove.Tag = timerMove.Tag.Replace("idle", "")
-            timerMove.Tag += "right"
-        ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
-            timerMove.Tag = timerMove.Tag.Replace("idle", "")
-            timerMove.Tag += "jump"
+            If e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
+                timerMove.Tag += "left"
+            ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
+                timerMove.Tag += "right"
+            ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
+                timerMove.Tag += "jump"
+            End If
         ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
             If debugBox.Visible = True Then
                 debugBox.Visible = False
@@ -57,7 +44,7 @@ Public Class gameRewind
 
             timerCharge.Enabled = False
             timerRewind.Enabled = True
-            timerShield.Enabled = True
+            timerShield.Start()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then
                 timerMove.Tag = "idle"
@@ -96,8 +83,9 @@ Public Class gameRewind
                         If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
                         healthBar.Value += 10
                         'MsgBox("ABSORBED")
-                        'projectiles(i).Absorb = True
+                        projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
+                        healthBar.Value -= 5
                         'timerWorld.Enabled = False
                         'timerCharge.Enabled = False
                         'timerGenerate.Enabled = False
@@ -126,7 +114,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 300 Then
+        If rewindLimit < 500 Then
             rewindLimit += 10
             chargeBar.Increment(10)
         End If
