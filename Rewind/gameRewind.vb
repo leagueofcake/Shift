@@ -36,6 +36,13 @@ Public Class gameRewind
             timerMove.Tag += "right"
         ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
             timerMove.Tag += "jump"
+        ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
+            If debugBox.Visible = True Then
+                debugBox.Visible = False
+            Else
+                debugBox.Visible = True
+            End If
+
         End If
     End Sub
 
@@ -152,9 +159,9 @@ Public Class gameRewind
         lblMove.Text = timerMove.Tag
         If timerMove.Tag = "idle" Then
             'None
-        ElseIf timerMove.Tag.Contains("left") Then
+        ElseIf timerMove.Tag.Contains("left") And picPlayer.Left > 0 Then
             picPlayer.Left -= 3
-        ElseIf timerMove.Tag.Contains("right") Then
+        ElseIf timerMove.Tag.Contains("right") And picPlayer.Left < Me.Width - 50 Then
             picPlayer.Left += 3
         End If
 
