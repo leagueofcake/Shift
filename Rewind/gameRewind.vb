@@ -20,11 +20,13 @@ Public Class gameRewind
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
             If e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
                 timerMove.Tag += "left"
-            ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
+                If timerMove.Tag.Contains("right") Then timerMove.Tag = timerMove.Tag.Replace("right", "")
+        ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
                 timerMove.Tag += "right"
-            ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
-                timerMove.Tag += "jump"
-            End If
+                If timerMove.Tag.Contains("left") Then timerMove.Tag = timerMove.Tag.Replace("left", "")
+        ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
+            timerMove.Tag += "jump"
+        End If
         ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
             If debugBox.Visible = True Then
                 debugBox.Visible = False
@@ -61,7 +63,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If healthBar.Value > 0 Then healthBar.Value -= 1
+        If healthBar.Value > 0 Then healthBar.Value -= 5
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
@@ -79,16 +81,18 @@ Public Class gameRewind
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
                         If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
-                        healthBar.Value += 10
+                        healthBar.Value += 100
                         projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
-                        healthBar.Value -= 5
+                        healthBar.Value -= 25
                     End If
                 End If
             Next
         Catch ex As Exception
             ' None
         End Try
+
+        lblHealth.Text = healthBar.Value
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick

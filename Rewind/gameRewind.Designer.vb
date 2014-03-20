@@ -36,11 +36,12 @@ Partial Class gameRewind
         Me.healthBar = New System.Windows.Forms.ProgressBar()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
-        Me.lblTimerShield = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblPosX = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblHealth = New System.Windows.Forms.Label()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.debugBox.SuspendLayout()
@@ -98,7 +99,7 @@ Partial Class gameRewind
         Me.lblProjectiles.AutoSize = True
         Me.lblProjectiles.BackColor = System.Drawing.Color.Transparent
         Me.lblProjectiles.ForeColor = System.Drawing.Color.Black
-        Me.lblProjectiles.Location = New System.Drawing.Point(7, 88)
+        Me.lblProjectiles.Location = New System.Drawing.Point(6, 85)
         Me.lblProjectiles.Name = "lblProjectiles"
         Me.lblProjectiles.Size = New System.Drawing.Size(61, 13)
         Me.lblProjectiles.TabIndex = 7
@@ -115,7 +116,7 @@ Partial Class gameRewind
         Me.lblPosY.AutoSize = True
         Me.lblPosY.BackColor = System.Drawing.Color.Transparent
         Me.lblPosY.ForeColor = System.Drawing.Color.Black
-        Me.lblPosY.Location = New System.Drawing.Point(68, 43)
+        Me.lblPosY.Location = New System.Drawing.Point(68, 45)
         Me.lblPosY.Name = "lblPosY"
         Me.lblPosY.Size = New System.Drawing.Size(42, 13)
         Me.lblPosY.TabIndex = 8
@@ -145,7 +146,8 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.SystemColors.Control
-        Me.debugBox.Controls.Add(Me.lblTimerShield)
+        Me.debugBox.Controls.Add(Me.lblHealth)
+        Me.debugBox.Controls.Add(Me.Label4)
         Me.debugBox.Controls.Add(Me.Label2)
         Me.debugBox.Controls.Add(Me.Label3)
         Me.debugBox.Controls.Add(Me.lblPosX)
@@ -156,28 +158,17 @@ Partial Class gameRewind
         Me.debugBox.ForeColor = System.Drawing.Color.Black
         Me.debugBox.Location = New System.Drawing.Point(452, 12)
         Me.debugBox.Name = "debugBox"
-        Me.debugBox.Size = New System.Drawing.Size(200, 145)
+        Me.debugBox.Size = New System.Drawing.Size(200, 136)
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
-        '
-        'lblTimerShield
-        '
-        Me.lblTimerShield.AutoSize = True
-        Me.lblTimerShield.BackColor = System.Drawing.Color.Transparent
-        Me.lblTimerShield.ForeColor = System.Drawing.Color.Black
-        Me.lblTimerShield.Location = New System.Drawing.Point(7, 113)
-        Me.lblTimerShield.Name = "lblTimerShield"
-        Me.lblTimerShield.Size = New System.Drawing.Size(72, 13)
-        Me.lblTimerShield.TabIndex = 15
-        Me.lblTimerShield.Text = "lblTimerShield"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(23, 27)
+        Me.Label2.Location = New System.Drawing.Point(23, 25)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(38, 13)
         Me.Label2.TabIndex = 14
@@ -188,7 +179,7 @@ Partial Class gameRewind
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(23, 43)
+        Me.Label3.Location = New System.Drawing.Point(23, 45)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(38, 13)
         Me.Label3.TabIndex = 13
@@ -199,7 +190,7 @@ Partial Class gameRewind
         Me.lblPosX.AutoSize = True
         Me.lblPosX.BackColor = System.Drawing.Color.Transparent
         Me.lblPosX.ForeColor = System.Drawing.Color.Black
-        Me.lblPosX.Location = New System.Drawing.Point(68, 27)
+        Me.lblPosX.Location = New System.Drawing.Point(68, 25)
         Me.lblPosX.Name = "lblPosX"
         Me.lblPosX.Size = New System.Drawing.Size(42, 13)
         Me.lblPosX.TabIndex = 12
@@ -212,9 +203,31 @@ Partial Class gameRewind
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(7, 65)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.Size = New System.Drawing.Size(63, 13)
         Me.Label1.TabIndex = 11
-        Me.Label1.Text = "Movement"
+        Me.Label1.Text = "Movement: "
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(7, 105)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(44, 13)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Health: "
+        '
+        'lblHealth
+        '
+        Me.lblHealth.AutoSize = True
+        Me.lblHealth.BackColor = System.Drawing.Color.Transparent
+        Me.lblHealth.ForeColor = System.Drawing.Color.Black
+        Me.lblHealth.Location = New System.Drawing.Point(68, 105)
+        Me.lblHealth.Name = "lblHealth"
+        Me.lblHealth.Size = New System.Drawing.Size(31, 13)
+        Me.lblHealth.TabIndex = 17
+        Me.lblHealth.Text = "5000"
         '
         'gameRewind
         '
@@ -254,6 +267,7 @@ Partial Class gameRewind
     Friend WithEvents lblPosX As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents lblTimerShield As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lblHealth As System.Windows.Forms.Label
 
 End Class
