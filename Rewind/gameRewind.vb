@@ -10,30 +10,42 @@ Public Class gameRewind
     Dim playerY As Single
     Dim finishJump As Boolean = False
 
-    Private Sub gameRewind_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.Space Then
+    ' EXPERIMENTAL GETASYNCSTATE (keypress) CODE
+    Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort
+
+    Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick
+        Dim arrowLeft = GetAsyncKeyState(Convert.ToInt32(Keys.Left))
+        Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
+        Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
+
+        If GetAsyncKeyState(Convert.ToInt32(Keys.Space)) Then
             timerCharge.Enabled = True
             timerGenerate.Enabled = False
             timerWorld.Enabled = False
             timerShield.Stop()
-        ElseIf e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right Or e.KeyCode = Keys.Up Then ' Movement
+        End If
+
+        If arrowLeft Or GetAsyncKeyState(Convert.ToInt32(Keys.Right)) Or GetAsyncKeyState(Convert.ToInt32(Keys.Up)) Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
-            If e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
+            If arrowLeft And Not timerMove.Tag.Contains("left") Then
                 timerMove.Tag += "left"
                 If timerMove.Tag.Contains("right") Then timerMove.Tag = timerMove.Tag.Replace("right", "")
-        ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
+            End If
+
+            If GetAsyncKeyState(Convert.ToInt32(Keys.Right)) And Not timerMove.Tag.Contains("right") Then
                 timerMove.Tag += "right"
                 If timerMove.Tag.Contains("left") Then timerMove.Tag = timerMove.Tag.Replace("left", "")
-        ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
-            timerMove.Tag += "jump"
+            End If
+
+            If GetAsyncKeyState(Convert.ToInt32(Keys.Up)) And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
         End If
-        ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
+
+        If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then ' Toggle debug box
             If debugBox.Visible = True Then
                 debugBox.Visible = False
             Else
                 debugBox.Visible = True
             End If
-
         End If
     End Sub
 

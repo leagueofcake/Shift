@@ -42,6 +42,7 @@ Partial Class gameRewind
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblHealth = New System.Windows.Forms.Label()
+        Me.timerConstant = New System.Windows.Forms.Timer(Me.components)
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.debugBox.SuspendLayout()
@@ -229,6 +230,11 @@ Partial Class gameRewind
         Me.lblHealth.TabIndex = 17
         Me.lblHealth.Text = "5000"
         '
+        'timerConstant
+        '
+        Me.timerConstant.Enabled = True
+        Me.timerConstant.Interval = 10
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -269,5 +275,6 @@ Partial Class gameRewind
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents lblHealth As System.Windows.Forms.Label
+    Friend WithEvents timerConstant As System.Windows.Forms.Timer
 
 End Class
