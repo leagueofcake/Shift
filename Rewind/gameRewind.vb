@@ -10,22 +10,45 @@ Public Class gameRewind
     Dim playerY As Single
     Dim finishJump As Boolean = False
 
-    Private Sub gameRewind_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.Space Then
+    Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort
+
+    Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
+        ' Debugging
+        lblPosX.Text = picPlayer.Left
+        lblPosY.Text = picPlayer.Top
+        lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
+        lblHealth.Text = healthBar.Value
+        lblMovement.Text = timerMove.Tag
+        lblRewindLimit.Text = rewindLimit
+
+        Dim arrowLeft = GetAsyncKeyState(Convert.ToInt32(Keys.Left))
+        Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
+        Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
+
+        If GetAsyncKeyState(Convert.ToInt32(Keys.Space)) Then
             timerCharge.Enabled = True
             timerGenerate.Enabled = False
             timerWorld.Enabled = False
             timerShield.Stop()
-        ElseIf e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right Or e.KeyCode = Keys.Up Then ' Movement
+        End If
+
+        If arrowLeft Or GetAsyncKeyState(Convert.ToInt32(Keys.Right)) Or GetAsyncKeyState(Convert.ToInt32(Keys.Up)) Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
-            If e.KeyCode = Keys.Left And Not timerMove.Tag.Contains("left") Then
+            If arrowLeft And Not timerMove.Tag.Contains("left") Then
                 timerMove.Tag += "left"
-            ElseIf e.KeyCode = Keys.Right And Not timerMove.Tag.Contains("right") Then
-                timerMove.Tag += "right"
-            ElseIf e.KeyCode = Keys.Up And Not timerMove.Tag.Contains("jump") Then
-                timerMove.Tag += "jump"
+                If timerMove.Tag.Contains("right") Then timerMove.Tag = timerMove.Tag.Replace("right", "")
             End If
-        ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
+
+            If GetAsyncKeyState(Convert.ToInt32(Keys.Right)) And Not timerMove.Tag.Contains("right") Then
+                timerMove.Tag += "right"
+                If timerMove.Tag.Contains("left") Then timerMove.Tag = timerMove.Tag.Replace("left", "")
+            End If
+
+
+            If GetAsyncKeyState(Convert.ToInt32(Keys.Up)) And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
+        End If
+
+        If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then ' Toggle debug box
             debugBox.Visible = Not debugBox.Visible
         End If
     End Sub
@@ -47,17 +70,12 @@ Public Class gameRewind
             timerCharge.Enabled = False
             timerShield.Start()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
-            If Not timerMove.Tag.Contains("jump") Then
-                timerMove.Tag = "idle"
-            Else
-                finishJump = True
-            End If
+            If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If healthBar.Value > 0 Then healthBar.Value -= 1
-        lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
+        If healthBar.Value > 0 Then healthBar.Value -= 5
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
@@ -74,10 +92,10 @@ Public Class gameRewind
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
                         If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
-                        healthBar.Value += 10
+                        healthBar.Value += 100
                         projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
-                        healthBar.Value -= 5
+                        healthBar.Value -= 25
                     End If
                 End If
             Next
@@ -113,7 +131,6 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
-        lblMovement.Text = timerMove.Tag
         If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= 3
         If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 50 Then picPlayer.Left += 3
 
@@ -129,8 +146,6 @@ Public Class gameRewind
                 End If
             ElseIf picPlayer.Bottom <= picWorld.Top Then
                 picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-                lblPosX.Text = picPlayer.Left ' Debugging
-                lblPosY.Text = picPlayer.Top ' Debugging
                 playerY += 1
             End If
         End If
