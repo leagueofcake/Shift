@@ -26,12 +26,7 @@ Public Class gameRewind
                 timerMove.Tag += "jump"
             End If
         ElseIf e.KeyCode = Keys.Oemtilde Then ' Toggle debug box
-            If debugBox.Visible = True Then
-                debugBox.Visible = False
-            Else
-                debugBox.Visible = True
-            End If
-
+            debugBox.Visible = Not debugBox.Visible
         End If
     End Sub
 
