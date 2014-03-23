@@ -70,3 +70,4 @@ Quick Fixes/Code simplification/Other
 -----
 * Possibly combine timerWorld and timerRewind and set options to differentiate
 * Watch: [Adding/Remove Bullets at Runtime & Collision Detection (Youtube)](https://www.youtube.com/watch?v=rG0-FBfs14U)
+* Fix up timing for removal of projectiles off screen in line with new constant values
