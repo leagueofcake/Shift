@@ -94,16 +94,19 @@ Public Class gameRewind
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
                         If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
-                        If health + 100 > 5000 Then health = 5000 Else health = health + 100 ' Upper cap
+                        health += 100
+                        If health > 5000 Then health = 5000
                         projectiles(i).Absorb = True
-                    ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
-                        If health - 25 < 0 Then health = 0 Else health = health - 25 ' Lower cap
+                    ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
+                        health -= 25
+                        If health < 0 Then health = 0
                     End If
                 End If
             Next
         Catch ex As Exception
             ' None
         End Try
+        'If health > 5000 Then healthBar.Value = 5000 Else healthBar.Value = health ' OLD HEALTH CODE
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
     End Sub
 

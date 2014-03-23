@@ -31,6 +31,7 @@ Partial Class gameRewind
         Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.timerMove = New System.Windows.Forms.Timer(Me.components)
         Me.lblPosY = New System.Windows.Forms.Label()
+        Me.healthBar = New System.Windows.Forms.ProgressBar()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
         Me.lblRewindLimit = New System.Windows.Forms.Label()
@@ -115,6 +116,16 @@ Partial Class gameRewind
         Me.lblPosY.Size = New System.Drawing.Size(42, 13)
         Me.lblPosY.TabIndex = 8
         Me.lblPosY.Text = "lblPosY"
+        '
+        'healthBar
+        '
+        Me.healthBar.Location = New System.Drawing.Point(227, 77)
+        Me.healthBar.MarqueeAnimationSpeed = 10
+        Me.healthBar.Maximum = 5000
+        Me.healthBar.Name = "healthBar"
+        Me.healthBar.Size = New System.Drawing.Size(100, 23)
+        Me.healthBar.TabIndex = 9
+        Me.healthBar.Value = 5000
         '
         'lblMovement
         '
@@ -335,6 +346,7 @@ Partial Class gameRewind
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
         Me.Controls.Add(Me.debugBox)
+        Me.Controls.Add(Me.healthBar)
         Me.Controls.Add(Me.chargeBar)
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picWorld)
@@ -362,6 +374,7 @@ Partial Class gameRewind
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
     Friend WithEvents timerMove As System.Windows.Forms.Timer
     Friend WithEvents lblPosY As System.Windows.Forms.Label
+    Friend WithEvents healthBar As System.Windows.Forms.ProgressBar
     Friend WithEvents lblMovement As System.Windows.Forms.Label
     Friend WithEvents debugBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
