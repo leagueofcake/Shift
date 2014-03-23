@@ -23,6 +23,7 @@ Public Class gameRewind
         lblRewindLimit.Text = rewindLimit
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
+        ' Key detection
         Dim arrowLeft = GetAsyncKeyState(Convert.ToInt32(Keys.Left))
         Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
         Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
@@ -50,9 +51,7 @@ Public Class gameRewind
             If GetAsyncKeyState(Convert.ToInt32(Keys.Up)) And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
         End If
 
-        If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then ' Toggle debug box
-            debugBox.Visible = Not debugBox.Visible
-        End If
+        If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
@@ -126,11 +125,7 @@ Public Class gameRewind
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
-        If picPlayer.BackColor = Color.DodgerBlue Then
-            picPlayer.BackColor = Color.Green ' Off
-        Else
-            picPlayer.BackColor = Color.DodgerBlue ' On
-        End If
+        If picPlayer.BackColor = Color.DodgerBlue Then picPlayer.BackColor = Color.Green Else picPlayer.BackColor = Color.DodgerBlue
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
