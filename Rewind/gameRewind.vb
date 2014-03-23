@@ -64,7 +64,7 @@ Public Class gameRewind
             Next
 
             rewindLimit = 0
-            chargeBar.Value = 0 ' Reset chargeBar
+            picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
             timerGenerate.Enabled = True
             timerWorld.Enabled = True
 
@@ -119,7 +119,7 @@ Public Class gameRewind
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
         If rewindLimit < 50 Then
             rewindLimit += 1
-            chargeBar.Increment(1)
+            picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 5).ToString)
         End If
     End Sub
 

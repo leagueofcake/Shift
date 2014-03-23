@@ -23,7 +23,6 @@ Partial Class gameRewind
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.chargeBar = New System.Windows.Forms.ProgressBar()
         Me.timerWorld = New System.Windows.Forms.Timer(Me.components)
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
@@ -31,7 +30,6 @@ Partial Class gameRewind
         Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.timerMove = New System.Windows.Forms.Timer(Me.components)
         Me.lblPosY = New System.Windows.Forms.Label()
-        Me.healthBar = New System.Windows.Forms.ProgressBar()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
         Me.lblRewindLimit = New System.Windows.Forms.Label()
@@ -59,16 +57,6 @@ Partial Class gameRewind
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'chargeBar
-        '
-        Me.chargeBar.Location = New System.Drawing.Point(523, 388)
-        Me.chargeBar.MarqueeAnimationSpeed = 10
-        Me.chargeBar.Maximum = 25
-        Me.chargeBar.Name = "chargeBar"
-        Me.chargeBar.Size = New System.Drawing.Size(100, 23)
-        Me.chargeBar.Step = 1
-        Me.chargeBar.TabIndex = 6
         '
         'timerWorld
         '
@@ -116,16 +104,6 @@ Partial Class gameRewind
         Me.lblPosY.Size = New System.Drawing.Size(42, 13)
         Me.lblPosY.TabIndex = 8
         Me.lblPosY.Text = "lblPosY"
-        '
-        'healthBar
-        '
-        Me.healthBar.Location = New System.Drawing.Point(227, 77)
-        Me.healthBar.MarqueeAnimationSpeed = 10
-        Me.healthBar.Maximum = 5000
-        Me.healthBar.Name = "healthBar"
-        Me.healthBar.Size = New System.Drawing.Size(100, 23)
-        Me.healthBar.TabIndex = 9
-        Me.healthBar.Value = 5000
         '
         'lblMovement
         '
@@ -328,7 +306,7 @@ Partial Class gameRewind
         'picCharge
         '
         Me.picCharge.BackColor = System.Drawing.Color.Transparent
-        Me.picCharge.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeBar10
+        Me.picCharge.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeBar0
         Me.picCharge.Location = New System.Drawing.Point(596, 56)
         Me.picCharge.Name = "picCharge"
         Me.picCharge.Size = New System.Drawing.Size(40, 236)
@@ -341,15 +319,13 @@ Partial Class gameRewind
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(684, 442)
-        Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
         Me.Controls.Add(Me.debugBox)
-        Me.Controls.Add(Me.healthBar)
-        Me.Controls.Add(Me.chargeBar)
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picWorld)
+        Me.Controls.Add(Me.picCharge)
         Me.Name = "gameRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Rewind"
@@ -364,7 +340,6 @@ Partial Class gameRewind
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents chargeBar As System.Windows.Forms.ProgressBar
     Friend WithEvents picPlayer As System.Windows.Forms.PictureBox
     Friend WithEvents picWorld As System.Windows.Forms.PictureBox
     Friend WithEvents timerWorld As System.Windows.Forms.Timer
@@ -374,7 +349,6 @@ Partial Class gameRewind
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
     Friend WithEvents timerMove As System.Windows.Forms.Timer
     Friend WithEvents lblPosY As System.Windows.Forms.Label
-    Friend WithEvents healthBar As System.Windows.Forms.ProgressBar
     Friend WithEvents lblMovement As System.Windows.Forms.Label
     Friend WithEvents debugBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
