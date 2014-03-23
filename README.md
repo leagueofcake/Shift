@@ -18,6 +18,7 @@ TODO
 ====
 Graphics/VFX
 ------------
+* Font: Bitsumishi
 * Make rewind effect draw an onion-skin effect
 * Rewinding: Make rewind accelerate as the effect lengthens
 * Design better graphics! 
