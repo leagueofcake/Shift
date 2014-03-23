@@ -8,6 +8,7 @@ Public Class gameRewind
     Dim projectiles As New ArrayList
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
+    Dim health As Integer = 5000
     Dim finishJump As Boolean = False
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort
@@ -17,9 +18,10 @@ Public Class gameRewind
         lblPosX.Text = picPlayer.Left
         lblPosY.Text = picPlayer.Top
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
-        lblHealth.Text = healthBar.Value
+        lblHealth.Text = health
         lblMovement.Text = timerMove.Tag
         lblRewindLimit.Text = rewindLimit
+        If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
         Dim arrowLeft = GetAsyncKeyState(Convert.ToInt32(Keys.Left))
         Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
@@ -75,7 +77,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If healthBar.Value > 0 Then healthBar.Value -= 5
+        If health > 0 Then health -= 5
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
@@ -92,16 +94,20 @@ Public Class gameRewind
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on - JUMP
                         If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
-                        healthBar.Value += 100
+                        health += 100
+                        If health > 5000 Then health = 5000
                         projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off
-                        healthBar.Value -= 25
+                        health -= 25
+                        If health < 0 Then health = 0
                     End If
                 End If
             Next
         Catch ex As Exception
             ' None
         End Try
+        'If health > 5000 Then healthBar.Value = 5000 Else healthBar.Value = health ' OLD HEALTH CODE
+        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
@@ -132,7 +138,7 @@ Public Class gameRewind
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
         If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= 3
-        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 50 Then picPlayer.Left += 3
+        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += 3
 
         If timerMove.Tag.Contains("jump") Then
             If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then ' Finished jump

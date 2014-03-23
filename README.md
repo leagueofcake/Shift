@@ -55,6 +55,7 @@ Game System/Mechanics
 * Other powerups/abilities
 	* Ghosting - practically invincible
 	* Send own projectiles - anti-projectiles, negate incoming projectiles
+	* Speed up player/Slow down projectiles
 * Difficulty shifting
 	* Projectiles split into separate particles
 	* Projectiles move at an angle

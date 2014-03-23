@@ -122,6 +122,192 @@
   <ItemGroup>
     <None Include="Resources\projectile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\text\chargeText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\text\healthText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\old\projectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar10.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
