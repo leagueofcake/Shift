@@ -10,6 +10,7 @@ Public Class gameRewind
     Dim playerY As Single
     Dim health As Integer = 5000
     Dim finishJump As Boolean = False
+    Dim genVar As Single
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort
 
@@ -21,6 +22,8 @@ Public Class gameRewind
         lblHealth.Text = health
         lblMovement.Text = timerMove.Tag
         lblRewindLimit.Text = rewindLimit
+        lblShootVar.Text = (picPlayer.Left / 100) + 4
+        lblGenVar.Text = genVar
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
         ' Key detection
@@ -59,7 +62,7 @@ Public Class gameRewind
             ' ### EXPERIMENTAL REWIND CODE ###
             For i = 0 To projectiles.Count - 1
                 For x = 0 To rewindLimit
-                    projectiles(i).Rewind()
+                    projectiles(i).Rewind((picPlayer.Left / 100) + 4)
                 Next
             Next
 
@@ -81,7 +84,7 @@ Public Class gameRewind
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
                 If projectiles(i).Absorb = True Then projectiles(i).Visible = False ' Hide projectiles if they've been absorbed
-                projectiles(i).Shoot()
+                projectiles(i).Shoot((picPlayer.Left / 100) + 4)
                 ' IF ABSORBED OR OFF SCREEN START ADDING LIFE
                 If projectiles(i).Left < 0 Then projectiles(i).life += 10 ' Off screen, add to lifecount
 
@@ -113,7 +116,8 @@ Public Class gameRewind
         projectiles.Add(newProjectile)
 
         timerWorld.Enabled = True
-        timerGenerate.Interval = (Rnd() * 5 + 10) * 100
+        genVar = 800 - picPlayer.Left
+        timerGenerate.Interval = genVar
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick

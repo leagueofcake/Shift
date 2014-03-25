@@ -9,16 +9,16 @@
             .BackgroundImageLayout = ImageLayout.Stretch
             .BackgroundImage = My.Resources.projectile
             .Size = New Size(30, 30)
-            .Location = New Point(680, 300)
+            .Location = New Point(750, 300)
         End With
     End Sub
 
-    Public Sub Shoot()
-        Me.Left -= 2
+    Public Sub Shoot(ByVal shootVar As Integer)
+        Me.Left -= shootVar
     End Sub
 
-    Public Sub Rewind()
-        Me.Left += 4
+    Public Sub Rewind(ByVal shootVar As Integer)
+        Me.Left += shootVar
     End Sub
 
     Property life() As Integer

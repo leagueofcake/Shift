@@ -32,6 +32,10 @@ Partial Class gameRewind
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblShootVar = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblShieldOn = New System.Windows.Forms.Label()
         Me.lblRewindLimit = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblHealth = New System.Windows.Forms.Label()
@@ -41,14 +45,14 @@ Partial Class gameRewind
         Me.lblPosX = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.timerConstant = New System.Windows.Forms.Timer(Me.components)
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.lblShieldOn = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.picHealth = New System.Windows.Forms.PictureBox()
         Me.pichealthText = New System.Windows.Forms.PictureBox()
         Me.picPlayer = New System.Windows.Forms.PictureBox()
         Me.picWorld = New System.Windows.Forms.PictureBox()
         Me.picCharge = New System.Windows.Forms.PictureBox()
+        Me.lblGenVar = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,6 +123,10 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.SystemColors.Control
+        Me.debugBox.Controls.Add(Me.lblGenVar)
+        Me.debugBox.Controls.Add(Me.Label9)
+        Me.debugBox.Controls.Add(Me.lblShootVar)
+        Me.debugBox.Controls.Add(Me.Label7)
         Me.debugBox.Controls.Add(Me.Label6)
         Me.debugBox.Controls.Add(Me.lblShieldOn)
         Me.debugBox.Controls.Add(Me.lblRewindLimit)
@@ -135,10 +143,54 @@ Partial Class gameRewind
         Me.debugBox.ForeColor = System.Drawing.Color.Black
         Me.debugBox.Location = New System.Drawing.Point(12, 48)
         Me.debugBox.Name = "debugBox"
-        Me.debugBox.Size = New System.Drawing.Size(200, 150)
+        Me.debugBox.Size = New System.Drawing.Size(223, 150)
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblShootVar
+        '
+        Me.lblShootVar.AutoSize = True
+        Me.lblShootVar.BackColor = System.Drawing.Color.Transparent
+        Me.lblShootVar.ForeColor = System.Drawing.Color.Black
+        Me.lblShootVar.Location = New System.Drawing.Point(161, 45)
+        Me.lblShootVar.Name = "lblShootVar"
+        Me.lblShootVar.Size = New System.Drawing.Size(49, 13)
+        Me.lblShootVar.TabIndex = 22
+        Me.lblShootVar.Text = "shootVar"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.Location = New System.Drawing.Point(116, 45)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(41, 13)
+        Me.Label7.TabIndex = 21
+        Me.Label7.Text = "Shoot: "
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(116, 25)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(42, 13)
+        Me.Label6.TabIndex = 20
+        Me.Label6.Text = "Shield: "
+        '
+        'lblShieldOn
+        '
+        Me.lblShieldOn.AutoSize = True
+        Me.lblShieldOn.BackColor = System.Drawing.Color.Transparent
+        Me.lblShieldOn.ForeColor = System.Drawing.Color.Black
+        Me.lblShieldOn.Location = New System.Drawing.Point(161, 25)
+        Me.lblShieldOn.Name = "lblShieldOn"
+        Me.lblShieldOn.Size = New System.Drawing.Size(21, 13)
+        Me.lblShieldOn.TabIndex = 19
+        Me.lblShieldOn.Text = "On"
         '
         'lblRewindLimit
         '
@@ -233,33 +285,11 @@ Partial Class gameRewind
         Me.timerConstant.Enabled = True
         Me.timerConstant.Interval = 10
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(116, 25)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(42, 13)
-        Me.Label6.TabIndex = 20
-        Me.Label6.Text = "Shield: "
-        '
-        'lblShieldOn
-        '
-        Me.lblShieldOn.AutoSize = True
-        Me.lblShieldOn.BackColor = System.Drawing.Color.Transparent
-        Me.lblShieldOn.ForeColor = System.Drawing.Color.Black
-        Me.lblShieldOn.Location = New System.Drawing.Point(161, 25)
-        Me.lblShieldOn.Name = "lblShieldOn"
-        Me.lblShieldOn.Size = New System.Drawing.Size(21, 13)
-        Me.lblShieldOn.TabIndex = 19
-        Me.lblShieldOn.Text = "On"
-        '
         'PictureBox3
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox3.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeText
-        Me.PictureBox3.Location = New System.Drawing.Point(652, 56)
+        Me.PictureBox3.Location = New System.Drawing.Point(711, 56)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(21, 180)
         Me.PictureBox3.TabIndex = 15
@@ -288,7 +318,7 @@ Partial Class gameRewind
         'picPlayer
         '
         Me.picPlayer.BackColor = System.Drawing.Color.DodgerBlue
-        Me.picPlayer.Location = New System.Drawing.Point(80, 300)
+        Me.picPlayer.Location = New System.Drawing.Point(60, 300)
         Me.picPlayer.Name = "picPlayer"
         Me.picPlayer.Size = New System.Drawing.Size(50, 50)
         Me.picPlayer.TabIndex = 4
@@ -299,7 +329,7 @@ Partial Class gameRewind
         Me.picWorld.BackColor = System.Drawing.Color.White
         Me.picWorld.Location = New System.Drawing.Point(0, 350)
         Me.picWorld.Name = "picWorld"
-        Me.picWorld.Size = New System.Drawing.Size(685, 100)
+        Me.picWorld.Size = New System.Drawing.Size(741, 100)
         Me.picWorld.TabIndex = 5
         Me.picWorld.TabStop = False
         '
@@ -307,25 +337,47 @@ Partial Class gameRewind
         '
         Me.picCharge.BackColor = System.Drawing.Color.Transparent
         Me.picCharge.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeBar0
-        Me.picCharge.Location = New System.Drawing.Point(596, 56)
+        Me.picCharge.Location = New System.Drawing.Point(655, 56)
         Me.picCharge.Name = "picCharge"
         Me.picCharge.Size = New System.Drawing.Size(40, 236)
         Me.picCharge.TabIndex = 16
         Me.picCharge.TabStop = False
+        '
+        'lblGenVar
+        '
+        Me.lblGenVar.AutoSize = True
+        Me.lblGenVar.BackColor = System.Drawing.Color.Transparent
+        Me.lblGenVar.ForeColor = System.Drawing.Color.Black
+        Me.lblGenVar.Location = New System.Drawing.Point(161, 65)
+        Me.lblGenVar.Name = "lblGenVar"
+        Me.lblGenVar.Size = New System.Drawing.Size(41, 13)
+        Me.lblGenVar.TabIndex = 24
+        Me.lblGenVar.Text = "genVar"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(116, 65)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(27, 13)
+        Me.Label9.TabIndex = 23
+        Me.Label9.Text = "Gen"
         '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(684, 442)
-        Me.Controls.Add(Me.PictureBox3)
+        Me.ClientSize = New System.Drawing.Size(734, 442)
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
         Me.Controls.Add(Me.debugBox)
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)
+        Me.Controls.Add(Me.PictureBox3)
         Me.Name = "gameRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Rewind"
@@ -366,5 +418,9 @@ Partial Class gameRewind
     Friend WithEvents lblShieldOn As System.Windows.Forms.Label
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents picCharge As System.Windows.Forms.PictureBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents lblShootVar As System.Windows.Forms.Label
+    Friend WithEvents lblGenVar As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
 
 End Class

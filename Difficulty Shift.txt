@@ -1,0 +1,17 @@
+Generation interval: 800 - (playerX)
+200  at 600 to 687
+300  at 500 to 599
+400  at 400 to 499
+500  at 300 to 399
+600  at 200 to 299
+700  at 100 to 199
+800  at 0      to 99
+
+Shoot speeds: (playerX/100) + 4
+10 at 600 to 687
+9   at 500 to 599
+8   at 400 to 499
+7   at 300 to 399
+6   at 200 to 299
+5   at 100 to 199
+4   at 0      to 99
