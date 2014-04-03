@@ -32,6 +32,8 @@ Partial Class gameRewind
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblPaused = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.lblGenVar = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblShootVar = New System.Windows.Forms.Label()
@@ -53,8 +55,6 @@ Partial Class gameRewind
         Me.picPlayer = New System.Windows.Forms.PictureBox()
         Me.picWorld = New System.Windows.Forms.PictureBox()
         Me.picCharge = New System.Windows.Forms.PictureBox()
-        Me.lblPaused = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,7 +87,7 @@ Partial Class gameRewind
         '
         Me.lblProjectiles.AutoSize = True
         Me.lblProjectiles.BackColor = System.Drawing.Color.Transparent
-        Me.lblProjectiles.ForeColor = System.Drawing.Color.Black
+        Me.lblProjectiles.ForeColor = System.Drawing.Color.White
         Me.lblProjectiles.Location = New System.Drawing.Point(6, 85)
         Me.lblProjectiles.Name = "lblProjectiles"
         Me.lblProjectiles.Size = New System.Drawing.Size(61, 13)
@@ -104,7 +104,7 @@ Partial Class gameRewind
         '
         Me.lblPosY.AutoSize = True
         Me.lblPosY.BackColor = System.Drawing.Color.Transparent
-        Me.lblPosY.ForeColor = System.Drawing.Color.Black
+        Me.lblPosY.ForeColor = System.Drawing.Color.White
         Me.lblPosY.Location = New System.Drawing.Point(68, 45)
         Me.lblPosY.Name = "lblPosY"
         Me.lblPosY.Size = New System.Drawing.Size(42, 13)
@@ -115,7 +115,7 @@ Partial Class gameRewind
         '
         Me.lblMovement.AutoSize = True
         Me.lblMovement.BackColor = System.Drawing.Color.Transparent
-        Me.lblMovement.ForeColor = System.Drawing.Color.Black
+        Me.lblMovement.ForeColor = System.Drawing.Color.White
         Me.lblMovement.Location = New System.Drawing.Point(68, 65)
         Me.lblMovement.Name = "lblMovement"
         Me.lblMovement.Size = New System.Drawing.Size(49, 13)
@@ -124,7 +124,7 @@ Partial Class gameRewind
         '
         'debugBox
         '
-        Me.debugBox.BackColor = System.Drawing.SystemColors.Control
+        Me.debugBox.BackColor = System.Drawing.Color.Transparent
         Me.debugBox.Controls.Add(Me.lblPaused)
         Me.debugBox.Controls.Add(Me.Label10)
         Me.debugBox.Controls.Add(Me.lblGenVar)
@@ -144,19 +144,41 @@ Partial Class gameRewind
         Me.debugBox.Controls.Add(Me.lblPosY)
         Me.debugBox.Controls.Add(Me.lblMovement)
         Me.debugBox.Controls.Add(Me.lblProjectiles)
-        Me.debugBox.ForeColor = System.Drawing.Color.Black
-        Me.debugBox.Location = New System.Drawing.Point(12, 48)
+        Me.debugBox.ForeColor = System.Drawing.Color.White
+        Me.debugBox.Location = New System.Drawing.Point(256, 146)
         Me.debugBox.Name = "debugBox"
         Me.debugBox.Size = New System.Drawing.Size(223, 150)
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
         '
+        'lblPaused
+        '
+        Me.lblPaused.AutoSize = True
+        Me.lblPaused.BackColor = System.Drawing.Color.Transparent
+        Me.lblPaused.ForeColor = System.Drawing.Color.White
+        Me.lblPaused.Location = New System.Drawing.Point(161, 85)
+        Me.lblPaused.Name = "lblPaused"
+        Me.lblPaused.Size = New System.Drawing.Size(42, 13)
+        Me.lblPaused.TabIndex = 26
+        Me.lblPaused.Text = "paused"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.Location = New System.Drawing.Point(116, 85)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(43, 13)
+        Me.Label10.TabIndex = 25
+        Me.Label10.Text = "Paused"
+        '
         'lblGenVar
         '
         Me.lblGenVar.AutoSize = True
         Me.lblGenVar.BackColor = System.Drawing.Color.Transparent
-        Me.lblGenVar.ForeColor = System.Drawing.Color.Black
+        Me.lblGenVar.ForeColor = System.Drawing.Color.White
         Me.lblGenVar.Location = New System.Drawing.Point(161, 65)
         Me.lblGenVar.Name = "lblGenVar"
         Me.lblGenVar.Size = New System.Drawing.Size(41, 13)
@@ -167,7 +189,7 @@ Partial Class gameRewind
         '
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(116, 65)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(27, 13)
@@ -178,7 +200,7 @@ Partial Class gameRewind
         '
         Me.lblShootVar.AutoSize = True
         Me.lblShootVar.BackColor = System.Drawing.Color.Transparent
-        Me.lblShootVar.ForeColor = System.Drawing.Color.Black
+        Me.lblShootVar.ForeColor = System.Drawing.Color.White
         Me.lblShootVar.Location = New System.Drawing.Point(161, 45)
         Me.lblShootVar.Name = "lblShootVar"
         Me.lblShootVar.Size = New System.Drawing.Size(49, 13)
@@ -189,7 +211,7 @@ Partial Class gameRewind
         '
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.ForeColor = System.Drawing.Color.White
         Me.Label7.Location = New System.Drawing.Point(116, 45)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(41, 13)
@@ -200,7 +222,7 @@ Partial Class gameRewind
         '
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(116, 25)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(42, 13)
@@ -211,7 +233,7 @@ Partial Class gameRewind
         '
         Me.lblShieldOn.AutoSize = True
         Me.lblShieldOn.BackColor = System.Drawing.Color.Transparent
-        Me.lblShieldOn.ForeColor = System.Drawing.Color.Black
+        Me.lblShieldOn.ForeColor = System.Drawing.Color.White
         Me.lblShieldOn.Location = New System.Drawing.Point(161, 25)
         Me.lblShieldOn.Name = "lblShieldOn"
         Me.lblShieldOn.Size = New System.Drawing.Size(21, 13)
@@ -222,7 +244,7 @@ Partial Class gameRewind
         '
         Me.lblRewindLimit.AutoSize = True
         Me.lblRewindLimit.BackColor = System.Drawing.Color.Transparent
-        Me.lblRewindLimit.ForeColor = System.Drawing.Color.Black
+        Me.lblRewindLimit.ForeColor = System.Drawing.Color.White
         Me.lblRewindLimit.Location = New System.Drawing.Point(68, 125)
         Me.lblRewindLimit.Name = "lblRewindLimit"
         Me.lblRewindLimit.Size = New System.Drawing.Size(13, 13)
@@ -233,7 +255,7 @@ Partial Class gameRewind
         '
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(7, 125)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(49, 13)
@@ -244,7 +266,7 @@ Partial Class gameRewind
         '
         Me.lblHealth.AutoSize = True
         Me.lblHealth.BackColor = System.Drawing.Color.Transparent
-        Me.lblHealth.ForeColor = System.Drawing.Color.Black
+        Me.lblHealth.ForeColor = System.Drawing.Color.White
         Me.lblHealth.Location = New System.Drawing.Point(68, 105)
         Me.lblHealth.Name = "lblHealth"
         Me.lblHealth.Size = New System.Drawing.Size(31, 13)
@@ -255,7 +277,7 @@ Partial Class gameRewind
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(7, 105)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(44, 13)
@@ -266,7 +288,7 @@ Partial Class gameRewind
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(23, 25)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(38, 13)
@@ -277,7 +299,7 @@ Partial Class gameRewind
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(23, 45)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(38, 13)
@@ -288,7 +310,7 @@ Partial Class gameRewind
         '
         Me.lblPosX.AutoSize = True
         Me.lblPosX.BackColor = System.Drawing.Color.Transparent
-        Me.lblPosX.ForeColor = System.Drawing.Color.Black
+        Me.lblPosX.ForeColor = System.Drawing.Color.White
         Me.lblPosX.Location = New System.Drawing.Point(68, 25)
         Me.lblPosX.Name = "lblPosX"
         Me.lblPosX.Size = New System.Drawing.Size(42, 13)
@@ -299,7 +321,7 @@ Partial Class gameRewind
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(7, 65)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(63, 13)
@@ -369,37 +391,15 @@ Partial Class gameRewind
         Me.picCharge.TabIndex = 16
         Me.picCharge.TabStop = False
         '
-        'lblPaused
-        '
-        Me.lblPaused.AutoSize = True
-        Me.lblPaused.BackColor = System.Drawing.Color.Transparent
-        Me.lblPaused.ForeColor = System.Drawing.Color.Black
-        Me.lblPaused.Location = New System.Drawing.Point(161, 85)
-        Me.lblPaused.Name = "lblPaused"
-        Me.lblPaused.Size = New System.Drawing.Size(42, 13)
-        Me.lblPaused.TabIndex = 26
-        Me.lblPaused.Text = "paused"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(116, 85)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(43, 13)
-        Me.Label10.TabIndex = 25
-        Me.Label10.Text = "Paused"
-        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(734, 442)
+        Me.Controls.Add(Me.debugBox)
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
-        Me.Controls.Add(Me.debugBox)
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)

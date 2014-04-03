@@ -72,18 +72,19 @@ Public Class gameRewind
             If GetAsyncKeyState(Convert.ToInt32(Keys.Up)) And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
         End If
 
-            If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
+        If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
     End Sub
 
     Private Sub gameRewind_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-        If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Escape) Then ' Pause game
-            paused = Not paused
-            If paused = True Then
-                pause()
-            Else
-                resumeGame()
-            End If
-        End If
+        Select Case e.KeyChar
+            Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
+                paused = Not paused
+                If paused = True Then
+                    pause()
+                Else
+                    resumeGame()
+                End If
+        End Select
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
