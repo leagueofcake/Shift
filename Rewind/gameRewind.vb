@@ -62,19 +62,19 @@ Public Class gameRewind
             timerCharge.Enabled = True
         End If
 
-        If arrowLeft Or GetAsyncKeyState(Convert.ToInt32(Keys.Right)) Or GetAsyncKeyState(Convert.ToInt32(Keys.Up)) Then ' Movement
+        If arrowLeft Or arrowRight Or arrowUp Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
             If arrowLeft And Not timerMove.Tag.Contains("left") Then
                 timerMove.Tag += "left"
                 If timerMove.Tag.Contains("right") Then timerMove.Tag = timerMove.Tag.Replace("right", "")
             End If
 
-            If GetAsyncKeyState(Convert.ToInt32(Keys.Right)) And Not timerMove.Tag.Contains("right") Then
+            If arrowRight And Not timerMove.Tag.Contains("right") Then
                 timerMove.Tag += "right"
                 If timerMove.Tag.Contains("left") Then timerMove.Tag = timerMove.Tag.Replace("left", "")
             End If
 
-            If GetAsyncKeyState(Convert.ToInt32(Keys.Up)) And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
+            If arrowUp And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
         End If
 
         If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
