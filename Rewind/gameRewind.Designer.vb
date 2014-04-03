@@ -32,6 +32,8 @@ Partial Class gameRewind
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblGenVar = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.lblShootVar = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -51,8 +53,8 @@ Partial Class gameRewind
         Me.picPlayer = New System.Windows.Forms.PictureBox()
         Me.picWorld = New System.Windows.Forms.PictureBox()
         Me.picCharge = New System.Windows.Forms.PictureBox()
-        Me.lblGenVar = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblPaused = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -123,6 +125,8 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.SystemColors.Control
+        Me.debugBox.Controls.Add(Me.lblPaused)
+        Me.debugBox.Controls.Add(Me.Label10)
         Me.debugBox.Controls.Add(Me.lblGenVar)
         Me.debugBox.Controls.Add(Me.Label9)
         Me.debugBox.Controls.Add(Me.lblShootVar)
@@ -147,6 +151,28 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblGenVar
+        '
+        Me.lblGenVar.AutoSize = True
+        Me.lblGenVar.BackColor = System.Drawing.Color.Transparent
+        Me.lblGenVar.ForeColor = System.Drawing.Color.Black
+        Me.lblGenVar.Location = New System.Drawing.Point(161, 65)
+        Me.lblGenVar.Name = "lblGenVar"
+        Me.lblGenVar.Size = New System.Drawing.Size(41, 13)
+        Me.lblGenVar.TabIndex = 24
+        Me.lblGenVar.Text = "genVar"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(116, 65)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(27, 13)
+        Me.Label9.TabIndex = 23
+        Me.Label9.Text = "Gen"
         '
         'lblShootVar
         '
@@ -343,27 +369,27 @@ Partial Class gameRewind
         Me.picCharge.TabIndex = 16
         Me.picCharge.TabStop = False
         '
-        'lblGenVar
+        'lblPaused
         '
-        Me.lblGenVar.AutoSize = True
-        Me.lblGenVar.BackColor = System.Drawing.Color.Transparent
-        Me.lblGenVar.ForeColor = System.Drawing.Color.Black
-        Me.lblGenVar.Location = New System.Drawing.Point(161, 65)
-        Me.lblGenVar.Name = "lblGenVar"
-        Me.lblGenVar.Size = New System.Drawing.Size(41, 13)
-        Me.lblGenVar.TabIndex = 24
-        Me.lblGenVar.Text = "genVar"
+        Me.lblPaused.AutoSize = True
+        Me.lblPaused.BackColor = System.Drawing.Color.Transparent
+        Me.lblPaused.ForeColor = System.Drawing.Color.Black
+        Me.lblPaused.Location = New System.Drawing.Point(161, 85)
+        Me.lblPaused.Name = "lblPaused"
+        Me.lblPaused.Size = New System.Drawing.Size(42, 13)
+        Me.lblPaused.TabIndex = 26
+        Me.lblPaused.Text = "paused"
         '
-        'Label9
+        'Label10
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(116, 65)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(27, 13)
-        Me.Label9.TabIndex = 23
-        Me.Label9.Text = "Gen"
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.Location = New System.Drawing.Point(116, 85)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(43, 13)
+        Me.Label10.TabIndex = 25
+        Me.Label10.Text = "Paused"
         '
         'gameRewind
         '
@@ -422,5 +448,7 @@ Partial Class gameRewind
     Friend WithEvents lblShootVar As System.Windows.Forms.Label
     Friend WithEvents lblGenVar As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblPaused As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 
 End Class
