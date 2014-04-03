@@ -23,6 +23,7 @@ Partial Class gameRewind
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(gameRewind))
         Me.timerWorld = New System.Windows.Forms.Timer(Me.components)
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
@@ -49,19 +50,21 @@ Partial Class gameRewind
         Me.lblPosX = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.timerConstant = New System.Windows.Forms.Timer(Me.components)
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.picHealth = New System.Windows.Forms.PictureBox()
         Me.pichealthText = New System.Windows.Forms.PictureBox()
         Me.picPlayer = New System.Windows.Forms.PictureBox()
         Me.picWorld = New System.Windows.Forms.PictureBox()
         Me.picCharge = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.picPausedText = New System.Windows.Forms.PictureBox()
         Me.debugBox.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pichealthText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'timerWorld
@@ -145,7 +148,7 @@ Partial Class gameRewind
         Me.debugBox.Controls.Add(Me.lblMovement)
         Me.debugBox.Controls.Add(Me.lblProjectiles)
         Me.debugBox.ForeColor = System.Drawing.Color.White
-        Me.debugBox.Location = New System.Drawing.Point(256, 146)
+        Me.debugBox.Location = New System.Drawing.Point(12, 56)
         Me.debugBox.Name = "debugBox"
         Me.debugBox.Size = New System.Drawing.Size(223, 150)
         Me.debugBox.TabIndex = 11
@@ -333,21 +336,11 @@ Partial Class gameRewind
         Me.timerConstant.Enabled = True
         Me.timerConstant.Interval = 10
         '
-        'PictureBox3
-        '
-        Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox3.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeText
-        Me.PictureBox3.Location = New System.Drawing.Point(711, 56)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(21, 180)
-        Me.PictureBox3.TabIndex = 15
-        Me.PictureBox3.TabStop = False
-        '
         'picHealth
         '
         Me.picHealth.BackColor = System.Drawing.Color.Transparent
         Me.picHealth.BackgroundImage = Global.Rewind.My.Resources.Resources.healthbar20
-        Me.picHealth.Location = New System.Drawing.Point(135, 12)
+        Me.picHealth.Location = New System.Drawing.Point(183, 8)
         Me.picHealth.Name = "picHealth"
         Me.picHealth.Size = New System.Drawing.Size(525, 30)
         Me.picHealth.TabIndex = 13
@@ -356,10 +349,10 @@ Partial Class gameRewind
         'pichealthText
         '
         Me.pichealthText.BackColor = System.Drawing.Color.Transparent
-        Me.pichealthText.BackgroundImage = Global.Rewind.My.Resources.Resources.healthText
+        Me.pichealthText.BackgroundImage = CType(resources.GetObject("pichealthText.BackgroundImage"), System.Drawing.Image)
         Me.pichealthText.Location = New System.Drawing.Point(12, 12)
         Me.pichealthText.Name = "pichealthText"
-        Me.pichealthText.Size = New System.Drawing.Size(113, 27)
+        Me.pichealthText.Size = New System.Drawing.Size(161, 21)
         Me.pichealthText.TabIndex = 12
         Me.pichealthText.TabStop = False
         '
@@ -385,11 +378,32 @@ Partial Class gameRewind
         '
         Me.picCharge.BackColor = System.Drawing.Color.Transparent
         Me.picCharge.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeBar0
-        Me.picCharge.Location = New System.Drawing.Point(655, 56)
+        Me.picCharge.Location = New System.Drawing.Point(640, 56)
         Me.picCharge.Name = "picCharge"
         Me.picCharge.Size = New System.Drawing.Size(40, 236)
         Me.picCharge.TabIndex = 16
         Me.picCharge.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox3.BackgroundImage = CType(resources.GetObject("PictureBox3.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(696, 56)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(30, 207)
+        Me.PictureBox3.TabIndex = 15
+        Me.PictureBox3.TabStop = False
+        '
+        'picPausedText
+        '
+        Me.picPausedText.BackColor = System.Drawing.Color.Transparent
+        Me.picPausedText.BackgroundImage = Global.Rewind.My.Resources.Resources.pausedText
+        Me.picPausedText.Location = New System.Drawing.Point(218, 203)
+        Me.picPausedText.Name = "picPausedText"
+        Me.picPausedText.Size = New System.Drawing.Size(298, 37)
+        Me.picPausedText.TabIndex = 17
+        Me.picPausedText.TabStop = False
+        Me.picPausedText.Visible = False
         '
         'gameRewind
         '
@@ -397,6 +411,7 @@ Partial Class gameRewind
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(734, 442)
+        Me.Controls.Add(Me.picPausedText)
         Me.Controls.Add(Me.debugBox)
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
@@ -409,12 +424,13 @@ Partial Class gameRewind
         Me.Text = "Rewind"
         Me.debugBox.ResumeLayout(False)
         Me.debugBox.PerformLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pichealthText, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -450,5 +466,6 @@ Partial Class gameRewind
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents lblPaused As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents picPausedText As System.Windows.Forms.PictureBox
 
 End Class

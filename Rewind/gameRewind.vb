@@ -16,16 +16,20 @@ Public Class gameRewind
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
     Private Sub pause()
+        ' playerY = 0 'uncomment for endless jumping
+        picPausedText.Visible = True
         lblPaused.Text = paused
         timerMove.Enabled = False
         timerCharge.Enabled = False
         timerGenerate.Enabled = False
         timerWorld.Enabled = False
-        timerConstant.Enabled = False
+        'timerConstant.Enabled = False
         timerShield.Stop()
     End Sub
 
     Private Sub resumeGame()
+        picPausedText.Visible = False
+        timerCharge.Enabled = False
         timerMove.Enabled = True
         timerGenerate.Enabled = True
         timerWorld.Enabled = True
@@ -54,6 +58,7 @@ Public Class gameRewind
 
         If GetAsyncKeyState(Convert.ToInt32(Keys.Space)) Then
             pause()
+            picPausedText.Visible = False
             timerCharge.Enabled = True
         End If
 
@@ -79,17 +84,13 @@ Public Class gameRewind
         Select Case e.KeyChar
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
                 paused = Not paused
-                If paused = True Then
-                    pause()
-                Else
-                    resumeGame()
-                End If
+                If paused = True Then pause() Else resumeGame()
         End Select
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space Then
-            ' ### EXPERIMENTAL REWIND CODE ###
+            resumeGame()
             For i = 0 To projectiles.Count - 1
                 For x = 0 To rewindLimit
                     projectiles(i).Rewind((picPlayer.Left / 100) + 4)
@@ -98,11 +99,6 @@ Public Class gameRewind
 
             rewindLimit = 0
             picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
-            timerGenerate.Enabled = True
-            timerWorld.Enabled = True
-
-            timerCharge.Enabled = False
-            timerShield.Start()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
@@ -142,16 +138,13 @@ Public Class gameRewind
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
 
-        timerWorld.Enabled = True
         genVar = 800 - picPlayer.Left
         timerGenerate.Interval = genVar
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 50 Then
-            rewindLimit += 1
-            picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 5).ToString)
-        End If
+        If rewindLimit < 50 Then rewindLimit += 1
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 5).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
