@@ -69,12 +69,6 @@ Public Class gameRewind
         Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
         Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
 
-        'If GetAsyncKeyState(Convert.ToInt32(Keys.Space)) Then
-        '    pause()
-        '    picPausedText.Visible = False
-        '    timerCharge.Enabled = True
-        'End If
-
         If arrowLeft Or arrowRight Or arrowUp Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
             If arrowLeft And Not timerMove.Tag.Contains("left") Then
