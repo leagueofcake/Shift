@@ -27,6 +27,7 @@ Graphics/VFX
 	* Replace background
 	* Replace projectile
 	* Make a logo! 
+* Make background of paused graphic transparent
 * Black/White color scheme? 
 * Some visual effect when charging/using abilities e.g. screen flash/tint
 * Make character flash/fade out and in when using ability
