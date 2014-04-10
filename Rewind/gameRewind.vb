@@ -9,6 +9,7 @@ Public Class gameRewind
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
     Dim health As Integer = 5000
+    Dim shieldStatus As Integer = 0
     Dim finishJump As Boolean = False
     Dim genVar As Single
     Dim paused As Boolean = False
@@ -24,7 +25,6 @@ Public Class gameRewind
         timerGenerate.Enabled = False
         timerWorld.Enabled = False
         'timerConstant.Enabled = False
-        timerShield.Stop()
     End Sub
 
     Private Sub resumeGame()
@@ -35,6 +35,18 @@ Public Class gameRewind
         timerWorld.Enabled = True
         timerConstant.Enabled = True
         timerShield.Start()
+    End Sub
+
+    Private Sub executeCharge()
+        resumeGame()
+        For i = 0 To projectiles.Count - 1
+            For x = 0 To rewindLimit
+                projectiles(i).Rewind((picPlayer.Left / 100) + 4)
+            Next
+        Next
+
+        rewindLimit = 0
+        picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
     End Sub
 
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
@@ -48,6 +60,7 @@ Public Class gameRewind
         lblShootVar.Text = (picPlayer.Left / 100) + 4
         lblGenVar.Text = genVar
         lblPaused.Text = paused
+        lblShieldStatus.Text = shieldStatus
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
@@ -56,11 +69,11 @@ Public Class gameRewind
         Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
         Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
 
-        If GetAsyncKeyState(Convert.ToInt32(Keys.Space)) Then
-            pause()
-            picPausedText.Visible = False
-            timerCharge.Enabled = True
-        End If
+        'If GetAsyncKeyState(Convert.ToInt32(Keys.Space)) Then
+        '    pause()
+        '    picPausedText.Visible = False
+        '    timerCharge.Enabled = True
+        'End If
 
         If arrowLeft Or arrowRight Or arrowUp Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
@@ -84,21 +97,22 @@ Public Class gameRewind
         Select Case e.KeyChar
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
                 paused = Not paused
-                If paused = True Then pause() Else resumeGame()
+                If paused = True Then
+                    pause()
+                    timerShield.Stop()
+                Else
+                    resumeGame()
+                End If
+            Case Microsoft.VisualBasic.ChrW(Keys.Space)
+                pause()
+                picPausedText.Visible = False
+                timerCharge.Enabled = True
         End Select
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space Then
-            resumeGame()
-            For i = 0 To projectiles.Count - 1
-                For x = 0 To rewindLimit
-                    projectiles(i).Rewind((picPlayer.Left / 100) + 4)
-                Next
-            Next
-
-            rewindLimit = 0
-            picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
+            executeCharge()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
@@ -143,13 +157,18 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 50 Then rewindLimit += 1
+        If rewindLimit < 50 Then rewindLimit += 1 Else executeCharge()
         picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 5).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
-        If picPlayer.BackColor = Color.DodgerBlue Then picPlayer.BackColor = Color.Green Else picPlayer.BackColor = Color.DodgerBlue
+        If shieldStatus < 100 Then
+            shieldStatus += 1
+        Else
+            shieldStatus = 0
+            If picPlayer.BackColor = Color.DodgerBlue Then picPlayer.BackColor = Color.Green Else picPlayer.BackColor = Color.DodgerBlue
+        End If
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick

@@ -57,6 +57,8 @@ Partial Class gameRewind
         Me.picCharge = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.picPausedText = New System.Windows.Forms.PictureBox()
+        Me.lblShieldStatus = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pichealthText, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +86,7 @@ Partial Class gameRewind
         'timerShield
         '
         Me.timerShield.Enabled = True
-        Me.timerShield.Interval = 2000
+        Me.timerShield.Interval = 10
         '
         'lblProjectiles
         '
@@ -128,7 +130,9 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.Color.Transparent
+        Me.debugBox.Controls.Add(Me.lblShieldStatus)
         Me.debugBox.Controls.Add(Me.lblPaused)
+        Me.debugBox.Controls.Add(Me.Label11)
         Me.debugBox.Controls.Add(Me.Label10)
         Me.debugBox.Controls.Add(Me.lblGenVar)
         Me.debugBox.Controls.Add(Me.Label9)
@@ -405,6 +409,28 @@ Partial Class gameRewind
         Me.picPausedText.TabStop = False
         Me.picPausedText.Visible = False
         '
+        'lblShieldStatus
+        '
+        Me.lblShieldStatus.AutoSize = True
+        Me.lblShieldStatus.BackColor = System.Drawing.Color.Transparent
+        Me.lblShieldStatus.ForeColor = System.Drawing.Color.White
+        Me.lblShieldStatus.Location = New System.Drawing.Point(161, 105)
+        Me.lblShieldStatus.Name = "lblShieldStatus"
+        Me.lblShieldStatus.Size = New System.Drawing.Size(13, 13)
+        Me.lblShieldStatus.TabIndex = 28
+        Me.lblShieldStatus.Text = "0"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(116, 105)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(44, 13)
+        Me.Label11.TabIndex = 27
+        Me.Label11.Text = "SStatus"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -467,5 +493,7 @@ Partial Class gameRewind
     Friend WithEvents lblPaused As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents picPausedText As System.Windows.Forms.PictureBox
+    Friend WithEvents lblShieldStatus As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 
 End Class
