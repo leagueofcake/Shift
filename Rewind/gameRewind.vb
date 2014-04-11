@@ -37,6 +37,14 @@ Public Class gameRewind
         timerShield.Start()
     End Sub
 
+    Private Sub endGame()
+        pause()
+        timerShield.Stop()
+        timerConstant.Stop()
+        picPausedText.Visible = False
+        MsgBox("You lose!")
+    End Sub
+
     Private Sub executeCharge()
         resumeGame()
         For i = 0 To projectiles.Count - 1
@@ -113,7 +121,12 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If health > 0 Then health -= 10
+        If health > 0 Then health -= 40
+        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
+        If health = 0 Then
+            endGame()
+            Exit Sub
+        End If
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
@@ -137,7 +150,6 @@ Public Class gameRewind
         Catch ex As Exception
             ' None
         End Try
-        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
