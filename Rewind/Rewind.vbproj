@@ -311,6 +311,44 @@
   <ItemGroup>
     <None Include="Assets\text\pausedText.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\bg\mainbg.png" />
+    <Content Include="Resources\chargeBar0.png" />
+    <Content Include="Resources\chargeBar1.png" />
+    <Content Include="Resources\chargeBar10.png" />
+    <Content Include="Resources\chargeBar2.png" />
+    <Content Include="Resources\chargeBar3.png" />
+    <Content Include="Resources\chargeBar4.png" />
+    <Content Include="Resources\chargeBar5.png" />
+    <Content Include="Resources\chargeBar6.png" />
+    <Content Include="Resources\chargeBar7.png" />
+    <Content Include="Resources\chargeBar8.png" />
+    <Content Include="Resources\chargeBar9.png" />
+    <Content Include="Resources\chargeText.png" />
+    <Content Include="Resources\healthbar0.png" />
+    <Content Include="Resources\healthbar1.png" />
+    <Content Include="Resources\healthbar10.png" />
+    <Content Include="Resources\healthbar11.png" />
+    <Content Include="Resources\healthbar12.png" />
+    <Content Include="Resources\healthbar13.png" />
+    <Content Include="Resources\healthbar14.png" />
+    <Content Include="Resources\healthbar15.png" />
+    <Content Include="Resources\healthbar16.png" />
+    <Content Include="Resources\healthbar17.png" />
+    <Content Include="Resources\healthbar18.png" />
+    <Content Include="Resources\healthbar19.png" />
+    <Content Include="Resources\healthbar2.png" />
+    <Content Include="Resources\healthbar20.png" />
+    <Content Include="Resources\healthbar3.png" />
+    <Content Include="Resources\healthbar4.png" />
+    <Content Include="Resources\healthbar5.png" />
+    <Content Include="Resources\healthbar6.png" />
+    <Content Include="Resources\healthbar7.png" />
+    <Content Include="Resources\healthbar8.png" />
+    <Content Include="Resources\healthbar9.png" />
+    <Content Include="Resources\healthText.png" />
+    <Content Include="Resources\pausedText.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
