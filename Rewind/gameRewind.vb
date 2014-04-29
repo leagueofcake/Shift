@@ -13,6 +13,7 @@ Public Class gameRewind
     Dim finishJump As Boolean = False
     Dim genVar As Single
     Dim paused As Boolean = False
+    Dim score As Integer = 0
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
@@ -70,6 +71,9 @@ Public Class gameRewind
         lblPaused.Text = paused
         lblShieldStatus.Text = shieldStatus
 
+        ' Scoring
+        lblScore.Text = score
+
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
         ' Key detection
@@ -121,7 +125,8 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If health > 0 Then health -= 40
+        If health > 0 Then health -= 20
+        If health > 0 Then score += 100
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
         If health = 0 Then
             endGame()

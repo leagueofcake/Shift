@@ -59,6 +59,8 @@ Partial Class gameRewind
         Me.picWorld = New System.Windows.Forms.PictureBox()
         Me.picCharge = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.lblScoreTitle = New System.Windows.Forms.Label()
+        Me.lblScore = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -415,9 +417,10 @@ Partial Class gameRewind
         '
         Me.picCharge.BackColor = System.Drawing.Color.Transparent
         Me.picCharge.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeBar0
+        Me.picCharge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.picCharge.Location = New System.Drawing.Point(640, 56)
         Me.picCharge.Name = "picCharge"
-        Me.picCharge.Size = New System.Drawing.Size(40, 236)
+        Me.picCharge.Size = New System.Drawing.Size(40, 207)
         Me.picCharge.TabIndex = 16
         Me.picCharge.TabStop = False
         '
@@ -431,13 +434,38 @@ Partial Class gameRewind
         Me.PictureBox3.TabIndex = 15
         Me.PictureBox3.TabStop = False
         '
+        'lblScoreTitle
+        '
+        Me.lblScoreTitle.AutoSize = True
+        Me.lblScoreTitle.BackColor = System.Drawing.Color.Transparent
+        Me.lblScoreTitle.ForeColor = System.Drawing.Color.White
+        Me.lblScoreTitle.Location = New System.Drawing.Point(536, 56)
+        Me.lblScoreTitle.Name = "lblScoreTitle"
+        Me.lblScoreTitle.Size = New System.Drawing.Size(35, 13)
+        Me.lblScoreTitle.TabIndex = 22
+        Me.lblScoreTitle.Text = "Score"
+        '
+        'lblScore
+        '
+        Me.lblScore.AutoSize = True
+        Me.lblScore.BackColor = System.Drawing.Color.Transparent
+        Me.lblScore.ForeColor = System.Drawing.Color.White
+        Me.lblScore.Location = New System.Drawing.Point(581, 56)
+        Me.lblScore.Name = "lblScore"
+        Me.lblScore.Size = New System.Drawing.Size(13, 13)
+        Me.lblScore.TabIndex = 21
+        Me.lblScore.Text = "0"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.lblScoreTitle)
+        Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.picPausedText)
         Me.Controls.Add(Me.debugBox)
         Me.Controls.Add(Me.picHealth)
@@ -446,6 +474,7 @@ Partial Class gameRewind
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.PictureBox3)
+        Me.DoubleBuffered = True
         Me.Name = "gameRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Rewind"
@@ -459,6 +488,7 @@ Partial Class gameRewind
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents picPlayer As System.Windows.Forms.PictureBox
@@ -496,5 +526,7 @@ Partial Class gameRewind
     Friend WithEvents picPausedText As System.Windows.Forms.PictureBox
     Friend WithEvents lblShieldStatus As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents lblScoreTitle As System.Windows.Forms.Label
+    Friend WithEvents lblScore As System.Windows.Forms.Label
 
 End Class
