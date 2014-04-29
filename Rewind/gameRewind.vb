@@ -4,7 +4,6 @@
 ''' <remarks></remarks>
 
 Public Class gameRewind
-    Dim shootTimer As Timer
     Dim projectiles As New ArrayList
     Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
@@ -44,6 +43,8 @@ Public Class gameRewind
         timerConstant.Stop()
         picPausedText.Visible = False
         MsgBox("You lose!")
+        mainRewind.Show()
+        Me.Close()
     End Sub
 
     Private Sub executeCharge()
