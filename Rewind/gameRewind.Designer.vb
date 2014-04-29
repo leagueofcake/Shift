@@ -438,10 +438,11 @@ Partial Class gameRewind
         '
         Me.lblScoreTitle.AutoSize = True
         Me.lblScoreTitle.BackColor = System.Drawing.Color.Transparent
+        Me.lblScoreTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScoreTitle.ForeColor = System.Drawing.Color.White
-        Me.lblScoreTitle.Location = New System.Drawing.Point(536, 56)
+        Me.lblScoreTitle.Location = New System.Drawing.Point(508, 56)
         Me.lblScoreTitle.Name = "lblScoreTitle"
-        Me.lblScoreTitle.Size = New System.Drawing.Size(35, 13)
+        Me.lblScoreTitle.Size = New System.Drawing.Size(51, 20)
         Me.lblScoreTitle.TabIndex = 22
         Me.lblScoreTitle.Text = "Score"
         '
@@ -449,10 +450,11 @@ Partial Class gameRewind
         '
         Me.lblScore.AutoSize = True
         Me.lblScore.BackColor = System.Drawing.Color.Transparent
+        Me.lblScore.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScore.ForeColor = System.Drawing.Color.White
-        Me.lblScore.Location = New System.Drawing.Point(581, 56)
+        Me.lblScore.Location = New System.Drawing.Point(565, 56)
         Me.lblScore.Name = "lblScore"
-        Me.lblScore.Size = New System.Drawing.Size(13, 13)
+        Me.lblScore.Size = New System.Drawing.Size(18, 20)
         Me.lblScore.TabIndex = 21
         Me.lblScore.Text = "0"
         '
