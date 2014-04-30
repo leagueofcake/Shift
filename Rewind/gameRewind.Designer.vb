@@ -61,6 +61,8 @@ Partial Class gameRewind
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblProgression = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,6 +134,8 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.Color.Transparent
+        Me.debugBox.Controls.Add(Me.lblProgression)
+        Me.debugBox.Controls.Add(Me.Label8)
         Me.debugBox.Controls.Add(Me.lblShieldStatus)
         Me.debugBox.Controls.Add(Me.lblPaused)
         Me.debugBox.Controls.Add(Me.Label11)
@@ -458,6 +462,28 @@ Partial Class gameRewind
         Me.lblScore.TabIndex = 21
         Me.lblScore.Text = "0"
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(117, 125)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(29, 13)
+        Me.Label8.TabIndex = 29
+        Me.Label8.Text = "Prog"
+        '
+        'lblProgression
+        '
+        Me.lblProgression.AutoSize = True
+        Me.lblProgression.BackColor = System.Drawing.Color.Transparent
+        Me.lblProgression.ForeColor = System.Drawing.Color.White
+        Me.lblProgression.Location = New System.Drawing.Point(161, 125)
+        Me.lblProgression.Name = "lblProgression"
+        Me.lblProgression.Size = New System.Drawing.Size(13, 13)
+        Me.lblProgression.TabIndex = 30
+        Me.lblProgression.Text = "0"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -530,5 +556,7 @@ Partial Class gameRewind
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents lblScoreTitle As System.Windows.Forms.Label
     Friend WithEvents lblScore As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lblProgression As System.Windows.Forms.Label
 
 End Class
