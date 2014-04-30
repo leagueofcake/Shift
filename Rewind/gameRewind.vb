@@ -168,8 +168,15 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 250 Then rewindLimit += 5 Else executeCharge() 'Auto-execute power when rewindLimit = 50
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 25).ToString)
+        If rewindLimit + 10 < 500 Then
+            rewindLimit += 10
+        ElseIf rewindLimit + 10 > 500 And rewindLimit + 1 <= 500 Then
+            rewindLimit += 1
+        Else
+            executeCharge() 'Auto-execute power when rewindLimit = 50
+        End If
+
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 50).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
