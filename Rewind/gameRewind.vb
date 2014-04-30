@@ -13,6 +13,7 @@ Public Class gameRewind
     Dim genVar As Single
     Dim paused As Boolean = False
     Dim score As Integer = 0
+    Dim playerSpeed As Integer = 4
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
@@ -48,17 +49,14 @@ Public Class gameRewind
 
     Private Sub executeCharge()
         resumeGame()
-        For i = 0 To projectiles.Count - 1
-            For x = 0 To rewindLimit
-                projectiles(i).Rewind((picPlayer.Left / 100) + 4)
-            Next
-        Next
+        playerSpeed = 8
 
-        rewindLimit = 0
         picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
     End Sub
 
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
+        If rewindLimit = 0 Then playerSpeed = 4 Else rewindLimit -= 1
+
         ' Debugging
         lblPosX.Text = picPlayer.Left
         lblPosY.Text = picPlayer.Top
@@ -168,8 +166,8 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit < 50 Then rewindLimit += 1 Else executeCharge()
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 5).ToString)
+        If rewindLimit < 250 Then rewindLimit += 5 Else executeCharge() 'Auto-execute power when rewindLimit = 50
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 25).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
@@ -183,8 +181,8 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
-        If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= 4
-        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += 4
+        If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= playerSpeed
+        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += playerSpeed
 
         If timerMove.Tag.Contains("jump") Then
             If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then ' Finished jump

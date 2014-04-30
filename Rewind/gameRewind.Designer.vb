@@ -289,9 +289,9 @@ Partial Class gameRewind
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(7, 125)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(49, 13)
+        Me.Label5.Size = New System.Drawing.Size(45, 13)
         Me.Label5.TabIndex = 17
-        Me.Label5.Text = "Rewind: "
+        Me.Label5.Text = "rwLimit: "
         '
         'lblHealth
         '

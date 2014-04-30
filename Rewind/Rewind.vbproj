@@ -83,6 +83,7 @@
       <DependentUpon>gameRewind.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="globalVar.vb" />
     <Compile Include="mainRewind.Designer.vb">
       <DependentUpon>mainRewind.vb</DependentUpon>
     </Compile>
