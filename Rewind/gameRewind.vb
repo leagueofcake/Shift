@@ -55,8 +55,6 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
-        If rewindLimit = 0 Then playerSpeed = 4 Else rewindLimit -= 1
-
         ' Debugging
         lblPosX.Text = picPlayer.Left
         lblPosY.Text = picPlayer.Top
@@ -108,14 +106,16 @@ Public Class gameRewind
                     resumeGame()
                 End If
             Case Microsoft.VisualBasic.ChrW(Keys.Space)
-                pause()
-                picPausedText.Visible = False
-                timerCharge.Enabled = True
+                If paused = False Then
+                    pause()
+                    picPausedText.Visible = False
+                    timerCharge.Enabled = True
+                End If
         End Select
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
-        If e.KeyCode = Keys.Space Then
+        If e.KeyCode = Keys.Space And paused = False Then
             executeCharge()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
@@ -123,6 +123,8 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
+        If rewindLimit = 0 Then playerSpeed = 4 Else rewindLimit -= 1 ' Use up power
+
         If health > 0 Then health -= 20
         If health > 0 Then score += 100
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
