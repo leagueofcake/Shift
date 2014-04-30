@@ -1,5 +1,5 @@
 ﻿''' <summary>
-''' 
+''' SDD major project: Rewind, a sidescroller game built in VB.NET
 ''' </summary>
 ''' <remarks></remarks>
 
@@ -14,6 +14,9 @@ Public Class gameRewind
     Dim paused As Boolean = False
     Dim score As Integer = 0
     Dim playerSpeed As Integer = 4
+
+    ' Difficulty shifting
+    Dim healthDrain As Integer = 20
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
@@ -125,7 +128,7 @@ Public Class gameRewind
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
         If rewindLimit = 0 Then playerSpeed = 4 Else rewindLimit -= 1 ' Use up power
 
-        If health > 0 Then health -= 20
+        If health > 0 Then health -= healthDrain
         If health > 0 Then score += 100
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
         If health = 0 Then
