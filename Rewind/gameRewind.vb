@@ -42,9 +42,8 @@ Public Class gameRewind
         timerShield.Stop()
         timerConstant.Stop()
         picPausedText.Visible = False
-        MsgBox("You lose!")
-        mainRewind.Show()
-        Me.Close()
+        endScreen.lblScore.Text = "Score: " + score.ToString
+        endScreen.Show()
     End Sub
 
     Private Sub executeCharge()

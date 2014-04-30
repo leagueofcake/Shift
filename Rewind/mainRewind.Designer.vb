@@ -27,7 +27,7 @@ Partial Class mainRewind
         '
         'btnPlay
         '
-        Me.btnPlay.Location = New System.Drawing.Point(292, 173)
+        Me.btnPlay.Location = New System.Drawing.Point(278, 174)
         Me.btnPlay.Name = "btnPlay"
         Me.btnPlay.Size = New System.Drawing.Size(75, 47)
         Me.btnPlay.TabIndex = 0

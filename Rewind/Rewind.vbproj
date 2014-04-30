@@ -70,6 +70,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="endScreen.Designer.vb">
+      <DependentUpon>endScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="endScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gameRewind.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="endScreen.resx">
+      <DependentUpon>endScreen.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gameRewind.resx">
       <DependentUpon>gameRewind.vb</DependentUpon>
     </EmbeddedResource>
