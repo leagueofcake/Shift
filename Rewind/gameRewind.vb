@@ -5,15 +5,11 @@
 
 Public Class gameRewind
     Dim projectiles As New ArrayList
-    Dim rewindLimit As Single ' Max = 5 seconds = 500 milliseconds
+    Dim chargeLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
-    Dim health As Integer = 5000
-    Dim shieldStatus As Integer = 0
     Dim finishJump As Boolean = False
     Dim genVar As Single
     Dim paused As Boolean = False
-    Dim score As Integer = 0
-    Dim playerSpeed As Integer = 4
 
     ' Difficulty shifting
     Dim progression As Integer = 0 ' Essentially how long player has lasted in game
@@ -47,13 +43,13 @@ Public Class gameRewind
         timerShield.Stop()
         timerConstant.Stop()
         picPausedText.Visible = False
-        endScreen.lblScore.Text = "Score: " + score.ToString
+        endScreen.lblScore.Text = "Score: " + gameVar.score.ToString
         endScreen.Show()
     End Sub
 
     Private Sub executeCharge()
         resumeGame()
-        playerSpeed = 8
+        playerVar.playerSpeed = 8
 
         picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
     End Sub
@@ -63,17 +59,17 @@ Public Class gameRewind
         lblPosX.Text = picPlayer.Left
         lblPosY.Text = picPlayer.Top
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
-        lblHealth.Text = health
+        lblHealth.Text = playerVar.playerHealth
         lblMovement.Text = timerMove.Tag
-        lblRewindLimit.Text = rewindLimit
+        lblchargeLimit.Text = chargeLimit
         lblShootVar.Text = (picPlayer.Left / 100) + 4
         lblGenVar.Text = genVar
         lblPaused.Text = paused
-        lblShieldStatus.Text = shieldStatus
+        lblShieldStatus.Text = playerVar.shieldStatus
         lblProgression.Text = progression
 
         ' Scoring
-        lblScore.Text = score
+        lblScore.Text = gameVar.score
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
@@ -128,13 +124,13 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If rewindLimit = 0 Then playerSpeed = 4 Else rewindLimit -= 1 ' Use up power
+        If chargeLimit = 0 Then playerVar.playerSpeed = 4 Else chargeLimit -= 1 ' Use up power
         progression += 1
 
-        If health > 0 Then health -= healthDrain
-        If health > 0 Then score += 100
-        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(health / 250).ToString)
-        If health = 0 Then
+        If playerVar.playerHealth > 0 Then playerVar.playerHealth -= healthDrain
+        If playerVar.playerHealth > 0 Then gameVar.score += 100
+        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(playerVar.playerHealth / 250).ToString)
+        If playerVar.playerHealth = 0 Then
             endGame()
             Exit Sub
         End If
@@ -150,9 +146,9 @@ Public Class gameRewind
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on
                         projectiles(i).Visible = False
-                        If health + 100 > 5000 Then health = 5000 Else health = health + 100 ' Upper cap
+                        If playerVar.playerHealth + 100 > 5000 Then playerVar.playerHealth = 5000 Else playerVar.playerHealth = playerVar.playerHealth + 100 ' Upper cap
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
-                        If health - 25 < 0 Then health = 0 Else health = health - 20 ' Lower cap
+                        If playerVar.playerHealth - 25 < 0 Then playerVar.playerHealth = 0 Else playerVar.playerHealth = playerVar.playerHealth - 20 ' Lower cap
                     End If
                 End If
             Next
@@ -167,35 +163,35 @@ Public Class gameRewind
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
 
-        genVar = 800 - picPlayer.Left
+        genVar = 800 - picPlayer.Left ' genVar dependent on player's position
         timerGenerate.Interval = genVar
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If rewindLimit + 10 < 500 Then
-            rewindLimit += 10
-        ElseIf rewindLimit + 10 > 500 And rewindLimit + 1 <= 500 Then
-            rewindLimit += 1
+        If chargeLimit + 10 < 500 Then
+            chargeLimit += 10
+        ElseIf chargeLimit + 10 > 500 And chargeLimit + 1 <= 500 Then
+            chargeLimit += 1
         Else
-            executeCharge() 'Auto-execute power when rewindLimit = 50
+            executeCharge() 'Auto-execute power when chargeLimit = 50
         End If
 
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(rewindLimit / 50).ToString)
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(chargeLimit / 50).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
-        If shieldStatus < 100 Then
-            shieldStatus += 1
+        If playerVar.shieldStatus < 100 Then
+            playerVar.shieldStatus += 1
         Else
-            shieldStatus = 0
+            playerVar.shieldStatus = 0
             If picPlayer.BackColor = Color.DodgerBlue Then picPlayer.BackColor = Color.Green Else picPlayer.BackColor = Color.DodgerBlue
         End If
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
-        If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= playerSpeed
-        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += playerSpeed
+        If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= playerVar.playerSpeed
+        If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += playerVar.playerSpeed
 
         If timerMove.Tag.Contains("jump") Then
             If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then ' Finished jump
@@ -212,5 +208,13 @@ Public Class gameRewind
                 playerY += 1
             End If
         End If
+    End Sub
+
+    Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Reset values on game load
+        playerVar.playerHealth = 5000
+        playerVar.playerSpeed = 4
+        playerVar.shieldStatus = 0
+        gameVar.score = 0
     End Sub
 End Class

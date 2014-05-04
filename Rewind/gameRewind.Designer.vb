@@ -33,6 +33,8 @@ Partial Class gameRewind
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblProgression = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.lblShieldStatus = New System.Windows.Forms.Label()
         Me.lblPaused = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -43,7 +45,7 @@ Partial Class gameRewind
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblShieldOn = New System.Windows.Forms.Label()
-        Me.lblRewindLimit = New System.Windows.Forms.Label()
+        Me.lblChargeLimit = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblHealth = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -61,8 +63,6 @@ Partial Class gameRewind
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.lblProgression = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,7 +146,7 @@ Partial Class gameRewind
         Me.debugBox.Controls.Add(Me.Label7)
         Me.debugBox.Controls.Add(Me.Label6)
         Me.debugBox.Controls.Add(Me.lblShieldOn)
-        Me.debugBox.Controls.Add(Me.lblRewindLimit)
+        Me.debugBox.Controls.Add(Me.lblChargeLimit)
         Me.debugBox.Controls.Add(Me.Label5)
         Me.debugBox.Controls.Add(Me.lblHealth)
         Me.debugBox.Controls.Add(Me.Label4)
@@ -164,6 +164,28 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblProgression
+        '
+        Me.lblProgression.AutoSize = True
+        Me.lblProgression.BackColor = System.Drawing.Color.Transparent
+        Me.lblProgression.ForeColor = System.Drawing.Color.White
+        Me.lblProgression.Location = New System.Drawing.Point(161, 125)
+        Me.lblProgression.Name = "lblProgression"
+        Me.lblProgression.Size = New System.Drawing.Size(13, 13)
+        Me.lblProgression.TabIndex = 30
+        Me.lblProgression.Text = "0"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(117, 125)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(29, 13)
+        Me.Label8.TabIndex = 29
+        Me.Label8.Text = "Prog"
         '
         'lblShieldStatus
         '
@@ -275,16 +297,16 @@ Partial Class gameRewind
         Me.lblShieldOn.TabIndex = 19
         Me.lblShieldOn.Text = "On"
         '
-        'lblRewindLimit
+        'lblChargeLimit
         '
-        Me.lblRewindLimit.AutoSize = True
-        Me.lblRewindLimit.BackColor = System.Drawing.Color.Transparent
-        Me.lblRewindLimit.ForeColor = System.Drawing.Color.White
-        Me.lblRewindLimit.Location = New System.Drawing.Point(68, 125)
-        Me.lblRewindLimit.Name = "lblRewindLimit"
-        Me.lblRewindLimit.Size = New System.Drawing.Size(13, 13)
-        Me.lblRewindLimit.TabIndex = 18
-        Me.lblRewindLimit.Text = "0"
+        Me.lblChargeLimit.AutoSize = True
+        Me.lblChargeLimit.BackColor = System.Drawing.Color.Transparent
+        Me.lblChargeLimit.ForeColor = System.Drawing.Color.White
+        Me.lblChargeLimit.Location = New System.Drawing.Point(68, 125)
+        Me.lblChargeLimit.Name = "lblChargeLimit"
+        Me.lblChargeLimit.Size = New System.Drawing.Size(13, 13)
+        Me.lblChargeLimit.TabIndex = 18
+        Me.lblChargeLimit.Text = "0"
         '
         'Label5
         '
@@ -293,9 +315,9 @@ Partial Class gameRewind
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(7, 125)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(45, 13)
+        Me.Label5.Size = New System.Drawing.Size(46, 13)
         Me.Label5.TabIndex = 17
-        Me.Label5.Text = "rwLimit: "
+        Me.Label5.Text = "chLimit: "
         '
         'lblHealth
         '
@@ -462,28 +484,6 @@ Partial Class gameRewind
         Me.lblScore.TabIndex = 21
         Me.lblScore.Text = "0"
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(117, 125)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(29, 13)
-        Me.Label8.TabIndex = 29
-        Me.Label8.Text = "Prog"
-        '
-        'lblProgression
-        '
-        Me.lblProgression.AutoSize = True
-        Me.lblProgression.BackColor = System.Drawing.Color.Transparent
-        Me.lblProgression.ForeColor = System.Drawing.Color.White
-        Me.lblProgression.Location = New System.Drawing.Point(161, 125)
-        Me.lblProgression.Name = "lblProgression"
-        Me.lblProgression.Size = New System.Drawing.Size(13, 13)
-        Me.lblProgression.TabIndex = 30
-        Me.lblProgression.Text = "0"
-        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -538,7 +538,7 @@ Partial Class gameRewind
     Friend WithEvents lblHealth As System.Windows.Forms.Label
     Friend WithEvents timerConstant As System.Windows.Forms.Timer
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents lblRewindLimit As System.Windows.Forms.Label
+    Friend WithEvents lblChargeLimit As System.Windows.Forms.Label
     Friend WithEvents pichealthText As System.Windows.Forms.PictureBox
     Friend WithEvents picHealth As System.Windows.Forms.PictureBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
