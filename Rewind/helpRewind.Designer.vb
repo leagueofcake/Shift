@@ -22,7 +22,33 @@ Partial Class helpRewind
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.btnGameInfo = New System.Windows.Forms.PictureBox()
+        Me.btnControls = New System.Windows.Forms.PictureBox()
+        CType(Me.btnGameInfo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnControls, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'btnGameInfo
+        '
+        Me.btnGameInfo.BackColor = System.Drawing.Color.Transparent
+        Me.btnGameInfo.BackgroundImage = Global.Rewind.My.Resources.Resources.btnGameInfoClicked
+        Me.btnGameInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnGameInfo.Location = New System.Drawing.Point(32, 170)
+        Me.btnGameInfo.Name = "btnGameInfo"
+        Me.btnGameInfo.Size = New System.Drawing.Size(255, 26)
+        Me.btnGameInfo.TabIndex = 0
+        Me.btnGameInfo.TabStop = False
+        '
+        'btnControls
+        '
+        Me.btnControls.BackColor = System.Drawing.Color.Transparent
+        Me.btnControls.BackgroundImage = Global.Rewind.My.Resources.Resources.btnControlsHover
+        Me.btnControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnControls.Location = New System.Drawing.Point(32, 244)
+        Me.btnControls.Name = "btnControls"
+        Me.btnControls.Size = New System.Drawing.Size(255, 26)
+        Me.btnControls.TabIndex = 1
+        Me.btnControls.TabStop = False
         '
         'helpRewind
         '
@@ -31,11 +57,17 @@ Partial Class helpRewind
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.btnControls)
+        Me.Controls.Add(Me.btnGameInfo)
         Me.DoubleBuffered = True
         Me.Name = "helpRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "helpRewind"
+        CType(Me.btnGameInfo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnControls, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
+    Friend WithEvents btnGameInfo As System.Windows.Forms.PictureBox
+    Friend WithEvents btnControls As System.Windows.Forms.PictureBox
 End Class

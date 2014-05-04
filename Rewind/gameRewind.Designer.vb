@@ -33,6 +33,7 @@ Partial Class gameRewind
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.lblHpDrain = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.lblProgression = New System.Windows.Forms.Label()
@@ -65,7 +66,6 @@ Partial Class gameRewind
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.lblShiftTimer = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -171,6 +171,17 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblProjectiles
+        '
+        Me.lblProjectiles.AutoSize = True
+        Me.lblProjectiles.BackColor = System.Drawing.Color.Transparent
+        Me.lblProjectiles.ForeColor = System.Drawing.Color.White
+        Me.lblProjectiles.Location = New System.Drawing.Point(68, 85)
+        Me.lblProjectiles.Name = "lblProjectiles"
+        Me.lblProjectiles.Size = New System.Drawing.Size(13, 13)
+        Me.lblProjectiles.TabIndex = 23
+        Me.lblProjectiles.Text = "0"
         '
         'lblHpDrain
         '
@@ -423,6 +434,7 @@ Partial Class gameRewind
         '
         Me.picPausedText.BackColor = System.Drawing.Color.Transparent
         Me.picPausedText.BackgroundImage = Global.Rewind.My.Resources.Resources.pausedText
+        Me.picPausedText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.picPausedText.Location = New System.Drawing.Point(218, 203)
         Me.picPausedText.Name = "picPausedText"
         Me.picPausedText.Size = New System.Drawing.Size(298, 37)
@@ -433,7 +445,8 @@ Partial Class gameRewind
         'picHealth
         '
         Me.picHealth.BackColor = System.Drawing.Color.Transparent
-        Me.picHealth.BackgroundImage = Global.Rewind.My.Resources.Resources.healthbar20
+        Me.picHealth.BackgroundImage = CType(resources.GetObject("picHealth.BackgroundImage"), System.Drawing.Image)
+        Me.picHealth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.picHealth.Location = New System.Drawing.Point(183, 8)
         Me.picHealth.Name = "picHealth"
         Me.picHealth.Size = New System.Drawing.Size(525, 30)
@@ -444,6 +457,7 @@ Partial Class gameRewind
         '
         Me.pichealthText.BackColor = System.Drawing.Color.Transparent
         Me.pichealthText.BackgroundImage = CType(resources.GetObject("pichealthText.BackgroundImage"), System.Drawing.Image)
+        Me.pichealthText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.pichealthText.Location = New System.Drawing.Point(12, 12)
         Me.pichealthText.Name = "pichealthText"
         Me.pichealthText.Size = New System.Drawing.Size(161, 21)
@@ -483,6 +497,7 @@ Partial Class gameRewind
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox3.BackgroundImage = CType(resources.GetObject("PictureBox3.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox3.Location = New System.Drawing.Point(696, 56)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(30, 207)
@@ -513,17 +528,6 @@ Partial Class gameRewind
         Me.lblScore.TabIndex = 21
         Me.lblScore.Text = "0"
         '
-        'lblProjectiles
-        '
-        Me.lblProjectiles.AutoSize = True
-        Me.lblProjectiles.BackColor = System.Drawing.Color.Transparent
-        Me.lblProjectiles.ForeColor = System.Drawing.Color.White
-        Me.lblProjectiles.Location = New System.Drawing.Point(68, 85)
-        Me.lblProjectiles.Name = "lblProjectiles"
-        Me.lblProjectiles.Size = New System.Drawing.Size(13, 13)
-        Me.lblProjectiles.TabIndex = 23
-        Me.lblProjectiles.Text = "0"
-        '
         'lblShiftTimer
         '
         Me.lblShiftTimer.AutoSize = True
@@ -542,7 +546,7 @@ Partial Class gameRewind
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(734, 441)
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)

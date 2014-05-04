@@ -25,15 +25,17 @@ Partial Class mainRewind
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainRewind))
         Me.btnPlay = New System.Windows.Forms.PictureBox()
         Me.btnHelp = New System.Windows.Forms.PictureBox()
+        Me.gameLogo = New System.Windows.Forms.PictureBox()
         CType(Me.btnPlay, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gameLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnPlay
         '
         Me.btnPlay.BackColor = System.Drawing.Color.Transparent
         Me.btnPlay.BackgroundImage = CType(resources.GetObject("btnPlay.BackgroundImage"), System.Drawing.Image)
-        Me.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnPlay.Location = New System.Drawing.Point(267, 172)
         Me.btnPlay.Name = "btnPlay"
         Me.btnPlay.Size = New System.Drawing.Size(200, 39)
@@ -43,13 +45,24 @@ Partial Class mainRewind
         'btnHelp
         '
         Me.btnHelp.BackColor = System.Drawing.Color.Transparent
-        Me.btnHelp.BackgroundImage = Global.Rewind.My.Resources.Resources.btnHelpUnclicked
-        Me.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnHelp.Location = New System.Drawing.Point(267, 229)
+        Me.btnHelp.BackgroundImage = CType(resources.GetObject("btnHelp.BackgroundImage"), System.Drawing.Image)
+        Me.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnHelp.Location = New System.Drawing.Point(307, 229)
         Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(200, 39)
+        Me.btnHelp.Size = New System.Drawing.Size(121, 26)
         Me.btnHelp.TabIndex = 2
         Me.btnHelp.TabStop = False
+        '
+        'gameLogo
+        '
+        Me.gameLogo.BackColor = System.Drawing.Color.Transparent
+        Me.gameLogo.BackgroundImage = Global.Rewind.My.Resources.Resources.logoShift
+        Me.gameLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.gameLogo.Location = New System.Drawing.Point(90, 39)
+        Me.gameLogo.Name = "gameLogo"
+        Me.gameLogo.Size = New System.Drawing.Size(554, 104)
+        Me.gameLogo.TabIndex = 3
+        Me.gameLogo.TabStop = False
         '
         'mainRewind
         '
@@ -58,6 +71,7 @@ Partial Class mainRewind
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.gameLogo)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnPlay)
         Me.DoubleBuffered = True
@@ -66,9 +80,11 @@ Partial Class mainRewind
         Me.Text = "mainRewind"
         CType(Me.btnPlay, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gameLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents btnPlay As System.Windows.Forms.PictureBox
     Friend WithEvents btnHelp As System.Windows.Forms.PictureBox
+    Friend WithEvents gameLogo As System.Windows.Forms.PictureBox
 End Class
