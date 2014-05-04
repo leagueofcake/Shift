@@ -5,21 +5,18 @@
 
 Public Class gameRewind
     Dim projectiles As New ArrayList
-    Dim chargeLimit As Single ' Max = 5 seconds = 500 milliseconds
-    Dim playerY As Single
+    Dim playerY As Integer
     Dim finishJump As Boolean = False
-    Dim paused As Boolean = False
 
     ' Difficulty shifting
     Dim progression As Integer = 0 ' Essentially how long player has lasted in game
-    Dim healthDrain As Integer = 20
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
     Private Sub pause()
         ' playerY = 0 'uncomment for endless jumping
         picPausedText.Visible = True
-        lblPaused.Text = paused
+        lblPaused.Text = gameVar.paused
         timerMove.Enabled = False
         timerCharge.Enabled = False
         timerGenerate.Enabled = False
@@ -53,19 +50,23 @@ Public Class gameRewind
         picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
     End Sub
 
-    Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
-        ' Debugging
+    Private Sub updateDebugBox()
         lblPosX.Text = picPlayer.Left
         lblPosY.Text = picPlayer.Top
         lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
         lblHealth.Text = playerVar.playerHealth
         lblMovement.Text = timerMove.Tag
-        lblchargeLimit.Text = chargeLimit
+        lblChargeLimit.Text = gameVar.chargeLimit
         lblShootVar.Text = (picPlayer.Left / 100) + 4
         lblGenVar.Text = gameVar.genVar
-        lblPaused.Text = paused
+        lblPaused.Text = gameVar.paused
         lblShieldStatus.Text = playerVar.shieldStatus
         lblProgression.Text = progression
+        lblHpDrain.Text = gameVar.healthDrain
+    End Sub
+
+    Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
+        updateDebugBox()
 
         ' Scoring
         lblScore.Text = gameVar.score
@@ -98,15 +99,15 @@ Public Class gameRewind
     Private Sub gameRewind_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         Select Case e.KeyChar
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
-                paused = Not paused
-                If paused = True Then
+                gameVar.paused = Not gameVar.paused
+                If gameVar.paused = True Then
                     pause()
                     timerShield.Stop()
                 Else
                     resumeGame()
                 End If
             Case Microsoft.VisualBasic.ChrW(Keys.Space)
-                If paused = False Then
+                If gameVar.paused = False Then
                     pause()
                     picPausedText.Visible = False
                     timerCharge.Enabled = True
@@ -115,7 +116,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
-        If e.KeyCode = Keys.Space And paused = False Then
+        If e.KeyCode = Keys.Space And gameVar.paused = False Then
             executeCharge()
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
@@ -123,10 +124,10 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
-        If chargeLimit = 0 Then playerVar.playerSpeed = 4 Else chargeLimit -= 1 ' Use up power
+        If gameVar.chargeLimit = 0 Then playerVar.playerSpeed = 4 Else gameVar.chargeLimit -= 1 ' Use up power
         progression += 1
 
-        If playerVar.playerHealth > 0 Then playerVar.playerHealth -= healthDrain
+        If playerVar.playerHealth > 0 Then playerVar.playerHealth -= gameVar.healthDrain
         If playerVar.playerHealth > 0 Then gameVar.score += 100
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(playerVar.playerHealth / 250).ToString)
         If playerVar.playerHealth = 0 Then
@@ -168,15 +169,15 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If chargeLimit + 10 < 500 Then
-            chargeLimit += 10
-        ElseIf chargeLimit + 10 > 500 And chargeLimit + 1 <= 500 Then
-            chargeLimit += 1
+        If gameVar.chargeLimit + 10 < 500 Then
+            gameVar.chargeLimit += 10
+        ElseIf gameVar.chargeLimit + 10 > 500 And gameVar.chargeLimit + 1 <= 500 Then
+            gameVar.chargeLimit += 1
         Else
             executeCharge() 'Auto-execute power when chargeLimit = 50
         End If
 
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(chargeLimit / 50).ToString)
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(gameVar.chargeLimit / 50).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
