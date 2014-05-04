@@ -1,6 +1,5 @@
 ﻿Public Class Projectile
     Inherits PictureBox
-    Private lifeCount As Integer
     Private isAbsorbed As Boolean
 
     Public Sub New()
@@ -20,15 +19,6 @@
     Public Sub Rewind(ByVal shootVar As Integer)
         Me.Left += shootVar
     End Sub
-
-    Property life() As Integer
-        Get
-            Return lifeCount
-        End Get
-        Set(value As Integer)
-            lifeCount += 1
-        End Set
-    End Property
 
     Property Absorb() As Boolean
         Get
