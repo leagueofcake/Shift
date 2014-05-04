@@ -66,6 +66,7 @@ Partial Class gameRewind
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
         Me.lblProjectiles = New System.Windows.Forms.Label()
+        Me.lblShiftTimer = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -494,7 +495,7 @@ Partial Class gameRewind
         Me.lblScoreTitle.BackColor = System.Drawing.Color.Transparent
         Me.lblScoreTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScoreTitle.ForeColor = System.Drawing.Color.White
-        Me.lblScoreTitle.Location = New System.Drawing.Point(508, 56)
+        Me.lblScoreTitle.Location = New System.Drawing.Point(246, 56)
         Me.lblScoreTitle.Name = "lblScoreTitle"
         Me.lblScoreTitle.Size = New System.Drawing.Size(51, 20)
         Me.lblScoreTitle.TabIndex = 22
@@ -506,7 +507,7 @@ Partial Class gameRewind
         Me.lblScore.BackColor = System.Drawing.Color.Transparent
         Me.lblScore.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScore.ForeColor = System.Drawing.Color.White
-        Me.lblScore.Location = New System.Drawing.Point(565, 56)
+        Me.lblScore.Location = New System.Drawing.Point(303, 56)
         Me.lblScore.Name = "lblScore"
         Me.lblScore.Size = New System.Drawing.Size(18, 20)
         Me.lblScore.TabIndex = 21
@@ -523,6 +524,18 @@ Partial Class gameRewind
         Me.lblProjectiles.TabIndex = 23
         Me.lblProjectiles.Text = "0"
         '
+        'lblShiftTimer
+        '
+        Me.lblShiftTimer.AutoSize = True
+        Me.lblShiftTimer.BackColor = System.Drawing.Color.Transparent
+        Me.lblShiftTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblShiftTimer.ForeColor = System.Drawing.Color.White
+        Me.lblShiftTimer.Location = New System.Drawing.Point(246, 76)
+        Me.lblShiftTimer.Name = "lblShiftTimer"
+        Me.lblShiftTimer.Size = New System.Drawing.Size(180, 20)
+        Me.lblShiftTimer.TabIndex = 23
+        Me.lblShiftTimer.Text = "Next Shift in 30 seconds"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -531,6 +544,7 @@ Partial Class gameRewind
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)
         Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.picPausedText)
@@ -600,5 +614,6 @@ Partial Class gameRewind
     Friend WithEvents lblHpDrain As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
+    Friend WithEvents lblShiftTimer As System.Windows.Forms.Label
 
 End Class

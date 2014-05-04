@@ -64,8 +64,17 @@ Public Class gameRewind
         lblScore.Text = gameVar.score
     End Sub
 
+    Private Sub attemptShift()
+        If Not gameVar.progression = 0 Then
+            If gameVar.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (30 - ((gameVar.progression / 100) Mod 30)).ToString + " seconds"
+            If gameVar.progression Mod 3000 = 0 And gameVar.progression Then MsgBox("SHIFT!") ' Every 30 seconds, shift
+
+        End If
+    End Sub
+
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
         updateFormLabels()
+        attemptShift()
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
