@@ -33,6 +33,7 @@ Partial Class helpRewind
         Me.ClientSize = New System.Drawing.Size(734, 441)
         Me.DoubleBuffered = True
         Me.Name = "helpRewind"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "helpRewind"
         Me.ResumeLayout(False)
 

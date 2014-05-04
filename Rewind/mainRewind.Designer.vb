@@ -22,17 +22,34 @@ Partial Class mainRewind
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnPlay = New System.Windows.Forms.Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainRewind))
+        Me.btnPlay = New System.Windows.Forms.PictureBox()
+        Me.btnHelp = New System.Windows.Forms.PictureBox()
+        CType(Me.btnPlay, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnPlay
         '
-        Me.btnPlay.Location = New System.Drawing.Point(330, 197)
+        Me.btnPlay.BackColor = System.Drawing.Color.Transparent
+        Me.btnPlay.BackgroundImage = CType(resources.GetObject("btnPlay.BackgroundImage"), System.Drawing.Image)
+        Me.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnPlay.Location = New System.Drawing.Point(267, 172)
         Me.btnPlay.Name = "btnPlay"
-        Me.btnPlay.Size = New System.Drawing.Size(75, 47)
-        Me.btnPlay.TabIndex = 0
-        Me.btnPlay.Text = "Play"
-        Me.btnPlay.UseVisualStyleBackColor = True
+        Me.btnPlay.Size = New System.Drawing.Size(200, 39)
+        Me.btnPlay.TabIndex = 1
+        Me.btnPlay.TabStop = False
+        '
+        'btnHelp
+        '
+        Me.btnHelp.BackColor = System.Drawing.Color.Transparent
+        Me.btnHelp.BackgroundImage = Global.Rewind.My.Resources.Resources.btnHelpUnclicked
+        Me.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnHelp.Location = New System.Drawing.Point(267, 229)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(200, 39)
+        Me.btnHelp.TabIndex = 2
+        Me.btnHelp.TabStop = False
         '
         'mainRewind
         '
@@ -41,13 +58,17 @@ Partial Class mainRewind
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnPlay)
         Me.DoubleBuffered = True
         Me.Name = "mainRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "mainRewind"
+        CType(Me.btnPlay, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents btnPlay As System.Windows.Forms.Button
+    Friend WithEvents btnPlay As System.Windows.Forms.PictureBox
+    Friend WithEvents btnHelp As System.Windows.Forms.PictureBox
 End Class

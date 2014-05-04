@@ -342,6 +342,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\bg\mainbg.png" />
+    <None Include="Assets\buttons\btnPlayClicked.png" />
+    <None Include="Assets\buttons\btnPlayHover.png" />
+    <None Include="Assets\buttons\btnPlayUnclicked.png" />
+    <None Include="Assets\help\keyLeft.png" />
+    <None Include="Assets\help\keyRight.png" />
+    <None Include="Assets\help\keySpace.png" />
+    <None Include="Assets\help\keyUp.png" />
+    <None Include="Assets\buttons\btnHelpClicked.png" />
+    <None Include="Assets\buttons\btnHelpHover.png" />
+    <None Include="Assets\buttons\btnHelpUnclicked.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />
