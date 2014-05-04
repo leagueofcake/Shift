@@ -316,7 +316,7 @@ Namespace My.Resources
         Friend ReadOnly Property healthbar20() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("healthbar20", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
+                Return CType(obj, System.Drawing.Bitmap)
             End Get
         End Property
         
