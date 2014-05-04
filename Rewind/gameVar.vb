@@ -6,4 +6,5 @@
 
     ' Difficulty shifting
     Public Shared healthDrain As Integer = 20
+    Public Shared progression As Integer = 0 ' Essentially how long player has lasted in game
 End Class

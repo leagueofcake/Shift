@@ -8,9 +8,6 @@ Public Class gameRewind
     Dim playerY As Integer
     Dim finishJump As Boolean = False
 
-    ' Difficulty shifting
-    Dim progression As Integer = 0 ' Essentially how long player has lasted in game
-
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
     Private Sub pause()
@@ -61,7 +58,7 @@ Public Class gameRewind
         lblGenVar.Text = gameVar.genVar
         lblPaused.Text = gameVar.paused
         lblShieldStatus.Text = playerVar.shieldStatus
-        lblProgression.Text = progression
+        lblProgression.Text = gameVar.progression
         lblHpDrain.Text = gameVar.healthDrain
     End Sub
 
@@ -125,7 +122,7 @@ Public Class gameRewind
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
         If gameVar.chargeLimit = 0 Then playerVar.playerSpeed = 4 Else gameVar.chargeLimit -= 1 ' Use up power
-        progression += 1
+        gameVar.progression += 1
 
         If playerVar.playerHealth > 0 Then playerVar.playerHealth -= gameVar.healthDrain
         If playerVar.playerHealth > 0 Then gameVar.score += 100
