@@ -47,10 +47,10 @@ Public Class gameRewind
         picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
     End Sub
 
-    Private Sub updateDebugBox()
+    Private Sub updateFormLabels()
         lblPosX.Text = picPlayer.Left
         lblPosY.Text = picPlayer.Top
-        lblProjectiles.Text = "Projectiles: " + (projectiles.Count).ToString
+        lblProjectiles.Text = projectiles.Count
         lblHealth.Text = playerVar.playerHealth
         lblMovement.Text = timerMove.Tag
         lblChargeLimit.Text = gameVar.chargeLimit
@@ -60,20 +60,19 @@ Public Class gameRewind
         lblShieldStatus.Text = playerVar.shieldStatus
         lblProgression.Text = gameVar.progression
         lblHpDrain.Text = gameVar.healthDrain
+
+        lblScore.Text = gameVar.score
     End Sub
 
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
-        updateDebugBox()
-
-        ' Scoring
-        lblScore.Text = gameVar.score
+        updateFormLabels()
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
         ' Key detection
-        Dim arrowLeft = GetAsyncKeyState(Convert.ToInt32(Keys.Left))
-        Dim arrowRight = GetAsyncKeyState(Convert.ToInt32(Keys.Right))
-        Dim arrowUp = GetAsyncKeyState(Convert.ToInt32(Keys.Up))
+        Dim arrowLeft = GetAsyncKeyState(CInt(Keys.Left))
+        Dim arrowRight = GetAsyncKeyState(CInt(Keys.Right))
+        Dim arrowUp = GetAsyncKeyState(CInt(Keys.Up))
 
         If arrowLeft Or arrowRight Or arrowUp Then ' Movement
             timerMove.Tag = timerMove.Tag.Replace("idle", "")
@@ -90,7 +89,7 @@ Public Class gameRewind
             If arrowUp And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
         End If
 
-        If GetAsyncKeyState(Convert.ToInt32(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
+        If GetAsyncKeyState(CInt(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
     End Sub
 
     Private Sub gameRewind_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
@@ -120,7 +119,7 @@ Public Class gameRewind
         End If
     End Sub
 
-    Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick ' old: timerShoot
+    Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
         If gameVar.chargeLimit = 0 Then playerVar.playerSpeed = 4 Else gameVar.chargeLimit -= 1 ' Use up power
         gameVar.progression += 1
 

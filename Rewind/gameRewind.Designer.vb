@@ -28,11 +28,13 @@ Partial Class gameRewind
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
-        Me.lblProjectiles = New System.Windows.Forms.Label()
+        Me.lbl13 = New System.Windows.Forms.Label()
         Me.timerMove = New System.Windows.Forms.Timer(Me.components)
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblHpDrain = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.lblProgression = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lblShieldStatus = New System.Windows.Forms.Label()
@@ -63,8 +65,7 @@ Partial Class gameRewind
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.lblHpDrain = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,16 +95,16 @@ Partial Class gameRewind
         Me.timerShield.Enabled = True
         Me.timerShield.Interval = 10
         '
-        'lblProjectiles
+        'lbl13
         '
-        Me.lblProjectiles.AutoSize = True
-        Me.lblProjectiles.BackColor = System.Drawing.Color.Transparent
-        Me.lblProjectiles.ForeColor = System.Drawing.Color.White
-        Me.lblProjectiles.Location = New System.Drawing.Point(6, 85)
-        Me.lblProjectiles.Name = "lblProjectiles"
-        Me.lblProjectiles.Size = New System.Drawing.Size(61, 13)
-        Me.lblProjectiles.TabIndex = 7
-        Me.lblProjectiles.Text = "Projectiles: "
+        Me.lbl13.AutoSize = True
+        Me.lbl13.BackColor = System.Drawing.Color.Transparent
+        Me.lbl13.ForeColor = System.Drawing.Color.White
+        Me.lbl13.Location = New System.Drawing.Point(6, 85)
+        Me.lbl13.Name = "lbl13"
+        Me.lbl13.Size = New System.Drawing.Size(61, 13)
+        Me.lbl13.TabIndex = 7
+        Me.lbl13.Text = "Projectiles: "
         '
         'timerMove
         '
@@ -136,6 +137,7 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.Color.Transparent
+        Me.debugBox.Controls.Add(Me.lblProjectiles)
         Me.debugBox.Controls.Add(Me.lblHpDrain)
         Me.debugBox.Controls.Add(Me.Label13)
         Me.debugBox.Controls.Add(Me.lblProgression)
@@ -160,7 +162,7 @@ Partial Class gameRewind
         Me.debugBox.Controls.Add(Me.Label1)
         Me.debugBox.Controls.Add(Me.lblPosY)
         Me.debugBox.Controls.Add(Me.lblMovement)
-        Me.debugBox.Controls.Add(Me.lblProjectiles)
+        Me.debugBox.Controls.Add(Me.lbl13)
         Me.debugBox.ForeColor = System.Drawing.Color.White
         Me.debugBox.Location = New System.Drawing.Point(12, 56)
         Me.debugBox.Name = "debugBox"
@@ -168,6 +170,28 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblHpDrain
+        '
+        Me.lblHpDrain.AutoSize = True
+        Me.lblHpDrain.BackColor = System.Drawing.Color.Transparent
+        Me.lblHpDrain.ForeColor = System.Drawing.Color.White
+        Me.lblHpDrain.Location = New System.Drawing.Point(68, 147)
+        Me.lblHpDrain.Name = "lblHpDrain"
+        Me.lblHpDrain.Size = New System.Drawing.Size(13, 13)
+        Me.lblHpDrain.TabIndex = 32
+        Me.lblHpDrain.Text = "0"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(7, 147)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(47, 13)
+        Me.Label13.TabIndex = 31
+        Me.Label13.Text = "hpDrain:"
         '
         'lblProgression
         '
@@ -488,27 +512,16 @@ Partial Class gameRewind
         Me.lblScore.TabIndex = 21
         Me.lblScore.Text = "0"
         '
-        'lblHpDrain
+        'lblProjectiles
         '
-        Me.lblHpDrain.AutoSize = True
-        Me.lblHpDrain.BackColor = System.Drawing.Color.Transparent
-        Me.lblHpDrain.ForeColor = System.Drawing.Color.White
-        Me.lblHpDrain.Location = New System.Drawing.Point(68, 147)
-        Me.lblHpDrain.Name = "lblHpDrain"
-        Me.lblHpDrain.Size = New System.Drawing.Size(13, 13)
-        Me.lblHpDrain.TabIndex = 32
-        Me.lblHpDrain.Text = "0"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(7, 147)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(47, 13)
-        Me.Label13.TabIndex = 31
-        Me.Label13.Text = "hpDrain:"
+        Me.lblProjectiles.AutoSize = True
+        Me.lblProjectiles.BackColor = System.Drawing.Color.Transparent
+        Me.lblProjectiles.ForeColor = System.Drawing.Color.White
+        Me.lblProjectiles.Location = New System.Drawing.Point(68, 85)
+        Me.lblProjectiles.Name = "lblProjectiles"
+        Me.lblProjectiles.Size = New System.Drawing.Size(13, 13)
+        Me.lblProjectiles.TabIndex = 23
+        Me.lblProjectiles.Text = "0"
         '
         'gameRewind
         '
@@ -551,7 +564,7 @@ Partial Class gameRewind
     Friend WithEvents timerGenerate As System.Windows.Forms.Timer
     Friend WithEvents timerCharge As System.Windows.Forms.Timer
     Friend WithEvents timerShield As System.Windows.Forms.Timer
-    Friend WithEvents lblProjectiles As System.Windows.Forms.Label
+    Friend WithEvents lbl13 As System.Windows.Forms.Label
     Friend WithEvents timerMove As System.Windows.Forms.Timer
     Friend WithEvents lblPosY As System.Windows.Forms.Label
     Friend WithEvents lblMovement As System.Windows.Forms.Label
@@ -586,5 +599,6 @@ Partial Class gameRewind
     Friend WithEvents lblProgression As System.Windows.Forms.Label
     Friend WithEvents lblHpDrain As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents lblProjectiles As System.Windows.Forms.Label
 
 End Class

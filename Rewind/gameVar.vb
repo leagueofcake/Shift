@@ -5,6 +5,6 @@
     Public Shared chargeLimit As Integer
 
     ' Difficulty shifting
-    Public Shared healthDrain As Integer = 20
+    Public Shared healthDrain As Integer = 10
     Public Shared progression As Integer = 0 ' Essentially how long player has lasted in game
 End Class
