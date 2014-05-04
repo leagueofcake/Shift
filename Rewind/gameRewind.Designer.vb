@@ -63,6 +63,8 @@ Partial Class gameRewind
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
+        Me.lblHpDrain = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,6 +136,8 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.Color.Transparent
+        Me.debugBox.Controls.Add(Me.lblHpDrain)
+        Me.debugBox.Controls.Add(Me.Label13)
         Me.debugBox.Controls.Add(Me.lblProgression)
         Me.debugBox.Controls.Add(Me.Label8)
         Me.debugBox.Controls.Add(Me.lblShieldStatus)
@@ -160,7 +164,7 @@ Partial Class gameRewind
         Me.debugBox.ForeColor = System.Drawing.Color.White
         Me.debugBox.Location = New System.Drawing.Point(12, 56)
         Me.debugBox.Name = "debugBox"
-        Me.debugBox.Size = New System.Drawing.Size(223, 150)
+        Me.debugBox.Size = New System.Drawing.Size(223, 184)
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
@@ -484,6 +488,28 @@ Partial Class gameRewind
         Me.lblScore.TabIndex = 21
         Me.lblScore.Text = "0"
         '
+        'lblHpDrain
+        '
+        Me.lblHpDrain.AutoSize = True
+        Me.lblHpDrain.BackColor = System.Drawing.Color.Transparent
+        Me.lblHpDrain.ForeColor = System.Drawing.Color.White
+        Me.lblHpDrain.Location = New System.Drawing.Point(68, 147)
+        Me.lblHpDrain.Name = "lblHpDrain"
+        Me.lblHpDrain.Size = New System.Drawing.Size(13, 13)
+        Me.lblHpDrain.TabIndex = 32
+        Me.lblHpDrain.Text = "0"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(7, 147)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(47, 13)
+        Me.Label13.TabIndex = 31
+        Me.Label13.Text = "hpDrain:"
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -558,5 +584,7 @@ Partial Class gameRewind
     Friend WithEvents lblScore As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents lblProgression As System.Windows.Forms.Label
+    Friend WithEvents lblHpDrain As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
 
 End Class
