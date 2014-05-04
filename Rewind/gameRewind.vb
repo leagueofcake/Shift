@@ -141,7 +141,6 @@ Public Class gameRewind
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
-                If projectiles(i).Absorb = True Then projectiles(i).Visible = False ' Hide projectiles if they've been absorbed
                 projectiles(i).Shoot((picPlayer.Left / 100) + 4)
                 If projectiles(i).Left < -500 Then ' Remove from form and arraylist
                     projectiles.Remove(projectiles(i))
@@ -150,9 +149,8 @@ Public Class gameRewind
 
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on
-                        'If Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump" ' DO SOMETHING
+                        projectiles(i).Visible = False
                         If health + 100 > 5000 Then health = 5000 Else health = health + 100 ' Upper cap
-                        projectiles(i).Absorb = True
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                         If health - 25 < 0 Then health = 0 Else health = health - 20 ' Lower cap
                     End If

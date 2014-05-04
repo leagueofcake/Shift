@@ -19,13 +19,4 @@
     Public Sub Rewind(ByVal shootVar As Integer)
         Me.Left += shootVar
     End Sub
-
-    Property Absorb() As Boolean
-        Get
-            Return isAbsorbed
-        End Get
-        Set(value As Boolean)
-            isAbsorbed = value
-        End Set
-    End Property
 End Class
