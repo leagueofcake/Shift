@@ -8,7 +8,6 @@ Public Class gameRewind
     Dim chargeLimit As Single ' Max = 5 seconds = 500 milliseconds
     Dim playerY As Single
     Dim finishJump As Boolean = False
-    Dim genVar As Single
     Dim paused As Boolean = False
 
     ' Difficulty shifting
@@ -63,7 +62,7 @@ Public Class gameRewind
         lblMovement.Text = timerMove.Tag
         lblchargeLimit.Text = chargeLimit
         lblShootVar.Text = (picPlayer.Left / 100) + 4
-        lblGenVar.Text = genVar
+        lblGenVar.Text = gameVar.genVar
         lblPaused.Text = paused
         lblShieldStatus.Text = playerVar.shieldStatus
         lblProgression.Text = progression
@@ -163,8 +162,9 @@ Public Class gameRewind
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
 
-        genVar = 800 - picPlayer.Left ' genVar dependent on player's position
-        timerGenerate.Interval = genVar
+        'gameVar.genVar = 800 - picPlayer.Left ' genVar dependent on player's position
+        gameVar.genVar = (Rnd() * 5 + 1) * 100
+        timerGenerate.Interval = gameVar.genVar
     End Sub
 
     Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
