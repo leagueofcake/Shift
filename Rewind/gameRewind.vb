@@ -146,10 +146,12 @@ Public Class gameRewind
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
-                projectiles(i).Shoot((picPlayer.Left / 100) + gameVar.projectileSpeed)
+                'projectiles(i).Shoot((picPlayer.Left / 100) + gameVar.projectileSpeed) ' shoot speed depends on player's position
+                projectiles(i).Shoot(gameVar.projectileSpeed)
                 If projectiles(i).Left < -500 Then ' Remove from form and arraylist
                     projectiles.Remove(projectiles(i))
                     Me.Controls.Remove(projectiles(i))
+                    Exit For
                 End If
 
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
