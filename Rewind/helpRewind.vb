@@ -10,7 +10,26 @@
 
         btnControls.BackgroundImage = My.Resources.btnControlsClicked
         btnGameInfo.BackgroundImage = My.Resources.btnGameInfoUnclicked
-        ' Show controls info
+
+        ' Show controls info, hide game info
+        picKeyUp.Visible = True
+        picKeyLeft.Visible = True
+        picKeyRight.Visible = True
+        picKeySpace.Visible = True
+        lblControl0.Visible = True
+        lblControl1.Visible = True
+        lblControl2.Visible = True
+        lblControl3.Visible = True
+
+        lblGame0.Visible = False
+        lblGame1.Visible = False
+        lblGame2.Visible = False
+        lblGame3.Visible = False
+        lblGame4.Visible = False
+        picPlayerBlue.Visible = False
+        picPlayerGreen.Visible = False
+        picProjectile.Visible = False
+
     End Sub
 
     Private Sub btnControls_MouseDown(sender As Object, e As MouseEventArgs) Handles btnControls.MouseDown
@@ -36,6 +55,25 @@
 
         btnGameInfo.BackgroundImage = My.Resources.btnGameInfoClicked
         btnControls.BackgroundImage = My.Resources.btnControlsUnclicked
+
+        ' Show game info, hide controls info
+        picKeyUp.Visible = False
+        picKeyLeft.Visible = False
+        picKeyRight.Visible = False
+        picKeySpace.Visible = False
+        lblControl0.Visible = False
+        lblControl1.Visible = False
+        lblControl2.Visible = False
+        lblControl3.Visible = False
+
+        lblGame0.Visible = True
+        lblGame1.Visible = True
+        lblGame2.Visible = True
+        lblGame3.Visible = True
+        lblGame4.Visible = True
+        picPlayerBlue.Visible = True
+        picPlayerGreen.Visible = True
+        picProjectile.Visible = True
     End Sub
 
     Private Sub btnGameInfo_MouseDown(sender As Object, e As MouseEventArgs)
