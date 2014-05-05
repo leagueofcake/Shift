@@ -64,17 +64,21 @@ Public Class gameRewind
         lblScore.Text = gameVar.score
     End Sub
 
-    Private Sub attemptShift()
+    Private Sub countDownShift()
         If Not gameVar.progression = 0 Then
             If gameVar.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (30 - ((gameVar.progression / 100) Mod 30)).ToString + " seconds"
-            If gameVar.progression Mod 3000 = 0 And gameVar.progression Then MsgBox("SHIFT!") ' Every 30 seconds, shift
+            If gameVar.progression Mod 3000 = 0 And gameVar.progression Then Shift() ' Every 30 seconds, shift game variables
 
         End If
     End Sub
 
+    Private Sub Shift()
+
+    End Sub
+
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
         updateFormLabels()
-        attemptShift()
+        countDownShift()
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
@@ -142,7 +146,7 @@ Public Class gameRewind
         Try ' Projectile shooting
             For i = 0 To projectiles.Count - 1
                 If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
-                projectiles(i).Shoot((picPlayer.Left / 100) + 4)
+                projectiles(i).Shoot((picPlayer.Left / 100) + gameVar.projectileSpeed)
                 If projectiles(i).Left < -500 Then ' Remove from form and arraylist
                     projectiles.Remove(projectiles(i))
                     Me.Controls.Remove(projectiles(i))
@@ -151,7 +155,7 @@ Public Class gameRewind
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on
                         projectiles(i).Visible = False
-                        If playerVar.playerHealth + 100 > 5000 Then playerVar.playerHealth = 5000 Else playerVar.playerHealth = playerVar.playerHealth + 100 ' Upper cap
+                        If playerVar.playerHealth + gameVar.healthGain > playerVar.healthMax Then playerVar.playerHealth = playerVar.healthMax Else playerVar.playerHealth = playerVar.playerHealth + gameVar.healthGain ' Upper cap
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                         If playerVar.playerHealth - 25 < 0 Then playerVar.playerHealth = 0 Else playerVar.playerHealth = playerVar.playerHealth - 20 ' Lower cap
                     End If
@@ -187,7 +191,7 @@ Public Class gameRewind
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
-        If playerVar.shieldStatus < 100 Then
+        If playerVar.shieldStatus < playerVar.shieldMax Then
             playerVar.shieldStatus += 1
         Else
             playerVar.shieldStatus = 0
