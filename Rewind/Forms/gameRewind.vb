@@ -10,28 +10,18 @@ Public Class gameRewind
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
-    Private Sub pause()
-        picPausedText.Visible = True
-        timerMove.Enabled = False
+    Private Sub togglePause()
+        picPausedText.Visible = Not picPausedText.Visible
+        timerMove.Enabled = Not timerMove.Enabled
         timerCharge.Enabled = False
-        timerGenerate.Enabled = False
-        timerWorld.Enabled = False
+        timerGenerate.Enabled = Not timerGenerate.Enabled
+        timerWorld.Enabled = Not timerWorld.Enabled
         'timerConstant.Enabled = False
-        ' playerY = 0 'uncomment for endless jumping
-    End Sub
-
-    Private Sub resumeGame()
-        picPausedText.Visible = False
-        timerCharge.Enabled = False
-        timerMove.Enabled = True
-        timerGenerate.Enabled = True
-        timerWorld.Enabled = True
-        timerConstant.Enabled = True
-        timerShield.Start()
+        ' playerY = 0 'uncomment for endless jumpings
     End Sub
 
     Private Sub endGame()
-        pause()
+        togglePause()
         timerShield.Stop()
         timerConstant.Stop()
         picPausedText.Visible = False
@@ -40,7 +30,11 @@ Public Class gameRewind
     End Sub
 
     Private Sub executeCharge()
-        resumeGame()
+        togglePause()
+        picPausedText.Visible = False
+        timerMove.Enabled = True
+        timerGenerate.Enabled = True
+        timerWorld.Enabled = True
         playerVar.playerSpeed = 8
 
         picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
@@ -108,15 +102,15 @@ Public Class gameRewind
         Select Case e.KeyChar
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
                 gameVar.paused = Not gameVar.paused
+                togglePause()
                 If gameVar.paused = True Then
-                    pause()
                     timerShield.Stop()
                 Else
-                    resumeGame()
+                    timerShield.Start()
                 End If
             Case Microsoft.VisualBasic.ChrW(Keys.Space)
                 If gameVar.paused = False Then
-                    pause()
+                    togglePause()
                     picPausedText.Visible = False
                     timerCharge.Enabled = True
                 End If
@@ -132,6 +126,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(gameVar.chargeLimit / 50).ToString) ' EXPERIMENTAL
         If gameVar.chargeLimit = 0 Then playerVar.playerSpeed = 4 Else gameVar.chargeLimit -= 1 ' Use up power
         gameVar.progression += 1
 
