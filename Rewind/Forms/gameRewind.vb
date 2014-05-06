@@ -13,7 +13,6 @@ Public Class gameRewind
     Private Sub togglePause()
         picPausedText.Visible = Not picPausedText.Visible
         timerMove.Enabled = Not timerMove.Enabled
-        timerCharge.Enabled = False
         timerGenerate.Enabled = Not timerGenerate.Enabled
         timerWorld.Enabled = Not timerWorld.Enabled
         'timerConstant.Enabled = False
@@ -27,15 +26,6 @@ Public Class gameRewind
         picPausedText.Visible = False
         endScreen.lblScore.Text = "Score: " + gameVar.score.ToString
         endScreen.Show()
-    End Sub
-
-    Private Sub executeCharge()
-        togglePause()
-        picPausedText.Visible = False
-        timerMove.Enabled = True
-        timerGenerate.Enabled = True
-        timerWorld.Enabled = True
-        playerVar.playerSpeed = 8
     End Sub
 
     Private Sub updateFormLabels()
@@ -101,23 +91,18 @@ Public Class gameRewind
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
                 gameVar.paused = Not gameVar.paused
                 togglePause()
-                If gameVar.paused = True Then
-                    timerShield.Stop()
-                Else
-                    timerShield.Start()
-                End If
+                If gameVar.paused = True Then timerShield.Stop() Else timerShield.Start()
             Case Microsoft.VisualBasic.ChrW(Keys.Space)
                 If gameVar.paused = False Then
-                    togglePause()
-                    picPausedText.Visible = False
-                    timerCharge.Enabled = True
+                    timerPower.Enabled = True ' ACTIVATE POWERUP
                 End If
         End Select
     End Sub
 
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space And gameVar.paused = False Then
-            executeCharge()
+            timerPower.Enabled = False
+            playerVar.playerSpeed = 4 ' DEACTIVATE POWERUP
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
@@ -125,7 +110,7 @@ Public Class gameRewind
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
         picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(gameVar.chargeLimit / 50).ToString) ' EXPERIMENTAL
-        If gameVar.chargeLimit = 0 Then playerVar.playerSpeed = 4 Else gameVar.chargeLimit -= 1 ' Use up power
+        If gameVar.chargeLimit = 0 Then playerVar.playerSpeed = 4 'Else gameVar.chargeLimit -= 1 ' Use up power
         gameVar.progression += 1
 
         If playerVar.playerHealth > 0 Then playerVar.playerHealth -= gameVar.healthDrain
@@ -147,9 +132,17 @@ Public Class gameRewind
                 End If
 
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
-                    If picPlayer.BackColor = Color.Green Then ' Shield on
+                    If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
                         projectiles(i).Visible = False
                         If playerVar.playerHealth + gameVar.healthGain > playerVar.healthMax Then playerVar.playerHealth = playerVar.healthMax Else playerVar.playerHealth = playerVar.playerHealth + gameVar.healthGain ' Upper cap
+
+                        If gameVar.chargeLimit + 5 < 500 Then
+                            gameVar.chargeLimit += 5
+                        ElseIf gameVar.chargeLimit + 10 > 500 And gameVar.chargeLimit + 1 <= 500 Then
+                            gameVar.chargeLimit += 1
+                        End If
+
+                        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(gameVar.chargeLimit / 50).ToString)
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                         If playerVar.playerHealth - 25 < 0 Then playerVar.playerHealth = 0 Else playerVar.playerHealth = playerVar.playerHealth - 20 ' Lower cap
                     End If
@@ -169,18 +162,6 @@ Public Class gameRewind
         'gameVar.genVar = 800 - picPlayer.Left ' genVar dependent on player's position
         gameVar.genVar = (Rnd() * 5 + 1) * 100
         timerGenerate.Interval = gameVar.genVar
-    End Sub
-
-    Private Sub timerCharge_Tick(sender As Object, e As EventArgs) Handles timerCharge.Tick
-        If gameVar.chargeLimit + 10 < 500 Then
-            gameVar.chargeLimit += 10
-        ElseIf gameVar.chargeLimit + 10 > 500 And gameVar.chargeLimit + 1 <= 500 Then
-            gameVar.chargeLimit += 1
-        Else
-            executeCharge() 'Auto-execute power when chargeLimit = 50
-        End If
-
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(gameVar.chargeLimit / 50).ToString)
     End Sub
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
@@ -220,5 +201,12 @@ Public Class gameRewind
         playerVar.playerSpeed = 4
         playerVar.shieldStatus = 0
         gameVar.score = 0
+    End Sub
+
+    Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
+        If gameVar.chargeLimit > 0 Then
+            gameVar.chargeLimit -= 1
+            playerVar.playerSpeed = 8
+        End If
     End Sub
 End Class

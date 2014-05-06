@@ -26,7 +26,6 @@ Partial Class gameRewind
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(gameRewind))
         Me.timerWorld = New System.Windows.Forms.Timer(Me.components)
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
-        Me.timerCharge = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
         Me.lbl13 = New System.Windows.Forms.Label()
         Me.timerMove = New System.Windows.Forms.Timer(Me.components)
@@ -67,6 +66,7 @@ Partial Class gameRewind
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
         Me.lblShiftTimer = New System.Windows.Forms.Label()
+        Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,10 +86,6 @@ Partial Class gameRewind
         '
         Me.timerGenerate.Enabled = True
         Me.timerGenerate.Interval = 500
-        '
-        'timerCharge
-        '
-        Me.timerCharge.Interval = 10
         '
         'timerShield
         '
@@ -540,6 +536,10 @@ Partial Class gameRewind
         Me.lblShiftTimer.TabIndex = 23
         Me.lblShiftTimer.Text = "Next Shift in 15 seconds"
         '
+        'timerPower
+        '
+        Me.timerPower.Interval = 10
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -562,7 +562,7 @@ Partial Class gameRewind
         Me.DoubleBuffered = True
         Me.Name = "gameRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Rewind"
+        Me.Text = "t"
         Me.debugBox.ResumeLayout(False)
         Me.debugBox.PerformLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).EndInit()
@@ -580,7 +580,6 @@ Partial Class gameRewind
     Friend WithEvents picWorld As System.Windows.Forms.PictureBox
     Friend WithEvents timerWorld As System.Windows.Forms.Timer
     Friend WithEvents timerGenerate As System.Windows.Forms.Timer
-    Friend WithEvents timerCharge As System.Windows.Forms.Timer
     Friend WithEvents timerShield As System.Windows.Forms.Timer
     Friend WithEvents lbl13 As System.Windows.Forms.Label
     Friend WithEvents timerMove As System.Windows.Forms.Timer
@@ -619,5 +618,6 @@ Partial Class gameRewind
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
     Friend WithEvents lblShiftTimer As System.Windows.Forms.Label
+    Friend WithEvents timerPower As System.Windows.Forms.Timer
 
 End Class
