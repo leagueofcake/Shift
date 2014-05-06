@@ -1,4 +1,12 @@
-﻿Public Class gameVar
+﻿Public Class Stage
+    ' Player variables
+    Public Shared playerSpeed As Integer = 4
+    Public Shared playerHealth As Integer = 5000
+    Public Shared shieldStatus As Integer = 0
+    Public Shared shieldMax As Integer = 100
+    Public Shared healthMax As Integer = 5000
+
+    ' Game variables
     Public Shared score As Integer = 0
     Public Shared genVar As Single
     Public Shared paused As Boolean = False
