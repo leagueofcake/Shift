@@ -70,30 +70,30 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="endScreen.Designer.vb">
+    <Compile Include="Forms\endScreen.Designer.vb">
       <DependentUpon>endScreen.vb</DependentUpon>
     </Compile>
-    <Compile Include="endScreen.vb">
+    <Compile Include="Forms\endScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gameRewind.vb">
+    <Compile Include="Forms\gameRewind.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gameRewind.Designer.vb">
+    <Compile Include="Forms\gameRewind.Designer.vb">
       <DependentUpon>gameRewind.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gameVar.vb" />
-    <Compile Include="helpRewind.Designer.vb">
+    <Compile Include="Modules\gameVar.vb" />
+    <Compile Include="Forms\helpRewind.Designer.vb">
       <DependentUpon>helpRewind.vb</DependentUpon>
     </Compile>
-    <Compile Include="helpRewind.vb">
+    <Compile Include="Forms\helpRewind.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainRewind.Designer.vb">
+    <Compile Include="Forms\mainRewind.Designer.vb">
       <DependentUpon>mainRewind.vb</DependentUpon>
     </Compile>
-    <Compile Include="mainRewind.vb">
+    <Compile Include="Forms\mainRewind.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -111,22 +111,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="playerVar.vb" />
-    <Compile Include="Projectile.vb">
+    <Compile Include="Modules\playerVar.vb" />
+    <Compile Include="Modules\Projectile.vb">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="endScreen.resx">
+    <EmbeddedResource Include="Forms\endScreen.resx">
       <DependentUpon>endScreen.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gameRewind.resx">
+    <EmbeddedResource Include="Forms\gameRewind.resx">
       <DependentUpon>gameRewind.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="helpRewind.resx">
+    <EmbeddedResource Include="Forms\helpRewind.resx">
       <DependentUpon>helpRewind.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mainRewind.resx">
+    <EmbeddedResource Include="Forms\mainRewind.resx">
       <DependentUpon>mainRewind.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
