@@ -36,8 +36,6 @@ Public Class gameRewind
         timerGenerate.Enabled = True
         timerWorld.Enabled = True
         playerVar.playerSpeed = 8
-
-        picCharge.BackgroundImage = My.Resources.chargeBar0 ' Reset picCharge
     End Sub
 
     Private Sub updateFormLabels()
