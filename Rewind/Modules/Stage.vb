@@ -20,15 +20,18 @@
     Public Shared projectileSpeed As Integer = 4
     Public Shared progression As Integer = 0 ' Essentially how long player has lasted in game
 
-    Public Shared Sub selectStage()
+    Public Shared Function selectStage()
         Dim rand = New Random().Next(0, 2) ' 0, max no. stages + 1
-        While rand = currentStage ' force a different stage
+        While rand = currentStage ' force a different stage to current
             rand = New Random().Next(0, 2)
         End While
-
         currentStage = rand
 
-        Select Case rand
+        Return currentStage
+    End Function
+
+    Public Shared Sub shift(stageNumber As Integer)
+        Select Case stageNumber
             Case 0 ' default
                 playerSpeed = 4
                 playerHealth = 5000
