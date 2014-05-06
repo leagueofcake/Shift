@@ -57,8 +57,8 @@ Public Class gameRewind
 
     Private Sub countDownShift()
         If Not gameVar.progression = 0 Then
-            If gameVar.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (30 - ((gameVar.progression / 100) Mod 30)).ToString + " seconds"
-            If gameVar.progression Mod 3000 = 0 And gameVar.progression Then Shift() ' Every 30 seconds, shift game variables
+            If gameVar.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (15 - ((gameVar.progression / 100) Mod 15)).ToString + " seconds"
+            If gameVar.progression Mod 1500 = 0 And gameVar.progression Then Shift() ' Every 15 seconds, shift game variables
 
         End If
     End Sub

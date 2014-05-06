@@ -538,7 +538,7 @@ Partial Class gameRewind
         Me.lblShiftTimer.Name = "lblShiftTimer"
         Me.lblShiftTimer.Size = New System.Drawing.Size(180, 20)
         Me.lblShiftTimer.TabIndex = 23
-        Me.lblShiftTimer.Text = "Next Shift in 30 seconds"
+        Me.lblShiftTimer.Text = "Next Shift in 15 seconds"
         '
         'gameRewind
         '
