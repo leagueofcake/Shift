@@ -1,6 +1,5 @@
 ﻿Public Class Projectile
     Inherits PictureBox
-    Private isAbsorbed As Boolean
 
     Public Sub New()
         With Me
@@ -14,9 +13,5 @@
 
     Public Sub Shoot(ByVal shootVar As Integer)
         Me.Left -= shootVar
-    End Sub
-
-    Public Sub Rewind(ByVal shootVar As Integer)
-        Me.Left += shootVar
     End Sub
 End Class
