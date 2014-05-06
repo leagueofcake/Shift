@@ -34,27 +34,23 @@ Public Class gameRewind
         lblProjectiles.Text = projectiles.Count
         lblHealth.Text = Stage.playerHealth
         lblMovement.Text = timerMove.Tag
-        lblChargeLimit.Text = Stage.chargeLimit
+        lblCharge.Text = Stage.charge
         lblShootVar.Text = (picPlayer.Left / 100) + 4
         lblGenVar.Text = Stage.genVar
         lblPaused.Text = Stage.paused
         lblShieldStatus.Text = Stage.shieldStatus
         lblProgression.Text = Stage.progression
         lblHpDrain.Text = Stage.healthDrain
-
+        lblStage.Text = Stage.currentStage
         lblScore.Text = Stage.score
     End Sub
 
     Private Sub countDownShift()
         If Not Stage.progression = 0 Then
             If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (15 - ((Stage.progression / 100) Mod 15)).ToString + " seconds"
-            If Stage.progression Mod 1500 = 0 And Stage.progression Then Shift() ' Every 15 seconds, shift game variables
+            If Stage.progression Mod 1500 = 0 And Stage.progression Then Stage.selectStage() ' Every 15 seconds, shift game variables
 
         End If
-    End Sub
-
-    Private Sub Shift()
-
     End Sub
 
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
@@ -103,14 +99,18 @@ Public Class gameRewind
         If e.KeyCode = Keys.Space And Stage.paused = False Then
             timerPower.Enabled = False
             Stage.playerSpeed = 4 ' DEACTIVATE POWERUP
+
+            ' #######    NOTE THIS DOES NOT WORK WHEN DEFAULT SPEED IS CHANGED     #######
+
+
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.chargeLimit / 50).ToString) ' EXPERIMENTAL
-        If Stage.chargeLimit = 0 Then Stage.playerSpeed = 4 'Else Stage.chargeLimit -= 1 ' Use up power
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString) ' EXPERIMENTAL
+        If Stage.charge = 0 Then Stage.playerSpeed = 4 'Else Stage.charge -= 1 ' Use up power
         Stage.progression += 1
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
@@ -136,13 +136,13 @@ Public Class gameRewind
                         projectiles(i).Visible = False
                         If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
 
-                        If Stage.chargeLimit + 5 < 500 Then
-                            Stage.chargeLimit += 5
-                        ElseIf Stage.chargeLimit + 10 > 500 And Stage.chargeLimit + 1 <= 500 Then
-                            Stage.chargeLimit += 1
+                        If Stage.charge + 5 < 500 Then
+                            Stage.charge += 5
+                        ElseIf Stage.charge + 10 > 500 And Stage.charge + 1 <= 500 Then
+                            Stage.charge += 1
                         End If
 
-                        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.chargeLimit / 50).ToString)
+                        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString)
                     ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                         If Stage.playerHealth - 25 < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - 20 ' Lower cap
                     End If
@@ -204,8 +204,8 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
-        If Stage.chargeLimit > 0 Then
-            Stage.chargeLimit -= 1
+        If Stage.charge > 0 Then
+            Stage.charge -= 1
             Stage.playerSpeed = 8
         End If
     End Sub

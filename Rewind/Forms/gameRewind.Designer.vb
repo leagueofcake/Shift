@@ -32,6 +32,8 @@ Partial Class gameRewind
         Me.lblPosY = New System.Windows.Forms.Label()
         Me.lblMovement = New System.Windows.Forms.Label()
         Me.debugBox = New System.Windows.Forms.GroupBox()
+        Me.lblStage = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.lblProjectiles = New System.Windows.Forms.Label()
         Me.lblHpDrain = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -47,7 +49,7 @@ Partial Class gameRewind
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblShieldOn = New System.Windows.Forms.Label()
-        Me.lblChargeLimit = New System.Windows.Forms.Label()
+        Me.lblCharge = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblHealth = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -134,6 +136,8 @@ Partial Class gameRewind
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.Color.Transparent
+        Me.debugBox.Controls.Add(Me.lblStage)
+        Me.debugBox.Controls.Add(Me.Label14)
         Me.debugBox.Controls.Add(Me.lblProjectiles)
         Me.debugBox.Controls.Add(Me.lblHpDrain)
         Me.debugBox.Controls.Add(Me.Label13)
@@ -149,7 +153,7 @@ Partial Class gameRewind
         Me.debugBox.Controls.Add(Me.Label7)
         Me.debugBox.Controls.Add(Me.Label6)
         Me.debugBox.Controls.Add(Me.lblShieldOn)
-        Me.debugBox.Controls.Add(Me.lblChargeLimit)
+        Me.debugBox.Controls.Add(Me.lblCharge)
         Me.debugBox.Controls.Add(Me.Label5)
         Me.debugBox.Controls.Add(Me.lblHealth)
         Me.debugBox.Controls.Add(Me.Label4)
@@ -167,6 +171,28 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        '
+        'lblStage
+        '
+        Me.lblStage.AutoSize = True
+        Me.lblStage.BackColor = System.Drawing.Color.Transparent
+        Me.lblStage.ForeColor = System.Drawing.Color.White
+        Me.lblStage.Location = New System.Drawing.Point(161, 147)
+        Me.lblStage.Name = "lblStage"
+        Me.lblStage.Size = New System.Drawing.Size(13, 13)
+        Me.lblStage.TabIndex = 34
+        Me.lblStage.Text = "0"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.BackColor = System.Drawing.Color.Transparent
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(117, 147)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(33, 13)
+        Me.Label14.TabIndex = 33
+        Me.Label14.Text = "stage"
         '
         'lblProjectiles
         '
@@ -333,16 +359,16 @@ Partial Class gameRewind
         Me.lblShieldOn.TabIndex = 19
         Me.lblShieldOn.Text = "On"
         '
-        'lblChargeLimit
+        'lblCharge
         '
-        Me.lblChargeLimit.AutoSize = True
-        Me.lblChargeLimit.BackColor = System.Drawing.Color.Transparent
-        Me.lblChargeLimit.ForeColor = System.Drawing.Color.White
-        Me.lblChargeLimit.Location = New System.Drawing.Point(68, 125)
-        Me.lblChargeLimit.Name = "lblChargeLimit"
-        Me.lblChargeLimit.Size = New System.Drawing.Size(13, 13)
-        Me.lblChargeLimit.TabIndex = 18
-        Me.lblChargeLimit.Text = "0"
+        Me.lblCharge.AutoSize = True
+        Me.lblCharge.BackColor = System.Drawing.Color.Transparent
+        Me.lblCharge.ForeColor = System.Drawing.Color.White
+        Me.lblCharge.Location = New System.Drawing.Point(68, 125)
+        Me.lblCharge.Name = "lblCharge"
+        Me.lblCharge.Size = New System.Drawing.Size(13, 13)
+        Me.lblCharge.TabIndex = 18
+        Me.lblCharge.Text = "0"
         '
         'Label5
         '
@@ -351,9 +377,9 @@ Partial Class gameRewind
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(7, 125)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(46, 13)
+        Me.Label5.Size = New System.Drawing.Size(40, 13)
         Me.Label5.TabIndex = 17
-        Me.Label5.Text = "chLimit: "
+        Me.Label5.Text = "charge"
         '
         'lblHealth
         '
@@ -594,7 +620,7 @@ Partial Class gameRewind
     Friend WithEvents lblHealth As System.Windows.Forms.Label
     Friend WithEvents timerConstant As System.Windows.Forms.Timer
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents lblChargeLimit As System.Windows.Forms.Label
+    Friend WithEvents lblCharge As System.Windows.Forms.Label
     Friend WithEvents pichealthText As System.Windows.Forms.PictureBox
     Friend WithEvents picHealth As System.Windows.Forms.PictureBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -619,5 +645,7 @@ Partial Class gameRewind
     Friend WithEvents lblProjectiles As System.Windows.Forms.Label
     Friend WithEvents lblShiftTimer As System.Windows.Forms.Label
     Friend WithEvents timerPower As System.Windows.Forms.Timer
+    Friend WithEvents lblStage As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
 
 End Class
