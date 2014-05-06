@@ -115,6 +115,7 @@
     <Compile Include="Modules\Projectile.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="stage.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\endScreen.resx">

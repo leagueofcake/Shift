@@ -11,14 +11,13 @@ Public Class gameRewind
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
 
     Private Sub pause()
-        ' playerY = 0 'uncomment for endless jumping
         picPausedText.Visible = True
-        lblPaused.Text = gameVar.paused
         timerMove.Enabled = False
         timerCharge.Enabled = False
         timerGenerate.Enabled = False
         timerWorld.Enabled = False
         'timerConstant.Enabled = False
+        ' playerY = 0 'uncomment for endless jumping
     End Sub
 
     Private Sub resumeGame()
