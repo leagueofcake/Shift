@@ -42,8 +42,13 @@
                 healthDrain = 10
                 healthGain = 100
                 projectileSpeed = 4
-            Case 1 ' test
-                playerSpeed = 8
+            Case 1 ' anti                   #######   IN PROGRESS   #######
+                gameRewind.picWorld.Top = 0
+                gameRewind.pichealthText.Left = 750 - gameRewind.pichealthText.Width - 20
+                gameRewind.pichealthText.Top = 480 - 10 - 3 * gameRewind.pichealthText.Height
+                gameRewind.pichealthText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+
+                gameRewind.picPausedText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
         End Select
     End Sub
 End Class

@@ -480,7 +480,7 @@ Partial Class gameRewind
         Me.pichealthText.BackColor = System.Drawing.Color.Transparent
         Me.pichealthText.BackgroundImage = CType(resources.GetObject("pichealthText.BackgroundImage"), System.Drawing.Image)
         Me.pichealthText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.pichealthText.Location = New System.Drawing.Point(12, 12)
+        Me.pichealthText.Location = New System.Drawing.Point(10, 10)
         Me.pichealthText.Name = "pichealthText"
         Me.pichealthText.Size = New System.Drawing.Size(161, 21)
         Me.pichealthText.TabIndex = 12
