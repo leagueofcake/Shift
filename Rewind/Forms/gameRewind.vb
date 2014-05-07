@@ -47,9 +47,8 @@ Public Class gameRewind
 
     Private Sub countDownShift()
         If Not Stage.progression = 0 Then
-            If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (15 - ((Stage.progression / 100) Mod 15)).ToString + " seconds"
-            If Stage.progression Mod 1500 = 0 And Stage.progression Then Stage.shift(Stage.selectStage()) ' Every 15 seconds, shift game variables
-
+            If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (10 - ((Stage.progression / 100) Mod 10)).ToString + " seconds"
+            If Stage.progression Mod 1000 = 0 And Stage.progression Then Stage.shift(Stage.selectStage()) ' Every 10 seconds, shift game variables
         End If
     End Sub
 
@@ -106,11 +105,12 @@ Public Class gameRewind
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
         picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString) ' EXPERIMENTAL
+
         If Stage.charge = 0 Then Stage.playerSpeed = 4 'Else Stage.charge -= 1 ' Use up power
         Stage.progression += 1
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
-        If Stage.playerHealth > 0 Then Stage.score += 100
+        If Stage.playerHealth > 0 Then Stage.score += Stage.scoreMult
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / 250).ToString)
         If Stage.playerHealth = 0 Then
             endGame()
@@ -193,10 +193,7 @@ Public Class gameRewind
 
     Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Reset values on game load
-        Stage.playerHealth = 5000
-        Stage.playerSpeed = 4
-        Stage.shieldStatus = 0
-        Stage.score = 0
+        Stage.shift(Stage.currentStage)
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick

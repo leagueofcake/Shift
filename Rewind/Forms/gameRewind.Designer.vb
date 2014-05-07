@@ -64,7 +64,7 @@ Partial Class gameRewind
         Me.picPlayer = New System.Windows.Forms.PictureBox()
         Me.picWorld = New System.Windows.Forms.PictureBox()
         Me.picCharge = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.picChargeLabel = New System.Windows.Forms.PictureBox()
         Me.lblScoreTitle = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
         Me.lblShiftTimer = New System.Windows.Forms.Label()
@@ -76,7 +76,7 @@ Partial Class gameRewind
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'timerWorld
@@ -469,7 +469,7 @@ Partial Class gameRewind
         Me.picHealth.BackColor = System.Drawing.Color.Transparent
         Me.picHealth.BackgroundImage = CType(resources.GetObject("picHealth.BackgroundImage"), System.Drawing.Image)
         Me.picHealth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.picHealth.Location = New System.Drawing.Point(183, 8)
+        Me.picHealth.Location = New System.Drawing.Point(180, 10)
         Me.picHealth.Name = "picHealth"
         Me.picHealth.Size = New System.Drawing.Size(525, 30)
         Me.picHealth.TabIndex = 13
@@ -515,16 +515,16 @@ Partial Class gameRewind
         Me.picCharge.TabIndex = 16
         Me.picCharge.TabStop = False
         '
-        'PictureBox3
+        'picChargeLabel
         '
-        Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox3.BackgroundImage = CType(resources.GetObject("PictureBox3.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox3.Location = New System.Drawing.Point(696, 56)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(30, 207)
-        Me.PictureBox3.TabIndex = 15
-        Me.PictureBox3.TabStop = False
+        Me.picChargeLabel.BackColor = System.Drawing.Color.Transparent
+        Me.picChargeLabel.BackgroundImage = CType(resources.GetObject("picChargeLabel.BackgroundImage"), System.Drawing.Image)
+        Me.picChargeLabel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.picChargeLabel.Location = New System.Drawing.Point(696, 56)
+        Me.picChargeLabel.Name = "picChargeLabel"
+        Me.picChargeLabel.Size = New System.Drawing.Size(30, 207)
+        Me.picChargeLabel.TabIndex = 15
+        Me.picChargeLabel.TabStop = False
         '
         'lblScoreTitle
         '
@@ -560,7 +560,7 @@ Partial Class gameRewind
         Me.lblShiftTimer.Name = "lblShiftTimer"
         Me.lblShiftTimer.Size = New System.Drawing.Size(180, 20)
         Me.lblShiftTimer.TabIndex = 23
-        Me.lblShiftTimer.Text = "Next Shift in 15 seconds"
+        Me.lblShiftTimer.Text = "Next Shift in 10 seconds"
         '
         'timerPower
         '
@@ -584,11 +584,11 @@ Partial Class gameRewind
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)
-        Me.Controls.Add(Me.PictureBox3)
+        Me.Controls.Add(Me.picChargeLabel)
         Me.DoubleBuffered = True
         Me.Name = "gameRewind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "t"
+        Me.Text = "Game"
         Me.debugBox.ResumeLayout(False)
         Me.debugBox.PerformLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).EndInit()
@@ -597,7 +597,7 @@ Partial Class gameRewind
         CType(Me.picPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -625,7 +625,7 @@ Partial Class gameRewind
     Friend WithEvents picHealth As System.Windows.Forms.PictureBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents lblShieldOn As System.Windows.Forms.Label
-    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents picChargeLabel As System.Windows.Forms.PictureBox
     Friend WithEvents picCharge As System.Windows.Forms.PictureBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents lblShootVar As System.Windows.Forms.Label
