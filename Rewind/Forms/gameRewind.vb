@@ -1,5 +1,9 @@
 ﻿''' <summary>
-''' SDD major project: Rewind, a sidescroller game built in VB.NET
+''' Program Name: Shift
+''' Author: Dominic Fung
+''' Date first written: 13/3/2014
+''' 
+''' Purpose: A sidescroller game written in VB.Net
 ''' </summary>
 ''' <remarks></remarks>
 
