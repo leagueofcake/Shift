@@ -36,12 +36,14 @@
             Case 0 ' default
                 shift(4, 500, 100, 5000, 100, 10, 100, 4)
             Case 1 ' timeUp
-                shift(6, 250, 50, 5000, 175, 20, 100, 8)
+                shift(6, 250, 25, 5000, 175, 20, 100, 8)
                 ' Restart timers that were stopped by powerUp
                 gameRewind.timerGenerate.Enabled = True
                 gameRewind.timerWorld.Enabled = True
                 gameRewind.timerShield.Enabled = True
         End Select
+
+        If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered
     End Sub
 
     Public Shared Sub shift(speed As Integer, cMax As Integer, sMax As Integer, hMax As Integer, sMult As Integer, hDrain As Integer, hGain As Integer, pSpeed As Integer)

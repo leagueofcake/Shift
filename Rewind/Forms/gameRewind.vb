@@ -45,7 +45,7 @@ Public Class gameRewind
     Private Sub countDownShift()
         If Not Stage.progression = 0 Then
             If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (10 - ((Stage.progression / 100) Mod 10)).ToString + " seconds"
-            If Stage.progression Mod 1000 = 0 And Stage.progression Then Stage.selectStage() ' Every 10 seconds, shift game variables
+            If Stage.progression Mod 1000 = 0 Then Stage.selectStage() ' Every 10 seconds, shift game variables
         End If
     End Sub
 
@@ -60,7 +60,7 @@ Public Class gameRewind
                 projectileCollision(i)
             Next
         End If
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString) ' EXPERIMENTAL
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / (Stage.chargeMax / 10)).ToString) ' EXPERIMENTAL
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
@@ -147,13 +147,12 @@ Public Class gameRewind
                     projectiles(i).Visible = False
                     If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
 
-                    If Stage.charge + 5 < 500 Then
+                    If Stage.charge + 5 < Stage.chargeMax Then
                         Stage.charge += 5
-                    ElseIf Stage.charge + 10 > 500 And Stage.charge + 1 <= 500 Then
+                    ElseIf Stage.charge + 10 > Stage.chargeMax And Stage.charge + 1 <= Stage.chargeMax Then
                         Stage.charge += 1
                     End If
 
-                    picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString)
                 ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                     If Stage.playerHealth - 25 < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - 20 ' Lower cap
                 End If
@@ -207,7 +206,11 @@ Public Class gameRewind
 
     Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Reset values on game load
-        Stage.applyStage(Stage.currentStage)
+        Stage.applyStage(0)
+        Stage.score = 0
+        Stage.playerHealth = 5000
+        Stage.shieldStatus = 0
+        Stage.progression = 0
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
