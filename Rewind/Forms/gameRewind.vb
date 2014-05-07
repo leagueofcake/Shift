@@ -48,7 +48,7 @@ Public Class gameRewind
     Private Sub countDownShift()
         If Not Stage.progression = 0 Then
             If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (10 - ((Stage.progression / 100) Mod 10)).ToString + " seconds"
-            If Stage.progression Mod 1000 = 0 And Stage.progression Then Stage.shift(Stage.selectStage()) ' Every 10 seconds, shift game variables
+            If Stage.progression Mod 1000 = 0 And Stage.progression Then Stage.selectStage() ' Every 10 seconds, shift game variables
         End If
     End Sub
 
@@ -97,7 +97,7 @@ Public Class gameRewind
     Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space And Stage.paused = False Then
             timerPower.Enabled = False
-            Stage.shift(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
+            Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
@@ -193,7 +193,7 @@ Public Class gameRewind
 
     Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Reset values on game load
-        Stage.shift(Stage.currentStage)
+        Stage.applyStage(Stage.currentStage)
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
