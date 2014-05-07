@@ -21,7 +21,7 @@
     Public Shared projectileSpeed As Integer = 4
     Public Shared progression As Integer = 0 ' Essentially how long player has lasted in game
 
-    Public Shared Sub selectStage()
+    Public Shared Sub selectStage() ' Generate a stage number different to current stage
         Dim rand = New Random().Next(0, 2) ' 0, max no. stages + 1
         While rand = currentStage ' force a different stage to current
             rand = New Random().Next(0, 2)
@@ -37,6 +37,10 @@
                 shift(4, 500, 100, 5000, 100, 10, 100, 4)
             Case 1 ' timeUp
                 shift(6, 250, 50, 5000, 175, 20, 100, 8)
+                ' Restart timers that were stopped by powerUp
+                gameRewind.timerGenerate.Enabled = True
+                gameRewind.timerWorld.Enabled = True
+                gameRewind.timerShield.Enabled = True
         End Select
     End Sub
 
@@ -50,6 +54,18 @@
         healthDrain = hDrain
         healthGain = hGain
         projectileSpeed = pSpeed
+    End Sub
+
+    Public Shared Sub applyPowerup(stageNumber As Integer)
+        charge -= 1 ' Use up 1 charge
+        Select Case stageNumber
+            Case 0 ' default: speedUp
+                playerSpeed = 8
+            Case 1 ' timeUp: timeStop
+                gameRewind.timerGenerate.Enabled = False
+                gameRewind.timerWorld.Enabled = False
+                gameRewind.timerShield.Enabled = False
+        End Select
     End Sub
 
     Public Sub anti()

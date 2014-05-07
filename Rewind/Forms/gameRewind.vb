@@ -21,9 +21,6 @@ Public Class gameRewind
 
     Private Sub endGame()
         togglePause()
-        timerShield.Stop()
-        timerConstant.Stop()
-        picPausedText.Visible = False
         endScreen.lblScore.Text = "Score: " + Stage.score.ToString
         endScreen.Show()
     End Sub
@@ -55,6 +52,15 @@ Public Class gameRewind
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
         updateFormLabels()
         countDownShift()
+
+        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / 250).ToString)
+
+        If Stage.currentStage = 1 Then
+            For i = 0 To projectiles.Count - 1
+                projectileCollision(i)
+            Next
+        End If
+        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString) ' EXPERIMENTAL
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
@@ -104,46 +110,54 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
-        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString) ' EXPERIMENTAL
-
         If Stage.charge = 0 Then Stage.playerSpeed = 4 'Else Stage.charge -= 1 ' Use up power
         Stage.progression += 1
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
         If Stage.playerHealth > 0 Then Stage.score += Stage.scoreMult
-        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / 250).ToString)
         If Stage.playerHealth = 0 Then
             endGame()
             Exit Sub
         End If
+
+        For i = 0 To projectiles.Count - 1
+            projectileShoot(i)
+            projectileCollision(i)
+        Next
+    End Sub
+
+    Private Sub projectileShoot(i As Integer)
         Try ' Projectile shooting
-            For i = 0 To projectiles.Count - 1
-                If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
-                'projectiles(i).Shoot((picPlayer.Left / 100) + Stage.projectileSpeed) ' shoot speed depends on player's position
-                projectiles(i).Shoot(Stage.projectileSpeed)
-                If projectiles(i).Left < -500 Then ' Remove from form and arraylist
-                    projectiles.Remove(projectiles(i))
-                    Me.Controls.Remove(projectiles(i))
-                    Exit For
-                End If
+            If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
+            'projectiles(i).Shoot((picPlayer.Left / 100) + Stage.projectileSpeed) ' shoot speed depends on player's position
+            projectiles(i).Shoot(Stage.projectileSpeed)
+            If projectiles(i).Left < -500 Then ' Remove from form and arraylist
+                projectiles.Remove(projectiles(i))
+                Me.Controls.Remove(projectiles(i))
+            End If
+        Catch ex As Exception
+            ' None
+        End Try
+    End Sub
 
-                If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
-                    If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
-                        projectiles(i).Visible = False
-                        If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
+    Private Sub projectileCollision(i As Integer)
+        Try ' Projectile collision
+            If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
+                If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
+                    projectiles(i).Visible = False
+                    If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
 
-                        If Stage.charge + 5 < 500 Then
-                            Stage.charge += 5
-                        ElseIf Stage.charge + 10 > 500 And Stage.charge + 1 <= 500 Then
-                            Stage.charge += 1
-                        End If
-
-                        picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString)
-                    ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
-                        If Stage.playerHealth - 25 < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - 20 ' Lower cap
+                    If Stage.charge + 5 < 500 Then
+                        Stage.charge += 5
+                    ElseIf Stage.charge + 10 > 500 And Stage.charge + 1 <= 500 Then
+                        Stage.charge += 1
                     End If
+
+                    picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / 50).ToString)
+                ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
+                    If Stage.playerHealth - 25 < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - 20 ' Lower cap
                 End If
-            Next
+            End If
         Catch ex As Exception
             ' None
         End Try
@@ -198,8 +212,9 @@ Public Class gameRewind
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
         If Stage.charge > 0 Then
-            Stage.charge -= 1
-            Stage.playerSpeed = 8
+            Stage.applyPowerup(Stage.currentStage)
+        Else
+            timerPower.Enabled = False
         End If
     End Sub
 End Class
