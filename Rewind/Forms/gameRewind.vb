@@ -53,7 +53,7 @@ Public Class gameRewind
         updateFormLabels()
         countDownShift()
 
-        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / 250).ToString)
+        picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / (Stage.healthMax / 20)).ToString)
 
         If Stage.currentStage = 1 Then
             For i = 0 To projectiles.Count - 1
@@ -144,15 +144,15 @@ Public Class gameRewind
         Try ' Projectile collision
             If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                 If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
-                    projectiles(i).Visible = False
                     If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
-
-                    If Stage.charge + 5 < Stage.chargeMax Then
-                        Stage.charge += 5
-                    ElseIf Stage.charge + 10 > Stage.chargeMax And Stage.charge + 1 <= Stage.chargeMax Then
+                    If Stage.charge + Stage.chargeGain < Stage.chargeMax Then
+                        Stage.charge += Stage.chargeGain
+                    ElseIf Stage.charge + Stage.chargeGain > Stage.chargeMax And Stage.charge + 1 <= Stage.chargeMax Then
                         Stage.charge += 1
                     End If
 
+                    projectiles(i).Shoot(500) ' Shift offscreen when projectile is hit
+                    Exit Sub
                 ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                     If Stage.playerHealth - 25 < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - 20 ' Lower cap
                 End If
@@ -206,9 +206,11 @@ Public Class gameRewind
 
     Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Reset values on game load
+        Stage.currentStage = 0
         Stage.applyStage(0)
         Stage.score = 0
         Stage.playerHealth = 5000
+        Stage.charge = 0
         Stage.shieldStatus = 0
         Stage.progression = 0
     End Sub
