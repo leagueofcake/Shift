@@ -33,7 +33,7 @@
 
     Public Shared Sub applyStage(stageNumber As Integer)
         Select Case stageNumber
-            ' shift(speed, chargeGain, chargeMax, sshieldMax, healthMax, scoremult, healthDrain, healthGain, projectileSpeed)
+            ' shift(speed, chargeGain, chargeMax, shieldMax, healthMax, scoremult, healthDrain, healthGain, projectileSpeed)
             Case 0 ' default
                 shift(4, 5, 500, 100, 5000, 100, 10, 100, 4)
             Case 1 ' timeUp
