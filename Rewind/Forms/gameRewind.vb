@@ -155,7 +155,7 @@ Public Class gameRewind
                         Stage.charge += 1
                     End If
 
-                    projectiles(i).Shoot(500) ' Shift offscreen when projectile is hit
+                    projectiles(i).Shoot(100) ' Shift offscreen when projectile is hit
                     Exit Sub
                 ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
                     If Stage.playerHealth - 25 < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - 20 ' Lower cap
