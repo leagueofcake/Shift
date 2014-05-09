@@ -69,6 +69,7 @@ Partial Class gameRewind
         Me.lblScore = New System.Windows.Forms.Label()
         Me.lblShiftTimer = New System.Windows.Forms.Label()
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
+        Me.picStage = New System.Windows.Forms.PictureBox()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,6 +78,7 @@ Partial Class gameRewind
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picStage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'timerWorld
@@ -171,6 +173,7 @@ Partial Class gameRewind
         Me.debugBox.TabIndex = 11
         Me.debugBox.TabStop = False
         Me.debugBox.Text = "Debugging"
+        Me.debugBox.Visible = False
         '
         'lblStage
         '
@@ -566,6 +569,17 @@ Partial Class gameRewind
         '
         Me.timerPower.Interval = 10
         '
+        'picStage
+        '
+        Me.picStage.BackColor = System.Drawing.Color.Transparent
+        Me.picStage.BackgroundImage = Global.Rewind.My.Resources.Resources.stage0
+        Me.picStage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.picStage.Location = New System.Drawing.Point(11, 37)
+        Me.picStage.Name = "picStage"
+        Me.picStage.Size = New System.Drawing.Size(161, 15)
+        Me.picStage.TabIndex = 35
+        Me.picStage.TabStop = False
+        '
         'gameRewind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -574,6 +588,7 @@ Partial Class gameRewind
         Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.picStage)
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)
         Me.Controls.Add(Me.lblScore)
@@ -598,6 +613,7 @@ Partial Class gameRewind
         CType(Me.picWorld, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picStage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -647,5 +663,6 @@ Partial Class gameRewind
     Friend WithEvents timerPower As System.Windows.Forms.Timer
     Friend WithEvents lblStage As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents picStage As System.Windows.Forms.PictureBox
 
 End Class

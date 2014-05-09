@@ -63,6 +63,8 @@
         healthLoss = hLoss
         healthGain = hGain
         projectileSpeed = pSpeed
+
+        gameRewind.picStage.BackgroundImage = My.Resources.ResourceManager.GetObject("stage" + currentStage.ToString)
     End Sub
 
     Public Shared Sub applyPowerup(stageNumber As Integer)
