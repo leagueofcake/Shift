@@ -132,6 +132,7 @@ Public Class gameRewind
 
     Private Sub projectileShoot(i As Integer)
         Try ' Projectile shooting
+            If Not projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then projectiles(i).hitCooldown = False
             If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
             'projectiles(i).Shoot((picPlayer.Left / 100) + Stage.projectileSpeed) ' shoot speed depends on player's position
             projectiles(i).Shoot(Stage.projectileSpeed)
@@ -155,10 +156,12 @@ Public Class gameRewind
                         Stage.charge += 1
                     End If
 
-                    projectiles(i).Shoot(500) ' Shift offscreen when projectile is hit
+                    projectiles(i).Left = -50 ' Shift offscreen when projectile is hit
                     Exit Sub
-                ElseIf picPlayer.BackColor = Color.DodgerBlue Then ' Shield off, take damage
+                ElseIf picPlayer.BackColor = Color.DodgerBlue And projectiles(i).hitCooldown = False Then ' Shield off, take damage
                     If Stage.playerHealth - Stage.healthLoss < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - Stage.healthLoss ' Lower cap
+                    projectiles(i).hitCooldown = True
+                    Exit Sub
                 End If
             End If
         Catch ex As Exception
@@ -209,14 +212,7 @@ Public Class gameRewind
     End Sub
 
     Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Reset values on game load
-        Stage.currentStage = 0
-        Stage.applyStage(0)
-        Stage.score = 0
-        Stage.playerHealth = 5000
-        Stage.charge = 0
-        Stage.shieldStatus = 0
-        Stage.progression = 0
+        Stage.newGame() ' Reset values on game load
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
