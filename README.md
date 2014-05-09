@@ -6,14 +6,6 @@ Links! (yay)
 * [Main Bitbucket Page](https://bitbucket.org/leagueofcake/rewind)
 * [Source](https://bitbucket.org/leagueofcake/rewind/src)
 
-Constant Values
-===============
-* Health Bar: 500
-* Charge Limit (and timerCharge/chargeBar): 300
-* picPlayer: 50 x 50 px
-* Projectile shooting: -2
-* Projectile rewind: +4
-
 TODO
 ====
 Graphics/VFX
@@ -21,14 +13,6 @@ Graphics/VFX
 * Font: Bitsumishi
 * Make rewind effect draw an onion-skin effect
 * Rewinding: Make rewind accelerate as the effect lengthens
-* Design better graphics! 
-	* Replace charging bar
-	* Replace character
-	* Replace background
-	* Replace projectile
-	* Make a logo! 
-* Make background of paused graphic transparent
-* Black/White color scheme? 
 * Some visual effect when charging/using abilities e.g. screen flash/tint
 * Make character flash/fade out and in when using ability
 	* Fade out when charging, flash back in when finished
@@ -36,11 +20,8 @@ Graphics/VFX
 Game System/Mechanics
 ---------------------
 * Moving to the right makes time go faster, moving to the left makes time go slower
-* Fluctuating shield system - colliding with projectiles with shield on increases available length of Rewind/some bonus
-* Collision detection
 * Cooldown implementation for ability
 	* Countdown/white overlay filling to indicate cooldown
-* Removal of projectiles once they are out of range i.e. have moved past 5 seconds' travel distance
 * Main menu
 *Achievements
 	* Survived for X time
@@ -62,6 +43,7 @@ Game System/Mechanics
 	* Projectiles move at an angle
 	* Increased frequency of projectiles
 	* Change in colour scheme (Visual)
+* Create custom stages
 
 Sound
 -----
@@ -69,6 +51,4 @@ Sound
 	
 Quick Fixes/Code simplification/Other
 -----
-* Possibly combine timerWorld and timerRewind and set options to differentiate
 * Watch: [Adding/Remove Bullets at Runtime & Collision Detection (Youtube)](https://www.youtube.com/watch?v=rG0-FBfs14U)
-* Fix up timing for removal of projectiles off screen in line with new constant values
