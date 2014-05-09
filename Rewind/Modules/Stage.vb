@@ -72,6 +72,8 @@
                 gameRewind.timerGenerate.Enabled = False
                 gameRewind.timerWorld.Enabled = False
                 gameRewind.timerShield.Enabled = False
+            Case 2
+
         End Select
     End Sub
 
