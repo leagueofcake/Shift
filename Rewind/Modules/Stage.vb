@@ -18,8 +18,9 @@
 
     ' Difficulty shifting
     Public Shared healthDrain As Integer = 10
+    Public Shared healthLoss As Integer = 20
     Public Shared healthGain As Integer = 100
-    Public Shared projectileSpeed As Integer = 4
+    Public Shared projectileSpeed As Integer = 5
     Public Shared progression As Integer = 0 ' Essentially how long player has lasted in game
 
     Public Shared Sub selectStage() ' Generate a stage number different to current stage
@@ -33,24 +34,24 @@
 
     Public Shared Sub applyStage(stageNumber As Integer)
         Select Case stageNumber
-            ' shift(speed, chargeGain, chargeMax, shieldMax, healthMax, scoremult, healthDrain, healthGain, projectileSpeed)
+            ' shift(speed, chargeGain, chargeMax, shieldMax, healthMax, scoremult, healthDrain, healthGain, healthLoss, projectileSpeed)
             Case 0 ' default
-                shift(4, 5, 500, 100, 5000, 100, 10, 100, 4)
+                shift(4, 5, 500, 100, 5000, 100, 10, 200, 20, 5)
             Case 1 ' timeUp
-                shift(6, 2, 250, 25, 5000, 175, 20, 100, 8)
+                shift(6, 2, 250, 25, 5000, 175, 20, 200, 20, 10)
                 ' Restart timers that were stopped by powerUp
                 gameRewind.timerGenerate.Enabled = True
                 gameRewind.timerWorld.Enabled = True
                 gameRewind.timerShield.Enabled = True
             Case 2 ' lowHealth
-                shift(4, 5, 500, 100, 2500, 200, 20, 200, 4)
+                shift(4, 5, 500, 100, 2500, 200, 20, 400, 40, 5)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
         If playerHealth > healthMax Then playerHealth = healthMax ' Set playerHealth to healthMax if in switching stage healthMax is lowered and playerHealth > healthMax
     End Sub
 
-    Public Shared Sub shift(speed As Integer, cGain As Integer, cMax As Integer, sMax As Integer, hMax As Integer, sMult As Integer, hDrain As Integer, hGain As Integer, pSpeed As Integer)
+    Public Shared Sub shift(speed As Integer, cGain As Integer, cMax As Integer, sMax As Integer, hMax As Integer, sMult As Integer, hDrain As Integer, hLoss As Integer, hGain As Integer, pSpeed As Integer)
         playerSpeed = speed
         chargeGain = cGain
         chargeMax = cMax
@@ -59,6 +60,7 @@
 
         scoreMult = sMult
         healthDrain = hDrain
+        healthLoss = hLoss
         healthGain = hGain
         projectileSpeed = pSpeed
     End Sub
