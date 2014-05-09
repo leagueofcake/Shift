@@ -216,6 +216,6 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
-            Stage.applyPowerup(Stage.currentStage)
+        Stage.applyPowerup(Stage.currentStage)
     End Sub
 End Class

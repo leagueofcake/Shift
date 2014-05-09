@@ -44,7 +44,7 @@
                 gameRewind.timerWorld.Enabled = True
                 gameRewind.timerShield.Enabled = True
             Case 2 ' lowHealth
-                shift(4, 10, 500, 100, 2500, 200, 20, 20, 800, 5)
+                shift(4, 10, 500, 100, 2500, 200, 15, 20, 800, 5)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -78,7 +78,7 @@
                     gameRewind.timerWorld.Enabled = False
                     gameRewind.timerShield.Enabled = False
                 Case 2
-
+                    gameRewind.picPlayer.BackColor = Color.Green ' Activate shield
             End Select
         Else ' Turn off powerup and timerPower
             gameRewind.timerPower.Enabled = False
@@ -90,6 +90,7 @@
                     gameRewind.timerWorld.Enabled = True
                     gameRewind.timerShield.Enabled = True
                 Case 2
+                    gameRewind.picPlayer.BackColor = Color.DodgerBlue
             End Select
         End If
     End Sub
