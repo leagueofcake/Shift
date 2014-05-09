@@ -216,10 +216,6 @@ Public Class gameRewind
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
-        If Stage.charge > 0 Then
             Stage.applyPowerup(Stage.currentStage)
-        Else
-            timerPower.Enabled = False
-        End If
     End Sub
 End Class

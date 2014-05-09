@@ -68,17 +68,30 @@
     End Sub
 
     Public Shared Sub applyPowerup(stageNumber As Integer)
-        charge -= 1 ' Use up 1 charge
-        Select Case stageNumber
-            Case 0 ' default: speedUp
-                playerSpeed = 8
-            Case 1 ' timeUp: timeStop
-                gameRewind.timerGenerate.Enabled = False
-                gameRewind.timerWorld.Enabled = False
-                gameRewind.timerShield.Enabled = False
-            Case 2
+        If charge > 0 Then ' Use powerup if charge is available
+            charge -= 1 ' Use up 1 charge
+            Select Case stageNumber
+                Case 0 ' default: speedUp
+                    playerSpeed = 8
+                Case 1 ' timeUp: timeStop
+                    gameRewind.timerGenerate.Enabled = False
+                    gameRewind.timerWorld.Enabled = False
+                    gameRewind.timerShield.Enabled = False
+                Case 2
 
-        End Select
+            End Select
+        Else ' Turn off powerup and timerPower
+            gameRewind.timerPower.Enabled = False
+            Select Case stageNumber
+                Case 0
+                    playerSpeed = 4
+                Case 1
+                    gameRewind.timerGenerate.Enabled = True
+                    gameRewind.timerWorld.Enabled = True
+                    gameRewind.timerShield.Enabled = True
+                Case 2
+            End Select
+        End If
     End Sub
 
     Public Shared Sub newGame()
