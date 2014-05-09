@@ -34,17 +34,17 @@
 
     Public Shared Sub applyStage(stageNumber As Integer)
         Select Case stageNumber
-            ' shift(speed, chargeGain, chargeMax, shieldMax, healthMax, scoremult, healthDrain, healthGain, healthLoss, projectileSpeed)
+            ' shift(speed, chargeGain, chargeMax, shieldMax, healthMax, scoremult, healthDrain, healthLoss, healthGain, projectileSpeed)
             Case 0 ' default
-                shift(4, 5, 500, 100, 5000, 100, 10, 200, 20, 5)
+                shift(4, 10, 500, 100, 5000, 100, 10, 10, 400, 5)
             Case 1 ' timeUp
-                shift(6, 2, 250, 25, 5000, 175, 20, 200, 20, 10)
+                shift(6, 5, 250, 50, 5000, 150, 10, 20, 600, 10)
                 ' Restart timers that were stopped by powerUp
                 gameRewind.timerGenerate.Enabled = True
                 gameRewind.timerWorld.Enabled = True
                 gameRewind.timerShield.Enabled = True
             Case 2 ' lowHealth
-                shift(4, 5, 500, 100, 2500, 200, 20, 400, 40, 5)
+                shift(4, 10, 500, 100, 2500, 200, 20, 20, 800, 5)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -77,6 +77,16 @@
             Case 2
 
         End Select
+    End Sub
+
+    Public Shared Sub newGame()
+        Stage.currentStage = 0
+        Stage.applyStage(0)
+        Stage.score = 0
+        Stage.playerHealth = 5000
+        Stage.charge = 0
+        Stage.shieldStatus = 0
+        Stage.progression = 0
     End Sub
 
     Public Sub anti()
