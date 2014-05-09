@@ -56,11 +56,11 @@ Partial Class mainRewind
         'gameLogo
         '
         Me.gameLogo.BackColor = System.Drawing.Color.Transparent
-        Me.gameLogo.BackgroundImage = Global.Rewind.My.Resources.Resources.logoShift
+        Me.gameLogo.BackgroundImage = CType(resources.GetObject("gameLogo.BackgroundImage"), System.Drawing.Image)
         Me.gameLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.gameLogo.Location = New System.Drawing.Point(90, 39)
+        Me.gameLogo.Location = New System.Drawing.Point(76, 39)
         Me.gameLogo.Name = "gameLogo"
-        Me.gameLogo.Size = New System.Drawing.Size(554, 104)
+        Me.gameLogo.Size = New System.Drawing.Size(582, 104)
         Me.gameLogo.TabIndex = 3
         Me.gameLogo.TabStop = False
         '
