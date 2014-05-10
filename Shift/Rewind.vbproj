@@ -95,6 +95,12 @@
     <Compile Include="Forms\mainRewind.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\optionsRewind.Designer.vb">
+      <DependentUpon>optionsRewind.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\optionsRewind.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\Stage.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\mainRewind.resx">
       <DependentUpon>mainRewind.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\optionsRewind.resx">
+      <DependentUpon>optionsRewind.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
