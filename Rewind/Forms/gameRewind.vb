@@ -139,6 +139,7 @@ Public Class gameRewind
             If projectiles(i).Left < -500 Then ' Remove from form and arraylist
                 projectiles.Remove(projectiles(i))
                 Me.Controls.Remove(projectiles(i))
+                Exit Sub
             End If
         Catch ex As Exception
             ' None
@@ -150,11 +151,7 @@ Public Class gameRewind
             If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                 If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
                     If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
-                    If Stage.charge + Stage.chargeGain < Stage.chargeMax Then
-                        Stage.charge += Stage.chargeGain
-                    ElseIf Stage.charge + Stage.chargeGain > Stage.chargeMax And Stage.charge + 1 <= Stage.chargeMax Then
-                        Stage.charge += 1
-                    End If
+                    If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
 
                     projectiles(i).Left = -50 ' Shift offscreen when projectile is hit
                     Exit Sub
