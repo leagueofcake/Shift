@@ -59,9 +59,7 @@ Public Class gameRewind
 
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / (Stage.healthMax / 20)).ToString)
 
-        For i = 0 To projectiles.Count - 1
-            projectileCollision(i)
-        Next
+        projectileShootCollision()
 
         picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / (Stage.chargeMax / 10)).ToString) ' EXPERIMENTAL
 
@@ -122,47 +120,43 @@ Public Class gameRewind
             endGame()
             Exit Sub
         End If
+    End Sub
 
+    Private Sub projectileShootCollision()
         For i = 0 To projectiles.Count - 1
-            projectileShoot(i)
-        Next
-    End Sub
-
-    Private Sub projectileShoot(i As Integer)
-        Try ' Projectile shooting
-            If Not projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then projectiles(i).hitCooldown = False
-            If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
-            'projectiles(i).Shoot((picPlayer.Left / 100) + Stage.projectileSpeed) ' shoot speed depends on player's position
-            projectiles(i).Shoot(Stage.projectileSpeed)
-            If projectiles(i).Left < -500 Then ' Remove from form and arraylist
-                projectiles.Remove(projectiles(i))
-                Me.Controls.Remove(projectiles(i))
-                Exit Sub
-            End If
-        Catch ex As Exception
-            ' None
-        End Try
-    End Sub
-
-    Private Sub projectileCollision(i As Integer)
-        Try ' Projectile collision
-            If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
-                If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
-                    If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
-                    If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
-                    projectiles(i).BackCOlor = Color.White
-                    'projectiles(i).Left = -50 ' Shift offscreen when projectile is hit
-                    Exit Sub
-                ElseIf picPlayer.BackColor = Color.DodgerBlue And projectiles(i).hitCooldown = False Then ' Shield off, take damage
-                    If Stage.playerHealth - Stage.healthLoss < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - Stage.healthLoss ' Lower cap
-                    projectiles(i).hitCooldown = True
-                    projectiles(i).BackColor = Color.Red
-                    Exit Sub
+            Try
+                ' Projectile shooting
+                If timerGenerate.Enabled = True Then
+                    If Not projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then projectiles(i).hitCooldown = False
+                    If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
+                    'projectiles(i).Shoot((picPlayer.Left / 100) + Stage.projectileSpeed) ' shoot speed depends on player's position
+                    projectiles(i).Shoot(Stage.projectileSpeed)
+                    If projectiles(i).Left < -500 Then ' Remove from form and arraylist
+                        projectiles.Remove(projectiles(i))
+                        Me.Controls.Remove(projectiles(i))
+                        Exit Sub
+                    End If
                 End If
-            End If
-        Catch ex As Exception
-            ' None
-        End Try
+
+                ' Projectile collision
+                If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
+                    If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
+                        If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
+                        If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
+                        projectiles(i).BackCOlor = Color.White
+                        projectiles(i).Top = -50 ' EXPERIMENTAL Shift offscreen when projectile is hit
+                        Exit Sub
+                    ElseIf picPlayer.BackColor = Color.DodgerBlue And projectiles(i).hitCooldown = False Then ' Shield off, take damage
+                        If Stage.playerHealth - Stage.healthLoss < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - Stage.healthLoss ' Lower cap
+                        projectiles(i).hitCooldown = True
+                        projectiles(i).BackColor = Color.Red
+                        Exit Sub
+                    End If
+                End If
+            Catch ex As Exception
+                ' None
+            End Try
+        Next
     End Sub
 
     Private Sub timerGenerate_Tick(sender As Object, e As EventArgs) Handles timerGenerate.Tick
