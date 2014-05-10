@@ -14,28 +14,37 @@
         selectHelper()
     End Sub
 
-    Private Sub btnPlay_MouseDown(sender As Object, e As MouseEventArgs) Handles btnPlay.MouseDown
-        btnPlay.BackgroundImage = My.Resources.btnPlayClicked
+    Private Sub mouseDownButton(sender As Object, e As EventArgs) Handles btnPlay.MouseDown, btnOptions.MouseDown, btnHelp.MouseDown
+        Select Case sender.Name
+            Case "btnPlay"
+                btnPlay.BackgroundImage = My.Resources.btnPlayClicked
+            Case "btnOptions"
+                btnOptions.BackgroundImage = My.Resources.btnOptionsClicked
+            Case "btnHelp"
+                btnHelp.BackgroundImage = My.Resources.btnHelpClicked
+        End Select
     End Sub
 
-    Private Sub btnPlay_MouseHover(sender As Object, e As EventArgs) Handles btnPlay.MouseHover
-        If Not selected = 0 Then btnPlay.BackgroundImage = My.Resources.btnPlayHover
+    Private Sub mouseHoverButton(sender As Object, e As EventArgs) Handles btnPlay.MouseHover, btnOptions.MouseHover, btnHelp.MouseHover
+        Select Case sender.Name
+            Case "btnPlay"
+                If Not selected = 0 Then btnPlay.BackgroundImage = My.Resources.btnPlayHover
+            Case "btnOptions"
+                If Not selected = 1 Then btnOptions.BackgroundImage = My.Resources.btnOptionsHover
+            Case "btnHelp"
+                If Not selected = 2 Then btnHelp.BackgroundImage = My.Resources.btnHelpHover
+        End Select
     End Sub
 
-    Private Sub btnPlay_MouseLeave(sender As Object, e As EventArgs) Handles btnPlay.MouseLeave
-        If Not selected = 0 Then btnPlay.BackgroundImage = My.Resources.btnPlayUnclicked
-    End Sub
-
-    Private Sub btnHelp_MouseDown(sender As Object, e As MouseEventArgs) Handles btnHelp.MouseDown
-        btnHelp.BackgroundImage = My.Resources.btnHelpClicked
-    End Sub
-
-    Private Sub btnHelp_MouseHover(sender As Object, e As EventArgs) Handles btnHelp.MouseHover
-        If Not selected = 2 Then btnHelp.BackgroundImage = My.Resources.btnHelpHover
-    End Sub
-
-    Private Sub btnHelp_MouseLeave(sender As Object, e As EventArgs) Handles btnHelp.MouseLeave
-        If Not selected = 2 Then btnHelp.BackgroundImage = My.Resources.btnHelpUnclicked
+    Private Sub mouseLeaveButton(sender As Object, e As EventArgs) Handles btnPlay.MouseLeave, btnOptions.MouseLeave, btnHelp.MouseLeave
+        Select Case sender.Name
+            Case "btnPlay"
+                If Not selected = 0 Then btnPlay.BackgroundImage = My.Resources.btnPlayUnclicked
+            Case "btnOptions"
+                If Not selected = 1 Then btnOptions.BackgroundImage = My.Resources.btnOptionsUnclicked
+            Case "btnHelp"
+                If Not selected = 2 Then btnHelp.BackgroundImage = My.Resources.btnHelpUnclicked
+        End Select
     End Sub
 
     Private Sub mainRewind_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -48,11 +57,14 @@
     Private Sub hoverHelper()
         ' Reset images to unclicked state
         btnPlay.BackgroundImage = My.Resources.btnPlayUnclicked
+        btnOptions.BackgroundImage = My.Resources.btnOptionsUnclicked
         btnHelp.BackgroundImage = My.Resources.btnHelpUnclicked
 
         Select Case selected
             Case 0 ' Play
                 btnPlay.BackgroundImage = My.Resources.btnPlayClicked
+            Case 1
+                btnOptions.BackgroundImage = My.Resources.btnOptionsClicked
             Case 2 ' Help
                 btnHelp.BackgroundImage = My.Resources.btnHelpClicked
         End Select
