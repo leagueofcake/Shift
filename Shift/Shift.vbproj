@@ -76,29 +76,29 @@
     <Compile Include="Forms\endScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\gameRewind.vb">
+    <Compile Include="Forms\gameShift.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\gameRewind.Designer.vb">
-      <DependentUpon>gameRewind.vb</DependentUpon>
+    <Compile Include="Forms\gameShift.Designer.vb">
+      <DependentUpon>gameShift.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\helpRewind.Designer.vb">
-      <DependentUpon>helpRewind.vb</DependentUpon>
+    <Compile Include="Forms\helpShift.Designer.vb">
+      <DependentUpon>helpShift.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\helpRewind.vb">
+    <Compile Include="Forms\helpShift.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\mainRewind.Designer.vb">
-      <DependentUpon>mainRewind.vb</DependentUpon>
+    <Compile Include="Forms\mainShift.Designer.vb">
+      <DependentUpon>mainShift.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\mainRewind.vb">
+    <Compile Include="Forms\mainShift.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\optionsRewind.Designer.vb">
-      <DependentUpon>optionsRewind.vb</DependentUpon>
+    <Compile Include="Forms\optionsShift.Designer.vb">
+      <DependentUpon>optionsShift.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\optionsRewind.vb">
+    <Compile Include="Forms\optionsShift.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Stage.vb" />
@@ -125,17 +125,17 @@
     <EmbeddedResource Include="Forms\endScreen.resx">
       <DependentUpon>endScreen.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\gameRewind.resx">
-      <DependentUpon>gameRewind.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\gameShift.resx">
+      <DependentUpon>gameShift.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\helpRewind.resx">
-      <DependentUpon>helpRewind.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\helpShift.resx">
+      <DependentUpon>helpShift.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\mainRewind.resx">
-      <DependentUpon>mainRewind.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\mainShift.resx">
+      <DependentUpon>mainShift.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\optionsRewind.resx">
-      <DependentUpon>optionsRewind.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\optionsShift.resx">
+      <DependentUpon>optionsShift.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
