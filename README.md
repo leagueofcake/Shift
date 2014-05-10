@@ -1,5 +1,5 @@
-# Rewind - by leagueofcake
-Hi. This is my SDD major project, Rewind. It's a sidescroller game built in VB.NET. 
+# Shift - by leagueofcake
+Hi. This is my SDD major project, Shift. It's a sidescroller game built in VB.NET. 
 
 Links! (yay)
 ============

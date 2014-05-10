@@ -1,4 +1,4 @@
-﻿Public Class mainRewind
+﻿Public Class mainShift
     Dim selected As Integer = 0 ' 0: Play, 1: Options, 2: Help
     Dim numberOptions As Integer = 3 ' Modify based on how many options available
 
@@ -47,7 +47,7 @@
         End Select
     End Sub
 
-    Private Sub mainRewind_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+    Private Sub mainShift_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Enter Then selectHelper()
         If e.KeyCode = Keys.Down Then If selected < numberOptions - 1 Then selected += 1 Else selected = 0 ' Wrap around using down arrow
         If e.KeyCode = Keys.Up Then If selected > 0 Then selected -= 1 Else selected = numberOptions - 1 ' Wrap around using up arrow
@@ -74,11 +74,11 @@
         Me.Hide()
         Select Case selected
             Case 0 ' Play
-                gameRewind.Show()
+                gameShift.Show()
             Case 1 ' Options
-                optionsRewind.Show()
+                optionsShift.Show()
             Case 2 ' Help
-                helpRewind.Show()
+                helpShift.Show()
         End Select
     End Sub
 End Class

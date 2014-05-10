@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class helpRewind
+Partial Class helpShift
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -54,7 +54,7 @@ Partial Class helpRewind
         'btnGameInfo
         '
         Me.btnGameInfo.BackColor = System.Drawing.Color.Transparent
-        Me.btnGameInfo.BackgroundImage = Global.Rewind.My.Resources.Resources.btnGameInfoClicked
+        Me.btnGameInfo.BackgroundImage = Global.Shift.My.Resources.Resources.btnGameInfoClicked
         Me.btnGameInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnGameInfo.Location = New System.Drawing.Point(32, 170)
         Me.btnGameInfo.Name = "btnGameInfo"
@@ -65,7 +65,7 @@ Partial Class helpRewind
         'btnControls
         '
         Me.btnControls.BackColor = System.Drawing.Color.Transparent
-        Me.btnControls.BackgroundImage = Global.Rewind.My.Resources.Resources.btnControlsHover
+        Me.btnControls.BackgroundImage = Global.Shift.My.Resources.Resources.btnControlsHover
         Me.btnControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnControls.Location = New System.Drawing.Point(32, 244)
         Me.btnControls.Name = "btnControls"
@@ -118,7 +118,7 @@ Partial Class helpRewind
         'picProjectile
         '
         Me.picProjectile.BackColor = System.Drawing.Color.Transparent
-        Me.picProjectile.BackgroundImage = Global.Rewind.My.Resources.Resources.projectile
+        Me.picProjectile.BackgroundImage = Global.Shift.My.Resources.Resources.projectile
         Me.picProjectile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.picProjectile.Location = New System.Drawing.Point(368, 285)
         Me.picProjectile.Name = "picProjectile"
@@ -165,7 +165,7 @@ Partial Class helpRewind
         'picKeyUp
         '
         Me.picKeyUp.BackColor = System.Drawing.Color.Transparent
-        Me.picKeyUp.BackgroundImage = Global.Rewind.My.Resources.Resources.keyUp
+        Me.picKeyUp.BackgroundImage = Global.Shift.My.Resources.Resources.keyUp
         Me.picKeyUp.Location = New System.Drawing.Point(596, 160)
         Me.picKeyUp.Name = "picKeyUp"
         Me.picKeyUp.Size = New System.Drawing.Size(50, 50)
@@ -176,7 +176,7 @@ Partial Class helpRewind
         'picKeyLeft
         '
         Me.picKeyLeft.BackColor = System.Drawing.Color.Transparent
-        Me.picKeyLeft.BackgroundImage = Global.Rewind.My.Resources.Resources.keyLeft
+        Me.picKeyLeft.BackgroundImage = Global.Shift.My.Resources.Resources.keyLeft
         Me.picKeyLeft.Location = New System.Drawing.Point(546, 217)
         Me.picKeyLeft.Name = "picKeyLeft"
         Me.picKeyLeft.Size = New System.Drawing.Size(50, 50)
@@ -187,7 +187,7 @@ Partial Class helpRewind
         'picKeyRight
         '
         Me.picKeyRight.BackColor = System.Drawing.Color.Transparent
-        Me.picKeyRight.BackgroundImage = Global.Rewind.My.Resources.Resources.keyRight
+        Me.picKeyRight.BackgroundImage = Global.Shift.My.Resources.Resources.keyRight
         Me.picKeyRight.Location = New System.Drawing.Point(644, 217)
         Me.picKeyRight.Name = "picKeyRight"
         Me.picKeyRight.Size = New System.Drawing.Size(50, 50)
@@ -198,7 +198,7 @@ Partial Class helpRewind
         'picKeySpace
         '
         Me.picKeySpace.BackColor = System.Drawing.Color.Transparent
-        Me.picKeySpace.BackgroundImage = Global.Rewind.My.Resources.Resources.keySpace
+        Me.picKeySpace.BackgroundImage = Global.Shift.My.Resources.Resources.keySpace
         Me.picKeySpace.Location = New System.Drawing.Point(324, 217)
         Me.picKeySpace.Name = "picKeySpace"
         Me.picKeySpace.Size = New System.Drawing.Size(150, 50)
@@ -258,11 +258,11 @@ Partial Class helpRewind
         Me.lblControl3.Text = "Move Right"
         Me.lblControl3.Visible = False
         '
-        'helpRewind
+        'helpShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
+        Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
         Me.Controls.Add(Me.lblControl1)
@@ -284,9 +284,9 @@ Partial Class helpRewind
         Me.Controls.Add(Me.picKeyLeft)
         Me.Controls.Add(Me.picKeyUp)
         Me.DoubleBuffered = True
-        Me.Name = "helpRewind"
+        Me.Name = "helpShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "helpRewind"
+        Me.Text = "helpShift"
         CType(Me.btnGameInfo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnControls, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPlayerBlue, System.ComponentModel.ISupportInitialize).EndInit()

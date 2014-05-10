@@ -1,4 +1,4 @@
-﻿Public Class helpRewind
+﻿Public Class helpShift
     Private Sub btnControls_Click(sender As Object, e As EventArgs) Handles btnControls.Click
         RemoveHandler btnControls.MouseDown, AddressOf btnControls_MouseDown
         RemoveHandler btnControls.MouseHover, AddressOf btnControls_MouseHover

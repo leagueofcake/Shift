@@ -40,9 +40,9 @@
             Case 1 ' timeUp
                 shift(6, 5000, 50, 20, 20, 600, 5, 250, 10, 175)
                 ' Restart timers that were stopped by powerUp
-                gameRewind.timerGenerate.Enabled = True
-                gameRewind.timerWorld.Enabled = True
-                gameRewind.timerShield.Enabled = True
+                gameShift.timerGenerate.Enabled = True
+                gameShift.timerWorld.Enabled = True
+                gameShift.timerShield.Enabled = True
             Case 2 ' lowHealth
                 shift(4, 2500, 100, 20, 20, 800, 10, 500, 5, 200)
         End Select
@@ -63,7 +63,7 @@
         projectileSpeed = pSpeed
         scoreMult = sMult
 
-        gameRewind.picStage.BackgroundImage = My.Resources.ResourceManager.GetObject("stage" + currentStage.ToString)
+        gameShift.picStage.BackgroundImage = My.Resources.ResourceManager.GetObject("stage" + currentStage.ToString)
     End Sub
 
     Public Shared Sub applyPowerup(stageNumber As Integer)
@@ -73,23 +73,23 @@
                 Case 0 ' default: speedUp
                     playerSpeed = 8
                 Case 1 ' timeUp: timeStop
-                    gameRewind.timerGenerate.Enabled = False
-                    gameRewind.timerWorld.Enabled = False
-                    gameRewind.timerShield.Enabled = False
+                    gameShift.timerGenerate.Enabled = False
+                    gameShift.timerWorld.Enabled = False
+                    gameShift.timerShield.Enabled = False
                 Case 2
-                    gameRewind.picPlayer.BackColor = Color.Green ' Activate shield
+                    gameShift.picPlayer.BackColor = Color.Green ' Activate shield
             End Select
         Else ' Turn off powerup and timerPower
-            gameRewind.timerPower.Enabled = False
+            gameShift.timerPower.Enabled = False
             Select Case stageNumber
                 Case 0
                     playerSpeed = 4
                 Case 1
-                    gameRewind.timerGenerate.Enabled = True
-                    gameRewind.timerWorld.Enabled = True
-                    gameRewind.timerShield.Enabled = True
+                    gameShift.timerGenerate.Enabled = True
+                    gameShift.timerWorld.Enabled = True
+                    gameShift.timerShield.Enabled = True
                 Case 2
-                    gameRewind.picPlayer.BackColor = Color.DodgerBlue
+                    gameShift.picPlayer.BackColor = Color.DodgerBlue
             End Select
         End If
     End Sub
@@ -107,25 +107,25 @@
     Public Sub anti()
         'Case -1 ' anti
         ' ANTI STAGE CODE INCOMPLETE
-        'gameRewind.picWorld.Top = 0
-        'gameRewind.pichealthText.Left = 750 - gameRewind.pichealthText.Width - 20
-        'gameRewind.pichealthText.Top = 480 - 10 - 3 * gameRewind.pichealthText.Height
-        'gameRewind.pichealthText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+        'gameShift.picWorld.Top = 0
+        'gameShift.pichealthText.Left = 750 - gameShift.pichealthText.Width - 20
+        'gameShift.pichealthText.Top = 480 - 10 - 3 * gameShift.pichealthText.Height
+        'gameShift.pichealthText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameRewind.picPausedText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+        'gameShift.picPausedText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameRewind.picHealth.Left = 750 - gameRewind.picHealth.Width - 200
-        'gameRewind.picHealth.Top = 480 - 2 * gameRewind.picHealth.Height - 20
-        'gameRewind.picHealth.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+        'gameShift.picHealth.Left = 750 - gameShift.picHealth.Width - 200
+        'gameShift.picHealth.Top = 480 - 2 * gameShift.picHealth.Height - 20
+        'gameShift.picHealth.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameRewind.picCharge.Left = 50
-        'gameRewind.picCharge.Top = 140
-        'gameRewind.picCharge.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone) ' CURRENTLY NOT WORKING
+        'gameShift.picCharge.Left = 50
+        'gameShift.picCharge.Top = 140
+        'gameShift.picCharge.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone) ' CURRENTLY NOT WORKING
 
-        'gameRewind.picChargeLabel.Left = 10
-        'gameRewind.picChargeLabel.Top = 140
-        'gameRewind.picChargeLabel.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+        'gameShift.picChargeLabel.Left = 10
+        'gameShift.picChargeLabel.Top = 140
+        'gameShift.picChargeLabel.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameRewind.debugBox.Left = 500
+        'gameShift.debugBox.Left = 500
     End Sub
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class mainRewind
+Partial Class mainShift
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class mainRewind
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainRewind))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainShift))
         Me.btnPlay = New System.Windows.Forms.PictureBox()
         Me.btnHelp = New System.Windows.Forms.PictureBox()
         Me.gameLogo = New System.Windows.Forms.PictureBox()
@@ -36,7 +36,7 @@ Partial Class mainRewind
         'btnPlay
         '
         Me.btnPlay.BackColor = System.Drawing.Color.Transparent
-        Me.btnPlay.BackgroundImage = Global.Rewind.My.Resources.Resources.btnPlayClicked
+        Me.btnPlay.BackgroundImage = Global.Shift.My.Resources.Resources.btnPlayClicked
         Me.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnPlay.Location = New System.Drawing.Point(267, 170)
         Me.btnPlay.Name = "btnPlay"
@@ -69,7 +69,7 @@ Partial Class mainRewind
         'btnOptions
         '
         Me.btnOptions.BackColor = System.Drawing.Color.Transparent
-        Me.btnOptions.BackgroundImage = Global.Rewind.My.Resources.Resources.btnOptionsUnclicked
+        Me.btnOptions.BackgroundImage = Global.Shift.My.Resources.Resources.btnOptionsUnclicked
         Me.btnOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnOptions.Location = New System.Drawing.Point(265, 230)
         Me.btnOptions.Name = "btnOptions"
@@ -77,11 +77,11 @@ Partial Class mainRewind
         Me.btnOptions.TabIndex = 4
         Me.btnOptions.TabStop = False
         '
-        'mainRewind
+        'mainShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
+        Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
         Me.Controls.Add(Me.btnOptions)
@@ -89,9 +89,9 @@ Partial Class mainRewind
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnPlay)
         Me.DoubleBuffered = True
-        Me.Name = "mainRewind"
+        Me.Name = "mainShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "mainRewind"
+        Me.Text = "mainShift"
         CType(Me.btnPlay, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gameLogo, System.ComponentModel.ISupportInitialize).EndInit()

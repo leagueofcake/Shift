@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class gameRewind
+Partial Class gameShift
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class gameRewind
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(gameRewind))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(gameShift))
         Me.timerWorld = New System.Windows.Forms.Timer(Me.components)
         Me.timerGenerate = New System.Windows.Forms.Timer(Me.components)
         Me.timerShield = New System.Windows.Forms.Timer(Me.components)
@@ -458,7 +458,7 @@ Partial Class gameRewind
         'picPausedText
         '
         Me.picPausedText.BackColor = System.Drawing.Color.Transparent
-        Me.picPausedText.BackgroundImage = Global.Rewind.My.Resources.Resources.pausedText
+        Me.picPausedText.BackgroundImage = Global.Shift.My.Resources.Resources.pausedText
         Me.picPausedText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.picPausedText.Location = New System.Drawing.Point(218, 203)
         Me.picPausedText.Name = "picPausedText"
@@ -510,7 +510,7 @@ Partial Class gameRewind
         'picCharge
         '
         Me.picCharge.BackColor = System.Drawing.Color.Transparent
-        Me.picCharge.BackgroundImage = Global.Rewind.My.Resources.Resources.chargeBar0
+        Me.picCharge.BackgroundImage = Global.Shift.My.Resources.Resources.chargeBar0
         Me.picCharge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.picCharge.Location = New System.Drawing.Point(640, 56)
         Me.picCharge.Name = "picCharge"
@@ -572,7 +572,7 @@ Partial Class gameRewind
         'picStage
         '
         Me.picStage.BackColor = System.Drawing.Color.Transparent
-        Me.picStage.BackgroundImage = Global.Rewind.My.Resources.Resources.stage0
+        Me.picStage.BackgroundImage = Global.Shift.My.Resources.Resources.stage0
         Me.picStage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.picStage.Location = New System.Drawing.Point(11, 37)
         Me.picStage.Name = "picStage"
@@ -580,12 +580,12 @@ Partial Class gameRewind
         Me.picStage.TabIndex = 35
         Me.picStage.TabStop = False
         '
-        'gameRewind
+        'gameShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.BackgroundImage = Global.Rewind.My.Resources.Resources.mainbg
+        Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(734, 441)
         Me.Controls.Add(Me.picStage)
@@ -601,7 +601,7 @@ Partial Class gameRewind
         Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.picChargeLabel)
         Me.DoubleBuffered = True
-        Me.Name = "gameRewind"
+        Me.Name = "gameShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Game"
         Me.debugBox.ResumeLayout(False)

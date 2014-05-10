@@ -7,7 +7,7 @@
 ''' </summary>
 ''' <remarks></remarks>
 
-Public Class gameRewind
+Public Class gameShift
     Dim projectiles As New ArrayList
     Dim playerY As Integer
     Dim finishJump As Boolean = False
@@ -88,7 +88,7 @@ Public Class gameRewind
         If GetAsyncKeyState(CInt(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
     End Sub
 
-    Private Sub gameRewind_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+    Private Sub gameShift_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         Select Case e.KeyChar
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
                 Stage.paused = Not Stage.paused
@@ -101,7 +101,7 @@ Public Class gameRewind
         End Select
     End Sub
 
-    Private Sub gameRewind_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
+    Private Sub gameShift_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space And Stage.paused = False Then
             timerPower.Enabled = False
             Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
@@ -201,7 +201,7 @@ Public Class gameRewind
         End If
     End Sub
 
-    Private Sub gameRewind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub gameShift_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Stage.newGame() ' Reset values on game load
     End Sub
 

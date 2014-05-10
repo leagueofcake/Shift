@@ -1,0 +1,14 @@
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\bin\Debug\Shift.exe.config
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\bin\Debug\Shift.exe
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\bin\Debug\Shift.pdb
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\bin\Debug\Shift.xml
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.endScreen.resources
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.gameRewind.resources
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.helpRewind.resources
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.mainRewind.resources
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.optionsRewind.resources
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.Resources.resources
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.vbproj.GenerateResource.Cache
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.exe
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.xml
+C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.pdb
