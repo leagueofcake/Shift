@@ -63,7 +63,7 @@
         Select Case selected
             Case 0 ' Play
                 btnPlay.BackgroundImage = My.Resources.btnPlayClicked
-            Case 1
+            Case 1 ' Options
                 btnOptions.BackgroundImage = My.Resources.btnOptionsClicked
             Case 2 ' Help
                 btnHelp.BackgroundImage = My.Resources.btnHelpClicked
@@ -71,12 +71,13 @@
     End Sub
 
     Private Sub selectHelper()
+        Me.Hide()
         Select Case selected
             Case 0 ' Play
-                Me.Hide()
                 gameRewind.Show()
+            Case 1 ' Options
+                optionsRewind.Show()
             Case 2 ' Help
-                Me.Hide()
                 helpRewind.Show()
         End Select
     End Sub
