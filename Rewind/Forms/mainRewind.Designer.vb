@@ -34,7 +34,7 @@ Partial Class mainRewind
         'btnPlay
         '
         Me.btnPlay.BackColor = System.Drawing.Color.Transparent
-        Me.btnPlay.BackgroundImage = CType(resources.GetObject("btnPlay.BackgroundImage"), System.Drawing.Image)
+        Me.btnPlay.BackgroundImage = Global.Rewind.My.Resources.Resources.btnPlayClicked
         Me.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnPlay.Location = New System.Drawing.Point(267, 172)
         Me.btnPlay.Name = "btnPlay"
