@@ -52,3 +52,4 @@ Sound
 Quick Fixes/Code simplification/Other
 -----
 * Watch: [Adding/Remove Bullets at Runtime & Collision Detection (Youtube)](https://www.youtube.com/watch?v=rG0-FBfs14U)
+* Fix up arrow key graphics for help
