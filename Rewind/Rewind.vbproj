@@ -361,6 +361,9 @@
     <None Include="Assets\main\projectile.png" />
     <None Include="Assets\stage\stage0.png" />
     <None Include="Assets\stage\stage1.png" />
+    <None Include="Assets\buttons\btnOptionsClicked.png" />
+    <None Include="Assets\buttons\btnOptionsHover.png" />
+    <None Include="Assets\buttons\btnOptionsUnclicked.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />
