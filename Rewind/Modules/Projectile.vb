@@ -1,6 +1,6 @@
 ﻿Public Class Projectile
     Inherits PictureBox
-    Private hitCD As Boolean
+    Private hitCD As Boolean = False
 
     Public Sub New()
         With Me
@@ -8,7 +8,7 @@
             .BackgroundImageLayout = ImageLayout.Stretch
             .BackgroundImage = My.Resources.projectile
             .Size = New Size(30, 30)
-            .Location = New Point(750, 300)
+            .Location = New Point(750, 305)
         End With
     End Sub
 
@@ -21,7 +21,7 @@
             Return hitCD
         End Get
         Set(value As Boolean)
-            hitCD += 1
+            hitCD = value
         End Set
     End Property
 End Class

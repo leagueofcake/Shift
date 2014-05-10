@@ -59,11 +59,10 @@ Public Class gameRewind
 
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / (Stage.healthMax / 20)).ToString)
 
-        If Stage.currentStage = 1 Then
-            For i = 0 To projectiles.Count - 1
-                projectileCollision(i)
-            Next
-        End If
+        For i = 0 To projectiles.Count - 1
+            projectileCollision(i)
+        Next
+
         picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / (Stage.chargeMax / 10)).ToString) ' EXPERIMENTAL
 
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
@@ -126,7 +125,6 @@ Public Class gameRewind
 
         For i = 0 To projectiles.Count - 1
             projectileShoot(i)
-            projectileCollision(i)
         Next
     End Sub
 
@@ -152,12 +150,13 @@ Public Class gameRewind
                 If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
                     If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
                     If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
-
-                    projectiles(i).Left = -50 ' Shift offscreen when projectile is hit
+                    projectiles(i).BackCOlor = Color.White
+                    'projectiles(i).Left = -50 ' Shift offscreen when projectile is hit
                     Exit Sub
                 ElseIf picPlayer.BackColor = Color.DodgerBlue And projectiles(i).hitCooldown = False Then ' Shield off, take damage
                     If Stage.playerHealth - Stage.healthLoss < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - Stage.healthLoss ' Lower cap
                     projectiles(i).hitCooldown = True
+                    projectiles(i).BackColor = Color.Red
                     Exit Sub
                 End If
             End If
