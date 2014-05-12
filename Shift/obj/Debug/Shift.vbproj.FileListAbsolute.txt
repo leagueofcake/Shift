@@ -12,3 +12,7 @@ C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.vbp
 C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.exe
 C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.xml
 C:\Users\Dominic\Documents\Programming\Projects\Rewind\Shift\obj\Debug\Shift.pdb
+C:\Users\Dominic\Documents\Programming\Projects\Shift\Shift\bin\Debug\Shift.exe.config
+C:\Users\Dominic\Documents\Programming\Projects\Shift\Shift\obj\Debug\Shift.exe
+C:\Users\Dominic\Documents\Programming\Projects\Shift\Shift\obj\Debug\Shift.xml
+C:\Users\Dominic\Documents\Programming\Projects\Shift\Shift\obj\Debug\Shift.pdb
