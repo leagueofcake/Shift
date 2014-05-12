@@ -24,13 +24,17 @@
     Public Shared scoreMult As Integer = 0
 
     Public Shared Sub selectStage() ' Generate a stage number different to current stage
-        Dim rand = New Random().Next(0, 3) ' 0, max no. stages + 1
+        Dim rand = New Random().Next(0, 4) ' 0, max no. stages + 1
         While rand = currentStage ' force a different stage to current
-            rand = New Random().Next(0, 3)
+            rand = New Random().Next(0, 4)
         End While
         currentStage = rand
         applyStage(currentStage)
     End Sub
+
+    Private Function randHelper(minRange As Integer, maxRange As Integer)
+        Return New Random().Next(minRange, maxRange)
+    End Function
 
     Public Shared Sub applyStage(stageNumber As Integer)
         Select Case stageNumber
@@ -45,6 +49,9 @@
                 gameShift.timerShield.Enabled = True
             Case 2 ' lowHealth
                 shift(4, 2500, 100, 20, 20, 800, 10, 500, 5, 200)
+            Case 3 ' Random
+                shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(50, 200))
+                'shift(randHelper(2, 8), randHelper(2500, 10000), randHelper(0, 200), randHelper(5, 20), randHelper(5, 20), randHelper(200, 800), randHelper(2, 8), randHelper(100, 1000), randHelper(5, 10), randHelper(50, 200))
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -95,7 +102,7 @@
     End Sub
 
     Public Shared Sub newGame()
-        Stage.currentStage = 0
+        Stage.currentStage = 3
         Stage.applyStage(0)
         Stage.score = 0
         Stage.playerHealth = 5000
