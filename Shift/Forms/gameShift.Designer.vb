@@ -167,7 +167,7 @@ Partial Class gameShift
         Me.debugBox.Controls.Add(Me.lblMovement)
         Me.debugBox.Controls.Add(Me.lbl13)
         Me.debugBox.ForeColor = System.Drawing.Color.White
-        Me.debugBox.Location = New System.Drawing.Point(12, 56)
+        Me.debugBox.Location = New System.Drawing.Point(400, 56)
         Me.debugBox.Name = "debugBox"
         Me.debugBox.Size = New System.Drawing.Size(223, 184)
         Me.debugBox.TabIndex = 11
@@ -535,7 +535,7 @@ Partial Class gameShift
         Me.lblScoreTitle.BackColor = System.Drawing.Color.Transparent
         Me.lblScoreTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScoreTitle.ForeColor = System.Drawing.Color.White
-        Me.lblScoreTitle.Location = New System.Drawing.Point(246, 56)
+        Me.lblScoreTitle.Location = New System.Drawing.Point(10, 56)
         Me.lblScoreTitle.Name = "lblScoreTitle"
         Me.lblScoreTitle.Size = New System.Drawing.Size(51, 20)
         Me.lblScoreTitle.TabIndex = 22
@@ -547,7 +547,7 @@ Partial Class gameShift
         Me.lblScore.BackColor = System.Drawing.Color.Transparent
         Me.lblScore.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblScore.ForeColor = System.Drawing.Color.White
-        Me.lblScore.Location = New System.Drawing.Point(303, 56)
+        Me.lblScore.Location = New System.Drawing.Point(70, 56)
         Me.lblScore.Name = "lblScore"
         Me.lblScore.Size = New System.Drawing.Size(18, 20)
         Me.lblScore.TabIndex = 21
@@ -559,7 +559,7 @@ Partial Class gameShift
         Me.lblShiftTimer.BackColor = System.Drawing.Color.Transparent
         Me.lblShiftTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShiftTimer.ForeColor = System.Drawing.Color.White
-        Me.lblShiftTimer.Location = New System.Drawing.Point(246, 76)
+        Me.lblShiftTimer.Location = New System.Drawing.Point(10, 76)
         Me.lblShiftTimer.Name = "lblShiftTimer"
         Me.lblShiftTimer.Size = New System.Drawing.Size(180, 20)
         Me.lblShiftTimer.TabIndex = 23
