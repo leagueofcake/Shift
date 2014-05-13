@@ -167,8 +167,8 @@ Public Class gameShift
 
         ' If stage = 4 (spacetime) then genvar is dependent on player's position else semi-randomised
         If Stage.currentStage = 4 Then
-            ' If progression in stage < 5 seconds then genVar is faster on right, else faster on left when progression > 5
-            If 10 - (Stage.progression / 100) < 5 Then Stage.genVar = picPlayer.Left + 1000 Else Stage.genVar = 1000 - (picPlayer.Left)
+            ' If progression in stage < 5 seconds then genVar is faster on right, else faster on left when progression > 5, max picPlayer.Left = 688
+            If (Stage.progression / 100) Mod 10 < 5 Then Stage.genVar = (picPlayer.Left / 10) ^ 1.5 + 300 Else Stage.genVar = 870 - (picPlayer.Left / 10) ^ 1.5
         Else
             Stage.genVar = (Rnd() * 5 + 1) * 100
         End If
