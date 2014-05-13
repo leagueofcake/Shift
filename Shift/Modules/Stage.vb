@@ -52,6 +52,8 @@
             Case 3 ' Random
                 shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(50, 200))
                 'shift(randHelper(2, 8), randHelper(2500, 10000), randHelper(0, 200), randHelper(5, 20), randHelper(5, 20), randHelper(200, 800), randHelper(2, 8), randHelper(100, 1000), randHelper(5, 10), randHelper(50, 200))
+            Case 4
+                shift(4, 5000, 100, 10, 10, 400, 10, 500, 99999, (gameShift.picPlayer.Left / 100) + Stage.projectileSpeed)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -85,6 +87,8 @@
                     gameShift.timerShield.Enabled = False
                 Case 2
                     gameShift.picPlayer.BackColor = Color.Green ' Activate shield
+                Case 3
+                    ' Powerup built in - re-randomise values
             End Select
         Else ' Turn off powerup and timerPower
             gameShift.timerPower.Enabled = False
@@ -97,12 +101,14 @@
                     gameShift.timerShield.Enabled = True
                 Case 2
                     gameShift.picPlayer.BackColor = Color.DodgerBlue
+                Case 3
+                    ' Powerup built in - re-randomise values
             End Select
         End If
     End Sub
 
     Public Shared Sub newGame()
-        Stage.currentStage = 3
+        Stage.currentStage = 0
         Stage.applyStage(0)
         Stage.score = 0
         Stage.playerHealth = 5000
