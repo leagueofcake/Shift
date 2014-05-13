@@ -25,6 +25,7 @@ Public Class gameShift
 
     Private Sub endGame()
         togglePause()
+        timerConstant.Enabled = False
         endScreen.lblScore.Text = "Score: " + Stage.score.ToString
         endScreen.Show()
     End Sub
@@ -111,22 +112,15 @@ Public Class gameShift
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
-        If Stage.charge = 0 Then Stage.playerSpeed = 4 'Else Stage.charge -= 1 ' Use up power
+        Stage.progression += 1
 
         ' Apply special stage properties
         If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
-        If Stage.currentStage = 3 And Stage.progression Mod 200 = 0 Then ' Stage 3: random, shift values every 2 seconds
-            Stage.applyStage(Stage.currentStage)
-        End If
-
-        Stage.progression += 1
+        If Stage.currentStage = 3 And Stage.progression Mod 200 = 0 Then Stage.applyStage(Stage.currentStage) ' Stage 3: random, shift values every 2 seconds
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
         If Stage.playerHealth > 0 Then Stage.score += Stage.scoreMult
-        If Stage.playerHealth = 0 Then
-            endGame()
-            Exit Sub
-        End If
+        If Stage.playerHealth = 0 Then endGame()
     End Sub
 
     Private Sub projectileShootCollision()
