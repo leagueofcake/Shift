@@ -373,6 +373,9 @@
     <None Include="Assets\buttons\btnOptionsClicked.png" />
     <None Include="Assets\buttons\btnOptionsHover.png" />
     <None Include="Assets\buttons\btnOptionsUnclicked.png" />
+    <None Include="Assets\game\text\stage2.png" />
+    <None Include="Assets\game\text\stage3.png" />
+    <None Include="Assets\game\text\stage4.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

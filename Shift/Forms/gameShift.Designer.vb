@@ -472,7 +472,7 @@ Partial Class gameShift
         Me.picHealth.BackColor = System.Drawing.Color.Transparent
         Me.picHealth.BackgroundImage = CType(resources.GetObject("picHealth.BackgroundImage"), System.Drawing.Image)
         Me.picHealth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.picHealth.Location = New System.Drawing.Point(180, 10)
+        Me.picHealth.Location = New System.Drawing.Point(180, 5)
         Me.picHealth.Name = "picHealth"
         Me.picHealth.Size = New System.Drawing.Size(525, 30)
         Me.picHealth.TabIndex = 13
@@ -576,7 +576,7 @@ Partial Class gameShift
         Me.picStage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.picStage.Location = New System.Drawing.Point(11, 37)
         Me.picStage.Name = "picStage"
-        Me.picStage.Size = New System.Drawing.Size(161, 15)
+        Me.picStage.Size = New System.Drawing.Size(176, 15)
         Me.picStage.TabIndex = 35
         Me.picStage.TabStop = False
         '

@@ -108,7 +108,7 @@
     End Sub
 
     Public Shared Sub newGame()
-        Stage.currentStage = 4
+        Stage.currentStage = 0
         Stage.applyStage(0)
         Stage.score = 0
         Stage.playerHealth = 5000

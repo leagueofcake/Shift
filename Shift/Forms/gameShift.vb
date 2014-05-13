@@ -112,7 +112,13 @@ Public Class gameShift
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
         If Stage.charge = 0 Then Stage.playerSpeed = 4 'Else Stage.charge -= 1 ' Use up power
+
+        ' Apply special stage properties
         If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
+        If Stage.currentStage = 3 And Stage.progression Mod 200 = 0 Then ' Stage 3: random, shift values every 2 seconds
+            Stage.applyStage(Stage.currentStage)
+        End If
+
         Stage.progression += 1
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
