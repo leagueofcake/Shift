@@ -587,7 +587,7 @@ Partial Class gameShift
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.ClientSize = New System.Drawing.Size(734, 442)
         Me.Controls.Add(Me.picStage)
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)

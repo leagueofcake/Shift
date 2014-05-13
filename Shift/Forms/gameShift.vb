@@ -112,6 +112,7 @@ Public Class gameShift
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
         If Stage.charge = 0 Then Stage.playerSpeed = 4 'Else Stage.charge -= 1 ' Use up power
+        If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
         Stage.progression += 1
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
@@ -129,7 +130,6 @@ Public Class gameShift
                 If timerGenerate.Enabled = True Then
                     If Not projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then projectiles(i).hitCooldown = False
                     If i = projectiles.Count - 1 Then timerGenerate.Enabled = True
-                    'projectiles(i).Shoot((picPlayer.Left / 100) + Stage.projectileSpeed) ' shoot speed depends on player's position
                     projectiles(i).Shoot(Stage.projectileSpeed)
                     If projectiles(i).Left < -500 Then ' Remove from form and arraylist
                         projectiles.Remove(projectiles(i))
@@ -165,8 +165,14 @@ Public Class gameShift
         Controls.Add(newProjectile)
         projectiles.Add(newProjectile)
 
-        'Stage.genVar = 800 - picPlayer.Left ' genVar dependent on player's position
-        Stage.genVar = (Rnd() * 5 + 1) * 100
+        ' If stage = 4 (spacetime) then genvar is dependent on player's position else semi-randomised
+        If Stage.currentStage = 4 Then
+            ' If progression in stage < 5 seconds then genVar is faster on right, else faster on left when progression > 5
+            If 10 - (Stage.progression / 100) < 5 Then Stage.genVar = picPlayer.Left + 1000 Else Stage.genVar = 1000 - (picPlayer.Left)
+        Else
+            Stage.genVar = (Rnd() * 5 + 1) * 100
+        End If
+
         timerGenerate.Interval = Stage.genVar
     End Sub
 
