@@ -70,6 +70,8 @@ Partial Class gameShift
         Me.lblShiftTimer = New System.Windows.Forms.Label()
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.picStage = New System.Windows.Forms.PictureBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblPlayerY = New System.Windows.Forms.Label()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -138,6 +140,8 @@ Partial Class gameShift
         'debugBox
         '
         Me.debugBox.BackColor = System.Drawing.Color.Transparent
+        Me.debugBox.Controls.Add(Me.lblPlayerY)
+        Me.debugBox.Controls.Add(Me.Label12)
         Me.debugBox.Controls.Add(Me.lblStage)
         Me.debugBox.Controls.Add(Me.Label14)
         Me.debugBox.Controls.Add(Me.lblProjectiles)
@@ -180,7 +184,7 @@ Partial Class gameShift
         Me.lblStage.AutoSize = True
         Me.lblStage.BackColor = System.Drawing.Color.Transparent
         Me.lblStage.ForeColor = System.Drawing.Color.White
-        Me.lblStage.Location = New System.Drawing.Point(161, 147)
+        Me.lblStage.Location = New System.Drawing.Point(161, 144)
         Me.lblStage.Name = "lblStage"
         Me.lblStage.Size = New System.Drawing.Size(13, 13)
         Me.lblStage.TabIndex = 34
@@ -191,7 +195,7 @@ Partial Class gameShift
         Me.Label14.AutoSize = True
         Me.Label14.BackColor = System.Drawing.Color.Transparent
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(117, 147)
+        Me.Label14.Location = New System.Drawing.Point(117, 144)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(33, 13)
         Me.Label14.TabIndex = 33
@@ -213,7 +217,7 @@ Partial Class gameShift
         Me.lblHpDrain.AutoSize = True
         Me.lblHpDrain.BackColor = System.Drawing.Color.Transparent
         Me.lblHpDrain.ForeColor = System.Drawing.Color.White
-        Me.lblHpDrain.Location = New System.Drawing.Point(68, 147)
+        Me.lblHpDrain.Location = New System.Drawing.Point(68, 144)
         Me.lblHpDrain.Name = "lblHpDrain"
         Me.lblHpDrain.Size = New System.Drawing.Size(13, 13)
         Me.lblHpDrain.TabIndex = 32
@@ -224,7 +228,7 @@ Partial Class gameShift
         Me.Label13.AutoSize = True
         Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(7, 147)
+        Me.Label13.Location = New System.Drawing.Point(7, 144)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(47, 13)
         Me.Label13.TabIndex = 31
@@ -580,6 +584,28 @@ Partial Class gameShift
         Me.picStage.TabIndex = 35
         Me.picStage.TabStop = False
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(7, 161)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(42, 13)
+        Me.Label12.TabIndex = 36
+        Me.Label12.Text = "playerY"
+        '
+        'lblPlayerY
+        '
+        Me.lblPlayerY.AutoSize = True
+        Me.lblPlayerY.BackColor = System.Drawing.Color.Transparent
+        Me.lblPlayerY.ForeColor = System.Drawing.Color.White
+        Me.lblPlayerY.Location = New System.Drawing.Point(68, 161)
+        Me.lblPlayerY.Name = "lblPlayerY"
+        Me.lblPlayerY.Size = New System.Drawing.Size(13, 13)
+        Me.lblPlayerY.TabIndex = 37
+        Me.lblPlayerY.Text = "0"
+        '
         'gameShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -592,7 +618,6 @@ Partial Class gameShift
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)
         Me.Controls.Add(Me.lblScore)
-        Me.Controls.Add(Me.picPausedText)
         Me.Controls.Add(Me.debugBox)
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
@@ -600,6 +625,7 @@ Partial Class gameShift
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.picChargeLabel)
+        Me.Controls.Add(Me.picPausedText)
         Me.DoubleBuffered = True
         Me.Name = "gameShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -664,5 +690,7 @@ Partial Class gameShift
     Friend WithEvents lblStage As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents picStage As System.Windows.Forms.PictureBox
+    Friend WithEvents lblPlayerY As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
 
 End Class

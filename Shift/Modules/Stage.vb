@@ -9,6 +9,7 @@
     ' Player variables
     Public Shared playerHealth As Integer = 5000
     Public Shared shieldStatus As Integer = 0
+    Public Shared playerY As Integer = 0
 
     ' Difficulty shifting
     Public Shared currentStage As Integer = 0
@@ -90,6 +91,7 @@
                 Case 3 ' random: randomise values
                     ' Powerup built in - re-randomise values
                 Case 4 ' spaceTime: teleport
+                    playerY = 12 ' Activate gravity
                     gameShift.picPlayer.Left = gameShift.MousePosition.X - (gameShift.Left + gameShift.picPlayer.Width / 2)
                     gameShift.picPlayer.Top = gameShift.MousePosition.Y - (gameShift.Top + gameShift.picPlayer.Height)
             End Select

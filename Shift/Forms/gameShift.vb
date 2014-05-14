@@ -9,7 +9,6 @@
 
 Public Class gameShift
     Dim projectiles As New ArrayList
-    Dim playerY As Integer
     Dim finishJump As Boolean = False
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
@@ -45,6 +44,7 @@ Public Class gameShift
         lblHpDrain.Text = Stage.healthDrain
         lblStage.Text = Stage.currentStage
         lblScore.Text = Stage.score
+        lblPlayerY.Text = Stage.playerY
     End Sub
 
     Private Sub countDownShift()
@@ -185,20 +185,22 @@ Public Class gameShift
         If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= Stage.playerSpeed
         If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += Stage.playerSpeed
 
-        If timerMove.Tag.Contains("jump") Then
-            If picPlayer.Bottom + -14.5 + (playerY ^ (1 + (1 / 10000))) > picWorld.Top Then ' Finished jump
-                picPlayer.Top = picWorld.Top - picPlayer.Height
-                playerY = 0
-                timerMove.Tag = timerMove.Tag.Replace("jump", "")
-                If finishJump = True Then
-                    timerMove.Tag = timerMove.Tag.Replace("left", "")
-                    timerMove.Tag = timerMove.Tag.Replace("right", "")
-                    finishJump = False
-                End If
-            ElseIf picPlayer.Bottom <= picWorld.Top Then
-                picPlayer.Top += -14.5 + (playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
-                playerY += 1
+        gravity()
+    End Sub
+
+    Private Sub gravity()
+        If picPlayer.Bottom + -25 + (Stage.playerY ^ (1 + (1 / 10000))) >= picWorld.Top Then ' Finished jump
+            picPlayer.Top = picWorld.Top - picPlayer.Height
+            Stage.playerY = 0
+            timerMove.Tag = timerMove.Tag.Replace("jump", "")
+            If finishJump = True Then
+                timerMove.Tag = timerMove.Tag.Replace("left", "")
+                timerMove.Tag = timerMove.Tag.Replace("right", "")
+                finishJump = False
             End If
+        ElseIf picPlayer.Bottom < picWorld.Top Or timerMove.Tag.Contains("jump") Then
+            picPlayer.Top += -14.5 + (Stage.playerY ^ (1 + (1 / 10000))) ' Credits to Devid She
+            Stage.playerY += 1
         End If
     End Sub
 
