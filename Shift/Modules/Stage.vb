@@ -85,10 +85,13 @@
                     gameShift.timerGenerate.Enabled = False
                     gameShift.timerWorld.Enabled = False
                     gameShift.timerShield.Enabled = False
-                Case 2
+                Case 2 ' lowHealth: activateShield
                     gameShift.picPlayer.BackColor = Color.Green ' Activate shield
-                Case 3
+                Case 3 ' random: randomise values
                     ' Powerup built in - re-randomise values
+                Case 4 ' spaceTime: teleport
+                    gameShift.picPlayer.Left = gameShift.MousePosition.X - (gameShift.Left + gameShift.picPlayer.Width / 2)
+                    gameShift.picPlayer.Top = gameShift.MousePosition.Y - (gameShift.Top + gameShift.picPlayer.Height)
             End Select
         Else ' Turn off powerup and timerPower
             gameShift.timerPower.Enabled = False
@@ -108,8 +111,8 @@
     End Sub
 
     Public Shared Sub newGame()
-        Stage.currentStage = 0
-        Stage.applyStage(0)
+        Stage.currentStage = 4
+        Stage.applyStage(4)
         Stage.score = 0
         Stage.playerHealth = 5000
         Stage.charge = 0
