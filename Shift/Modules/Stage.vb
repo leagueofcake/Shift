@@ -24,6 +24,9 @@
     Public Shared projectileSpeed As Integer = 5
     Public Shared scoreMult As Integer = 0
 
+    ' Teleportation variables
+    Public Shared tempPlayerXY = New Point(0, 0)
+
     Public Shared Sub selectStage() ' Generate a stage number different to current stage
         Dim rand = New Random().Next(0, 4) ' 0, max no. stages + 1
         While rand = currentStage ' force a different stage to current
@@ -92,6 +95,8 @@
                     ' Powerup built in - re-randomise values
                 Case 4 ' spaceTime: teleport
                     playerY = 12 ' Activate gravity
+                    ' Store current position in temporary variable
+                    tempPlayerXY = gameShift.picPlayer.Location
                     gameShift.picPlayer.Left = gameShift.MousePosition.X - (gameShift.Left + gameShift.picPlayer.Width / 2)
                     gameShift.picPlayer.Top = gameShift.MousePosition.Y - (gameShift.Top + gameShift.picPlayer.Height)
             End Select
@@ -108,6 +113,9 @@
                     gameShift.picPlayer.BackColor = Color.DodgerBlue
                 Case 3
                     ' Powerup built in - re-randomise values
+                Case 4
+                    ' Revert to pre-teleportation coordinates
+                    gameShift.picPlayer.Location = tempPlayerXY
             End Select
         End If
     End Sub

@@ -45,6 +45,7 @@ Public Class gameShift
         lblStage.Text = Stage.currentStage
         lblScore.Text = Stage.score
         lblPlayerY.Text = Stage.playerY
+        lblTempXY.Text = Stage.tempPlayerXY.ToString
     End Sub
 
     Private Sub countDownShift()
@@ -102,10 +103,18 @@ Public Class gameShift
         End Select
     End Sub
 
+    Private Sub gameShift_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Space Then
+            Stage.tempPlayerXY = picPlayer.Location
+            RemoveHandler Me.KeyDown, AddressOf gameShift_KeyDown
+        End If
+    End Sub
+
     Private Sub gameShift_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space And Stage.paused = False Then
             timerPower.Enabled = False
             Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
+            If Stage.currentStage = 4 Then picPlayer.Location = Stage.tempPlayerXY
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
