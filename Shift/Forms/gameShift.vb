@@ -3,7 +3,7 @@
 ''' Author: Dominic Fung
 ''' Date first written: 13/3/2014
 ''' 
-''' Purpose: A sidescroller game written in VB.Net
+''' Purpose: A sidescroller game written in VB.Net - elaborate
 ''' </summary>
 ''' <remarks></remarks>
 
