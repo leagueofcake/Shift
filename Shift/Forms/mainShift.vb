@@ -62,11 +62,11 @@
 
         Select Case selected
             Case 0 ' Play
-                btnPlay.BackgroundImage = My.Resources.btnPlayClicked
+                btnPlay.BackgroundImage = My.Resources.btnPlayHover
             Case 1 ' Options
-                btnOptions.BackgroundImage = My.Resources.btnOptionsClicked
+                btnOptions.BackgroundImage = My.Resources.btnOptionsHover
             Case 2 ' Help
-                btnHelp.BackgroundImage = My.Resources.btnHelpClicked
+                btnHelp.BackgroundImage = My.Resources.btnHelpHover
         End Select
     End Sub
 

@@ -65,7 +65,7 @@ Partial Class helpShift
         'btnControls
         '
         Me.btnControls.BackColor = System.Drawing.Color.Transparent
-        Me.btnControls.BackgroundImage = Global.Shift.My.Resources.Resources.btnControlsHover
+        Me.btnControls.BackgroundImage = Global.Shift.My.Resources.Resources.btnControlsUnclicked
         Me.btnControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnControls.Location = New System.Drawing.Point(32, 244)
         Me.btnControls.Name = "btnControls"
