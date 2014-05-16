@@ -86,10 +86,12 @@
         Select Case selected
             Case 0 ' Play
                 gameShift.Show()
+                Stage.newGame(False)
             Case 1 ' Options
                 optionsShift.Show()
             Case 2 ' Tutorial
                 gameShift.Show()
+                Stage.newGame(True)
             Case 3 ' Help
                 helpShift.Show()
         End Select

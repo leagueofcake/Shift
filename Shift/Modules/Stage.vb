@@ -134,7 +134,7 @@
         End If
     End Sub
 
-    Public Shared Sub newGame()
+    Public Shared Sub newGame(tutorial As Boolean)
         Stage.currentStage = 5
         Stage.applyStage(5)
         Stage.score = 0

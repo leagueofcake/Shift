@@ -220,10 +220,6 @@ Public Class gameShift
         End If
     End Sub
 
-    Private Sub gameShift_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Stage.newGame() ' Reset values on game load
-    End Sub
-
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
         Stage.applyPowerup(Stage.currentStage)
     End Sub
