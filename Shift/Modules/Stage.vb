@@ -20,6 +20,7 @@
     Public Shared healthLoss As Integer = 20
     Public Shared healthGain As Integer = 100
     Public Shared chargeGain As Integer = 5
+    Public Shared chargeUse As Integer = 1
     Public Shared chargeMax As Integer = 500
     Public Shared projectileSpeed As Integer = 5
     Public Shared scoreMult As Integer = 0
@@ -42,31 +43,31 @@
 
     Public Shared Sub applyStage(stageNumber As Integer)
         Select Case stageNumber
-            ' shift(playerSpeed, healthMax, shieldMax, healthDrain, healthLoss, healthGain, chargeGain, chargeMax, projectileSpeed, scoreMult)
+            ' shift(playerSpeed, healthMax, shieldMax, healthDrain, healthLoss, healthGain, chargeGain, chargeUse, chargeMax, projectileSpeed, scoreMult)
             Case 0 ' default
-                shift(4, 5000, 100, 10, 10, 400, 10, 500, 5, 100)
+                shift(4, 5000, 100, 10, 10, 400, 10, 1, 500, 5, 100)
             Case 1 ' timeUp
-                shift(6, 5000, 50, 20, 20, 600, 5, 250, 10, 175)
+                shift(6, 5000, 50, 20, 20, 600, 5, 1, 250, 10, 175)
                 ' Restart timers that were stopped by powerUp
                 gameShift.timerGenerate.Enabled = True
                 gameShift.timerWorld.Enabled = True
                 gameShift.timerShield.Enabled = True
             Case 2 ' lowHealth
-                shift(4, 2500, 100, 20, 20, 800, 10, 500, 5, 200)
+                shift(4, 2500, 100, 20, 20, 800, 1, 10, 500, 5, 250)
             Case 3 ' random
-                shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(50, 200))
+                shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(1, 5), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(50, 200))
                 'shift(randHelper(2, 8), randHelper(2500, 10000), randHelper(0, 200), randHelper(5, 20), randHelper(5, 20), randHelper(200, 800), randHelper(2, 8), randHelper(100, 1000), randHelper(5, 10), randHelper(50, 200))
             Case 4 ' timeSpace
-                shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
+                shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 1, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
             Case 5 ' noShield
-                shift(4, 5000, 1500, 0, healthMax, -healthMax, 1, 500, 5, 200)
+                shift(4, 5000, 1500, 0, healthMax, -healthMax, 1, 5, 500, 5, 200)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
         If playerHealth > healthMax Then playerHealth = healthMax ' Set playerHealth to healthMax if in switching stage healthMax is lowered and playerHealth > healthMax
     End Sub
 
-    Public Shared Sub shift(speed As Integer, hMax As Integer, sMax As Integer, hDrain As Integer, hLoss As Integer, hGain As Integer, cGain As Integer, cMax As Integer, pSpeed As Integer, sMult As Integer)
+    Public Shared Sub shift(speed As Integer, hMax As Integer, sMax As Integer, hDrain As Integer, hLoss As Integer, hGain As Integer, cGain As Integer, cUse As Integer, cMax As Integer, pSpeed As Integer, sMult As Integer)
         playerSpeed = speed
         healthMax = hMax
         shieldMax = sMax
@@ -74,6 +75,7 @@
         healthLoss = hLoss
         healthGain = hGain
         chargeGain = cGain
+        chargeUse = cUse
         chargeMax = cMax
         projectileSpeed = pSpeed
         scoreMult = sMult
@@ -83,7 +85,7 @@
 
     Public Shared Sub applyPowerup(stageNumber As Integer)
         If charge > 0 Then ' Use powerup if charge is available
-            charge -= 1 ' Use up 1 charge
+            charge -= chargeUse ' Use up 1 charge
             Select Case stageNumber
                 Case 0 ' default: speedUp
                     playerSpeed = 8
