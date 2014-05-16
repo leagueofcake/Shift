@@ -2,7 +2,7 @@
     Dim selected As Integer = 0 ' 0: Play, 1: Options, 2: Help
     Dim numberOptions As Integer = 4 ' Modify based on how many options available
 
-    Private Sub clickButton(sender As Object, e As EventArgs) Handles btnPlay.Click, btnOptions.Click, btnHelp.Click, btnTutorial.Click
+    Private Sub clickButton(sender As Object, e As EventArgs) Handles btnPlay.Click, btnOptions.Click, btnTutorial.Click, btnHelp.Click
         Select Case sender.Name
             Case "btnPlay"
                 selected = 0
@@ -16,7 +16,7 @@
         selectHelper()
     End Sub
 
-    Private Sub mouseDownButton(sender As Object, e As EventArgs) Handles btnPlay.MouseDown, btnOptions.MouseDown, btnHelp.MouseDown
+    Private Sub mouseDownButton(sender As Object, e As EventArgs) Handles btnPlay.MouseDown, btnOptions.MouseDown, btnTutorial.MouseDown, btnHelp.MouseDown
         Select Case sender.Name
             Case "btnPlay"
                 btnPlay.BackgroundImage = My.Resources.btnPlayClicked
@@ -29,7 +29,7 @@
         End Select
     End Sub
 
-    Private Sub mouseHoverButton(sender As Object, e As EventArgs) Handles btnPlay.MouseHover, btnOptions.MouseHover, btnHelp.MouseHover
+    Private Sub mouseHoverButton(sender As Object, e As EventArgs) Handles btnPlay.MouseHover, btnOptions.MouseHover, btnTutorial.MouseHover, btnHelp.MouseHover
         Select Case sender.Name
             Case "btnPlay"
                 If Not selected = 0 Then btnPlay.BackgroundImage = My.Resources.btnPlayHover
@@ -42,7 +42,7 @@
         End Select
     End Sub
 
-    Private Sub mouseLeaveButton(sender As Object, e As EventArgs) Handles btnPlay.MouseLeave, btnOptions.MouseLeave, btnHelp.MouseLeave
+    Private Sub mouseLeaveButton(sender As Object, e As EventArgs) Handles btnPlay.MouseLeave, btnOptions.MouseLeave, btnTutorial.MouseLeave, btnHelp.MouseLeave
         Select Case sender.Name
             Case "btnPlay"
                 If Not selected = 0 Then btnPlay.BackgroundImage = My.Resources.btnPlayUnclicked

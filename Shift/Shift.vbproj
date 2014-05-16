@@ -384,6 +384,7 @@
     <None Include="Assets\main\buttons\btnTutorialClicked.png" />
     <None Include="Assets\main\buttons\btnTutorialHover.png" />
     <None Include="Assets\main\buttons\btnTutorialUnclicked.png" />
+    <None Include="Assets\game\text\stage99.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

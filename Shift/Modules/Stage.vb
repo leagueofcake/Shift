@@ -135,8 +135,14 @@
     End Sub
 
     Public Shared Sub newGame(tutorial As Boolean)
-        Stage.currentStage = 5
-        Stage.applyStage(5)
+        If tutorial = False Then ' Normal game
+            Stage.currentStage = 0
+            Stage.applyStage(0)
+        Else ' Tutorial stage
+            Stage.currentStage = 99
+            Stage.applyStage(99)
+        End If
+
         Stage.score = 0
         Stage.playerHealth = 5000
         Stage.charge = 0
