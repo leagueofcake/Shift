@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{612EBE6E-7B99-41EF-A6E6-CF94F93E4242}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Shift.My.MyApplication</StartupObject>
+    <RootNamespace>Shift</RootNamespace>
+    <AssemblyName>Shift</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Shift.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Shift.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\endScreen.Designer.vb">
+      <DependentUpon>endScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\endScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\gameShift.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\gameShift.Designer.vb">
+      <DependentUpon>gameShift.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\helpShift.Designer.vb">
+      <DependentUpon>helpShift.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\helpShift.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\mainShift.Designer.vb">
+      <DependentUpon>mainShift.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\mainShift.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\optionsShift.Designer.vb">
+      <DependentUpon>optionsShift.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\optionsShift.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Stage.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Modules\Projectile.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\endScreen.resx">
+      <DependentUpon>endScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\gameShift.resx">
+      <DependentUpon>gameShift.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\helpShift.resx">
+      <DependentUpon>helpShift.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\mainShift.resx">
+      <DependentUpon>mainShift.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\optionsShift.resx">
+      <DependentUpon>optionsShift.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar 5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\text\chargeText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\text\healthText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar 20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\healthBar\healthbar20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\old\projectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\chargeBar\png\chargeBar10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\text\pausedText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\bg\mainbg.png" />
+    <None Include="Assets\buttons\btnPlayClicked.png" />
+    <None Include="Assets\buttons\btnPlayHover.png" />
+    <None Include="Assets\buttons\btnPlayUnclicked.png" />
+    <None Include="Assets\help\keyLeft.png" />
+    <None Include="Assets\help\keyRight.png" />
+    <None Include="Assets\help\keySpace.png" />
+    <None Include="Assets\help\keyUp.png" />
+    <None Include="Assets\buttons\btnHelpClicked.png" />
+    <None Include="Assets\buttons\btnHelpHover.png" />
+    <None Include="Assets\buttons\btnHelpUnclicked.png" />
+    <None Include="Assets\buttons\btnControlsClicked.png" />
+    <None Include="Assets\buttons\btnControlsHover.png" />
+    <None Include="Assets\buttons\btnControlsUnclicked.png" />
+    <None Include="Assets\buttons\btnGameInfoClicked.png" />
+    <None Include="Assets\buttons\btnGameInfoHover.png" />
+    <None Include="Assets\buttons\btnGameInfoUnclicked.png" />
+    <None Include="Assets\main\logoShift.png" />
+    <None Include="Assets\main\projectile.png" />
+    <None Include="Assets\stage\stage0.png" />
+    <None Include="Assets\stage\stage1.png" />
+    <None Include="Assets\buttons\btnOptionsClicked.png" />
+    <None Include="Assets\buttons\btnOptionsHover.png" />
+    <None Include="Assets\buttons\btnOptionsUnclicked.png" />
+    <None Include="Assets\game\text\stage2.png" />
+    <None Include="Assets\game\text\stage3.png" />
+    <None Include="Assets\game\text\stage4.png" />
+    <None Include="Assets\game\text\gameOver.png" />
+    <None Include="Assets\main\buttons\btnMenuClicked.png" />
+    <None Include="Assets\main\buttons\btnMenuHover.png" />
+    <None Include="Assets\main\buttons\btnMenuUnclicked.png" />
+    <Content Include="Resources\chargeBar0.png" />
+    <Content Include="Resources\chargeBar1.png" />
+    <Content Include="Resources\chargeBar10.png" />
+    <Content Include="Resources\chargeBar2.png" />
+    <Content Include="Resources\chargeBar3.png" />
+    <Content Include="Resources\chargeBar4.png" />
+    <Content Include="Resources\chargeBar5.png" />
+    <Content Include="Resources\chargeBar6.png" />
+    <Content Include="Resources\chargeBar7.png" />
+    <Content Include="Resources\chargeBar8.png" />
+    <Content Include="Resources\chargeBar9.png" />
+    <Content Include="Resources\chargeText.png" />
+    <Content Include="Resources\healthbar0.png" />
+    <Content Include="Resources\healthbar1.png" />
+    <Content Include="Resources\healthbar10.png" />
+    <Content Include="Resources\healthbar11.png" />
+    <Content Include="Resources\healthbar12.png" />
+    <Content Include="Resources\healthbar13.png" />
+    <Content Include="Resources\healthbar14.png" />
+    <Content Include="Resources\healthbar15.png" />
+    <Content Include="Resources\healthbar16.png" />
+    <Content Include="Resources\healthbar17.png" />
+    <Content Include="Resources\healthbar18.png" />
+    <Content Include="Resources\healthbar19.png" />
+    <Content Include="Resources\healthbar2.png" />
+    <Content Include="Resources\healthbar20.png" />
+    <Content Include="Resources\healthbar3.png" />
+    <Content Include="Resources\healthbar4.png" />
+    <Content Include="Resources\healthbar5.png" />
+    <Content Include="Resources\healthbar6.png" />
+    <Content Include="Resources\healthbar7.png" />
+    <Content Include="Resources\healthbar8.png" />
+    <Content Include="Resources\healthbar9.png" />
+    <Content Include="Resources\healthText.png" />
+    <Content Include="Resources\pausedText.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
