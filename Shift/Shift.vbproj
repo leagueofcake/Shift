@@ -376,6 +376,10 @@
     <None Include="Assets\game\text\stage2.png" />
     <None Include="Assets\game\text\stage3.png" />
     <None Include="Assets\game\text\stage4.png" />
+    <None Include="Assets\game\text\gameOver.png" />
+    <None Include="Assets\main\buttons\btnMenuClicked.png" />
+    <None Include="Assets\main\buttons\btnMenuHover.png" />
+    <None Include="Assets\main\buttons\btnMenuUnclicked.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

@@ -22,55 +22,65 @@ Partial Class endScreen
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(endScreen))
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.btnMain = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnMenu = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(136, 45)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(112, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Game Over!"
         '
         'lblScore
         '
         Me.lblScore.AutoSize = True
-        Me.lblScore.Location = New System.Drawing.Point(137, 81)
+        Me.lblScore.BackColor = System.Drawing.Color.Transparent
+        Me.lblScore.Location = New System.Drawing.Point(244, 92)
         Me.lblScore.Name = "lblScore"
         Me.lblScore.Size = New System.Drawing.Size(47, 13)
         Me.lblScore.TabIndex = 1
         Me.lblScore.Text = "Score: 0"
         '
-        'btnMain
+        'PictureBox1
         '
-        Me.btnMain.Location = New System.Drawing.Point(150, 179)
-        Me.btnMain.Name = "btnMain"
-        Me.btnMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnMain.TabIndex = 2
-        Me.btnMain.Text = "Main Menu"
-        Me.btnMain.UseVisualStyleBackColor = True
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.PictureBox1.Location = New System.Drawing.Point(46, 15)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(456, 41)
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
+        'btnMenu
+        '
+        Me.btnMenu.BackColor = System.Drawing.Color.Transparent
+        Me.btnMenu.BackgroundImage = Global.Shift.My.Resources.Resources.btnMenuUnclicked
+        Me.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnMenu.Location = New System.Drawing.Point(46, 200)
+        Me.btnMenu.Name = "btnMenu"
+        Me.btnMenu.Size = New System.Drawing.Size(129, 26)
+        Me.btnMenu.TabIndex = 4
+        Me.btnMenu.TabStop = False
         '
         'endScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(384, 262)
-        Me.Controls.Add(Me.btnMain)
+        Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
+        Me.ClientSize = New System.Drawing.Size(548, 262)
+        Me.Controls.Add(Me.btnMenu)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblScore)
-        Me.Controls.Add(Me.Label1)
         Me.Name = "endScreen"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Game Over! "
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblScore As System.Windows.Forms.Label
-    Friend WithEvents btnMain As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents btnMenu As System.Windows.Forms.PictureBox
 End Class

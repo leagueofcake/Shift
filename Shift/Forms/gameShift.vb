@@ -106,7 +106,6 @@ Public Class gameShift
     Private Sub gameShift_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Space Then
             Stage.tempPlayerXY = picPlayer.Location
-            RemoveHandler Me.KeyDown, AddressOf gameShift_KeyDown
         End If
     End Sub
 

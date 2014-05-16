@@ -153,6 +153,36 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property btnMenuClicked() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("btnMenuClicked", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property btnMenuHover() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("btnMenuHover", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property btnMenuUnclicked() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("btnMenuUnclicked", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property btnOptionsClicked() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("btnOptionsClicked", resourceCulture)
@@ -326,6 +356,16 @@ Namespace My.Resources
         Friend ReadOnly Property chargeText() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("chargeText", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property gameOver() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("gameOver", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

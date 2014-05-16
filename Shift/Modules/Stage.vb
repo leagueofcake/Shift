@@ -57,8 +57,7 @@
                 shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(50, 200))
                 'shift(randHelper(2, 8), randHelper(2500, 10000), randHelper(0, 200), randHelper(5, 20), randHelper(5, 20), randHelper(200, 800), randHelper(2, 8), randHelper(100, 1000), randHelper(5, 10), randHelper(50, 200))
             Case 4
-                'shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
-                shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 0, 10, 400, 10, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
+                shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -97,8 +96,14 @@
                 Case 4 ' spaceTime: teleport
                     playerY = 12 ' Activate gravity
                     ' Store current position in temporary variable
-                    gameShift.picPlayer.Left = gameShift.MousePosition.X - (gameShift.Left + gameShift.picPlayer.Width / 2)
-                    gameShift.picPlayer.Top = gameShift.MousePosition.Y - (gameShift.Top + gameShift.picPlayer.Height)
+                    Dim newPosX = gameShift.MousePosition.X - (gameShift.Left + gameShift.picPlayer.Width / 2)
+                    Dim newPosY = gameShift.MousePosition.Y - (gameShift.Top + gameShift.picPlayer.Height)
+                    If newPosX > 0 And newPosY < 300 Then ' Prevent going off stage
+                        gameShift.picPlayer.Left = newPosX
+                        gameShift.picPlayer.Top = newPosY
+                    Else
+                        charge += 1
+                    End If
             End Select
         Else ' Turn off powerup and timerPower
             gameShift.timerPower.Enabled = False
