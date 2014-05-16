@@ -615,7 +615,7 @@ Partial Class gameShift
         Me.lblShiftTimer.Name = "lblShiftTimer"
         Me.lblShiftTimer.Size = New System.Drawing.Size(180, 20)
         Me.lblShiftTimer.TabIndex = 23
-        Me.lblShiftTimer.Text = "Next Shift in 10 seconds"
+        Me.lblShiftTimer.Text = "Next Shift in 15 seconds"
         '
         'timerPower
         '
