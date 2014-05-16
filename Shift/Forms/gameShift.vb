@@ -123,8 +123,9 @@ Public Class gameShift
         Stage.progression += 1
 
         ' Apply special stage properties
-        If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
         If Stage.currentStage = 3 And Stage.progression Mod 200 = 0 Then Stage.applyStage(Stage.currentStage) ' Stage 3: random, shift values every 2 seconds
+        If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
+        If Stage.currentStage = 5 Then Stage.charge += Stage.chargeGain
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
         If Stage.playerHealth > 0 Then Stage.score += Stage.scoreMult
@@ -174,7 +175,13 @@ Public Class gameShift
         projectiles.Add(newProjectile)
 
         ' If stage = 4 (spacetime) then genvar is dependent on player's position else semi-randomised
-        If Stage.currentStage = 4 Then Stage.genVar = ((picPlayer.Left / 10) + 1) ^ 1.5 + 200 Else Stage.genVar = (Rnd() * 5 + 1) * 100
+        If Stage.currentStage = 4 Then
+            Stage.genVar = ((picPlayer.Left / 10) + 1) ^ 1.5 + 200
+        ElseIf Stage.currentStage = 5 Then
+            Stage.genVar = (Rnd() * 8 + 2) * 100
+        Else
+            Stage.genVar = (Rnd() * 5 + 1) * 100
+        End If
 
         timerGenerate.Interval = Stage.genVar
     End Sub

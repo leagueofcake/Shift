@@ -53,11 +53,13 @@
                 gameShift.timerShield.Enabled = True
             Case 2 ' lowHealth
                 shift(4, 2500, 100, 20, 20, 800, 10, 500, 5, 200)
-            Case 3 ' Random
+            Case 3 ' random
                 shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(50, 200))
                 'shift(randHelper(2, 8), randHelper(2500, 10000), randHelper(0, 200), randHelper(5, 20), randHelper(5, 20), randHelper(200, 800), randHelper(2, 8), randHelper(100, 1000), randHelper(5, 10), randHelper(50, 200))
-            Case 4
+            Case 4 ' timeSpace
                 shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
+            Case 5 ' noShield
+                shift(4, 5000, 1500, 0, healthMax, -healthMax, 1, 500, 5, 200)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -104,6 +106,8 @@
                     Else
                         charge += 1
                     End If
+                Case 5
+                    gameShift.picPlayer.BackColor = Color.SkyBlue
             End Select
         Else ' Turn off powerup and timerPower
             gameShift.timerPower.Enabled = False
@@ -119,15 +123,16 @@
                 Case 3
                     ' Powerup built in - re-randomise values
                 Case 4
-                    ' Revert to pre-teleportation coordinates
-                    gameShift.picPlayer.Location = tempPlayerXY
+                    gameShift.picPlayer.Location = tempPlayerXY ' Revert to pre-teleportation coordinates
+                Case 5
+                    gameShift.picPlayer.BackColor = Color.DodgerBlue
             End Select
         End If
     End Sub
 
     Public Shared Sub newGame()
-        Stage.currentStage = 4
-        Stage.applyStage(4)
+        Stage.currentStage = 5
+        Stage.applyStage(5)
         Stage.score = 0
         Stage.playerHealth = 5000
         Stage.charge = 0
