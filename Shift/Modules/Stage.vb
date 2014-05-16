@@ -61,6 +61,8 @@
                 shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 1, 500, 12 - (gameShift.picPlayer.Left / 100), 150)
             Case 5 ' noShield
                 shift(4, 5000, 1500, 0, healthMax, -healthMax, 1, 5, 500, 5, 200)
+            Case 99 ' Tutorial
+                shift(4, 5000, 100, 10, 10, 400, 10, 1, 500, 5, 100)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
