@@ -114,6 +114,7 @@ Public Class gameShift
             timerPower.Enabled = False
             Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
             If Stage.currentStage = 4 Then picPlayer.Location = Stage.tempPlayerXY
+            If Stage.currentStage = 5 Then picPlayer.BackColor = Color.DodgerBlue
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If

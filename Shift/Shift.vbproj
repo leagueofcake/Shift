@@ -380,6 +380,7 @@
     <None Include="Assets\main\buttons\btnMenuClicked.png" />
     <None Include="Assets\main\buttons\btnMenuHover.png" />
     <None Include="Assets\main\buttons\btnMenuUnclicked.png" />
+    <None Include="Assets\game\text\stage5.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

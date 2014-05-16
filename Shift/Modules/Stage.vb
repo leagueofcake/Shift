@@ -111,7 +111,7 @@
                 Case 5
                     gameShift.picPlayer.BackColor = Color.SkyBlue
             End Select
-        Else ' Turn off powerup and timerPower
+        Else ' Turn off powerup and timerPower if out of charge
             gameShift.timerPower.Enabled = False
             Select Case stageNumber
                 Case 0
