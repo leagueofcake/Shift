@@ -386,6 +386,17 @@
     <None Include="Assets\main\buttons\btnTutorialUnclicked.png" />
     <None Include="Assets\game\text\stage99.png" />
     <None Include="Assets\tutorial\welcome.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar0.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar1.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar2.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar3.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar4.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar5.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar6.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar7.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar8.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar9.png" />
+    <None Include="Assets\game\chargeBar\png\chargeBar10.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

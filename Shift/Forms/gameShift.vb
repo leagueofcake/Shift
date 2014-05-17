@@ -30,14 +30,15 @@ Public Class gameShift
         End With
     End Sub
 
+    Private Sub pausePanel()
+        panelPause.Visible = Not panelPause.Visible
+        panelPause.BackColor = Color.FromArgb(50, 255, 255, 255)
+    End Sub
+
     Private Sub togglePause()
         timerMove.Enabled = Not timerMove.Enabled
         timerGenerate.Enabled = Not timerGenerate.Enabled
         timerWorld.Enabled = Not timerWorld.Enabled
-
-        ' Pause panel
-        panelPause.Visible = Not panelPause.Visible
-        panelPause.BackColor = Color.FromArgb(50, 255, 255, 255)
 
         'timerConstant.Enabled = False
         ' playerY = 0 'uncomment for endless jumpings
@@ -46,6 +47,7 @@ Public Class gameShift
     Private Sub endGame()
         togglePause()
         timerConstant.Enabled = False
+        timerShield.Enabled = False
         endScreen.lblScore.Text = "Score: " + Stage.score.ToString
         endScreen.Show()
     End Sub
@@ -220,6 +222,7 @@ Public Class gameShift
             Case Microsoft.VisualBasic.ChrW(Keys.Escape) ' Pause game
                 Stage.paused = Not Stage.paused
                 togglePause()
+                pausePanel()
                 If Stage.paused = True Then timerShield.Stop() Else timerShield.Start()
             Case Microsoft.VisualBasic.ChrW(Keys.Space)
                 If Stage.paused = False Then
