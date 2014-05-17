@@ -567,7 +567,7 @@ Partial Class gameShift
         'picCharge
         '
         Me.picCharge.BackColor = System.Drawing.Color.Transparent
-        Me.picCharge.BackgroundImage = Global.Shift.My.Resources.Resources.chargeBar0
+        Me.picCharge.BackgroundImage = CType(resources.GetObject("picCharge.BackgroundImage"), System.Drawing.Image)
         Me.picCharge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.picCharge.Location = New System.Drawing.Point(640, 56)
         Me.picCharge.Name = "picCharge"

@@ -31,8 +31,11 @@ Public Class gameShift
     End Sub
 
     Private Sub pausePanel()
-        panelPause.Visible = Not panelPause.Visible
-        panelPause.BackColor = Color.FromArgb(50, 255, 255, 255)
+        With panelPause
+            .Visible = Not panelPause.Visible
+            .BackColor = Color.FromArgb(50, 255, 255, 255)
+            .BringToFront()
+        End With
     End Sub
 
     Private Sub togglePause()
