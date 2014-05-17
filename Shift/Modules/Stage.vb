@@ -135,19 +135,20 @@
     End Sub
 
     Public Shared Sub newGame(tutorial As Boolean)
-        If tutorial = False Then ' Normal game
-            Stage.currentStage = 0
-            Stage.applyStage(0)
-        Else ' Tutorial stage
-            Stage.currentStage = 99
-            Stage.applyStage(99)
-        End If
+        score = 0
+        playerHealth = 5000
+        charge = 0
+        shieldStatus = 0
+        progression = 0
 
-        Stage.score = 0
-        Stage.playerHealth = 5000
-        Stage.charge = 0
-        Stage.shieldStatus = 0
-        Stage.progression = 0
+        If tutorial = False Then ' Normal game
+            currentStage = 0
+            applyStage(0)
+        Else ' Tutorial stage
+            currentStage = 99
+            applyStage(99)
+            gameShift.runTutorial()
+        End If
     End Sub
 
     Public Sub anti()

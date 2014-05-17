@@ -74,6 +74,7 @@ Partial Class gameShift
         Me.lblShiftTimer = New System.Windows.Forms.Label()
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.picStage = New System.Windows.Forms.PictureBox()
+        Me.tutorial0 = New System.Windows.Forms.PictureBox()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,6 +84,7 @@ Partial Class gameShift
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStage, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'timerWorld
@@ -632,6 +634,18 @@ Partial Class gameShift
         Me.picStage.TabIndex = 35
         Me.picStage.TabStop = False
         '
+        'tutorial0
+        '
+        Me.tutorial0.BackColor = System.Drawing.Color.Transparent
+        Me.tutorial0.BackgroundImage = Global.Shift.My.Resources.Resources.welcome
+        Me.tutorial0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tutorial0.Location = New System.Drawing.Point(207, 192)
+        Me.tutorial0.Name = "tutorial0"
+        Me.tutorial0.Size = New System.Drawing.Size(320, 59)
+        Me.tutorial0.TabIndex = 36
+        Me.tutorial0.TabStop = False
+        Me.tutorial0.Visible = False
+        '
         'gameShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -640,6 +654,7 @@ Partial Class gameShift
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(734, 442)
+        Me.Controls.Add(Me.tutorial0)
         Me.Controls.Add(Me.picStage)
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)
@@ -666,6 +681,7 @@ Partial Class gameShift
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStage, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -720,5 +736,6 @@ Partial Class gameShift
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents lblTempXY As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents tutorial0 As System.Windows.Forms.PictureBox
 
 End Class
