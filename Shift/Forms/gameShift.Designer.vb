@@ -74,9 +74,10 @@ Partial Class gameShift
         Me.lblShiftTimer = New System.Windows.Forms.Label()
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.picStage = New System.Windows.Forms.PictureBox()
-        Me.tutorial0 = New System.Windows.Forms.PictureBox()
         Me.panelPause = New System.Windows.Forms.Panel()
         Me.btnMenu = New System.Windows.Forms.PictureBox()
+        Me.tutorial0 = New System.Windows.Forms.PictureBox()
+        Me.tutorialPanel = New System.Windows.Forms.Panel()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,9 +87,10 @@ Partial Class gameShift
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStage, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelPause.SuspendLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tutorialPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'timerWorld
@@ -160,6 +162,7 @@ Partial Class gameShift
         Me.debugBox.Controls.Add(Me.lblProgression)
         Me.debugBox.Controls.Add(Me.Label8)
         Me.debugBox.Controls.Add(Me.lblShieldStatus)
+        Me.debugBox.Controls.Add(Me.panelPause)
         Me.debugBox.Controls.Add(Me.lblPaused)
         Me.debugBox.Controls.Add(Me.Label11)
         Me.debugBox.Controls.Add(Me.Label10)
@@ -637,25 +640,14 @@ Partial Class gameShift
         Me.picStage.TabIndex = 35
         Me.picStage.TabStop = False
         '
-        'tutorial0
-        '
-        Me.tutorial0.BackColor = System.Drawing.Color.Transparent
-        Me.tutorial0.BackgroundImage = Global.Shift.My.Resources.Resources.welcome
-        Me.tutorial0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.tutorial0.Location = New System.Drawing.Point(207, 192)
-        Me.tutorial0.Name = "tutorial0"
-        Me.tutorial0.Size = New System.Drawing.Size(320, 59)
-        Me.tutorial0.TabIndex = 36
-        Me.tutorial0.TabStop = False
-        Me.tutorial0.Visible = False
-        '
         'panelPause
         '
-        Me.panelPause.BackColor = System.Drawing.Color.Transparent
+        Me.panelPause.BackColor = System.Drawing.Color.Black
         Me.panelPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.panelPause.Controls.Add(Me.btnMenu)
         Me.panelPause.Controls.Add(Me.picPausedText)
-        Me.panelPause.Location = New System.Drawing.Point(0, 0)
+        Me.panelPause.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.panelPause.Location = New System.Drawing.Point(228, 25)
         Me.panelPause.Name = "panelPause"
         Me.panelPause.Size = New System.Drawing.Size(740, 450)
         Me.panelPause.TabIndex = 37
@@ -672,6 +664,27 @@ Partial Class gameShift
         Me.btnMenu.TabIndex = 18
         Me.btnMenu.TabStop = False
         '
+        'tutorial0
+        '
+        Me.tutorial0.BackColor = System.Drawing.Color.Transparent
+        Me.tutorial0.BackgroundImage = Global.Shift.My.Resources.Resources.welcome
+        Me.tutorial0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tutorial0.Location = New System.Drawing.Point(210, 211)
+        Me.tutorial0.Name = "tutorial0"
+        Me.tutorial0.Size = New System.Drawing.Size(320, 59)
+        Me.tutorial0.TabIndex = 36
+        Me.tutorial0.TabStop = False
+        '
+        'tutorialPanel
+        '
+        Me.tutorialPanel.BackColor = System.Drawing.Color.DimGray
+        Me.tutorialPanel.Controls.Add(Me.tutorial0)
+        Me.tutorialPanel.Location = New System.Drawing.Point(0, 0)
+        Me.tutorialPanel.Name = "tutorialPanel"
+        Me.tutorialPanel.Size = New System.Drawing.Size(740, 480)
+        Me.tutorialPanel.TabIndex = 37
+        Me.tutorialPanel.Visible = False
+        '
         'gameShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -680,7 +693,9 @@ Partial Class gameShift
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.tutorialPanel)
         Me.Controls.Add(Me.picStage)
+        Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)
         Me.Controls.Add(Me.lblScore)
@@ -688,11 +703,8 @@ Partial Class gameShift
         Me.Controls.Add(Me.picHealth)
         Me.Controls.Add(Me.pichealthText)
         Me.Controls.Add(Me.picPlayer)
-        Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.picChargeLabel)
-        Me.Controls.Add(Me.tutorial0)
-        Me.Controls.Add(Me.panelPause)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(750, 480)
@@ -710,9 +722,10 @@ Partial Class gameShift
         CType(Me.picCharge, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStage, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelPause.ResumeLayout(False)
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tutorialPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -767,8 +780,9 @@ Partial Class gameShift
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents lblTempXY As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents tutorial0 As System.Windows.Forms.PictureBox
     Friend WithEvents panelPause As System.Windows.Forms.Panel
     Friend WithEvents btnMenu As System.Windows.Forms.PictureBox
+    Friend WithEvents tutorial0 As System.Windows.Forms.PictureBox
+    Friend WithEvents tutorialPanel As System.Windows.Forms.Panel
 
 End Class

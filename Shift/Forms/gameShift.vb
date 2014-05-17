@@ -25,8 +25,7 @@ Public Class gameShift
             RemoveHandler .KeyDown, AddressOf .gameShift_KeyDown
             RemoveHandler .KeyUp, AddressOf .gameShift_KeyUp
 
-            .tutorial0.Visible = True
-
+            .tutorialPanel.Visible = True
         End With
     End Sub
 
