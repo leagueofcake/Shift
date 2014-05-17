@@ -31,10 +31,13 @@ Public Class gameShift
     End Sub
 
     Private Sub togglePause()
-        picPausedText.Visible = Not picPausedText.Visible
         timerMove.Enabled = Not timerMove.Enabled
         timerGenerate.Enabled = Not timerGenerate.Enabled
         timerWorld.Enabled = Not timerWorld.Enabled
+
+        ' Pause panel
+        panelPause.Visible = Not panelPause.Visible
+        panelPause.BackColor = Color.FromArgb(50, 255, 255, 255)
 
         'timerConstant.Enabled = False
         ' playerY = 0 'uncomment for endless jumpings
@@ -240,5 +243,10 @@ Public Class gameShift
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
         End If
+    End Sub
+
+    Private Sub btnMenu_Click(sender As Object, e As EventArgs) Handles btnMenu.Click
+        Me.Close()
+        mainShift.Show()
     End Sub
 End Class
