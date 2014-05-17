@@ -26,6 +26,7 @@ Public Class gameShift
             RemoveHandler .KeyUp, AddressOf .gameShift_KeyUp
 
             .tutorial0.Visible = True
+
         End With
     End Sub
 
@@ -34,6 +35,7 @@ Public Class gameShift
         timerMove.Enabled = Not timerMove.Enabled
         timerGenerate.Enabled = Not timerGenerate.Enabled
         timerWorld.Enabled = Not timerWorld.Enabled
+
         'timerConstant.Enabled = False
         ' playerY = 0 'uncomment for endless jumpings
     End Sub

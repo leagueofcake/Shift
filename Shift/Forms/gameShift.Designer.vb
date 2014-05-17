@@ -75,6 +75,7 @@ Partial Class gameShift
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.picStage = New System.Windows.Forms.PictureBox()
         Me.tutorial0 = New System.Windows.Forms.PictureBox()
+        Me.panelPause = New System.Windows.Forms.Panel()
         Me.debugBox.SuspendLayout()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,6 +86,7 @@ Partial Class gameShift
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelPause.SuspendLayout()
         Me.SuspendLayout()
         '
         'timerWorld
@@ -514,7 +516,7 @@ Partial Class gameShift
         Me.picPausedText.BackColor = System.Drawing.Color.Transparent
         Me.picPausedText.BackgroundImage = Global.Shift.My.Resources.Resources.pausedText
         Me.picPausedText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.picPausedText.Location = New System.Drawing.Point(218, 203)
+        Me.picPausedText.Location = New System.Drawing.Point(221, 207)
         Me.picPausedText.Name = "picPausedText"
         Me.picPausedText.Size = New System.Drawing.Size(298, 37)
         Me.picPausedText.TabIndex = 17
@@ -646,6 +648,15 @@ Partial Class gameShift
         Me.tutorial0.TabStop = False
         Me.tutorial0.Visible = False
         '
+        'panelPause
+        '
+        Me.panelPause.BackColor = System.Drawing.Color.Silver
+        Me.panelPause.Controls.Add(Me.picPausedText)
+        Me.panelPause.Location = New System.Drawing.Point(0, 0)
+        Me.panelPause.Name = "panelPause"
+        Me.panelPause.Size = New System.Drawing.Size(740, 450)
+        Me.panelPause.TabIndex = 37
+        '
         'gameShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -653,8 +664,8 @@ Partial Class gameShift
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(734, 442)
-        Me.Controls.Add(Me.tutorial0)
+        Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.panelPause)
         Me.Controls.Add(Me.picStage)
         Me.Controls.Add(Me.lblShiftTimer)
         Me.Controls.Add(Me.lblScoreTitle)
@@ -666,8 +677,10 @@ Partial Class gameShift
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.picChargeLabel)
-        Me.Controls.Add(Me.picPausedText)
+        Me.Controls.Add(Me.tutorial0)
         Me.DoubleBuffered = True
+        Me.MaximumSize = New System.Drawing.Size(750, 480)
+        Me.MinimumSize = New System.Drawing.Size(750, 480)
         Me.Name = "gameShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Game"
@@ -682,6 +695,7 @@ Partial Class gameShift
         CType(Me.picChargeLabel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStage, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tutorial0, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelPause.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -737,5 +751,6 @@ Partial Class gameShift
     Friend WithEvents lblTempXY As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents tutorial0 As System.Windows.Forms.PictureBox
+    Friend WithEvents panelPause As System.Windows.Forms.Panel
 
 End Class
