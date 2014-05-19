@@ -27,12 +27,10 @@ Partial Class mainShift
         Me.btnHelp = New System.Windows.Forms.PictureBox()
         Me.gameLogo = New System.Windows.Forms.PictureBox()
         Me.btnOptions = New System.Windows.Forms.PictureBox()
-        Me.btnTutorial = New System.Windows.Forms.PictureBox()
         CType(Me.btnPlay, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gameLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnOptions, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnTutorial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnPlay
@@ -51,7 +49,7 @@ Partial Class mainShift
         Me.btnHelp.BackColor = System.Drawing.Color.Transparent
         Me.btnHelp.BackgroundImage = CType(resources.GetObject("btnHelp.BackgroundImage"), System.Drawing.Image)
         Me.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnHelp.Location = New System.Drawing.Point(307, 330)
+        Me.btnHelp.Location = New System.Drawing.Point(307, 280)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Size = New System.Drawing.Size(121, 26)
         Me.btnHelp.TabIndex = 2
@@ -79,17 +77,6 @@ Partial Class mainShift
         Me.btnOptions.TabIndex = 4
         Me.btnOptions.TabStop = False
         '
-        'btnTutorial
-        '
-        Me.btnTutorial.BackColor = System.Drawing.Color.Transparent
-        Me.btnTutorial.BackgroundImage = Global.Shift.My.Resources.Resources.btnTutorialUnclicked
-        Me.btnTutorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnTutorial.Location = New System.Drawing.Point(250, 280)
-        Me.btnTutorial.Name = "btnTutorial"
-        Me.btnTutorial.Size = New System.Drawing.Size(234, 26)
-        Me.btnTutorial.TabIndex = 5
-        Me.btnTutorial.TabStop = False
-        '
         'mainShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -97,7 +84,6 @@ Partial Class mainShift
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
-        Me.Controls.Add(Me.btnTutorial)
         Me.Controls.Add(Me.btnOptions)
         Me.Controls.Add(Me.gameLogo)
         Me.Controls.Add(Me.btnHelp)
@@ -110,7 +96,6 @@ Partial Class mainShift
         CType(Me.btnHelp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gameLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnOptions, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnTutorial, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -118,5 +103,4 @@ Partial Class mainShift
     Friend WithEvents btnHelp As System.Windows.Forms.PictureBox
     Friend WithEvents gameLogo As System.Windows.Forms.PictureBox
     Friend WithEvents btnOptions As System.Windows.Forms.PictureBox
-    Friend WithEvents btnTutorial As System.Windows.Forms.PictureBox
 End Class

@@ -8,26 +8,10 @@
 ''' <remarks></remarks>
 
 Public Class gameShift
-    Dim projectiles As New ArrayList
+    Public Shared projectiles As New ArrayList
     Dim finishJump As Boolean = False
 
     Public Declare Function GetAsyncKeyState Lib "user32.dll" (ByVal vKey As Int32) As UShort ' Asynchronously detect key presses
-
-    Public Shared Sub runTutorial()
-        With gameShift
-            ' Disable all functionality and gradually reveal to player
-            .timerGenerate.Enabled = False
-            .timerMove.Enabled = False
-            .timerShield.Enabled = False
-            .timerWorld.Enabled = False
-
-            RemoveHandler .KeyPress, AddressOf .gameShift_KeyPress
-            RemoveHandler .KeyDown, AddressOf .gameShift_KeyDown
-            RemoveHandler .KeyUp, AddressOf .gameShift_KeyUp
-
-            .tutorialPanel.Visible = True
-        End With
-    End Sub
 
     Private Sub pausePanel()
         With panelPause
@@ -41,6 +25,7 @@ Public Class gameShift
         timerMove.Enabled = Not timerMove.Enabled
         timerGenerate.Enabled = Not timerGenerate.Enabled
         timerWorld.Enabled = Not timerWorld.Enabled
+        timerShoot.Enabled = Not timerShoot.Enabled
 
         'timerConstant.Enabled = False
         ' playerY = 0 'uncomment for endless jumpings
@@ -60,6 +45,7 @@ Public Class gameShift
         lblProjectiles.Text = projectiles.Count
         lblHealth.Text = Stage.playerHealth
         lblMovement.Text = timerMove.Tag
+        'lblCharge.Text = Stage.charge
         lblCharge.Text = Stage.charge
         lblShootVar.Text = (picPlayer.Left / 100) + 4
         lblGenVar.Text = Stage.genVar
@@ -70,7 +56,9 @@ Public Class gameShift
         lblStage.Text = Stage.currentStage
         lblScore.Text = Stage.score
         lblPlayerY.Text = Stage.playerY
-        lblTempXY.Text = Stage.tempPlayerXY.ToString
+        lblTempXY.Text = (Stage.tempPlayerXY).ToString
+        lblPCD.Text = Stage.powerCooldown
+        If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
     End Sub
 
     Private Sub countDownShift()
@@ -96,7 +84,7 @@ Public Class gameShift
         End If
     End Sub
 
-    Private Sub projectileShootCollision()
+    Private Sub projectileShoot()
         For i = 0 To projectiles.Count - 1
             Try
                 ' Projectile shooting
@@ -110,14 +98,23 @@ Public Class gameShift
                         Exit Sub
                     End If
                 End If
+            Catch ex As Exception
 
+            End Try
+        Next
+    End Sub
+
+    Private Sub projectileCollision()
+        For i = 0 To projectiles.Count - 1
+            Try
                 ' Projectile collision
                 If projectiles(i).Bounds.IntersectsWith(picPlayer.Bounds) Then
                     If picPlayer.BackColor = Color.Green Then ' Shield on, regen health + charge up powerup
                         If Stage.playerHealth + Stage.healthGain > Stage.healthMax Then Stage.playerHealth = Stage.healthMax Else Stage.playerHealth = Stage.playerHealth + Stage.healthGain ' Upper cap
                         If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
-                        projectiles(i).BackCOlor = Color.White
+                        projectiles(i).BackColor = Color.White
                         projectiles(i).Top = -50 ' EXPERIMENTAL Shift offscreen when projectile is hit
+                        Stage.score += Stage.scoreMult * 100
                         Exit Sub
                     ElseIf picPlayer.BackColor = Color.DodgerBlue And projectiles(i).hitCooldown = False Then ' Shield off, take damage
                         If Stage.playerHealth - Stage.healthLoss < 0 Then Stage.playerHealth = 0 Else Stage.playerHealth = Stage.playerHealth - Stage.healthLoss ' Lower cap
@@ -127,7 +124,7 @@ Public Class gameShift
                     End If
                 End If
             Catch ex As Exception
-                ' None
+
             End Try
         Next
     End Sub
@@ -135,14 +132,10 @@ Public Class gameShift
     Private Sub timerConstant_Tick(sender As Object, e As EventArgs) Handles timerConstant.Tick ' Detect key presses
         updateFormLabels()
         countDownShift()
+        projectileCollision()
 
         picHealth.BackgroundImage = My.Resources.ResourceManager.GetObject("healthbar" + Math.Ceiling(Stage.playerHealth / (Stage.healthMax / 20)).ToString)
-
-        projectileShootCollision()
-
         picCharge.BackgroundImage = My.Resources.ResourceManager.GetObject("chargeBar" + Math.Ceiling(Stage.charge / (Stage.chargeMax / 10)).ToString) ' EXPERIMENTAL
-
-        If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
         ' Key detection
         Dim arrowLeft = GetAsyncKeyState(CInt(Keys.Left))
@@ -164,7 +157,7 @@ Public Class gameShift
             If arrowUp And Not timerMove.Tag.Contains("jump") Then timerMove.Tag += "jump"
         End If
 
-        If GetAsyncKeyState(CInt(Keys.Oemtilde)) And Not Stage.currentStage = 99 Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box if not running tutorial
+        If GetAsyncKeyState(CInt(Keys.Oemtilde)) Then debugBox.Visible = Not debugBox.Visible ' Toggle debug box
     End Sub
 
     Private Sub timerWorld_Tick(sender As Object, e As EventArgs) Handles timerWorld.Tick
@@ -173,7 +166,7 @@ Public Class gameShift
         ' Apply special stage properties
         If Stage.currentStage = 3 And Stage.progression Mod 200 = 0 Then Stage.applyStage(Stage.currentStage) ' Stage 3: random, shift values every 2 seconds
         If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
-        If Stage.currentStage = 5 Then Stage.charge += Stage.chargeGain
+        If Stage.currentStage = 5 Then If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
         If Stage.playerHealth > 0 Then Stage.score += Stage.scoreMult
@@ -190,9 +183,9 @@ Public Class gameShift
         If Stage.currentStage = 4 Then
             Stage.genVar = ((picPlayer.Left / 10) + 1) ^ 1.5 + 200
         ElseIf Stage.currentStage = 5 Then
-            Stage.genVar = (Rnd() * 8 + 2) * 100
+            Stage.genVar = New Random().Next(100, 800)
         Else
-            Stage.genVar = (Rnd() * 5 + 1) * 100
+            Stage.genVar = New Random().Next(100, 400)
         End If
 
         timerGenerate.Interval = Stage.genVar
@@ -200,23 +193,49 @@ Public Class gameShift
 
     Private Sub timerShield_Tick(sender As Object, e As EventArgs) Handles timerShield.Tick
         ' Blue = shield on, green = shield off
-        If Stage.shieldStatus < Stage.shieldMax Then
-            Stage.shieldStatus += 1
-        Else
-            Stage.shieldStatus = 0
-            If picPlayer.BackColor = Color.DodgerBlue Then picPlayer.BackColor = Color.Green Else picPlayer.BackColor = Color.DodgerBlue
-        End If
+        If Stage.shieldStatus < Stage.shieldMax Then Stage.shieldStatus += 1 Else Stage.shieldStatus = 0
+        If Stage.shieldStatus = 0 Then If picPlayer.BackColor = Color.DodgerBlue Then picPlayer.BackColor = Color.Green Else picPlayer.BackColor = Color.DodgerBlue
     End Sub
 
     Private Sub timerMove_Tick(sender As Object, e As EventArgs) Handles timerMove.Tick
         If timerMove.Tag.Contains("left") And Not timerMove.Tag.Contains("right") And picPlayer.Left > 0 Then picPlayer.Left -= Stage.playerSpeed
         If timerMove.Tag.Contains("right") And Not timerMove.Tag.Contains("left") And picPlayer.Left < Me.Width - 65 Then picPlayer.Left += Stage.playerSpeed
-
         gravity()
     End Sub
 
     Private Sub timerPower_Tick(sender As Object, e As EventArgs) Handles timerPower.Tick
-        Stage.applyPowerup(Stage.currentStage)
+        If Stage.powerInUse And Stage.powerCooldown > 0 Then
+            Select Case Stage.currentStage
+                Case 1
+                    Dim i = CInt(New Random().Next(0, projectiles.Count))
+                    Stage.powerCooldown -= 1
+
+                    If projectiles(i).Top < 0 Or projectiles(i).Left < 0 Then
+                        For i = 0 To projectiles.Count - 1
+                            If projectiles(i).Top > 0 And projectiles(i).Left > 0 Then
+                                Exit For
+                            End If
+                        Next
+                        Exit Sub
+                    End If
+
+                    picPlayer.Location = projectiles(i).Location
+            End Select
+            Exit Sub ' Exit for one-activation powers - skip below
+        End If
+
+        If Stage.powerCooldown = 0 Then
+            Stage.deactivatePowerup(Stage.currentStage)
+            Exit Sub
+        End If
+
+        ' NORMAL POWERUPS
+        If Stage.charge > 0 And Stage.charge >= Stage.chargeUse Then ' Use powerup if charge is available
+            Stage.charge -= Stage.chargeUse ' Use up chargeUse
+            Stage.applyPowerup(Stage.currentStage)
+        Else
+            Stage.deactivatePowerup(Stage.currentStage)
+        End If
     End Sub
 
     Private Sub gameShift_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
@@ -240,10 +259,12 @@ Public Class gameShift
     End Sub
 
     Private Sub gameShift_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
-        If e.KeyCode = Keys.Space And Stage.paused = False Then
-            timerPower.Enabled = False
-            Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
-            If Stage.currentStage = 4 Then picPlayer.Location = Stage.tempPlayerXY
+        If e.KeyCode = Keys.Space And Stage.paused = False And Not Stage.currentStage = 1 Then
+            If Stage.powerInUse = False Then timerPower.Enabled = False
+            'Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
+            Stage.deactivatePowerup(Stage.currentStage)
+
+            'If Stage.currentStage = 4 Then picPlayer.Location = Stage.tempPlayerXY
             If Stage.currentStage = 5 Then picPlayer.BackColor = Color.DodgerBlue
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
@@ -253,5 +274,9 @@ Public Class gameShift
     Private Sub btnMenu_Click(sender As Object, e As EventArgs) Handles btnMenu.Click
         Me.Close()
         mainShift.Show()
+    End Sub
+
+    Private Sub timerShoot_Tick(sender As Object, e As EventArgs) Handles timerShoot.Tick
+        projectileShoot()
     End Sub
 End Class

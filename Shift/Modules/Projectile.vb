@@ -9,6 +9,7 @@
             .BackgroundImage = My.Resources.projectile
             .Size = New Size(30, 30)
             .Location = New Point(750, (Rnd() * 100) + 200)
+            .BringToFront()
         End With
     End Sub
 
