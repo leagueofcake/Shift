@@ -145,7 +145,7 @@
             Case 3 ' random: randomise values
                 ' Powerup built in - re-randomise values
             Case 4 ' spaceTime: teleport
-                'gameShift.picPlayer.Location = tempPlayerXY ' Revert to pre-teleportation coordinates
+                'gameShift.picPlayer.Location = tempPlayerXY ' Revert to pre-teleportation coordinates, currently unused
             Case 5 ' phase
                 gameShift.picPlayer.BackColor = Color.DodgerBlue
         End Select

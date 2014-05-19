@@ -47,9 +47,6 @@ Public Class gameShift
         timerGenerate.Enabled = Not timerGenerate.Enabled
         timerWorld.Enabled = Not timerWorld.Enabled
         timerShoot.Enabled = Not timerShoot.Enabled
-
-        'timerConstant.Enabled = False
-        ' playerY = 0 'uncomment for endless jumpings
     End Sub
 
     Private Sub endGame()
@@ -66,7 +63,7 @@ Public Class gameShift
         lblProjectiles.Text = projectiles.Count
         lblHealth.Text = Stage.playerHealth
         lblMovement.Text = timerMove.Tag
-        'lblCharge.Text = Stage.charge
+        lblCharge.Text = Stage.charge
         lblCharge.Text = Stage.charge
         lblShootVar.Text = (picPlayer.Left / 100) + 4
         lblGenVar.Text = Stage.genVar
@@ -285,10 +282,9 @@ Public Class gameShift
     Private Sub gameShift_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         If e.KeyCode = Keys.Space And Stage.paused = False And Not Stage.currentStage = 1 Then
             If Stage.powerInUse = False Then timerPower.Enabled = False
-            'Stage.applyStage(Stage.currentStage) ' DEACTIVATE POWERUP - RESET TO DEFAULT VALUES
             Stage.deactivatePowerup(Stage.currentStage)
 
-            'If Stage.currentStage = 4 Then picPlayer.Location = Stage.tempPlayerXY
+            'If Stage.currentStage = 4 Then picPlayer.Location = Stage.tempPlayerXY ' Leashing for teleportation, currently unused
             If Stage.currentStage = 5 Then picPlayer.BackColor = Color.DodgerBlue
         ElseIf (e.KeyCode = Keys.Left Or e.KeyCode = Keys.Right) Then
             If Not timerMove.Tag.Contains("jump") Then timerMove.Tag = "idle" Else finishJump = True
