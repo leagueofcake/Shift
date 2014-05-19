@@ -24,14 +24,15 @@
     Public Shared chargeMax As Integer = 500
     Public Shared projectileSpeed As Integer = 5
     Public Shared scoreMult As Integer = 0
+    Public Shared maxLevels As Integer = 7
 
     ' Teleportation variables
     Public Shared tempPlayerXY = New Point(0, 0)
 
     Public Shared Sub selectStage() ' Generate a stage number different to current stage
-        Dim rand = New Random().Next(0, 4) ' 0, max no. stages + 1
+        Dim rand = New Random().Next(0, maxLevels) ' 0, max no. stages + 1
         While rand = currentStage ' force a different stage to current
-            rand = New Random().Next(0, 4)
+            rand = New Random().Next(0, maxLevels)
         End While
         currentStage = rand
         applyStage(currentStage)
@@ -45,7 +46,7 @@
         Select Case stageNumber
             ' shift(playerSpeed, healthMax, shieldMax, healthDrain, healthLoss, healthGain, chargeGain, chargeUse, chargeMax, projectileSpeed, scoreMult)
             Case 0 ' default
-                shift(4, 5000, 100, 10, 10, 400, 10, 1, 500, 5, 100)
+                shift(4, 5000, 100, 10, 10, 400, 25, 1, 500, 5, 100)
             Case 1 ' timeUp
                 shift(6, 5000, 50, 20, 20, 600, 5, 1, 250, 10, 175)
                 ' Restart timers that were stopped by powerUp
