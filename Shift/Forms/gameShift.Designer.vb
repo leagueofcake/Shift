@@ -79,6 +79,10 @@ Partial Class gameShift
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.picStage = New System.Windows.Forms.PictureBox()
         Me.timerShoot = New System.Windows.Forms.Timer(Me.components)
+        Me.rtbStageDesc = New System.Windows.Forms.RichTextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.rtbPowerDesc = New System.Windows.Forms.RichTextBox()
         Me.debugBox.SuspendLayout()
         Me.panelPause.SuspendLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -537,6 +541,10 @@ Partial Class gameShift
         '
         Me.panelPause.BackColor = System.Drawing.Color.Transparent
         Me.panelPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.panelPause.Controls.Add(Me.Label17)
+        Me.panelPause.Controls.Add(Me.Label18)
+        Me.panelPause.Controls.Add(Me.rtbPowerDesc)
+        Me.panelPause.Controls.Add(Me.rtbStageDesc)
         Me.panelPause.Controls.Add(Me.btnMenu)
         Me.panelPause.Controls.Add(Me.picPausedText)
         Me.panelPause.ForeColor = System.Drawing.SystemColors.ControlText
@@ -691,6 +699,46 @@ Partial Class gameShift
         Me.timerShoot.Enabled = True
         Me.timerShoot.Interval = 10
         '
+        'rtbStageDesc
+        '
+        Me.rtbStageDesc.Location = New System.Drawing.Point(40, 110)
+        Me.rtbStageDesc.Name = "rtbStageDesc"
+        Me.rtbStageDesc.ReadOnly = True
+        Me.rtbStageDesc.Size = New System.Drawing.Size(513, 103)
+        Me.rtbStageDesc.TabIndex = 19
+        Me.rtbStageDesc.Text = ""
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.White
+        Me.Label17.Location = New System.Drawing.Point(40, 81)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(58, 24)
+        Me.Label17.TabIndex = 20
+        Me.Label17.Text = "Stage"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.White
+        Me.Label18.Location = New System.Drawing.Point(40, 250)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(64, 24)
+        Me.Label18.TabIndex = 22
+        Me.Label18.Text = "Power"
+        '
+        'rtbPowerDesc
+        '
+        Me.rtbPowerDesc.Location = New System.Drawing.Point(40, 285)
+        Me.rtbPowerDesc.Name = "rtbPowerDesc"
+        Me.rtbPowerDesc.ReadOnly = True
+        Me.rtbPowerDesc.Size = New System.Drawing.Size(513, 103)
+        Me.rtbPowerDesc.TabIndex = 21
+        Me.rtbPowerDesc.Text = ""
+        '
         'gameShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -721,6 +769,7 @@ Partial Class gameShift
         Me.debugBox.ResumeLayout(False)
         Me.debugBox.PerformLayout()
         Me.panelPause.ResumeLayout(False)
+        Me.panelPause.PerformLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPausedText, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picHealth, System.ComponentModel.ISupportInitialize).EndInit()
@@ -789,5 +838,9 @@ Partial Class gameShift
     Friend WithEvents timerShoot As System.Windows.Forms.Timer
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents lblPCD As System.Windows.Forms.Label
+    Friend WithEvents rtbStageDesc As System.Windows.Forms.RichTextBox
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents rtbPowerDesc As System.Windows.Forms.RichTextBox
 
 End Class

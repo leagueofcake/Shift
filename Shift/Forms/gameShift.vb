@@ -19,6 +19,27 @@ Public Class gameShift
             .BackColor = Color.FromArgb(50, 255, 255, 255)
             .BringToFront()
         End With
+
+        Select Case Stage.currentStage
+            Case 0 ' Default
+                rtbStageDesc.Text = "default" + vbNewLine + "The default stage! Charge gain is boosted on this stage, so try collect as much as you can before the shift! 1x score multiplier"
+                rtbPowerDesc.Text = "speedUp" + vbNewLine + "Double your movement speed. Consumes 1 charge/second."
+            Case 1 ' timeUp
+                rtbStageDesc.Text = "timeUp" + vbNewLine + "Everything's sped up!"
+                rtbPowerDesc.Text = "flashStrike" + vbNewLine + "Blink around the screen with your shield on and strike up to 5 orbs. Only activates when charge bar is filled. (250) 2x score multiplier"
+            Case 2 ' lowHealth
+                rtbStageDesc.Text = "lowHealth" + vbNewLine + "Your health cap is lowered and the health drain is increased! Be smart with your health management and try not to run out! 3x score multiplier"
+                rtbPowerDesc.Text = "shield" + vbNewLine + "Activate your shield. Consumes 10 charge/second"
+            Case 3 ' random
+                rtbStageDesc.Text = "random" + vbNewLine + "Almost all game variables are randomised (to a certain extent). Don't worry if you start off with unfavourable values though, they re-randomise every two seconds! Variable score multiplier"
+                rtbPowerDesc.Text = "reRandomise" + vbNewLine + "More re-randomising of game variables, at your leisure. Consumes entire charge bar."
+            Case 4 ' spaceTime
+                rtbStageDesc.Text = "spaceTime" + vbNewLine + "The game shifts with your position on the screen! The further left you are, the faster you and the orbs move, and vice versa. The generation of orbs also depends on your position - being further left results in more frequent generation, and vice versa. 2x score multiplier"
+                rtbPowerDesc.Text = "tele" + vbNewLine + "Teleports player to the location of the cursor. Consumes 1 charge"
+            Case 5
+                rtbStageDesc.Text = "noShield" + vbNewLine + "Your shield has been deactivated and worse yet, someone's put you on a mad jumping spree! Don't hit a single orb, or you'll lose all your health! 5x score multiplier"
+                rtbPowerDesc.Text = "phase" + vbNewLine + "Phase out, turning yourself a lovely light blue. Touching a projectile when phased out on will have no effect. Consumes 4 charge/second. "
+        End Select
     End Sub
 
     Private Sub togglePause()
@@ -166,7 +187,9 @@ Public Class gameShift
         ' Apply special stage properties
         If Stage.currentStage = 3 And Stage.progression Mod 200 = 0 Then Stage.applyStage(Stage.currentStage) ' Stage 3: random, shift values every 2 seconds
         If Stage.currentStage = 4 Then Stage.applyStage(4) ' Constantly update game values based on position
-        If Stage.currentStage = 5 Then If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
+        If Stage.currentStage = 5 Then
+            If Stage.charge + Stage.chargeGain < Stage.chargeMax Then Stage.charge += Stage.chargeGain Else Stage.charge = Stage.chargeMax
+        End If
 
         If Stage.playerHealth > 0 Then Stage.playerHealth -= Stage.healthDrain
         If Stage.playerHealth > 0 Then Stage.score += Stage.scoreMult
@@ -182,8 +205,9 @@ Public Class gameShift
         ' If stage = 4 (spacetime) then genvar is dependent on player's position else semi-randomised
         If Stage.currentStage = 4 Then
             Stage.genVar = ((picPlayer.Left / 10) + 1) ^ 1.5 + 200
-        ElseIf Stage.currentStage = 5 Then
-            Stage.genVar = New Random().Next(100, 800)
+        ElseIf Stage.currentStage = 5 Then ' Easier on noShield
+            Stage.genVar = New Random().Next(400, 1000)
+            timerMove.Tag += "jump"
         Else
             Stage.genVar = New Random().Next(100, 400)
         End If
@@ -220,8 +244,8 @@ Public Class gameShift
                     End If
 
                     picPlayer.Location = projectiles(i).Location
+                    Exit Sub
             End Select
-            Exit Sub ' Exit for one-activation powers - skip below
         End If
 
         If Stage.powerCooldown = 0 Then

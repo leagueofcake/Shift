@@ -50,11 +50,11 @@
             Case 2 ' lowHealth
                 shift(4, 2500, 100, 20, 20, 800, 1, 10, 500, 5, 1500, 3)
             Case 3 ' random
-                shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), New Random().Next(1, 5), New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(1000, 3000), New Random().Next(1, 5))
+                shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), charge, New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(1000, 3000), New Random().Next(1, 5))
             Case 4 ' timeSpace
                 shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 1, 500, 12 - (gameShift.picPlayer.Left / 100), 500, 2)
             Case 5 ' noShield
-                shift(4, 5000, 1500, 0, healthMax, -healthMax, 1, 5, 500, 5, 500, 2)
+                shift(4, 5000, 1500, 0, healthMax, -healthMax, 2, 4, 500, 5, 500, 5)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -115,7 +115,7 @@
                     charge += 1
                 End If
             Case 5 ' phase
-                gameShift.picPlayer.BackColor = Color.SkyBlue
+                gameShift.picPlayer.BackColor = Color.FromArgb(50, 130, 215, 255)
         End Select
     End Sub
 
@@ -157,8 +157,13 @@
         charge = 0
         shieldStatus = 0
         progression = 0
-        currentStage = 0
-        applyStage(0)
+
+        currentStage = 5
+        applyStage(5)
+
+        For i = 0 To gameShift.projectiles.Count - 1
+            gameShift.projectiles(i).Top = -50
+        Next
     End Sub
 
     Public Sub anti()
