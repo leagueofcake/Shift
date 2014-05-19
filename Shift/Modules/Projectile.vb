@@ -8,7 +8,7 @@
             .BackgroundImageLayout = ImageLayout.Stretch
             .BackgroundImage = My.Resources.projectile
             .Size = New Size(30, 30)
-            .Location = New Point(750, 305)
+            .Location = New Point(750, (Rnd() * 100) + 200)
         End With
     End Sub
 

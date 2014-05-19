@@ -111,25 +111,25 @@
                     Else
                         charge += 1
                     End If
-                Case 5
+                Case 5 ' phase
                     gameShift.picPlayer.BackColor = Color.SkyBlue
             End Select
         Else ' Turn off powerup and timerPower if out of charge
             gameShift.timerPower.Enabled = False
             Select Case stageNumber
-                Case 0
+                Case 0 ' default: speedUp
                     playerSpeed = 4
-                Case 1
+                Case 1 'timeUp: timeStop
                     gameShift.timerGenerate.Enabled = True
                     gameShift.timerWorld.Enabled = True
                     gameShift.timerShield.Enabled = True
-                Case 2
+                Case 2 ' lowHealth
                     gameShift.picPlayer.BackColor = Color.DodgerBlue
-                Case 3
+                Case 3 ' random: randomise values
                     ' Powerup built in - re-randomise values
-                Case 4
+                Case 4 ' spaceTime: teleport
                     gameShift.picPlayer.Location = tempPlayerXY ' Revert to pre-teleportation coordinates
-                Case 5
+                Case 5 ' phase
                     gameShift.picPlayer.BackColor = Color.DodgerBlue
             End Select
         End If
