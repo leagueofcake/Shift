@@ -36,7 +36,7 @@ Partial Class mainShift
         Me.btnPlay.BackColor = System.Drawing.Color.Transparent
         Me.btnPlay.BackgroundImage = Global.Shift.My.Resources.Resources.btnPlayClicked
         Me.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnPlay.Location = New System.Drawing.Point(267, 170)
+        Me.btnPlay.Location = New System.Drawing.Point(267, 177)
         Me.btnPlay.Name = "btnPlay"
         Me.btnPlay.Size = New System.Drawing.Size(200, 39)
         Me.btnPlay.TabIndex = 1
@@ -47,7 +47,7 @@ Partial Class mainShift
         Me.btnHelp.BackColor = System.Drawing.Color.Transparent
         Me.btnHelp.BackgroundImage = CType(resources.GetObject("btnHelp.BackgroundImage"), System.Drawing.Image)
         Me.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnHelp.Location = New System.Drawing.Point(307, 230)
+        Me.btnHelp.Location = New System.Drawing.Point(307, 237)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Size = New System.Drawing.Size(121, 26)
         Me.btnHelp.TabIndex = 2

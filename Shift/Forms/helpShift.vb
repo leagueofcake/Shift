@@ -22,20 +22,27 @@
             picKeyRight.Visible = Not picKeyRight.Visible
             picKeySpace.Visible = Not picKeySpace.Visible
             picKeyEsc.Visible = Not picKeyEsc.Visible
+            picKeyTilde.Visible = Not picKeyTilde.Visible
             lblControl0.Visible = Not lblControl0.Visible
             lblControl1.Visible = Not lblControl1.Visible
             lblControl2.Visible = Not lblControl2.Visible
             lblControl3.Visible = Not lblControl3.Visible
             lblControl4.Visible = Not lblControl4.Visible
+            lblControl5.Visible = Not lblControl5.Visible
 
             lblGame0.Visible = Not lblGame0.Visible
             lblGame1.Visible = Not lblGame1.Visible
             lblGame2.Visible = Not lblGame2.Visible
             lblGame3.Visible = Not lblGame3.Visible
             lblGame4.Visible = Not lblGame4.Visible
+            lblGame5.Visible = Not lblGame5.Visible
+            lblGame6.Visible = Not lblGame6.Visible
+            lblGame7.Visible = Not lblGame7.Visible
+            lblGame8.Visible = Not lblGame8.Visible
             picPlayerBlue.Visible = Not picPlayerBlue.Visible
             picPlayerGreen.Visible = Not picPlayerGreen.Visible
             picProjectile.Visible = Not picProjectile.Visible
+            picProjectileOrange.Visible = Not picProjectileOrange.Visible
         End If
     End Sub
 

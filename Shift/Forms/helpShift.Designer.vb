@@ -40,13 +40,15 @@ Partial Class helpShift
         Me.lblControl1 = New System.Windows.Forms.Label()
         Me.lblControl2 = New System.Windows.Forms.Label()
         Me.lblControl3 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.picProjectileOrange = New System.Windows.Forms.PictureBox()
+        Me.lblGame5 = New System.Windows.Forms.Label()
+        Me.lblGame6 = New System.Windows.Forms.Label()
+        Me.lblGame7 = New System.Windows.Forms.Label()
+        Me.lblGame8 = New System.Windows.Forms.Label()
         Me.picKeyEsc = New System.Windows.Forms.PictureBox()
         Me.lblControl4 = New System.Windows.Forms.Label()
+        Me.picKeyTilde = New System.Windows.Forms.PictureBox()
+        Me.lblControl5 = New System.Windows.Forms.Label()
         CType(Me.btnGameInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnControls, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPlayerBlue, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,8 +58,9 @@ Partial Class helpShift
         CType(Me.picKeyLeft, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picKeyRight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picKeySpace, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picProjectileOrange, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picKeyEsc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picKeyTilde, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGameInfo
@@ -175,7 +178,7 @@ Partial Class helpShift
         '
         Me.picKeyUp.BackColor = System.Drawing.Color.Transparent
         Me.picKeyUp.BackgroundImage = Global.Shift.My.Resources.Resources.keyUp
-        Me.picKeyUp.Location = New System.Drawing.Point(596, 160)
+        Me.picKeyUp.Location = New System.Drawing.Point(596, 226)
         Me.picKeyUp.Name = "picKeyUp"
         Me.picKeyUp.Size = New System.Drawing.Size(50, 50)
         Me.picKeyUp.TabIndex = 10
@@ -186,7 +189,7 @@ Partial Class helpShift
         '
         Me.picKeyLeft.BackColor = System.Drawing.Color.Transparent
         Me.picKeyLeft.BackgroundImage = Global.Shift.My.Resources.Resources.keyLeft
-        Me.picKeyLeft.Location = New System.Drawing.Point(546, 217)
+        Me.picKeyLeft.Location = New System.Drawing.Point(546, 283)
         Me.picKeyLeft.Name = "picKeyLeft"
         Me.picKeyLeft.Size = New System.Drawing.Size(50, 50)
         Me.picKeyLeft.TabIndex = 11
@@ -197,7 +200,7 @@ Partial Class helpShift
         '
         Me.picKeyRight.BackColor = System.Drawing.Color.Transparent
         Me.picKeyRight.BackgroundImage = Global.Shift.My.Resources.Resources.keyRight
-        Me.picKeyRight.Location = New System.Drawing.Point(644, 217)
+        Me.picKeyRight.Location = New System.Drawing.Point(644, 283)
         Me.picKeyRight.Name = "picKeyRight"
         Me.picKeyRight.Size = New System.Drawing.Size(50, 50)
         Me.picKeyRight.TabIndex = 12
@@ -208,7 +211,7 @@ Partial Class helpShift
         '
         Me.picKeySpace.BackColor = System.Drawing.Color.Transparent
         Me.picKeySpace.BackgroundImage = Global.Shift.My.Resources.Resources.keySpace
-        Me.picKeySpace.Location = New System.Drawing.Point(324, 217)
+        Me.picKeySpace.Location = New System.Drawing.Point(324, 283)
         Me.picKeySpace.Name = "picKeySpace"
         Me.picKeySpace.Size = New System.Drawing.Size(150, 50)
         Me.picKeySpace.TabIndex = 13
@@ -221,11 +224,11 @@ Partial Class helpShift
         Me.lblControl0.BackColor = System.Drawing.Color.Transparent
         Me.lblControl0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblControl0.ForeColor = System.Drawing.Color.White
-        Me.lblControl0.Location = New System.Drawing.Point(321, 270)
+        Me.lblControl0.Location = New System.Drawing.Point(321, 336)
         Me.lblControl0.Name = "lblControl0"
-        Me.lblControl0.Size = New System.Drawing.Size(107, 16)
+        Me.lblControl0.Size = New System.Drawing.Size(111, 16)
         Me.lblControl0.TabIndex = 14
-        Me.lblControl0.Text = "Charge powerup"
+        Me.lblControl0.Text = "Activate powerup"
         Me.lblControl0.Visible = False
         '
         'lblControl1
@@ -234,7 +237,7 @@ Partial Class helpShift
         Me.lblControl1.BackColor = System.Drawing.Color.Transparent
         Me.lblControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblControl1.ForeColor = System.Drawing.Color.White
-        Me.lblControl1.Location = New System.Drawing.Point(652, 160)
+        Me.lblControl1.Location = New System.Drawing.Point(648, 229)
         Me.lblControl1.Name = "lblControl1"
         Me.lblControl1.Size = New System.Drawing.Size(41, 16)
         Me.lblControl1.TabIndex = 15
@@ -247,7 +250,7 @@ Partial Class helpShift
         Me.lblControl2.BackColor = System.Drawing.Color.Transparent
         Me.lblControl2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblControl2.ForeColor = System.Drawing.Color.White
-        Me.lblControl2.Location = New System.Drawing.Point(533, 270)
+        Me.lblControl2.Location = New System.Drawing.Point(533, 336)
         Me.lblControl2.Name = "lblControl2"
         Me.lblControl2.Size = New System.Drawing.Size(66, 16)
         Me.lblControl2.TabIndex = 16
@@ -260,77 +263,77 @@ Partial Class helpShift
         Me.lblControl3.BackColor = System.Drawing.Color.Transparent
         Me.lblControl3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblControl3.ForeColor = System.Drawing.Color.White
-        Me.lblControl3.Location = New System.Drawing.Point(641, 270)
+        Me.lblControl3.Location = New System.Drawing.Point(641, 336)
         Me.lblControl3.Name = "lblControl3"
         Me.lblControl3.Size = New System.Drawing.Size(76, 16)
         Me.lblControl3.TabIndex = 17
         Me.lblControl3.Text = "Move Right"
         Me.lblControl3.Visible = False
         '
-        'PictureBox1
+        'picProjectileOrange
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.BackgroundImage = Global.Shift.My.Resources.Resources.projectileOrange
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(368, 312)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(30, 30)
-        Me.PictureBox1.TabIndex = 18
-        Me.PictureBox1.TabStop = False
+        Me.picProjectileOrange.BackColor = System.Drawing.Color.Transparent
+        Me.picProjectileOrange.BackgroundImage = Global.Shift.My.Resources.Resources.projectileOrange
+        Me.picProjectileOrange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.picProjectileOrange.Location = New System.Drawing.Point(368, 312)
+        Me.picProjectileOrange.Name = "picProjectileOrange"
+        Me.picProjectileOrange.Size = New System.Drawing.Size(30, 30)
+        Me.picProjectileOrange.TabIndex = 18
+        Me.picProjectileOrange.TabStop = False
         '
-        'Label1
+        'lblGame5
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(435, 312)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(248, 16)
-        Me.Label1.TabIndex = 19
-        Me.Label1.Text = "An orb that's been hit without a shield on. "
+        Me.lblGame5.AutoSize = True
+        Me.lblGame5.BackColor = System.Drawing.Color.Transparent
+        Me.lblGame5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGame5.ForeColor = System.Drawing.Color.White
+        Me.lblGame5.Location = New System.Drawing.Point(435, 312)
+        Me.lblGame5.Name = "lblGame5"
+        Me.lblGame5.Size = New System.Drawing.Size(248, 16)
+        Me.lblGame5.TabIndex = 19
+        Me.lblGame5.Text = "An orb that's been hit without a shield on. "
         '
-        'Label2
+        'lblGame6
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(435, 329)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(214, 16)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "Needless to say it doesn't like you."
+        Me.lblGame6.AutoSize = True
+        Me.lblGame6.BackColor = System.Drawing.Color.Transparent
+        Me.lblGame6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGame6.ForeColor = System.Drawing.Color.White
+        Me.lblGame6.Location = New System.Drawing.Point(435, 329)
+        Me.lblGame6.Name = "lblGame6"
+        Me.lblGame6.Size = New System.Drawing.Size(214, 16)
+        Me.lblGame6.TabIndex = 20
+        Me.lblGame6.Text = "Needless to say it doesn't like you."
         '
-        'Label3
+        'lblGame7
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(435, 170)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(256, 16)
-        Me.Label3.TabIndex = 21
-        Me.Label3.Text = "orbs when you have your sheild on to gain"
+        Me.lblGame7.AutoSize = True
+        Me.lblGame7.BackColor = System.Drawing.Color.Transparent
+        Me.lblGame7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGame7.ForeColor = System.Drawing.Color.White
+        Me.lblGame7.Location = New System.Drawing.Point(435, 170)
+        Me.lblGame7.Name = "lblGame7"
+        Me.lblGame7.Size = New System.Drawing.Size(256, 16)
+        Me.lblGame7.TabIndex = 21
+        Me.lblGame7.Text = "orbs when you have your shield on to gain"
         '
-        'Label4
+        'lblGame8
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(435, 186)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(189, 16)
-        Me.Label4.TabIndex = 22
-        Me.Label4.Text = "charge and add to your score! "
+        Me.lblGame8.AutoSize = True
+        Me.lblGame8.BackColor = System.Drawing.Color.Transparent
+        Me.lblGame8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGame8.ForeColor = System.Drawing.Color.White
+        Me.lblGame8.Location = New System.Drawing.Point(435, 186)
+        Me.lblGame8.Name = "lblGame8"
+        Me.lblGame8.Size = New System.Drawing.Size(189, 16)
+        Me.lblGame8.TabIndex = 22
+        Me.lblGame8.Text = "charge and add to your score! "
         '
         'picKeyEsc
         '
         Me.picKeyEsc.BackColor = System.Drawing.Color.Transparent
         Me.picKeyEsc.BackgroundImage = Global.Shift.My.Resources.Resources.keyEscape
-        Me.picKeyEsc.Location = New System.Drawing.Point(324, 80)
+        Me.picKeyEsc.Location = New System.Drawing.Point(324, 91)
         Me.picKeyEsc.Name = "picKeyEsc"
         Me.picKeyEsc.Size = New System.Drawing.Size(50, 50)
         Me.picKeyEsc.TabIndex = 23
@@ -343,12 +346,36 @@ Partial Class helpShift
         Me.lblControl4.BackColor = System.Drawing.Color.Transparent
         Me.lblControl4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblControl4.ForeColor = System.Drawing.Color.White
-        Me.lblControl4.Location = New System.Drawing.Point(321, 133)
+        Me.lblControl4.Location = New System.Drawing.Point(380, 108)
         Me.lblControl4.Name = "lblControl4"
         Me.lblControl4.Size = New System.Drawing.Size(93, 16)
         Me.lblControl4.TabIndex = 24
         Me.lblControl4.Text = "Toggle pause"
         Me.lblControl4.Visible = False
+        '
+        'picKeyTilde
+        '
+        Me.picKeyTilde.BackColor = System.Drawing.Color.Transparent
+        Me.picKeyTilde.BackgroundImage = Global.Shift.My.Resources.Resources.keyTilde
+        Me.picKeyTilde.Location = New System.Drawing.Point(324, 147)
+        Me.picKeyTilde.Name = "picKeyTilde"
+        Me.picKeyTilde.Size = New System.Drawing.Size(50, 50)
+        Me.picKeyTilde.TabIndex = 25
+        Me.picKeyTilde.TabStop = False
+        Me.picKeyTilde.Visible = False
+        '
+        'lblControl5
+        '
+        Me.lblControl5.AutoSize = True
+        Me.lblControl5.BackColor = System.Drawing.Color.Transparent
+        Me.lblControl5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblControl5.ForeColor = System.Drawing.Color.White
+        Me.lblControl5.Location = New System.Drawing.Point(380, 163)
+        Me.lblControl5.Name = "lblControl5"
+        Me.lblControl5.Size = New System.Drawing.Size(119, 16)
+        Me.lblControl5.TabIndex = 26
+        Me.lblControl5.Text = "Toggle debug box"
+        Me.lblControl5.Visible = False
         '
         'helpShift
         '
@@ -357,6 +384,8 @@ Partial Class helpShift
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.lblControl5)
+        Me.Controls.Add(Me.picKeyTilde)
         Me.Controls.Add(Me.lblControl4)
         Me.Controls.Add(Me.picKeyEsc)
         Me.Controls.Add(Me.lblControl1)
@@ -365,15 +394,14 @@ Partial Class helpShift
         Me.Controls.Add(Me.lblControl3)
         Me.Controls.Add(Me.lblControl2)
         Me.Controls.Add(Me.lblControl0)
-        Me.Controls.Add(Me.picKeySpace)
         Me.Controls.Add(Me.picKeyRight)
         Me.Controls.Add(Me.picKeyLeft)
         Me.Controls.Add(Me.picKeyUp)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.lblGame8)
+        Me.Controls.Add(Me.lblGame7)
+        Me.Controls.Add(Me.lblGame6)
+        Me.Controls.Add(Me.lblGame5)
+        Me.Controls.Add(Me.picProjectileOrange)
         Me.Controls.Add(Me.lblGame4)
         Me.Controls.Add(Me.lblGame3)
         Me.Controls.Add(Me.lblGame2)
@@ -382,6 +410,7 @@ Partial Class helpShift
         Me.Controls.Add(Me.picPlayerGreen)
         Me.Controls.Add(Me.picPlayerBlue)
         Me.Controls.Add(Me.lblGame0)
+        Me.Controls.Add(Me.picKeySpace)
         Me.DoubleBuffered = True
         Me.Name = "helpShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -395,8 +424,9 @@ Partial Class helpShift
         CType(Me.picKeyLeft, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picKeyRight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picKeySpace, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picProjectileOrange, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picKeyEsc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picKeyTilde, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -419,11 +449,13 @@ Partial Class helpShift
     Friend WithEvents lblControl1 As System.Windows.Forms.Label
     Friend WithEvents lblControl2 As System.Windows.Forms.Label
     Friend WithEvents lblControl3 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents picProjectileOrange As System.Windows.Forms.PictureBox
+    Friend WithEvents lblGame5 As System.Windows.Forms.Label
+    Friend WithEvents lblGame6 As System.Windows.Forms.Label
+    Friend WithEvents lblGame7 As System.Windows.Forms.Label
+    Friend WithEvents lblGame8 As System.Windows.Forms.Label
     Friend WithEvents picKeyEsc As System.Windows.Forms.PictureBox
     Friend WithEvents lblControl4 As System.Windows.Forms.Label
+    Friend WithEvents picKeyTilde As System.Windows.Forms.PictureBox
+    Friend WithEvents lblControl5 As System.Windows.Forms.Label
 End Class
