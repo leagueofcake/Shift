@@ -159,8 +159,8 @@
         shieldStatus = 0
         progression = 0
 
-        currentStage = 4
-        applyStage(4)
+        currentStage = 0
+        applyStage(0)
 
         For i = 0 To gameShift.projectiles.Count - 1 ' Clean up projectiles previously on screen
             gameShift.projectiles(i).Top = -50

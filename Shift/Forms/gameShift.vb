@@ -298,7 +298,7 @@ Public Class gameShift
         lblPCD.Text = Stage.powerCooldown
         If picPlayer.BackColor = Color.DodgerBlue Then lblShieldOn.Text = "Off" Else lblShieldOn.Text = "On"
 
-        If Not Stage.progression = 0 Then
+        If Not Stage.progression = 0 Then ' Updates the next shift countdown
             If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (15 - ((Stage.progression / 100) Mod 15)).ToString + " seconds"
             If Stage.progression Mod 1500 = 0 Then Stage.selectStage() ' Every 10 seconds, shift game variables
         End If

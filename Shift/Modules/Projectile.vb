@@ -1,8 +1,8 @@
 ﻿Public Class Projectile
-    Inherits PictureBox
-    Private hitCD As Boolean = False
+    Inherits PictureBox ' Inherit picturebox properties
+    Private hitCD As Boolean = False ' Hitcooldown
 
-    Public Sub New()
+    Public Sub New() ' Creation of new projectile, set properties
         With Me
             .BackColor = Color.Transparent
             .BackgroundImageLayout = ImageLayout.Stretch
@@ -12,11 +12,11 @@
         End With
     End Sub
 
-    Public Sub Shoot(ByVal shootVar As Integer)
+    Public Sub Shoot(ByVal shootVar As Integer) ' Shooting of projectile
         Me.Left -= shootVar
     End Sub
 
-    Property hitCooldown() As Boolean
+    Property hitCooldown() As Boolean ' Prevents registering of multiple collisions when touched once
         Get
             Return hitCD
         End Get
