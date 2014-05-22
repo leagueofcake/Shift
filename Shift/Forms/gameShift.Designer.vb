@@ -750,8 +750,7 @@ Partial Class gameShift
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(734, 441)
-        Me.Controls.Add(Me.panelPause)
+        Me.ClientSize = New System.Drawing.Size(734, 442)
         Me.Controls.Add(Me.picStage)
         Me.Controls.Add(Me.picWorld)
         Me.Controls.Add(Me.lblShiftTimer)
@@ -763,6 +762,7 @@ Partial Class gameShift
         Me.Controls.Add(Me.picPlayer)
         Me.Controls.Add(Me.picCharge)
         Me.Controls.Add(Me.picChargeLabel)
+        Me.Controls.Add(Me.panelPause)
         Me.DoubleBuffered = True
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(750, 480)

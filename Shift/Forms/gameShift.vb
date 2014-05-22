@@ -302,7 +302,7 @@ Public Class gameShift
 
         If Not Stage.progression = 0 Then ' Updates the next shift countdown
             If Stage.progression Mod 100 = 0 Then lblShiftTimer.Text = "Next Shift in " + (15 - ((Stage.progression / 100) Mod 15)).ToString + " seconds"
-            If Stage.progression Mod 1500 = 0 Then Stage.selectStage() ' Every 10 seconds, shift game variables
+            If Stage.progression Mod 1500 = 0 Then Stage.selectStage() ' Every 15 seconds, shift game variables
         End If
     End Sub
 End Class

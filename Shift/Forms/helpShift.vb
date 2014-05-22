@@ -171,7 +171,7 @@
     Private Sub helpShift_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Fills in rtbGameInfo on load
         rtbIntro.Text = "This is a sidescroller game, with the aim of the game being to survive for as long as possible in order to accumulate the highest score. Your health is constantly draining, but you can regain health by absorbing orbs with your shield on (when you turn green)." + vbNewLine + vbNewLine +
-            "The stage shifts every 10 seconds, with the game variables shifting in accordance. Powerups are available to the player in order to assist them and are unique to each stage. The powerups can be used by consuming charge, which is gained by absorbing the blue orbs when the player's shield is on (player is green)." + vbNewLine + vbNewLine +
+            "The stage shifts every 15 seconds, with the game variables shifting in accordance. Powerups are available to the player in order to assist them and are unique to each stage. The powerups can be used by consuming charge, which is gained by absorbing the blue orbs when the player's shield is on (player is green)." + vbNewLine + vbNewLine +
             "Each stage has a score multiplier which affects how many points the player receives for surviving each second in the stage, determined by the difficulty of the stage. Information related to each stage and the respective powerup can be found ingame in the pause overlay. "
     End Sub
 

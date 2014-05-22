@@ -50,17 +50,19 @@
             Case 1 ' timeUp
                 shift(6, 5000, 75, 15, 10, 700, 15, 250, 250, 10, 5, 2)
             Case 2 ' lowHealth
-                shift(4, 2500, 100, 20, 20, 800, 1, 10, 500, 5, 1500, 3)
+                shift(4, 2500, 100, 15, 15, 800, 1, 10, 500, 5, 1500, 3)
             Case 3 ' random
                 shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), charge, New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(1000, 3000), New Random().Next(1, 5))
             Case 4 ' spaceTime
                 shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 5, 10, 400, 10, 1, 500, 12 - (gameShift.picPlayer.Left / 100), 500, 2)
             Case 5 ' noShield
                 shift(4, 5000, 1500, 0, healthMax, -healthMax, 2, 4, 500, 5, 500, 7)
+                applyPowerup(5)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
         If playerHealth > healthMax Then playerHealth = healthMax ' Set playerHealth to healthMax if in switching stage healthMax is lowered and playerHealth > healthMax
+        Stage.healthDrain += 0.001 * Stage.progression ' Gradually increase healthDrain - more difficult
     End Sub
 
     Public Shared Sub shift(speed As Integer, hMax As Integer, sMax As Integer, hDrain As Integer, hLoss As Integer, hGain As Integer, cGain As Integer, cUse As Integer, cMax As Integer, pSpeed As Integer, pCD As Integer, sMult As Integer)
@@ -104,7 +106,7 @@
             Case 2 ' lowHealth: activateShield
                 gameShift.picPlayer.BackColor = Color.Green ' Activate shield
             Case 3 ' random: randomise values
-                ' Powerup built in - re-randomise values
+                applyStage(3)
             Case 4 ' spaceTime: teleport
                 playerY = 12 ' Activate gravity
                 ' Store current position in temporary variable
@@ -141,13 +143,13 @@
                 chargeGain = 15
                 scoreMult = 175
                 gameShift.timerPower.Interval = 10
-            Case 2 ' lowHealth
+            Case 2 ' lowHealth: activateShield
                 gameShift.picPlayer.BackColor = Color.DodgerBlue
             Case 3 ' random: randomise values
                 ' Powerup built in - re-randomise values
             Case 4 ' spaceTime: teleport
                 'gameShift.picPlayer.Location = tempPlayerXY ' Revert to pre-teleportation coordinates, currently unused
-            Case 5 ' phase
+            Case 5 ' noShield: phase
                 gameShift.picPlayer.BackColor = Color.DodgerBlue ' Switch off shield
         End Select
     End Sub

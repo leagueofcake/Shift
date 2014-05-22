@@ -101,6 +101,7 @@ Partial Class helpShift
         Me.lblGame0.Size = New System.Drawing.Size(78, 16)
         Me.lblGame0.TabIndex = 2
         Me.lblGame0.Text = "This is you. "
+        Me.lblGame0.Visible = False
         '
         'picPlayerBlue
         '
@@ -110,6 +111,7 @@ Partial Class helpShift
         Me.picPlayerBlue.Size = New System.Drawing.Size(50, 50)
         Me.picPlayerBlue.TabIndex = 3
         Me.picPlayerBlue.TabStop = False
+        Me.picPlayerBlue.Visible = False
         '
         'picPlayerGreen
         '
@@ -119,6 +121,7 @@ Partial Class helpShift
         Me.picPlayerGreen.Size = New System.Drawing.Size(50, 50)
         Me.picPlayerGreen.TabIndex = 4
         Me.picPlayerGreen.TabStop = False
+        Me.picPlayerGreen.Visible = False
         '
         'lblGame1
         '
@@ -131,6 +134,7 @@ Partial Class helpShift
         Me.lblGame1.Size = New System.Drawing.Size(248, 16)
         Me.lblGame1.TabIndex = 5
         Me.lblGame1.Text = "This is you, with a shield! Try and absorb"
+        Me.lblGame1.Visible = False
         '
         'picProjectile
         '
@@ -142,6 +146,7 @@ Partial Class helpShift
         Me.picProjectile.Size = New System.Drawing.Size(30, 30)
         Me.picProjectile.TabIndex = 6
         Me.picProjectile.TabStop = False
+        Me.picProjectile.Visible = False
         '
         'lblGame2
         '
@@ -154,6 +159,7 @@ Partial Class helpShift
         Me.lblGame2.Size = New System.Drawing.Size(254, 16)
         Me.lblGame2.TabIndex = 7
         Me.lblGame2.Text = "An orb: your best friend and worst enemy. "
+        Me.lblGame2.Visible = False
         '
         'lblGame3
         '
@@ -166,6 +172,7 @@ Partial Class helpShift
         Me.lblGame3.Size = New System.Drawing.Size(265, 16)
         Me.lblGame3.TabIndex = 8
         Me.lblGame3.Text = "Hit one with your shield on to restore health. "
+        Me.lblGame3.Visible = False
         '
         'lblGame4
         '
@@ -178,6 +185,7 @@ Partial Class helpShift
         Me.lblGame4.Size = New System.Drawing.Size(265, 16)
         Me.lblGame4.TabIndex = 9
         Me.lblGame4.Text = "Hit one without, and it'll drain health instead. "
+        Me.lblGame4.Visible = False
         '
         'picKeyUp
         '
@@ -285,6 +293,7 @@ Partial Class helpShift
         Me.picProjectileOrange.Size = New System.Drawing.Size(30, 30)
         Me.picProjectileOrange.TabIndex = 18
         Me.picProjectileOrange.TabStop = False
+        Me.picProjectileOrange.Visible = False
         '
         'lblGame5
         '
@@ -297,6 +306,7 @@ Partial Class helpShift
         Me.lblGame5.Size = New System.Drawing.Size(248, 16)
         Me.lblGame5.TabIndex = 19
         Me.lblGame5.Text = "An orb that's been hit without a shield on. "
+        Me.lblGame5.Visible = False
         '
         'lblGame6
         '
@@ -309,6 +319,7 @@ Partial Class helpShift
         Me.lblGame6.Size = New System.Drawing.Size(214, 16)
         Me.lblGame6.TabIndex = 20
         Me.lblGame6.Text = "Needless to say it doesn't like you."
+        Me.lblGame6.Visible = False
         '
         'lblGame7
         '
@@ -321,6 +332,7 @@ Partial Class helpShift
         Me.lblGame7.Size = New System.Drawing.Size(256, 16)
         Me.lblGame7.TabIndex = 21
         Me.lblGame7.Text = "orbs when you have your shield on to gain"
+        Me.lblGame7.Visible = False
         '
         'lblGame8
         '
@@ -333,6 +345,7 @@ Partial Class helpShift
         Me.lblGame8.Size = New System.Drawing.Size(189, 16)
         Me.lblGame8.TabIndex = 22
         Me.lblGame8.Text = "charge and add to your score! "
+        Me.lblGame8.Visible = False
         '
         'picKeyEsc
         '
@@ -384,7 +397,10 @@ Partial Class helpShift
         '
         'rtbIntro
         '
+        Me.rtbIntro.BackColor = System.Drawing.Color.White
         Me.rtbIntro.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtbIntro.CausesValidation = False
+        Me.rtbIntro.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.rtbIntro.Enabled = False
         Me.rtbIntro.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rtbIntro.Location = New System.Drawing.Point(319, 48)
@@ -393,7 +409,6 @@ Partial Class helpShift
         Me.rtbIntro.Size = New System.Drawing.Size(370, 344)
         Me.rtbIntro.TabIndex = 27
         Me.rtbIntro.Text = ""
-        Me.rtbIntro.Visible = False
         '
         'btnIntro
         '
@@ -457,7 +472,7 @@ Partial Class helpShift
         Me.DoubleBuffered = True
         Me.Name = "helpShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "helpShift"
+        Me.Text = "S"
         CType(Me.btnGameInfo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnControls, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPlayerBlue, System.ComponentModel.ISupportInitialize).EndInit()
