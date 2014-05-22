@@ -44,7 +44,7 @@ Public Class gameShift
                 rtbPowerDesc.Text = "reRandomise" + vbNewLine + "More re-randomising of game variables, at your leisure." + vbNewLine + "Consumes entire charge bar."
             Case 4 ' spaceTime
                 rtbStageDesc.Text = "spaceTime" + vbNewLine + "The game shifts with your position on the screen! The further left you are, the faster you and the orbs move, and vice versa. The generation of orbs also depends on your position - being further left results in more frequent generation, and vice versa." + vbNewLine + "2x score multiplier"
-                rtbPowerDesc.Text = "tele" + vbNewLine + "Teleports player to the location of the cursor." + vbNewLine + "Consumes 1 charge"
+                rtbPowerDesc.Text = "teleport" + vbNewLine + "Teleports player to the location of the cursor." + vbNewLine + "Consumes 1 charge"
             Case 5
                 rtbStageDesc.Text = "noShield" + vbNewLine + "Your shield has been deactivated and worse yet, someone's put you on a mad jumping spree! Don't hit a single orb, or you'll lose all your health! Instead of absorbing orbs to gain charge, you will gain charge automatically as time progresses. " + vbNewLine + "5x score multiplier"
                 rtbPowerDesc.Text = "phase" + vbNewLine + "Phase out, turning yourself a lovely light blue. Touching a projectile when phased out on will have no effect." + vbNewLine + "Consumes 4 charge/second. "
@@ -270,6 +270,10 @@ Public Class gameShift
 
     Private Sub btnMenu_Click(sender As Object, e As EventArgs) Handles btnMenu.Click ' Close game and go to menu
         Me.Close()
+        mainShift.Show()
+    End Sub
+
+    Private Sub gameShift_FormClosed(sender As Object, e As EventArgs) Handles MyBase.FormClosed
         mainShift.Show()
     End Sub
 

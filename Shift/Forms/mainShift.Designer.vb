@@ -56,7 +56,7 @@ Partial Class mainShift
         'gameLogo
         '
         Me.gameLogo.BackColor = System.Drawing.Color.Transparent
-        Me.gameLogo.BackgroundImage = CType(resources.GetObject("gameLogo.BackgroundImage"), System.Drawing.Image)
+        Me.gameLogo.BackgroundImage = Global.Shift.My.Resources.Resources.logoShift
         Me.gameLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.gameLogo.Location = New System.Drawing.Point(76, 39)
         Me.gameLogo.Name = "gameLogo"

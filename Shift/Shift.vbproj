@@ -391,6 +391,10 @@
     <None Include="Assets\game\projectile\projectileOrange.png" />
     <None Include="Assets\help\keyEscape.png" />
     <None Include="Assets\help\keyTilde.png" />
+    <None Include="Assets\main\buttons\btnIntroClicked.png" />
+    <None Include="Assets\main\buttons\btnIntroHover.png" />
+    <None Include="Assets\main\buttons\btnIntroUnclicked.png" />
+    <None Include="Assets\main\logo\logoShift.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

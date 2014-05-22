@@ -49,6 +49,9 @@ Partial Class helpShift
         Me.lblControl4 = New System.Windows.Forms.Label()
         Me.picKeyTilde = New System.Windows.Forms.PictureBox()
         Me.lblControl5 = New System.Windows.Forms.Label()
+        Me.rtbIntro = New System.Windows.Forms.RichTextBox()
+        Me.btnIntro = New System.Windows.Forms.PictureBox()
+        Me.btnMenu = New System.Windows.Forms.PictureBox()
         CType(Me.btnGameInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnControls, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPlayerBlue, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,14 +64,16 @@ Partial Class helpShift
         CType(Me.picProjectileOrange, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picKeyEsc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picKeyTilde, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnIntro, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGameInfo
         '
         Me.btnGameInfo.BackColor = System.Drawing.Color.Transparent
-        Me.btnGameInfo.BackgroundImage = Global.Shift.My.Resources.Resources.btnGameInfoClicked
+        Me.btnGameInfo.BackgroundImage = Global.Shift.My.Resources.Resources.btnGameInfoUnclicked
         Me.btnGameInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnGameInfo.Location = New System.Drawing.Point(32, 170)
+        Me.btnGameInfo.Location = New System.Drawing.Point(32, 268)
         Me.btnGameInfo.Name = "btnGameInfo"
         Me.btnGameInfo.Size = New System.Drawing.Size(255, 26)
         Me.btnGameInfo.TabIndex = 0
@@ -79,7 +84,7 @@ Partial Class helpShift
         Me.btnControls.BackColor = System.Drawing.Color.Transparent
         Me.btnControls.BackgroundImage = Global.Shift.My.Resources.Resources.btnControlsUnclicked
         Me.btnControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnControls.Location = New System.Drawing.Point(32, 244)
+        Me.btnControls.Location = New System.Drawing.Point(32, 207)
         Me.btnControls.Name = "btnControls"
         Me.btnControls.Size = New System.Drawing.Size(255, 26)
         Me.btnControls.TabIndex = 1
@@ -91,7 +96,7 @@ Partial Class helpShift
         Me.lblGame0.BackColor = System.Drawing.Color.Transparent
         Me.lblGame0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame0.ForeColor = System.Drawing.Color.White
-        Me.lblGame0.Location = New System.Drawing.Point(435, 97)
+        Me.lblGame0.Location = New System.Drawing.Point(406, 87)
         Me.lblGame0.Name = "lblGame0"
         Me.lblGame0.Size = New System.Drawing.Size(78, 16)
         Me.lblGame0.TabIndex = 2
@@ -100,7 +105,7 @@ Partial Class helpShift
         'picPlayerBlue
         '
         Me.picPlayerBlue.BackColor = System.Drawing.Color.DodgerBlue
-        Me.picPlayerBlue.Location = New System.Drawing.Point(365, 80)
+        Me.picPlayerBlue.Location = New System.Drawing.Point(336, 70)
         Me.picPlayerBlue.Name = "picPlayerBlue"
         Me.picPlayerBlue.Size = New System.Drawing.Size(50, 50)
         Me.picPlayerBlue.TabIndex = 3
@@ -109,7 +114,7 @@ Partial Class helpShift
         'picPlayerGreen
         '
         Me.picPlayerGreen.BackColor = System.Drawing.Color.Green
-        Me.picPlayerGreen.Location = New System.Drawing.Point(365, 146)
+        Me.picPlayerGreen.Location = New System.Drawing.Point(336, 148)
         Me.picPlayerGreen.Name = "picPlayerGreen"
         Me.picPlayerGreen.Size = New System.Drawing.Size(50, 50)
         Me.picPlayerGreen.TabIndex = 4
@@ -121,7 +126,7 @@ Partial Class helpShift
         Me.lblGame1.BackColor = System.Drawing.Color.Transparent
         Me.lblGame1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame1.ForeColor = System.Drawing.Color.White
-        Me.lblGame1.Location = New System.Drawing.Point(435, 152)
+        Me.lblGame1.Location = New System.Drawing.Point(406, 154)
         Me.lblGame1.Name = "lblGame1"
         Me.lblGame1.Size = New System.Drawing.Size(248, 16)
         Me.lblGame1.TabIndex = 5
@@ -132,7 +137,7 @@ Partial Class helpShift
         Me.picProjectile.BackColor = System.Drawing.Color.Transparent
         Me.picProjectile.BackgroundImage = Global.Shift.My.Resources.Resources.projectile
         Me.picProjectile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.picProjectile.Location = New System.Drawing.Point(368, 237)
+        Me.picProjectile.Location = New System.Drawing.Point(339, 239)
         Me.picProjectile.Name = "picProjectile"
         Me.picProjectile.Size = New System.Drawing.Size(30, 30)
         Me.picProjectile.TabIndex = 6
@@ -144,7 +149,7 @@ Partial Class helpShift
         Me.lblGame2.BackColor = System.Drawing.Color.Transparent
         Me.lblGame2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame2.ForeColor = System.Drawing.Color.White
-        Me.lblGame2.Location = New System.Drawing.Point(435, 225)
+        Me.lblGame2.Location = New System.Drawing.Point(406, 227)
         Me.lblGame2.Name = "lblGame2"
         Me.lblGame2.Size = New System.Drawing.Size(254, 16)
         Me.lblGame2.TabIndex = 7
@@ -156,7 +161,7 @@ Partial Class helpShift
         Me.lblGame3.BackColor = System.Drawing.Color.Transparent
         Me.lblGame3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame3.ForeColor = System.Drawing.Color.White
-        Me.lblGame3.Location = New System.Drawing.Point(435, 245)
+        Me.lblGame3.Location = New System.Drawing.Point(406, 247)
         Me.lblGame3.Name = "lblGame3"
         Me.lblGame3.Size = New System.Drawing.Size(265, 16)
         Me.lblGame3.TabIndex = 8
@@ -168,7 +173,7 @@ Partial Class helpShift
         Me.lblGame4.BackColor = System.Drawing.Color.Transparent
         Me.lblGame4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame4.ForeColor = System.Drawing.Color.White
-        Me.lblGame4.Location = New System.Drawing.Point(435, 265)
+        Me.lblGame4.Location = New System.Drawing.Point(406, 267)
         Me.lblGame4.Name = "lblGame4"
         Me.lblGame4.Size = New System.Drawing.Size(265, 16)
         Me.lblGame4.TabIndex = 9
@@ -275,7 +280,7 @@ Partial Class helpShift
         Me.picProjectileOrange.BackColor = System.Drawing.Color.Transparent
         Me.picProjectileOrange.BackgroundImage = Global.Shift.My.Resources.Resources.projectileOrange
         Me.picProjectileOrange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.picProjectileOrange.Location = New System.Drawing.Point(368, 312)
+        Me.picProjectileOrange.Location = New System.Drawing.Point(339, 314)
         Me.picProjectileOrange.Name = "picProjectileOrange"
         Me.picProjectileOrange.Size = New System.Drawing.Size(30, 30)
         Me.picProjectileOrange.TabIndex = 18
@@ -287,7 +292,7 @@ Partial Class helpShift
         Me.lblGame5.BackColor = System.Drawing.Color.Transparent
         Me.lblGame5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame5.ForeColor = System.Drawing.Color.White
-        Me.lblGame5.Location = New System.Drawing.Point(435, 312)
+        Me.lblGame5.Location = New System.Drawing.Point(406, 314)
         Me.lblGame5.Name = "lblGame5"
         Me.lblGame5.Size = New System.Drawing.Size(248, 16)
         Me.lblGame5.TabIndex = 19
@@ -299,7 +304,7 @@ Partial Class helpShift
         Me.lblGame6.BackColor = System.Drawing.Color.Transparent
         Me.lblGame6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame6.ForeColor = System.Drawing.Color.White
-        Me.lblGame6.Location = New System.Drawing.Point(435, 329)
+        Me.lblGame6.Location = New System.Drawing.Point(406, 331)
         Me.lblGame6.Name = "lblGame6"
         Me.lblGame6.Size = New System.Drawing.Size(214, 16)
         Me.lblGame6.TabIndex = 20
@@ -311,7 +316,7 @@ Partial Class helpShift
         Me.lblGame7.BackColor = System.Drawing.Color.Transparent
         Me.lblGame7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame7.ForeColor = System.Drawing.Color.White
-        Me.lblGame7.Location = New System.Drawing.Point(435, 170)
+        Me.lblGame7.Location = New System.Drawing.Point(406, 172)
         Me.lblGame7.Name = "lblGame7"
         Me.lblGame7.Size = New System.Drawing.Size(256, 16)
         Me.lblGame7.TabIndex = 21
@@ -323,7 +328,7 @@ Partial Class helpShift
         Me.lblGame8.BackColor = System.Drawing.Color.Transparent
         Me.lblGame8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGame8.ForeColor = System.Drawing.Color.White
-        Me.lblGame8.Location = New System.Drawing.Point(435, 186)
+        Me.lblGame8.Location = New System.Drawing.Point(406, 188)
         Me.lblGame8.Name = "lblGame8"
         Me.lblGame8.Size = New System.Drawing.Size(189, 16)
         Me.lblGame8.TabIndex = 22
@@ -377,6 +382,41 @@ Partial Class helpShift
         Me.lblControl5.Text = "Toggle debug box"
         Me.lblControl5.Visible = False
         '
+        'rtbIntro
+        '
+        Me.rtbIntro.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtbIntro.Enabled = False
+        Me.rtbIntro.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtbIntro.Location = New System.Drawing.Point(319, 48)
+        Me.rtbIntro.Name = "rtbIntro"
+        Me.rtbIntro.ReadOnly = True
+        Me.rtbIntro.Size = New System.Drawing.Size(370, 344)
+        Me.rtbIntro.TabIndex = 27
+        Me.rtbIntro.Text = ""
+        Me.rtbIntro.Visible = False
+        '
+        'btnIntro
+        '
+        Me.btnIntro.BackColor = System.Drawing.Color.Transparent
+        Me.btnIntro.BackgroundImage = Global.Shift.My.Resources.Resources.btnIntroClicked
+        Me.btnIntro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnIntro.Location = New System.Drawing.Point(32, 146)
+        Me.btnIntro.Name = "btnIntro"
+        Me.btnIntro.Size = New System.Drawing.Size(139, 26)
+        Me.btnIntro.TabIndex = 28
+        Me.btnIntro.TabStop = False
+        '
+        'btnMenu
+        '
+        Me.btnMenu.BackColor = System.Drawing.Color.Transparent
+        Me.btnMenu.BackgroundImage = Global.Shift.My.Resources.Resources.btnMenuUnclicked
+        Me.btnMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnMenu.Location = New System.Drawing.Point(588, 403)
+        Me.btnMenu.Name = "btnMenu"
+        Me.btnMenu.Size = New System.Drawing.Size(129, 26)
+        Me.btnMenu.TabIndex = 29
+        Me.btnMenu.TabStop = False
+        '
         'helpShift
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -384,10 +424,10 @@ Partial Class helpShift
         Me.BackgroundImage = Global.Shift.My.Resources.Resources.mainbg
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(734, 441)
+        Me.Controls.Add(Me.btnMenu)
+        Me.Controls.Add(Me.btnIntro)
         Me.Controls.Add(Me.lblControl5)
-        Me.Controls.Add(Me.picKeyTilde)
         Me.Controls.Add(Me.lblControl4)
-        Me.Controls.Add(Me.picKeyEsc)
         Me.Controls.Add(Me.lblControl1)
         Me.Controls.Add(Me.btnControls)
         Me.Controls.Add(Me.btnGameInfo)
@@ -411,6 +451,9 @@ Partial Class helpShift
         Me.Controls.Add(Me.picPlayerBlue)
         Me.Controls.Add(Me.lblGame0)
         Me.Controls.Add(Me.picKeySpace)
+        Me.Controls.Add(Me.rtbIntro)
+        Me.Controls.Add(Me.picKeyTilde)
+        Me.Controls.Add(Me.picKeyEsc)
         Me.DoubleBuffered = True
         Me.Name = "helpShift"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -427,6 +470,8 @@ Partial Class helpShift
         CType(Me.picProjectileOrange, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picKeyEsc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picKeyTilde, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnIntro, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -458,4 +503,7 @@ Partial Class helpShift
     Friend WithEvents lblControl4 As System.Windows.Forms.Label
     Friend WithEvents picKeyTilde As System.Windows.Forms.PictureBox
     Friend WithEvents lblControl5 As System.Windows.Forms.Label
+    Friend WithEvents rtbIntro As System.Windows.Forms.RichTextBox
+    Friend WithEvents btnIntro As System.Windows.Forms.PictureBox
+    Friend WithEvents btnMenu As System.Windows.Forms.PictureBox
 End Class
