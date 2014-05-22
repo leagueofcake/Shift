@@ -87,7 +87,7 @@
             Case 0 ' default: speedUp
                 playerSpeed = 8
             Case 1 ' timeUp: flashStrike
-                With gameShift
+                With gameShift ' Turn off timers
                     .timerWorld.Enabled = False
                     .timerShield.Enabled = False
                     .timerMove.Enabled = False
@@ -126,7 +126,7 @@
         gameShift.timerPower.Enabled = False
         Select Case stageNumber
             Case 0 ' default: speedUp
-                playerSpeed = 4 ' Revert player sped
+                playerSpeed = 4 ' Revert player speed
             Case 1 'timeUp: flashStrike
                 With gameShift
                     .timerWorld.Enabled = True

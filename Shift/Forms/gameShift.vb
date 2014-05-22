@@ -7,6 +7,8 @@
 ''' 
 ''' Current Version: 1.0
 ''' 
+''' Language: Visual Basic.NET
+''' 
 ''' Game summary: A sidescroller (game in which the gameplay action is viewed from a side-view camera angle) game written in VB.Net. The aim of the game for the player 
 ''' is to survive for as long as possible in order to accumulate the highest score. The stage shifts every 10 seconds, with the game variables shifting in accordance. 
 ''' Powerups are available to the player in order to assist them and are unique to each stage. The powerups can be used by consuming charge, which is gained by absorbing
