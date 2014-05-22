@@ -623,6 +623,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property keyEscape() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("keyEscape", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property keyLeft() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("keyLeft", resourceCulture)
@@ -696,6 +706,16 @@ Namespace My.Resources
         Friend ReadOnly Property projectile() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("projectile", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property projectileOrange() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("projectileOrange", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

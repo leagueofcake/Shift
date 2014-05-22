@@ -64,6 +64,10 @@ Partial Class gameShift
         Me.lblPosX = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.panelPause = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.rtbPowerDesc = New System.Windows.Forms.RichTextBox()
+        Me.rtbStageDesc = New System.Windows.Forms.RichTextBox()
         Me.btnMenu = New System.Windows.Forms.PictureBox()
         Me.picPausedText = New System.Windows.Forms.PictureBox()
         Me.timerConstant = New System.Windows.Forms.Timer(Me.components)
@@ -79,10 +83,6 @@ Partial Class gameShift
         Me.timerPower = New System.Windows.Forms.Timer(Me.components)
         Me.picStage = New System.Windows.Forms.PictureBox()
         Me.timerShoot = New System.Windows.Forms.Timer(Me.components)
-        Me.rtbStageDesc = New System.Windows.Forms.RichTextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.rtbPowerDesc = New System.Windows.Forms.RichTextBox()
         Me.debugBox.SuspendLayout()
         Me.panelPause.SuspendLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -554,6 +554,50 @@ Partial Class gameShift
         Me.panelPause.TabIndex = 37
         Me.panelPause.Visible = False
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.White
+        Me.Label17.Location = New System.Drawing.Point(40, 81)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(58, 24)
+        Me.Label17.TabIndex = 20
+        Me.Label17.Text = "Stage"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.White
+        Me.Label18.Location = New System.Drawing.Point(40, 250)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(64, 24)
+        Me.Label18.TabIndex = 22
+        Me.Label18.Text = "Power"
+        '
+        'rtbPowerDesc
+        '
+        Me.rtbPowerDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtbPowerDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtbPowerDesc.Location = New System.Drawing.Point(40, 285)
+        Me.rtbPowerDesc.Name = "rtbPowerDesc"
+        Me.rtbPowerDesc.ReadOnly = True
+        Me.rtbPowerDesc.Size = New System.Drawing.Size(407, 103)
+        Me.rtbPowerDesc.TabIndex = 21
+        Me.rtbPowerDesc.Text = ""
+        '
+        'rtbStageDesc
+        '
+        Me.rtbStageDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.rtbStageDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rtbStageDesc.Location = New System.Drawing.Point(40, 110)
+        Me.rtbStageDesc.Name = "rtbStageDesc"
+        Me.rtbStageDesc.ReadOnly = True
+        Me.rtbStageDesc.Size = New System.Drawing.Size(407, 103)
+        Me.rtbStageDesc.TabIndex = 19
+        Me.rtbStageDesc.Text = ""
+        '
         'btnMenu
         '
         Me.btnMenu.BackColor = System.Drawing.Color.Transparent
@@ -698,46 +742,6 @@ Partial Class gameShift
         '
         Me.timerShoot.Enabled = True
         Me.timerShoot.Interval = 10
-        '
-        'rtbStageDesc
-        '
-        Me.rtbStageDesc.Location = New System.Drawing.Point(40, 110)
-        Me.rtbStageDesc.Name = "rtbStageDesc"
-        Me.rtbStageDesc.ReadOnly = True
-        Me.rtbStageDesc.Size = New System.Drawing.Size(513, 103)
-        Me.rtbStageDesc.TabIndex = 19
-        Me.rtbStageDesc.Text = ""
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(40, 81)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(58, 24)
-        Me.Label17.TabIndex = 20
-        Me.Label17.Text = "Stage"
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(40, 250)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(64, 24)
-        Me.Label18.TabIndex = 22
-        Me.Label18.Text = "Power"
-        '
-        'rtbPowerDesc
-        '
-        Me.rtbPowerDesc.Location = New System.Drawing.Point(40, 285)
-        Me.rtbPowerDesc.Name = "rtbPowerDesc"
-        Me.rtbPowerDesc.ReadOnly = True
-        Me.rtbPowerDesc.Size = New System.Drawing.Size(513, 103)
-        Me.rtbPowerDesc.TabIndex = 21
-        Me.rtbPowerDesc.Text = ""
         '
         'gameShift
         '

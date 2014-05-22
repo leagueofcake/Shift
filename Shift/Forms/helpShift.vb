@@ -2,19 +2,7 @@
     Dim selected As Integer = 0 ' 0: Game Info, 1: Controls
     Dim numberOptions As Integer = 2 ' Modify based on how many options available
 
-    Private Sub clickButton(sender As Object, e As EventArgs) Handles btnControls.Click, btnGameInfo.Click
-        Select Case sender.Name
-            Case "btnGameInfo"
-                selected = 0
-                btnControls.BackgroundImage = My.Resources.btnControlsUnclicked
-            Case "btnControls"
-                selected = 1
-                btnGameInfo.BackgroundImage = My.Resources.btnGameInfoUnclicked
-        End Select
-        selectHelper()
-    End Sub
-
-    Private Sub hoverHelper()
+    Private Sub hoverHelper() ' Handles hovering over buttons
         ' Reset images to unclicked state
         btnGameInfo.BackgroundImage = My.Resources.btnGameInfoUnclicked
         btnControls.BackgroundImage = My.Resources.btnControlsUnclicked
@@ -27,16 +15,18 @@
         End Select
     End Sub
 
-    Private Sub selectHelper()
+    Private Sub selectHelper() ' Handles selection of help mode - toggles what is visible
         If (selected = 0 And picKeyUp.Visible = True) Or (selected = 1 And picKeyUp.Visible = False) Then
             picKeyUp.Visible = Not picKeyUp.Visible
             picKeyLeft.Visible = Not picKeyLeft.Visible
             picKeyRight.Visible = Not picKeyRight.Visible
             picKeySpace.Visible = Not picKeySpace.Visible
+            picKeyEsc.Visible = Not picKeyEsc.Visible
             lblControl0.Visible = Not lblControl0.Visible
             lblControl1.Visible = Not lblControl1.Visible
             lblControl2.Visible = Not lblControl2.Visible
             lblControl3.Visible = Not lblControl3.Visible
+            lblControl4.Visible = Not lblControl4.Visible
 
             lblGame0.Visible = Not lblGame0.Visible
             lblGame1.Visible = Not lblGame1.Visible
@@ -50,14 +40,26 @@
     End Sub
 
 
-    Private Sub helpShift_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+    Private Sub helpShift_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown ' Handles moving selection with arrow keys
         If e.KeyCode = Keys.Enter Then selectHelper()
         If e.KeyCode = Keys.Down Then If selected < numberOptions - 1 Then selected += 1 Else selected = 0 ' Wrap around using down arrow
         If e.KeyCode = Keys.Up Then If selected > 0 Then selected -= 1 Else selected = numberOptions - 1 ' Wrap around using up arrow
         hoverHelper()
     End Sub
 
-    Private Sub mouseDownButton(sender As Object, e As EventArgs) Handles btnGameInfo.MouseDown, btnControls.MouseDown
+    Private Sub clickButton(sender As Object, e As EventArgs) Handles btnControls.Click, btnGameInfo.Click ' Handles clicking of the buttons
+        Select Case sender.Name
+            Case "btnGameInfo"
+                selected = 0
+                btnControls.BackgroundImage = My.Resources.btnControlsUnclicked
+            Case "btnControls"
+                selected = 1
+                btnGameInfo.BackgroundImage = My.Resources.btnGameInfoUnclicked
+        End Select
+        selectHelper()
+    End Sub
+
+    Private Sub mouseDownButton(sender As Object, e As EventArgs) Handles btnGameInfo.MouseDown, btnControls.MouseDown ' Handles mouseDown of buttons
         Select Case sender.Name
             Case "btnGameInfo"
                 btnGameInfo.BackgroundImage = My.Resources.btnGameInfoClicked
@@ -66,7 +68,7 @@
         End Select
     End Sub
 
-    Private Sub mouseHoverButton(sender As Object, e As EventArgs) Handles btnGameInfo.MouseHover, btnControls.MouseHover
+    Private Sub mouseHoverButton(sender As Object, e As EventArgs) Handles btnGameInfo.MouseHover, btnControls.MouseHover ' Handles hovering over buttons
         Select Case sender.Name
             Case "btnGameInfo"
                 If Not selected = 0 Then btnGameInfo.BackgroundImage = My.Resources.btnGameInfoHover
@@ -75,7 +77,7 @@
         End Select
     End Sub
 
-    Private Sub mouseLeaveButton(sender As Object, e As EventArgs) Handles btnGameInfo.MouseLeave, btnControls.MouseLeave
+    Private Sub mouseLeaveButton(sender As Object, e As EventArgs) Handles btnGameInfo.MouseLeave, btnControls.MouseLeave ' Handles mouse leaving of buttons
         Select Case sender.Name
             Case "btnGameInfo"
                 If Not selected = 0 Then btnGameInfo.BackgroundImage = My.Resources.btnGameInfoUnclicked

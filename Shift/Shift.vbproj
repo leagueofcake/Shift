@@ -397,6 +397,8 @@
     <None Include="Assets\game\chargeBar\png\chargeBar8.png" />
     <None Include="Assets\game\chargeBar\png\chargeBar9.png" />
     <None Include="Assets\game\chargeBar\png\chargeBar10.png" />
+    <None Include="Assets\game\projectile\projectileOrange.png" />
+    <None Include="Assets\help\keyEscape.png" />
     <Content Include="Resources\chargeBar0.png" />
     <Content Include="Resources\chargeBar1.png" />
     <Content Include="Resources\chargeBar10.png" />

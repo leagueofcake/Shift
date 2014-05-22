@@ -31,16 +31,18 @@
     ' Teleportation variables
     Public Shared tempPlayerXY = New Point(0, 0)
 
+
     Public Shared Sub selectStage() ' Generate a stage number different to current stage
-        Dim rand = New Random().Next(0, maxLevels) ' 0, max no. stages + 1
-        While rand = currentStage ' force a different stage to current
+        Dim rand = New Random().Next(0, maxLevels)
+        While rand = currentStage ' Force a different stage to current
             rand = New Random().Next(0, maxLevels)
         End While
+
         currentStage = rand
         applyStage(currentStage)
     End Sub
 
-    Public Shared Sub applyStage(stageNumber As Integer)
+    Public Shared Sub applyStage(stageNumber As Integer) ' Applies a stage based on paramater given (stageNumber)
         Select Case stageNumber
             ' shift(playerSpeed, healthMax, shieldMax, healthDrain, healthLoss, healthGain, chargeGain, chargeUse, chargeMax, projectileSpeed, powerCooldown, scoreMult)
             Case 0 ' default
@@ -51,10 +53,10 @@
                 shift(4, 2500, 100, 20, 20, 800, 1, 10, 500, 5, 1500, 3)
             Case 3 ' random
                 shift(New Random().Next(2, 8), New Random().Next(2500, 10000), New Random().Next(0, 200), New Random().Next(5, 20), New Random().Next(5, 20), New Random().Next(200, 800), New Random().Next(2, 8), charge, New Random().Next(100, 1000), New Random().Next(5, 10), New Random().Next(1000, 3000), New Random().Next(1, 5))
-            Case 4 ' timeSpace
-                shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 10, 10, 400, 10, 1, 500, 12 - (gameShift.picPlayer.Left / 100), 500, 2)
+            Case 4 ' spaceTime
+                shift(10 - gameShift.picPlayer.Left / 100, 5000, 100, 5, 10, 400, 10, 1, 500, 12 - (gameShift.picPlayer.Left / 100), 500, 2)
             Case 5 ' noShield
-                shift(4, 5000, 1500, 0, healthMax, -healthMax, 2, 4, 500, 5, 500, 5)
+                shift(4, 5000, 1500, 0, healthMax, -healthMax, 2, 4, 500, 5, 500, 7)
         End Select
 
         If charge > chargeMax Then charge = chargeMax ' Set charge to chargeMax if in switching stage chargeMax is lowered and charge > chargeMax
@@ -62,6 +64,7 @@
     End Sub
 
     Public Shared Sub shift(speed As Integer, hMax As Integer, sMax As Integer, hDrain As Integer, hLoss As Integer, hGain As Integer, cGain As Integer, cUse As Integer, cMax As Integer, pSpeed As Integer, pCD As Integer, sMult As Integer)
+        ' Shifts game variables as specified in parameters
         playerSpeed = speed
         healthMax = hMax
         shieldMax = sMax
@@ -75,22 +78,21 @@
         powerCooldown = pCD
         scoreMult = sMult
 
-        gameShift.picStage.BackgroundImage = My.Resources.ResourceManager.GetObject("stage" + currentStage.ToString)
+        gameShift.picStage.BackgroundImage = My.Resources.ResourceManager.GetObject("stage" + currentStage.ToString) ' Updates stage header label
     End Sub
 
-    Public Shared Sub applyPowerup(stageNumber As Integer)
+    Public Shared Sub applyPowerup(stageNumber As Integer) ' Applies powerup as according to parameter given (stageNumber)
         powerInUse = True
         Select Case stageNumber
             Case 0 ' default: speedUp
                 playerSpeed = 8
-            Case 1 ' timeUp: timeStop | flashStrike
+            Case 1 ' timeUp: flashStrike
                 With gameShift
                     .timerWorld.Enabled = False
                     .timerShield.Enabled = False
                     .timerMove.Enabled = False
                 End With
 
-                ' NEW POWERUP ADDON
                 powerCooldown = 5
                 tempPlayerXY = gameShift.picPlayer.Location
                 gameShift.picPlayer.BackColor = Color.Green
@@ -114,25 +116,24 @@
                 Else
                     charge += 1
                 End If
-            Case 5 ' phase
+            Case 5 ' noShield: phase
                 gameShift.picPlayer.BackColor = Color.FromArgb(50, 130, 215, 255)
         End Select
     End Sub
 
-    Public Shared Sub deactivatePowerup(stageNumber As Integer)
+    Public Shared Sub deactivatePowerup(stageNumber As Integer) ' Deactivation sequence for powerups based on parameter given (stageNumber)
         powerInUse = False
         gameShift.timerPower.Enabled = False
         Select Case stageNumber
             Case 0 ' default: speedUp
-                playerSpeed = 4
-            Case 1 'timeUp: timeStop
+                playerSpeed = 4 ' Revert player sped
+            Case 1 'timeUp: flashStrike
                 With gameShift
                     .timerWorld.Enabled = True
                     .timerShield.Enabled = True
                     .timerMove.Enabled = True
                 End With
 
-                ' NEW POWERUP ADDON
                 powerCooldown = 5
                 gameShift.picPlayer.Location = tempPlayerXY
                 projectileSpeed = 10
@@ -147,47 +148,49 @@
             Case 4 ' spaceTime: teleport
                 'gameShift.picPlayer.Location = tempPlayerXY ' Revert to pre-teleportation coordinates, currently unused
             Case 5 ' phase
-                gameShift.picPlayer.BackColor = Color.DodgerBlue
+                gameShift.picPlayer.BackColor = Color.DodgerBlue ' Switch off shield
         End Select
     End Sub
 
-    Public Shared Sub newGame()
+    Public Shared Sub newGame() ' Handles creation of a new game - resets game varaibles, applies default stage, cleans up projectiles
         score = 0
         playerHealth = 5000
         charge = 0
         shieldStatus = 0
         progression = 0
 
-        currentStage = 5
-        applyStage(5)
+        currentStage = 4
+        applyStage(4)
 
-        For i = 0 To gameShift.projectiles.Count - 1
+        For i = 0 To gameShift.projectiles.Count - 1 ' Clean up projectiles previously on screen
             gameShift.projectiles(i).Top = -50
         Next
     End Sub
 
-    Public Sub anti()
-        'Case -1 ' anti
-        ' ANTI STAGE CODE INCOMPLETE
-        'gameShift.picWorld.Top = 0
-        'gameShift.pichealthText.Left = 750 - gameShift.pichealthText.Width - 20
-        'gameShift.pichealthText.Top = 480 - 10 - 3 * gameShift.pichealthText.Height
-        'gameShift.pichealthText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameShift.picPausedText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+    ' CURRENTLY UNUSED STAGE DATA
+    'Public Sub anti()
+    'Case -1 ' anti
+    ' ANTI STAGE CODE INCOMPLETE
+    'gameShift.picWorld.Top = 0
+    'gameShift.pichealthText.Left = 750 - gameShift.pichealthText.Width - 20
+    'gameShift.pichealthText.Top = 480 - 10 - 3 * gameShift.pichealthText.Height
+    'gameShift.pichealthText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameShift.picHealth.Left = 750 - gameShift.picHealth.Width - 200
-        'gameShift.picHealth.Top = 480 - 2 * gameShift.picHealth.Height - 20
-        'gameShift.picHealth.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+    'gameShift.picPausedText.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameShift.picCharge.Left = 50
-        'gameShift.picCharge.Top = 140
-        'gameShift.picCharge.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone) ' CURRENTLY NOT WORKING
+    'gameShift.picHealth.Left = 750 - gameShift.picHealth.Width - 200
+    'gameShift.picHealth.Top = 480 - 2 * gameShift.picHealth.Height - 20
+    'gameShift.picHealth.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
 
-        'gameShift.picChargeLabel.Left = 10
-        'gameShift.picChargeLabel.Top = 140
-        'gameShift.picChargeLabel.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+    'gameShift.picCharge.Left = 50
+    'gameShift.picCharge.Top = 140
+    'gameShift.picCharge.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone) ' CURRENTLY NOT WORKING
 
-        'gameShift.debugBox.Left = 500
-    End Sub
+    'gameShift.picChargeLabel.Left = 10
+    'gameShift.picChargeLabel.Top = 140
+    'gameShift.picChargeLabel.BackgroundImage.RotateFlip(RotateFlipType.Rotate180FlipNone)
+
+    'gameShift.debugBox.Left = 500
+    'End Sub
 End Class
